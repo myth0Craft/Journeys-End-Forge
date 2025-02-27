@@ -1,0 +1,10 @@
+// 1.21	2025-02-22T19:07:35.4938317	Block States: je
+70ef5a172b5a1ddbda52c5b108fbb8526b2661bb assets/je/blockstates/compressed_end_stone.json
+4dec08aed354955aa63d47413f64d94955c68321 assets/je/blockstates/solid_corruption.json
+b943d8b3120f370583bf91912170633f4b7ba3c8 assets/je/blockstates/voidmetal_block.json
+1ace8a78fe0b224ea99420f45c8e04cff1b02780 assets/je/models/block/compressed_end_stone.json
+0c3ef42055fc922f521ee3cd7246e56014db8573 assets/je/models/block/solid_corruption.json
+1f5c0792f4b6039322accdce23da1189ccbaa5a4 assets/je/models/block/voidmetal_block.json
+f83ee7bd721effaa64855be3a5de22436a384d86 assets/je/models/item/compressed_end_stone.json
+832fe3c95fd1e1832fb394110a89c0369f4dae19 assets/je/models/item/solid_corruption.json
+e5dee8813894acb2145af915d1adc97dfabc659d assets/je/models/item/voidmetal_block.json

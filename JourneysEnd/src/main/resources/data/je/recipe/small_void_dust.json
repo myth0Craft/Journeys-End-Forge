@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "je:small_void_dust"
+    },
+    {
+      "item": "je:small_void_dust"
+    },
+    {
+      "item": "je:small_void_dust"
+    },
+    {
+      "item": "je:small_void_dust"
+    }
+  ],
+  "result": {
+    "count" : 1,
+    "id": "je:void_dust"
+  }
+}

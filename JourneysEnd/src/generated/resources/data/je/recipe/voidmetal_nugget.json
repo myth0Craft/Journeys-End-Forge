@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "je:voidmetal_ingot"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "je:voidmetal_nugget"
+  }
+}

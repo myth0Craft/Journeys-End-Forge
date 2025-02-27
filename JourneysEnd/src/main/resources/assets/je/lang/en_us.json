@@ -1,0 +1,34 @@
+{
+	"entity.je.endersent": "Endersent",
+	"sounds.je.endersent_step": "Endersent",
+	"sounds.je.endersent_death": "Endersent",
+	"item.je.endersent_spawn_egg" : "Endersent Spawn Egg",
+	"item.je.corruption_bucket" : "Bucket of Corruption",
+	"item.je.raw_voidmetal" : "Raw Voidmetal",
+	"item.je.void_dust" : "Void Dust",
+	"item.je.small_void_dust" : "Small Pile of Void Dust",
+	"item.je.voidmetal_ingot": "Voidmetal Ingot",
+	"item.je.voidmetal_nugget": "Voidmetal Nugget",
+	"item.je.voidmetal_sword": "Voidmetal Sword",
+	"item.je.voidmetal_pickaxe": "Voidmetal Pickaxe",
+	"item.je.voidmetal_axe": "Voidmetal Axe",
+	"item.je.voidmetal_shovel": "Voidmetal Shovel",
+	"item.je.voidmetal_hoe": "Voidmetal Hoe",
+	
+	"block.je.solid_corruption" : "Block of Corruption",
+	"block.je.end_stone_furnace" : "End Stone Furnace",
+	"block.je.compressed_end_stone" : "Compressed End Stone",
+	"block.je.voidmetal_block": "Voidmetal Block",
+	
+	"effect.je.void_strike": "Void Strike",
+	
+	"death.attack.void_strike": "%1$s was consumed by the void",
+	
+	"creativetab.je": "Journey's End",
+	
+	"tooltip.je.void_dust" : "It does not feel entirely real.",
+	"tooltip.je.corruption_bucket" : "Used as fuel in the end stone furnace.",
+	
+	"container.je.end_stone_furnace" : "End Stone Furnace",
+	"gui.recipebook.toggleRecipes.end_stone_furnace" : "Showing End Stone Smeltable"
+}

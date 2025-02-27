@@ -1,0 +1,20 @@
+{
+    "endersent.endersent_step": {
+        "subtitles": "sounds.je.endersent_step",
+        "sounds": [
+            "je:endersent/endersent_step/step_1",
+            "je:endersent/endersent_step/step_2",
+            "je:endersent/endersent_step/step_3",
+            "je:endersent/endersent_step/step_4",
+            "je:endersent/endersent_step/step_5"
+        ]
+    },
+    "endersent.endersent_death": {
+        "subtitles": "sounds.je.endersent_death",
+        "sounds": [
+            "je:endersent/endersent_death/endersent_death1",
+            "je:endersent/endersent_death/endersent_death2",
+            "je:endersent/endersent_death/endersent_death3"
+        ]
+    }
+}

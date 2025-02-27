@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "je:block/corruption_still"
+      },
+      {
+        "model": "je:block/corruption_still",
+        "y": 90
+      }
+    ]
+  }
+}
