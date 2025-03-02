@@ -1,2 +1,6 @@
-// 1.21	2025-03-01T17:36:49.4077305	Tags for minecraft:item mod id je
+// 1.21	2025-03-02T16:07:06.2369859	Tags for minecraft:item mod id je
+5872d960683474b07a123b4fdd4eb5d1f05a2b51 data/minecraft/tags/item/chest_armor.json
+f2293349bd586abda6b312a25c514aef01deecce data/minecraft/tags/item/foot_armor.json
+e47dfe755e63a29f395df6d245ac6553702c2ffa data/minecraft/tags/item/head_armor.json
+183c73e9e480e90ad84aad31ea4b1876a211008a data/minecraft/tags/item/leg_armor.json
 0d1bc49091de86c7382da4132551b8b1317a113a data/minecraft/tags/item/trimmable_armor.json
