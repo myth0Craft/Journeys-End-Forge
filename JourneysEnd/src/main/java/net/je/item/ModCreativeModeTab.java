@@ -37,6 +37,10 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModItems.VOIDMETAL_AXE.get());
 				pOutput.accept(ModItems.VOIDMETAL_SHOVEL.get());
 				pOutput.accept(ModItems.VOIDMETAL_HOE.get());
+				pOutput.accept(ModItems.VOIDMETAL_HELMET.get());
+				pOutput.accept(ModItems.VOIDMETAL_CHESTPLATE.get());
+				pOutput.accept(ModItems.VOIDMETAL_LEGGINGS.get());
+				pOutput.accept(ModItems.VOIDMETAL_BOOTS.get());
 				
 				pOutput.accept(ModItems.ENDERSENT_SPAWN_EGG.get());
 

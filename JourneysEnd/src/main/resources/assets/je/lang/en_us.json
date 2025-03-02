@@ -15,6 +15,11 @@
 	"item.je.voidmetal_shovel": "Voidmetal Shovel",
 	"item.je.voidmetal_hoe": "Voidmetal Hoe",
 	
+	"item.je.voidmetal_helmet": "Voidmetal Helmet",
+	"item.je.voidmetal_chestplate": "Voidmetal Chestplate",
+	"item.je.voidmetal_leggings": "Voidmetal Leggings",
+	"item.je.voidmetal_boots": "Voidmetal Boots",
+	
 	"block.je.solid_corruption" : "Block of Corruption",
 	"block.je.end_stone_furnace" : "End Stone Furnace",
 	"block.je.compressed_end_stone" : "Compressed End Stone",

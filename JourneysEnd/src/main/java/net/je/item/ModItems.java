@@ -5,6 +5,7 @@ import net.je.JourneysEnd;
 import net.je.entity.ModEntities;
 import net.je.fluid.ModFluids;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.HoeItem;
@@ -68,23 +69,32 @@ public class ModItems {
 	public static final RegistryObject<Item> VOIDMETAL_SWORD = ITEMS.register("voidmetal_sword",
             () -> new SwordItem(ModToolTiers.VOIDMETAL, new Item.Properties()
                     .attributes(SwordItem.createAttributes(ModToolTiers.VOIDMETAL, 3, -2.4f))));
-	
 	public static final RegistryObject<Item> VOIDMETAL_PICKAXE = ITEMS.register("voidmetal_pickaxe",
             () -> new PickaxeItem(ModToolTiers.VOIDMETAL, new Item.Properties()
                     .attributes(PickaxeItem.createAttributes(ModToolTiers.VOIDMETAL, 1.0f, -2.8f))));
-	
 	public static final RegistryObject<Item> VOIDMETAL_AXE = ITEMS.register("voidmetal_axe",
             () -> new AxeItem(ModToolTiers.VOIDMETAL, new Item.Properties()
                     .attributes(AxeItem.createAttributes(ModToolTiers.VOIDMETAL, 5.0f, -3.0f))));
-	
 	public static final RegistryObject<Item> VOIDMETAL_SHOVEL = ITEMS.register("voidmetal_shovel",
             () -> new ShovelItem(ModToolTiers.VOIDMETAL, new Item.Properties()
                     .attributes(ShovelItem.createAttributes(ModToolTiers.VOIDMETAL, 1.5f, -3.0f))));
-	
 	public static final RegistryObject<Item> VOIDMETAL_HOE = ITEMS.register("voidmetal_hoe",
             () -> new HoeItem(ModToolTiers.VOIDMETAL, new Item.Properties()
                     .attributes(HoeItem.createAttributes(ModToolTiers.VOIDMETAL, -5.0f, 0.0f))));
 
+	
+	public static final RegistryObject<Item> VOIDMETAL_HELMET = ITEMS.register("voidmetal_helmet",
+            () -> new ArmorItem(ModArmorMaterials.VOIDMETAL_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(40))));
+    public static final RegistryObject<Item> VOIDMETAL_CHESTPLATE = ITEMS.register("voidmetal_chestplate",
+            () -> new ArmorItem(ModArmorMaterials.VOIDMETAL_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(40))));
+    public static final RegistryObject<Item> VOIDMETAL_LEGGINGS = ITEMS.register("voidmetal_leggings",
+            () -> new ArmorItem(ModArmorMaterials.VOIDMETAL_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(40))));
+    public static final RegistryObject<Item> VOIDMETAL_BOOTS = ITEMS.register("voidmetal_boots",
+            () -> new ArmorItem(ModArmorMaterials.VOIDMETAL_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(40))));
 	public static void register(IEventBus eventBus) {
 		ITEMS.register(eventBus);
 	}
