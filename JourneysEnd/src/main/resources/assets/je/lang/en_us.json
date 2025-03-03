@@ -20,6 +20,17 @@
 	"item.je.voidmetal_leggings": "Voidmetal Leggings",
 	"item.je.voidmetal_boots": "Voidmetal Boots",
 	
+	"trim_material.je.voidmetal": "Voidmetal",
+	
+	"item.je.voidmetal_upgrade_smithing_template": "Smithing Template",
+	
+	"upgrade.je.voidmetal_upgrade": "Voidmetal Upgrade",
+	
+	"item.je.smithing_template.voidmetal_upgrade.additions_slot_description": "Add Voidmetal Ingot",
+	"item.je.smithing_template.voidmetal_upgrade.applies_to": "Netherite Equipment",
+	"item.je.smithing_template.voidmetal_upgrade.base_slot_description": "Add netherite armor, weapon, or tool",
+	"item.je.smithing_template.voidmetal_upgrade.ingredients": "Voidmetal Ingot",
+	
 	"block.je.solid_corruption" : "Block of Corruption",
 	"block.je.end_stone_furnace" : "End Stone Furnace",
 	"block.je.compressed_end_stone" : "Compressed End Stone",

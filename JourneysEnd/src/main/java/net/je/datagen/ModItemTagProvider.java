@@ -29,6 +29,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.VOIDMETAL_LEGGINGS.get())
                 .add(ModItems.VOIDMETAL_BOOTS.get());
         
+        tag(ItemTags.TRIM_MATERIALS)
+        .add(ModItems.VOIDMETAL_INGOT.get());
+        
         tag(ItemTags.FOOT_ARMOR)
         .add(ModItems.VOIDMETAL_BOOTS.get());
         

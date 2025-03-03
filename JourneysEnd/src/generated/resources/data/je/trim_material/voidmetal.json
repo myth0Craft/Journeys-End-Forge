@@ -1,0 +1,9 @@
+{
+  "asset_name": "voidmetal",
+  "description": {
+    "color": "#4715BB",
+    "translate": "trim_material.je.voidmetal"
+  },
+  "ingredient": "je:voidmetal_ingot",
+  "item_model_index": 1.0
+}

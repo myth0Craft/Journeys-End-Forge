@@ -1,11 +1,13 @@
-// 1.21	2025-02-22T19:07:35.4916945	Recipes
+// 1.21	2025-03-02T18:41:22.4872347	Recipes
 e6175a515b7f353ee6c9f6a06d3258ec7c621586 data/je/advancement/recipes/misc/compressed_end_stone.json
 edd406164bb6fe0218512c7f164e03476f04e06c data/je/advancement/recipes/misc/end_stone_furnace.json
 dbdbb011b06afad5d50aa9a2282ebb8bdbb01482 data/je/advancement/recipes/misc/voidmetal_block.json
 131d325591927e6c480a83b4dcdf6e424d877385 data/je/advancement/recipes/misc/voidmetal_ingot.json
 37f289c9ee502882aba20d2db2d5a480fa1f2c23 data/je/advancement/recipes/misc/voidmetal_nugget.json
+be5aba7975e7cd614ac8f1624c16ff8c4f3c8396 data/je/advancement/recipes/misc/voidmetal_upgrade_smithing_template.json
 b38f031f5d757f3ebd688a1af8b7891c19c30b8f data/je/recipe/compressed_end_stone.json
 a2002d15189ce7c51fa05f37c29122fae5c264b6 data/je/recipe/end_stone_furnace.json
 de58bbd18fe395627518c6ac78ae04c3195ebe40 data/je/recipe/voidmetal_block.json
 f0650168d8c2f9db19a97a6bc63f1eb9257ef441 data/je/recipe/voidmetal_ingot.json
 30ed23ef518204becb52f3689db2db4ec3848a6e data/je/recipe/voidmetal_nugget.json
+400d18528259a226148d15126c8950b8737fcf43 data/je/recipe/voidmetal_upgrade_smithing_template.json

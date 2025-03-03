@@ -41,6 +41,7 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModItems.VOIDMETAL_CHESTPLATE.get());
 				pOutput.accept(ModItems.VOIDMETAL_LEGGINGS.get());
 				pOutput.accept(ModItems.VOIDMETAL_BOOTS.get());
+				pOutput.accept(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get());
 				
 				pOutput.accept(ModItems.ENDERSENT_SPAWN_EGG.get());
 

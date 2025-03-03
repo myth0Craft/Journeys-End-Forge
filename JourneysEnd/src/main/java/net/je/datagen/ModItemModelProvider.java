@@ -49,6 +49,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.RAW_VOIDMETAL.get());
         basicItem(ModItems.VOIDMETAL_INGOT.get());
         basicItem(ModItems.VOIDMETAL_NUGGET.get());
+        basicItem(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get());
         
         handheldItem(ModItems.VOIDMETAL_PICKAXE);
         handheldItem(ModItems.VOIDMETAL_AXE);

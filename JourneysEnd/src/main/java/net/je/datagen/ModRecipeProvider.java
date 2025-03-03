@@ -14,6 +14,7 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.BlastingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -45,6 +46,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 				.pattern("AAA")
 				.define('A', ModItems.VOIDMETAL_INGOT.get())
 				.unlockedBy("has_voidmetal", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput);
+		
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get(), 2)
+		.pattern("ACA")
+		.pattern("ABA")
+		.pattern("AAA")
+		.define('A', Items.DIAMOND)
+		.define('B', Blocks.END_STONE)
+		.define('C', ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get())
+		.unlockedBy("has_voidmetal_upgrade", has(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get())).save(recipeOutput);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.VOIDMETAL_INGOT.get(), 9)
 				.requires(ModBlocks.VOIDMETAL_BLOCK.get())

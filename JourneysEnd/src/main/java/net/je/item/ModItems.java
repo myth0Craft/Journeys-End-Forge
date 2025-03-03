@@ -66,6 +66,10 @@ public class ModItems {
 	public static final RegistryObject<Item> VOIDMETAL_NUGGET = ITEMS.register("voidmetal_nugget",
 			() -> new Item(new Item.Properties()));
 	
+	public static final RegistryObject<Item> VOIDMETAL_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("voidmetal_upgrade_smithing_template",
+			() -> new VoidmetalUpgradeTemplateItem());
+	
+	
 	public static final RegistryObject<Item> VOIDMETAL_SWORD = ITEMS.register("voidmetal_sword",
             () -> new SwordItem(ModToolTiers.VOIDMETAL, new Item.Properties()
                     .attributes(SwordItem.createAttributes(ModToolTiers.VOIDMETAL, 3, -2.4f))));
