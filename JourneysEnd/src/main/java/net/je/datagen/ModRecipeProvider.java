@@ -14,6 +14,7 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.BlastingRecipe;
@@ -40,26 +41,20 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 				.pattern("AAA").define('A', ModBlocks.COMPRESSED_END_STONE.get()).define('B', Blocks.BLAST_FURNACE)
 				.unlockedBy("has_compressed_end_stone", has(ModBlocks.COMPRESSED_END_STONE.get())).save(recipeOutput);
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.VOIDMETAL_BLOCK.get())
-				.pattern("AAA")
-				.pattern("AAA")
-				.pattern("AAA")
-				.define('A', ModItems.VOIDMETAL_INGOT.get())
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.VOIDMETAL_BLOCK.get()).pattern("AAA").pattern("AAA")
+				.pattern("AAA").define('A', ModItems.VOIDMETAL_INGOT.get())
 				.unlockedBy("has_voidmetal", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput);
-		
+
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get(), 2)
-		.pattern("ACA")
-		.pattern("ABA")
-		.pattern("AAA")
-		.define('A', Items.DIAMOND)
-		.define('B', Blocks.END_STONE)
-		.define('C', ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get())
-		.unlockedBy("has_voidmetal_upgrade", has(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get())).save(recipeOutput);
+				.pattern("ACA").pattern("ABA").pattern("AAA").define('A', Items.DIAMOND).define('B', Blocks.END_STONE)
+				.define('C', ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get())
+				.unlockedBy("has_voidmetal_upgrade", has(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get()))
+				.save(recipeOutput);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.VOIDMETAL_INGOT.get(), 9)
 				.requires(ModBlocks.VOIDMETAL_BLOCK.get())
 				.unlockedBy("has_voidmetal_block", has(ModBlocks.VOIDMETAL_BLOCK.get())).save(recipeOutput);
-		
+
 		/*
 		 * ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
 		 * ModItems.VOIDMETAL_INGOT.get()) .pattern("AAA") .pattern("AAA")
@@ -72,54 +67,59 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 				.requires(ModItems.VOIDMETAL_INGOT.get())
 				.unlockedBy("has_voidmetal_ingot_for_nuggets", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput);
 
-		/*
-		 * ShapedRecipeBuilder.shaped(RecipeCategory.MISC,
-		 * ModBlocks.AZURITE_BLOCK.get()) .pattern("AAA") .pattern("AAA")
-		 * .pattern("AAA") .define('A', ModItems.AZURITE.get())
-		 * .unlockedBy("has_azurite", has(ModItems.AZURITE.get())).save(recipeOutput);
-		 * 
-		 * ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.AZURITE.get(),
-		 * 9) .requires(ModBlocks.AZURITE_BLOCK.get()) .unlockedBy("has_azurite_block",
-		 * has(ModBlocks.AZURITE_BLOCK.get())).save(recipeOutput);
-		 * 
-		 * ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.AZURITE.get(),
-		 * 9) .requires(ModBlocks.MAGIC_BLOCK.get()) .unlockedBy("has_magic_block",
-		 * has(ModBlocks.MAGIC_BLOCK.get())).save(recipeOutput, "mccourse:azurite_2");
-		 * 
-		 * 
-		 * oreSmelting(recipeOutput, AZURITE_SMELTABLES, RecipeCategory.MISC,
-		 * ModItems.AZURITE.get(), 0.25f, 200, "azurite"); oreBlasting(recipeOutput,
-		 * AZURITE_SMELTABLES, RecipeCategory.MISC, ModItems.AZURITE.get(), 0.25f, 100,
-		 * "azurite");
-		 * 
-		 * stairBuilder(ModBlocks.AZURITE_STAIRS.get(),
-		 * Ingredient.of(ModItems.AZURITE.get())).group("azurite")
-		 * .unlockedBy("has_azurite", has(ModItems.AZURITE.get())).save(recipeOutput);
-		 * slab(recipeOutput, RecipeCategory.BUILDING_BLOCKS,
-		 * ModBlocks.AZURITE_SLAB.get(), ModItems.AZURITE.get());
-		 * 
-		 * buttonBuilder(ModBlocks.AZURITE_BUTTON.get(),
-		 * Ingredient.of(ModItems.AZURITE.get())).group("azurite")
-		 * .unlockedBy("has_azurite", has(ModItems.AZURITE.get())).save(recipeOutput);
-		 * pressurePlate(recipeOutput, ModBlocks.AZURITE_PRESSURE_PLATE.get(),
-		 * ModItems.AZURITE.get());
-		 * 
-		 * fenceBuilder(ModBlocks.AZURITE_FENCE.get(),
-		 * Ingredient.of(ModItems.AZURITE.get())).group("azurite")
-		 * .unlockedBy("has_azurite", has(ModItems.AZURITE.get())).save(recipeOutput);
-		 * fenceGateBuilder(ModBlocks.AZURITE_FENCE_GATE.get(),
-		 * Ingredient.of(ModItems.AZURITE.get())).group("azurite")
-		 * .unlockedBy("has_azurite", has(ModItems.AZURITE.get())).save(recipeOutput);
-		 * wall(recipeOutput, RecipeCategory.BUILDING_BLOCKS,
-		 * ModBlocks.AZURITE_WALL.get(), ModItems.AZURITE.get());
-		 * 
-		 * doorBuilder(ModBlocks.AZURITE_DOOR.get(),
-		 * Ingredient.of(ModItems.AZURITE.get())).group("azurite")
-		 * .unlockedBy("has_azurite", has(ModItems.AZURITE.get())).save(recipeOutput);
-		 * trapdoorBuilder(ModBlocks.AZURITE_TRAPDOOR.get(),
-		 * Ingredient.of(ModItems.AZURITE.get())).group("azurite")
-		 * .unlockedBy("has_azurite", has(ModItems.AZURITE.get())).save(recipeOutput);
-		 */
+		SmithingTransformRecipeBuilder
+				.smithing(Ingredient.of(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get()),
+						Ingredient.of(Items.NETHERITE_SWORD), Ingredient.of(ModItems.VOIDMETAL_INGOT.get()),
+						RecipeCategory.MISC, ModItems.VOIDMETAL_SWORD.get())
+				.unlocks("has_voidmetal", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput, "voidmetal_sword_smithing");
+		
+		SmithingTransformRecipeBuilder
+		.smithing(Ingredient.of(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get()),
+				Ingredient.of(Items.NETHERITE_PICKAXE), Ingredient.of(ModItems.VOIDMETAL_INGOT.get()),
+				RecipeCategory.MISC, ModItems.VOIDMETAL_PICKAXE.get())
+		.unlocks("has_voidmetal", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput, "voidmetal_pickaxe_smithing");
+		
+		SmithingTransformRecipeBuilder
+		.smithing(Ingredient.of(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get()),
+				Ingredient.of(Items.NETHERITE_AXE), Ingredient.of(ModItems.VOIDMETAL_INGOT.get()),
+				RecipeCategory.MISC, ModItems.VOIDMETAL_AXE.get())
+		.unlocks("has_voidmetal", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput, "voidmetal_axe_smithing");
+		
+		SmithingTransformRecipeBuilder
+		.smithing(Ingredient.of(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get()),
+				Ingredient.of(Items.NETHERITE_SHOVEL), Ingredient.of(ModItems.VOIDMETAL_INGOT.get()),
+				RecipeCategory.MISC, ModItems.VOIDMETAL_SHOVEL.get())
+		.unlocks("has_voidmetal", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput, "voidmetal_shovel_smithing");
+		
+		SmithingTransformRecipeBuilder
+		.smithing(Ingredient.of(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get()),
+				Ingredient.of(Items.NETHERITE_HOE), Ingredient.of(ModItems.VOIDMETAL_INGOT.get()),
+				RecipeCategory.MISC, ModItems.VOIDMETAL_HOE.get())
+		.unlocks("has_voidmetal", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput, "voidmetal_hoe_smithing");
+		
+		SmithingTransformRecipeBuilder
+		.smithing(Ingredient.of(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get()),
+				Ingredient.of(Items.NETHERITE_HELMET), Ingredient.of(ModItems.VOIDMETAL_INGOT.get()),
+				RecipeCategory.MISC, ModItems.VOIDMETAL_HELMET.get())
+		.unlocks("has_voidmetal", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput, "voidmetal_helmet_smithing");
+		
+		SmithingTransformRecipeBuilder
+		.smithing(Ingredient.of(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get()),
+				Ingredient.of(Items.NETHERITE_CHESTPLATE), Ingredient.of(ModItems.VOIDMETAL_INGOT.get()),
+				RecipeCategory.MISC, ModItems.VOIDMETAL_CHESTPLATE.get())
+		.unlocks("has_voidmetal", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput, "voidmetal_chestplate_smithing");
+		
+		SmithingTransformRecipeBuilder
+		.smithing(Ingredient.of(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get()),
+				Ingredient.of(Items.NETHERITE_LEGGINGS), Ingredient.of(ModItems.VOIDMETAL_INGOT.get()),
+				RecipeCategory.MISC, ModItems.VOIDMETAL_LEGGINGS.get())
+		.unlocks("has_voidmetal", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput, "voidmetal_leggings_smithing");
+		
+		SmithingTransformRecipeBuilder
+		.smithing(Ingredient.of(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get()),
+				Ingredient.of(Items.NETHERITE_BOOTS), Ingredient.of(ModItems.VOIDMETAL_INGOT.get()),
+				RecipeCategory.MISC, ModItems.VOIDMETAL_BOOTS.get())
+		.unlocks("has_voidmetal", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput, "voidmetal_boots_smithing");
 	}
 
 	protected static void oreSmelting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory,

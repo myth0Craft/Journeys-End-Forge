@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "je:voidmetal_ingot"
+  },
+  "base": {
+    "item": "minecraft:netherite_chestplate"
+  },
+  "result": {
+    "count": 1,
+    "id": "je:voidmetal_chestplate"
+  },
+  "template": {
+    "item": "je:voidmetal_upgrade_smithing_template"
+  }
+}
