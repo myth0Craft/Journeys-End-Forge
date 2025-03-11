@@ -1,6 +1,7 @@
 package net.je.entity.custom;
 
 import java.util.EnumSet;
+import net.minecraft.Util;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -25,6 +26,7 @@ import net.minecraft.nbt.NbtUtils;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -35,6 +37,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -44,7 +47,9 @@ import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -81,12 +86,14 @@ import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
@@ -97,7 +104,12 @@ public class Endersent extends Monster {
 			EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Boolean> LARGE_ATTACKING = SynchedEntityData.defineId(Endersent.class,
 			EntityDataSerializers.BOOLEAN);
-	
+
+	/*
+	 * private static final EntityDataAccessor<Integer> VARIANT =
+	 * SynchedEntityData.defineId(Endersent.class, EntityDataSerializers.INT);
+	 */
+
 	public Goal endersentLargeAttackGoal = new EndersentLargeAttackGoal(this, 1.0D, true);
 	int teleportTime = 100;
 	int invisibilityTime = -1;
@@ -125,9 +137,41 @@ public class Endersent extends Monster {
 		super.defineSynchedData(p_333664_);
 		p_333664_.define(ATTACKING, false);
 		p_333664_.define(LARGE_ATTACKING, false);
+		//p_333664_.define(VARIANT, 0);
 
 	}
 
+	/*
+	 * private int getTypeVariant() { return this.entityData.get(VARIANT); }
+	 * 
+	 * public EndersentVariant getVariant() { return
+	 * EndersentVariant.byId(this.getTypeVariant() & 255); }
+	 * 
+	 * private void setVariant(EndersentVariant variant) {
+	 * this.entityData.set(VARIANT, variant.getId() & 255); }
+	 * 
+	 * @Override public void addAdditionalSaveData(CompoundTag pCompound) {
+	 * super.addAdditionalSaveData(pCompound); pCompound.putInt("Variant",
+	 * this.getTypeVariant()); }
+	 * 
+	 * @Override public void readAdditionalSaveData(CompoundTag pCompound) {
+	 * super.readAdditionalSaveData(pCompound); this.entityData.set(VARIANT,
+	 * pCompound.getInt("Variant")); }
+	 * 
+	 * @Override public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel,
+	 * DifficultyInstance pDifficulty, MobSpawnType pSpawnType, @Nullable
+	 * SpawnGroupData pSpawnGroupData) {
+	 * 
+	 * 
+	 * if (this.level().dimension() == Level.END || this.level().dimension() ==
+	 * Level.NETHER) { this.setVariant(EndersentVariant.WITHOUT_EYE); } else {
+	 * EndersentVariant variant = Util.getRandom(EndersentVariant.values(),
+	 * this.random); this.setVariant(variant);
+	 * 
+	 * } return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType,
+	 * pSpawnGroupData); }
+	 */
+	
 	private void setupAnimationStates() {
 		if (this.isAttacking() && attackAnimationTimeout <= 0 && !this.isLargeAttacking()) {
 
@@ -221,7 +265,7 @@ public class Endersent extends Monster {
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new FloatGoal(this));
 		this.goalSelector.addGoal(2, new EndersentAttackGoal(this, 1.0D, true));
-		
+
 		this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0, 0.0F));
 		this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
 		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));

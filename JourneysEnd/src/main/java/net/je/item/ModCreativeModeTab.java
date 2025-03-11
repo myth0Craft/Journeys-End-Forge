@@ -15,22 +15,33 @@ public class ModCreativeModeTab {
 	public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
 			DeferredRegister.create(Registries.CREATIVE_MODE_TAB, JourneysEnd.MODID);
 
-	public static final RegistryObject<CreativeModeTab> END_TAB = CREATIVE_MODE_TABS.register("je",
-			() -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.VOIDMETAL_SWORD.get()))
-			.title(Component.translatable("creativetab.je"))
+	public static final RegistryObject<CreativeModeTab> BLOCKS_TAB = CREATIVE_MODE_TABS.register("je_blocks_tab",
+			() -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.VOIDMETAL_BLOCK.get()))
+			.title(Component.translatable("creativetab.je.blocks"))
 			.displayItems((pParameters, pOutput) -> {
 				
-				pOutput.accept(ModItems.CORRUPTION_BUCKET.get());
 				pOutput.accept(ModBlocks.SOLID_CORRUPTION.get());
 				
 				pOutput.accept(ModBlocks.COMPRESSED_END_STONE.get());
 				pOutput.accept(ModBlocks.END_STONE_FURNACE.get());
+				pOutput.accept(ModBlocks.END_STONE_PILLAR.get());
+				
+				pOutput.accept(ModBlocks.VOIDMETAL_BLOCK.get());
+
+			})
+			.build());
+	
+	public static final RegistryObject<CreativeModeTab> ITEMS_TAB = CREATIVE_MODE_TABS.register("aje_items_tab",
+			() -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.VOIDMETAL_SWORD.get()))
+			.title(Component.translatable("creativetab.je.items"))
+			.displayItems((pParameters, pOutput) -> {
+				
+				pOutput.accept(ModItems.CORRUPTION_BUCKET.get());
 				
 				pOutput.accept(ModItems.SMALL_VOID_DUST.get());
 				pOutput.accept(ModItems.VOID_DUST.get());
 				pOutput.accept(ModItems.RAW_VOIDMETAL.get());
 				pOutput.accept(ModItems.VOIDMETAL_INGOT.get());
-				pOutput.accept(ModBlocks.VOIDMETAL_BLOCK.get());
 				pOutput.accept(ModItems.VOIDMETAL_NUGGET.get());
 				pOutput.accept(ModItems.VOIDMETAL_SWORD.get());
 				pOutput.accept(ModItems.VOIDMETAL_PICKAXE.get());
@@ -44,6 +55,7 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get());
 				
 				pOutput.accept(ModItems.ENDERSENT_SPAWN_EGG.get());
+				pOutput.accept(ModItems.ENDERSENT_WITH_EYE_SPAWN_EGG.get());
 
 			})
 			.build());

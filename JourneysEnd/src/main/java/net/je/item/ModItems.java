@@ -31,6 +31,9 @@ public class ModItems {
 
 	public static final RegistryObject<ForgeSpawnEggItem> ENDERSENT_SPAWN_EGG = ITEMS.register("endersent_spawn_egg",
 			() -> new ForgeSpawnEggItem(ModEntities.ENDERSENT, 0, 12844, new Item.Properties()));
+	
+	public static final RegistryObject<ForgeSpawnEggItem> ENDERSENT_WITH_EYE_SPAWN_EGG = ITEMS.register("endersent_with_eye_spawn_egg",
+			() -> new ForgeSpawnEggItem(ModEntities.ENDERSENT_WITH_EYE, 0, 28249, new Item.Properties()));
 
 	public static final RegistryObject<Item> CORRUPTION_BUCKET = ITEMS.register("corruption_bucket",
 			() -> new CorruptionBucketItem(ModFluids.SOURCE_CORRUPTION,

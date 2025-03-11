@@ -3,6 +3,8 @@
 	"sounds.je.endersent_step": "Endersent",
 	"sounds.je.endersent_death": "Endersent",
 	"item.je.endersent_spawn_egg" : "Endersent Spawn Egg",
+	"entity.je.endersent_with_eye": "Endersent",
+	"item.je.endersent_with_eye_spawn_egg" : "Endersent (With Eye) Spawn Egg",
 	"item.je.corruption_bucket" : "Bucket of Corruption",
 	"item.je.raw_voidmetal" : "Raw Voidmetal",
 	"item.je.void_dust" : "Void Dust",
@@ -35,12 +37,14 @@
 	"block.je.end_stone_furnace" : "End Stone Furnace",
 	"block.je.compressed_end_stone" : "Compressed End Stone",
 	"block.je.voidmetal_block": "Voidmetal Block",
+	"block.je.end_stone_pillar": "End Stone Pillar",
 	
 	"effect.je.void_strike": "Void Strike",
 	
 	"death.attack.void_strike": "%1$s was consumed by the void",
 	
-	"creativetab.je": "Journey's End",
+	"creativetab.je.blocks": "Journey's End Blocks",
+	"creativetab.je.items": "Journey's End Items",
 	
 	"tooltip.je.void_dust" : "It does not feel entirely real.",
 	"tooltip.je.corruption_bucket" : "Used as fuel in the end stone furnace.",

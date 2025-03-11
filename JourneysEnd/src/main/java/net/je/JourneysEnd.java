@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 
 import net.je.entity.client.EndersentModel;
 import net.je.entity.client.renderer.entity.EndersentRenderer;
+import net.je.entity.client.renderer.entity.EndersentWithEyeRenderer;
 import net.je.fluid.ModFluidTypes;
 import net.je.fluid.ModFluids;
 import net.je.entity.ModEntities;
@@ -72,6 +73,7 @@ public class JourneysEnd {
 	    ModRecipeSerializers.register(modEventBus);
 	    
 	    ModLootModifiers.register(modEventBus);
+	    
 	}
 
 	private void commonSetup(final FMLCommonSetupEvent event) {
@@ -97,6 +99,7 @@ public class JourneysEnd {
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
             // Entities
             event.registerEntityRenderer(ModEntities.ENDERSENT.get(), EndersentRenderer::new);
+            event.registerEntityRenderer(ModEntities.ENDERSENT_WITH_EYE.get(), EndersentWithEyeRenderer::new);
            
         }
         @SubscribeEvent

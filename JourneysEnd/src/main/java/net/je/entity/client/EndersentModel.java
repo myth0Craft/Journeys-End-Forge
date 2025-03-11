@@ -58,7 +58,10 @@ public class EndersentModel<T extends Entity> extends HierarchicalModel<T> {
 
 		PartDefinition root = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, -20.0F, 0.0F));
 
-		PartDefinition body = root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-12.0F, -19.0F, -7.0F, 24.0F, 28.0F, 14.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -9.0F, 0.0F));
+		//PartDefinition body = root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-12.0F, -19.0F, -7.0F, 24.0F, 28.0F, 14.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -9.0F, 0.0F));
+		
+		PartDefinition body = root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-12.0F, -19.0F, -7.0F, 24.0F, 28.0F, 14.0F, new CubeDeformation(0.0F))
+				.texOffs(0, 120).addBox(-6.5F, -10.0F, -7.01F, 13.0F, 13.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -9.0F, 0.0F));
 
 		PartDefinition head = root.addOrReplaceChild("head", CubeListBuilder.create().texOffs(48, 70).addBox(-8.0F, -13.0F, -8.0F, 16.0F, 18.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -26.0F, -5.0F));
 

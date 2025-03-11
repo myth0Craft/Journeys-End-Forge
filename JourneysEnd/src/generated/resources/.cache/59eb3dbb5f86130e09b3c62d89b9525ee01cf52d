@@ -1,5 +1,6 @@
-// 1.21	2025-02-22T19:07:35.4906832	Loot Tables
+// 1.21	2025-03-10T18:19:53.6005874	Loot Tables
 e188ab287e2e33d68c8b7c3d4a175b783d06209b data/je/loot_table/blocks/compressed_end_stone.json
 3d94ea8a8bfc192ddaff97b99270e68e27cebe72 data/je/loot_table/blocks/end_stone_furnace.json
+1f7963d106f00b618d1830d30a913df8a88c41ed data/je/loot_table/blocks/end_stone_pillar.json
 91fa95caf8b2f5669b5c50921e19ac7f78dd72b8 data/je/loot_table/blocks/solid_corruption.json
 c84219926abdf9fe98537d068a33f92281530f0c data/je/loot_table/blocks/voidmetal_block.json

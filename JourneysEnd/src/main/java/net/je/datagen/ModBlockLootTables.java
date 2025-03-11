@@ -33,6 +33,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.SOLID_CORRUPTION.get());
         dropSelf(ModBlocks.COMPRESSED_END_STONE.get());
         dropSelf(ModBlocks.VOIDMETAL_BLOCK.get());
+        dropSelf(ModBlocks.END_STONE_PILLAR.get());
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {
