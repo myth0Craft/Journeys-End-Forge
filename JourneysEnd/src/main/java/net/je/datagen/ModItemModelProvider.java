@@ -61,6 +61,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.VOIDMETAL_CHESTPLATE);
         trimmedArmorItem(ModItems.VOIDMETAL_LEGGINGS);
         trimmedArmorItem(ModItems.VOIDMETAL_BOOTS);
+        
+        wallItem(ModBlocks.POLISHED_END_STONE_WALL, ModBlocks.POLISHED_END_STONE);
     }
     
     private ItemModelBuilder handheldItem(RegistryObject<Item> item) {
@@ -108,5 +110,11 @@ public class ModItemModelProvider extends ItemModelProvider {
                                         "item/" + itemRegistryObject.getId().getPath()));
             });
         }
+    }
+    
+    public void wallItem(RegistryObject<Block> block, RegistryObject<Block> baseBlock) {
+        this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/wall_inventory"))
+                .texture("wall",  ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID,
+                        "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
     }
 }

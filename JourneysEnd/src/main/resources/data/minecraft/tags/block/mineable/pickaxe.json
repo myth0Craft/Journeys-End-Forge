@@ -3,6 +3,9 @@
     "je:end_stone_furnace",
 	"je:compressed_end_stone",
 	"je:voidmetal_block",
-	"je:end_stone_pillar"
+	"je:end_stone_pillar",
+	"je:chiseled_end_stone",
+	"je:end_stone_tiles",
+	"je:polished_end_stone"
   ]
 }

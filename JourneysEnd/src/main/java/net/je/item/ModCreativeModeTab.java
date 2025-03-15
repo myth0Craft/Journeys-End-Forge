@@ -25,6 +25,14 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModBlocks.COMPRESSED_END_STONE.get());
 				pOutput.accept(ModBlocks.END_STONE_FURNACE.get());
 				pOutput.accept(ModBlocks.END_STONE_PILLAR.get());
+				pOutput.accept(ModBlocks.CHISELED_END_STONE.get());
+				pOutput.accept(ModBlocks.END_STONE_TILES.get());
+				pOutput.accept(ModBlocks.POLISHED_END_STONE.get());
+				pOutput.accept(ModBlocks.POLISHED_END_STONE_STAIRS.get());
+				pOutput.accept(ModBlocks.POLISHED_END_STONE_SLAB.get());
+				pOutput.accept(ModBlocks.POLISHED_END_STONE_WALL.get());
+				
+				pOutput.accept(ModBlocks.VOID_STONE.get());
 				
 				pOutput.accept(ModBlocks.VOIDMETAL_BLOCK.get());
 

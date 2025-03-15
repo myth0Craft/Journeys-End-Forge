@@ -38,6 +38,14 @@
 	"block.je.compressed_end_stone" : "Compressed End Stone",
 	"block.je.voidmetal_block": "Voidmetal Block",
 	"block.je.end_stone_pillar": "End Stone Pillar",
+	"block.je.chiseled_end_stone": "Chiseled End Stone",
+	"block.je.end_stone_tiles": "End Stone Tiles",
+	"block.je.polished_end_stone": "Polished End Stone",
+	"block.je.polished_end_stone_stairs": "Polished End Stone Stairs",
+	"block.je.polished_end_stone_slab": "Polished End Stone Slab",
+	"block.je.polished_end_stone_wall": "Polished End Stone Wall",
+	
+	"block.je.void_stone": "Void Stone",
 	
 	"effect.je.void_strike": "Void Strike",
 	

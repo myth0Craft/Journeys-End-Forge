@@ -15,7 +15,10 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -57,6 +60,34 @@ public class ModBlocks {
 
 	public static final RegistryObject<Block> END_STONE_PILLAR = registerBlock("end_stone_pillar",
 			() -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+	
+	public static final RegistryObject<Block> CHISELED_END_STONE = registerBlock("chiseled_end_stone",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+	
+	public static final RegistryObject<Block> END_STONE_TILES = registerBlock("end_stone_tiles",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+	
+	public static final RegistryObject<Block> POLISHED_END_STONE = registerBlock("polished_end_stone",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+	
+	public static final RegistryObject<Block> POLISHED_END_STONE_STAIRS = registerBlock("polished_end_stone_stairs",
+			() -> new StairBlock(ModBlocks.POLISHED_END_STONE.get().defaultBlockState(),
+					BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+	public static final RegistryObject<Block> POLISHED_END_STONE_SLAB = registerBlock("polished_end_stone_slab",
+			() -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+	public static final RegistryObject<Block> POLISHED_END_STONE_WALL = registerBlock("polished_end_stone_wall",
+			() -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+	
+	
+	public static final RegistryObject<Block> VOID_STONE = registerBlock("void_stone",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(1.5F, 6.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
 
 	private static boolean always(BlockState p_50775_, BlockGetter p_50776_, BlockPos p_50777_) {

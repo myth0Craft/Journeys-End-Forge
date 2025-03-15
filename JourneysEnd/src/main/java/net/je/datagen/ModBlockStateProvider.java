@@ -5,6 +5,9 @@ import net.je.block.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -21,8 +24,21 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.SOLID_CORRUPTION);
         blockWithItem(ModBlocks.COMPRESSED_END_STONE);
         blockWithItem(ModBlocks.VOIDMETAL_BLOCK);
+        blockWithItem(ModBlocks.CHISELED_END_STONE);
+        blockWithItem(ModBlocks.END_STONE_TILES);
+        blockWithItem(ModBlocks.POLISHED_END_STONE);
+        blockWithItem(ModBlocks.VOID_STONE);
+        
         blockItem(ModBlocks.END_STONE_PILLAR);
+        blockItem(ModBlocks.POLISHED_END_STONE_SLAB);
+        blockItem(ModBlocks.POLISHED_END_STONE_STAIRS);
+        //blockItem(ModBlocks.POLISHED_END_STONE_WALL);
+        
         axisBlock((RotatedPillarBlock) ModBlocks.END_STONE_PILLAR.get());
+        
+        stairsBlock(((StairBlock) ModBlocks.POLISHED_END_STONE_STAIRS.get()), blockTexture(ModBlocks.POLISHED_END_STONE.get()));
+        slabBlock(((SlabBlock) ModBlocks.POLISHED_END_STONE_SLAB.get()), blockTexture(ModBlocks.POLISHED_END_STONE.get()), blockTexture(ModBlocks.POLISHED_END_STONE.get()));
+        wallBlock(((WallBlock) ModBlocks.POLISHED_END_STONE_WALL.get()), blockTexture(ModBlocks.POLISHED_END_STONE.get()));
     }
 
     private void blockItem(RegistryObject<Block> blockRegistryObject) {
