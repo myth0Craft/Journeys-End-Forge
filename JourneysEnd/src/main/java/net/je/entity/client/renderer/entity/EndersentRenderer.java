@@ -12,7 +12,6 @@ import net.je.entity.client.EndersentModel;
 import net.je.entity.client.ModModelLayers;
 import net.je.entity.client.renderer.entity.layers.EndersentEyesLayer;
 import net.je.entity.custom.Endersent;
-import net.je.entity.custom.EndersentVariant;
 import net.minecraft.client.model.EndermanModel;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;

@@ -28,10 +28,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.END_STONE_TILES);
         blockWithItem(ModBlocks.POLISHED_END_STONE);
         blockWithItem(ModBlocks.VOID_STONE);
+        blockWithItem(ModBlocks.FADED_END_STONE);
+        blockWithItem(ModBlocks.CORRUPTED_DIRT);
+        //blockWithItem(ModBlocks.LANTERN_OF_WARDING);
         
         blockItem(ModBlocks.END_STONE_PILLAR);
         blockItem(ModBlocks.POLISHED_END_STONE_SLAB);
         blockItem(ModBlocks.POLISHED_END_STONE_STAIRS);
+        blockItem(ModBlocks.LUSH_END_STONE);
         //blockItem(ModBlocks.POLISHED_END_STONE_WALL);
         
         axisBlock((RotatedPillarBlock) ModBlocks.END_STONE_PILLAR.get());

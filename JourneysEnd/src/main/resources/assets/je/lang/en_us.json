@@ -30,7 +30,7 @@
 	
 	"item.je.smithing_template.voidmetal_upgrade.additions_slot_description": "Add Voidmetal Ingot",
 	"item.je.smithing_template.voidmetal_upgrade.applies_to": "Netherite Equipment",
-	"item.je.smithing_template.voidmetal_upgrade.base_slot_description": "Add netherite armor, weapon, or tool",
+	"item.je.smithing_template.voidmetal_upgrade.base_slot_description": "Add Netherite armor, weapon, or tool",
 	"item.je.smithing_template.voidmetal_upgrade.ingredients": "Voidmetal Ingot",
 	
 	"block.je.solid_corruption" : "Block of Corruption",
@@ -44,18 +44,24 @@
 	"block.je.polished_end_stone_stairs": "Polished End Stone Stairs",
 	"block.je.polished_end_stone_slab": "Polished End Stone Slab",
 	"block.je.polished_end_stone_wall": "Polished End Stone Wall",
+	"block.je.faded_end_stone": "Faded End Stone",
+	"block.je.lush_end_stone": "Lush End Stone",
+	"block.je.corrupted_dirt": "Corrupted Dirt",
+	"block.je.lantern_of_warding": "Lantern of Warding",
 	
 	"block.je.void_stone": "Void Stone",
 	
 	"effect.je.void_strike": "Void Strike",
 	
-	"death.attack.void_strike": "%1$s was consumed by the void",
+	"death.attack.void_strike": "%1$s was consumed by the Void",
 	
 	"creativetab.je.blocks": "Journey's End Blocks",
 	"creativetab.je.items": "Journey's End Items",
 	
 	"tooltip.je.void_dust" : "It does not feel entirely real.",
 	"tooltip.je.corruption_bucket" : "Used as fuel in the end stone furnace.",
+	"tooltip.je.corrupted_dirt": "Dirt, tainted by the Void.",
+	"tooltip.je.lantern_of_warding": "It seems to repel the darkness of the Void.",
 	
 	"container.je.end_stone_furnace" : "End Stone Furnace",
 	"gui.recipebook.toggleRecipes.end_stone_furnace" : "Showing End Stone Smeltable"

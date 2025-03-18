@@ -1,9 +1,13 @@
-// 1.21	2025-03-14T20:56:14.7219109	Loot Tables
+// 1.21	2025-03-17T18:52:10.4949875	Loot Tables
 8667f98a1f0ea3068b88a0df51c17eb5b3615506 data/je/loot_table/blocks/chiseled_end_stone.json
 e188ab287e2e33d68c8b7c3d4a175b783d06209b data/je/loot_table/blocks/compressed_end_stone.json
+ab5387a826d7344de8fe756aaa140841dcda5373 data/je/loot_table/blocks/corrupted_dirt.json
 3d94ea8a8bfc192ddaff97b99270e68e27cebe72 data/je/loot_table/blocks/end_stone_furnace.json
 1f7963d106f00b618d1830d30a913df8a88c41ed data/je/loot_table/blocks/end_stone_pillar.json
 43e8e93a27e5a73b3cc8d6e926df522210dff738 data/je/loot_table/blocks/end_stone_tiles.json
+3042a932aa3be26b8778eecb0df379b1177d3ea4 data/je/loot_table/blocks/faded_end_stone.json
+0057e80d765de3b7324ed909891df28e3718b71d data/je/loot_table/blocks/lantern_of_warding.json
+a9e41013c282547909ccb35daa3cfd209932f910 data/je/loot_table/blocks/lush_end_stone.json
 e22990ab8ca0cb93530028435a9b9be8e385c5c8 data/je/loot_table/blocks/polished_end_stone.json
 4eac716636da9e7ebaa6d3dab3d20e76219a0f42 data/je/loot_table/blocks/polished_end_stone_slab.json
 0ac5b5e7d0acf48638b371c224987c06ff221640 data/je/loot_table/blocks/polished_end_stone_stairs.json

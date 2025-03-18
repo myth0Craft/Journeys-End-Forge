@@ -41,6 +41,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.POLISHED_END_STONE_SLAB.get());
         dropSelf(ModBlocks.POLISHED_END_STONE_WALL.get());
         dropSelf(ModBlocks.VOID_STONE.get());
+        dropSelf(ModBlocks.FADED_END_STONE.get());
+        dropSelf(ModBlocks.LUSH_END_STONE.get());
+        dropSelf(ModBlocks.CORRUPTED_DIRT.get());
+        dropSelf(ModBlocks.LANTERN_OF_WARDING.get());
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {

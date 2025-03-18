@@ -1,15 +1,21 @@
 package net.je.block;
 
+import java.util.List;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 import net.je.JourneysEnd;
 import net.je.block.custom.EndStoneFurnaceBlock;
+import net.je.block.custom.JEGrassBlock;
 import net.je.fluid.ModFluids;
 import net.je.item.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -61,34 +67,64 @@ public class ModBlocks {
 	public static final RegistryObject<Block> END_STONE_PILLAR = registerBlock("end_stone_pillar",
 			() -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
-	
+
 	public static final RegistryObject<Block> CHISELED_END_STONE = registerBlock("chiseled_end_stone",
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
-	
+
 	public static final RegistryObject<Block> END_STONE_TILES = registerBlock("end_stone_tiles",
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
-	
+
 	public static final RegistryObject<Block> POLISHED_END_STONE = registerBlock("polished_end_stone",
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
-	
+
 	public static final RegistryObject<Block> POLISHED_END_STONE_STAIRS = registerBlock("polished_end_stone_stairs",
 			() -> new StairBlock(ModBlocks.POLISHED_END_STONE.get().defaultBlockState(),
 					BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F, 9.0F)
-					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+							.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
 	public static final RegistryObject<Block> POLISHED_END_STONE_SLAB = registerBlock("polished_end_stone_slab",
 			() -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
 	public static final RegistryObject<Block> POLISHED_END_STONE_WALL = registerBlock("polished_end_stone_wall",
 			() -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
-	
-	
+
 	public static final RegistryObject<Block> VOID_STONE = registerBlock("void_stone",
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(1.5F, 6.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> LUSH_END_STONE = registerBlock("lush_end_stone",
+			() -> new JEGrassBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE)
+					.strength(3.0F, 9.0F).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+					.sound(SoundType.NYLIUM).randomTicks()));
+
+	public static final RegistryObject<Block> FADED_END_STONE = registerBlock("faded_end_stone",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().sound(SoundType.CALCITE)));
+
+	public static final RegistryObject<Block> CORRUPTED_DIRT = registerBlock("corrupted_dirt",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(0.5F)
+					.requiresCorrectToolForDrops().sound(SoundType.GRAVEL)) {
+				@Override
+				public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext,
+						List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+					pTooltipComponents.add(Component.translatable("tooltip.je.corrupted_dirt"));
+					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+				}
+			});
+	
+	public static final RegistryObject<Block> LANTERN_OF_WARDING = registerBlock("lantern_of_warding",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(0.5F)
+					.requiresCorrectToolForDrops().sound(SoundType.COPPER_BULB).lightLevel(p_50755_ -> 15)) {
+				@Override
+				public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext,
+						List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+					pTooltipComponents.add(Component.translatable("tooltip.je.lantern_of_warding"));
+					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+				}
+			});
 
 	private static boolean always(BlockState p_50775_, BlockGetter p_50776_, BlockPos p_50777_) {
 		return true;
@@ -99,8 +135,8 @@ public class ModBlocks {
 	}
 
 	private static ToIntFunction<BlockState> litBlockEmission(int pLightValue) {
-        return p_50763_ -> p_50763_.getValue(BlockStateProperties.LIT) ? pLightValue : 0;
-    }
+		return p_50763_ -> p_50763_.getValue(BlockStateProperties.LIT) ? pLightValue : 0;
+	}
 
 	private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
 		RegistryObject<T> toReturn = BLOCKS.register(name, block);
