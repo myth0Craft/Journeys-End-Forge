@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "je:block/ender_vault_not_active"
+    }
+  }
+}

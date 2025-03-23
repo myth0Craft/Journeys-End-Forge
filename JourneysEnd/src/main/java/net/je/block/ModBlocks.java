@@ -6,6 +6,7 @@ import java.util.function.ToIntFunction;
 
 import net.je.JourneysEnd;
 import net.je.block.custom.EndStoneFurnaceBlock;
+//import net.je.block.custom.InterdimensionalAnchorBlock;
 import net.je.block.custom.JEGrassBlock;
 import net.je.fluid.ModFluids;
 import net.je.item.ModItems;
@@ -125,6 +126,25 @@ public class ModBlocks {
 					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
 				}
 			});
+	
+	public static final RegistryObject<Block> INTERDIMENSIONAL_ANCHOR = registerBlock("interdimensional_anchor",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE)
+					.strength(3.0F, 9.0F).requiresCorrectToolForDrops()
+					.sound(SoundType.ANVIL).randomTicks()));
+	
+	public static final RegistryObject<Block> ENDER_VAULT = registerBlock("ender_vault",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE)
+					.strength(50.0F, 1200.0F).requiresCorrectToolForDrops()
+					.sound(SoundType.ANVIL).noLootTable().lightLevel(p_50755_ -> 15)));
+	
+	public static final RegistryObject<Block> CORRUPTED_GROWTH = registerBlock("corrupted_growth",
+			() -> new Block(BlockBehaviour.Properties.of()
+					.noCollission()
+	                .instabreak()
+	                .sound(SoundType.SCULK_SHRIEKER)
+	                .pushReaction(PushReaction.DESTROY)));
+	
+	
 
 	private static boolean always(BlockState p_50775_, BlockGetter p_50776_, BlockPos p_50777_) {
 		return true;

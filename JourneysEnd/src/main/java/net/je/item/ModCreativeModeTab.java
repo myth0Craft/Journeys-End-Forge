@@ -21,6 +21,7 @@ public class ModCreativeModeTab {
 			.displayItems((pParameters, pOutput) -> {
 				
 				pOutput.accept(ModBlocks.SOLID_CORRUPTION.get());
+				pOutput.accept(ModBlocks.CORRUPTED_GROWTH.get());
 				
 				pOutput.accept(ModBlocks.COMPRESSED_END_STONE.get());
 				pOutput.accept(ModBlocks.END_STONE_FURNACE.get());
@@ -35,6 +36,8 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModBlocks.LUSH_END_STONE.get());
 				pOutput.accept(ModBlocks.CORRUPTED_DIRT.get());
 				pOutput.accept(ModBlocks.LANTERN_OF_WARDING.get());
+				pOutput.accept(ModBlocks.INTERDIMENSIONAL_ANCHOR.get());
+				pOutput.accept(ModBlocks.ENDER_VAULT.get());
 				
 				pOutput.accept(ModBlocks.VOID_STONE.get());
 				

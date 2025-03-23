@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "je:block/ender_vault_bottom",
+    "side": "je:block/ender_vault_side_active",
+    "particle": "je:block/ender_vault_bottom",
+    "top": "je:block/ender_vault_top"
+  }
+}

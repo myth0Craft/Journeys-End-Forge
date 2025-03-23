@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "je:block/interdimensional_anchor_bottom",
+    "side": "je:block/interdimensional_anchor_blank_side",
+    "particle": "je:block/interdimensional_anchor_top",
+    "top": "je:block/interdimensional_anchor_top"
+  }
+}

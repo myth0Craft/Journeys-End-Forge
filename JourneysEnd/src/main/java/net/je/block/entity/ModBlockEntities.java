@@ -19,6 +19,15 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(EndStoneFurnaceBlockEntity::new,
                             ModBlocks.END_STONE_FURNACE.get()).build(null));
     
+	/*
+	 * public static final
+	 * RegistryObject<BlockEntityType<InterdimensionalAnchorBlockEntity>>
+	 * INTERDIMENSIONAL_ANCHOR_BE =
+	 * BLOCK_ENTITIES.register("interdimensional_anchor_be", () ->
+	 * BlockEntityType.Builder.of(InterdimensionalAnchorBlockEntity::new,
+	 * ModBlocks.INTERDIMENSIONAL_ANCHOR.get()).build(null));
+	 */
+    
 
 
     public static void register(IEventBus eventBus) {
