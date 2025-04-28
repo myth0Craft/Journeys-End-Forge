@@ -1,3 +1,6 @@
 {
-  "parent": "je:block/corrupted_growth"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "je:item/corrupted_growth_item"
+  }
 }

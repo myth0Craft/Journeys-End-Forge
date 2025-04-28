@@ -1,5 +1,7 @@
 package net.je.sound;
 
+import java.util.function.Supplier;
+
 import net.je.JourneysEnd;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -18,11 +20,21 @@ public class ModSounds {
 	public static final RegistryObject<SoundEvent> ENDERSENT_STEP = registerSoundEvents("endersent.endersent_step");
 	public static final RegistryObject<SoundEvent> ENDERSENT_DEATH = registerSoundEvents("endersent.endersent_death");
 
+	public static final RegistryObject<SoundEvent> INTERDIMENSIONAL_ANCHOR_BREAK = registerSoundEvents(
+			"block.interdimensional_anchor");
+
+	public static final ForgeSoundType INTERDIMENSIONAL_ANCHOR_SOUNDS = new ForgeSoundType(1f, 1f,
+			ModSounds.INTERDIMENSIONAL_ANCHOR_BREAK, 
+			()-> SoundEvents.METAL_STEP, 
+			()-> SoundEvents.RESPAWN_ANCHOR_CHARGE, 
+			()-> SoundEvents.METAL_HIT,
+			()-> SoundEvents.METAL_FALL);
 
 	private static RegistryObject<SoundEvent> registerSoundEvents(String name) {
-	    return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, name)));
+		return SOUND_EVENTS.register(name, () -> SoundEvent
+				.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, name)));
 	}
-	
+
 	public static void register(IEventBus eventBus) {
 		SOUND_EVENTS.register(eventBus);
 	}

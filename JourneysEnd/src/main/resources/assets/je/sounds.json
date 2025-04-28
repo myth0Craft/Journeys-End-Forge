@@ -16,5 +16,11 @@
             "je:endersent/endersent_death/endersent_death2",
             "je:endersent/endersent_death/endersent_death3"
         ]
-    }
+    },
+	"block.interdimensional_anchor": {
+	    "subtitles": "sounds.je.interdimensional_anchor_place",
+	    "sounds": [
+	        "je:block/interdimensional_anchor/place"
+	    ]
+	}
 }

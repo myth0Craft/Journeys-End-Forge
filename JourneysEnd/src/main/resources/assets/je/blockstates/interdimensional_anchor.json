@@ -1,7 +1,13 @@
 {
   "variants": {
-    "": {
+    "dim=0": {
       "model": "je:block/interdimensional_anchor_blank"
-    }
+    },
+	"dim=1": {
+		"model": "je:block/interdimensional_anchor_end"
+	},
+	"dim=2": {
+		"model": "je:block/interdimensional_anchor_overworld"
+	}
   }
 }

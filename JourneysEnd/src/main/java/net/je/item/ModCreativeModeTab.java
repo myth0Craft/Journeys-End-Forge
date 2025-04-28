@@ -38,6 +38,7 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModBlocks.LANTERN_OF_WARDING.get());
 				pOutput.accept(ModBlocks.INTERDIMENSIONAL_ANCHOR.get());
 				pOutput.accept(ModBlocks.ENDER_VAULT.get());
+				pOutput.accept(ModBlocks.BEJEWELED_PEDESTAL.get());
 				
 				pOutput.accept(ModBlocks.VOID_STONE.get());
 				

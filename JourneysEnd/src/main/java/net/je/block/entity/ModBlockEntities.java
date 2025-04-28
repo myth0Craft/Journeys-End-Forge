@@ -11,26 +11,14 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModBlockEntities {
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
-            DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, JourneysEnd.MODID);
-    
-    public static final RegistryObject<BlockEntityType<EndStoneFurnaceBlockEntity>> END_STONE_FURNACE_BE =
-            BLOCK_ENTITIES.register("end_stone_furnace_be", () ->
-                    BlockEntityType.Builder.of(EndStoneFurnaceBlockEntity::new,
-                            ModBlocks.END_STONE_FURNACE.get()).build(null));
-    
-	/*
-	 * public static final
-	 * RegistryObject<BlockEntityType<InterdimensionalAnchorBlockEntity>>
-	 * INTERDIMENSIONAL_ANCHOR_BE =
-	 * BLOCK_ENTITIES.register("interdimensional_anchor_be", () ->
-	 * BlockEntityType.Builder.of(InterdimensionalAnchorBlockEntity::new,
-	 * ModBlocks.INTERDIMENSIONAL_ANCHOR.get()).build(null));
-	 */
-    
+	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister
+			.create(ForgeRegistries.BLOCK_ENTITY_TYPES, JourneysEnd.MODID);
 
+	public static final RegistryObject<BlockEntityType<EndStoneFurnaceBlockEntity>> END_STONE_FURNACE_BE = BLOCK_ENTITIES
+			.register("end_stone_furnace_be", () -> BlockEntityType.Builder
+					.of(EndStoneFurnaceBlockEntity::new, ModBlocks.END_STONE_FURNACE.get()).build(null));
 
-    public static void register(IEventBus eventBus) {
-        BLOCK_ENTITIES.register(eventBus);
-    }
+	public static void register(IEventBus eventBus) {
+		BLOCK_ENTITIES.register(eventBus);
+	}
 }
