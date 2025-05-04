@@ -11,14 +11,18 @@ import net.je.entity.ModEntities;
 import net.je.item.ModCreativeModeTab;
 import net.je.item.ModItems;
 import net.je.loot.ModLootModifiers;
+import net.je.particle.ModParticles;
 import net.je.recipe.ModRecipeSerializers;
 import net.je.screen.EndStoneFurnaceScreen;
 import net.je.screen.ModMenuTypes;
 import net.je.sound.ModSounds;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.particle.DragonBreathParticle;
+import net.minecraft.client.particle.PortalParticle;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -74,6 +78,8 @@ public class JourneysEnd {
 	    
 	    ModLootModifiers.register(modEventBus);
 	    
+	    ModParticles.register(modEventBus);
+	    
 	}
 
 	private void commonSetup(final FMLCommonSetupEvent event) {
@@ -106,6 +112,10 @@ public class JourneysEnd {
     	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
     	    event.registerLayerDefinition(EndersentModel.ENDERSENT_LAYER, EndersentModel::createBodyLayer);
     	}
+        @SubscribeEvent
+        public static void registerParticleProvider(RegisterParticleProvidersEvent event) {
+            event.registerSpriteSet(ModParticles.ENDERSENT_SPAWN_PARTICLES.get(), DragonBreathParticle.Provider::new);
+        }
 	}
 
 }
