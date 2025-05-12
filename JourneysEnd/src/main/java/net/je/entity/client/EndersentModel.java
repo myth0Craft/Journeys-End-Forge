@@ -6,6 +6,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.je.JourneysEnd;
 import net.je.entity.animations.EndersentAnim;
 import net.je.entity.animations.EndersentAttackAnim;
+import net.je.entity.custom.BaseEndersent;
 import net.je.entity.custom.Endersent;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HierarchicalModel;
@@ -96,8 +97,8 @@ public class EndersentModel<T extends Entity> extends HierarchicalModel<T> {
         this.head.yRot = p_102622_* (float) (Math.PI/180.0);
         
         this.animateWalk(EndersentAnim.WALK, p_102619_, p_102620_, 2f, 2.5f);
-        this.animate(((Endersent) p_102618_).attackAnimationState, EndersentAttackAnim.ATTACK, p_102621_, 1f);
-        this.animate(((Endersent) p_102618_).largeAttackAnimationState, EndersentAttackAnim.LARGE_ATTACK, p_102621_, 1f);
+        this.animate(((BaseEndersent) p_102618_).attackAnimationState, EndersentAttackAnim.ATTACK, p_102621_, 1f);
+        this.animate(((BaseEndersent) p_102618_).largeAttackAnimationState, EndersentAttackAnim.LARGE_ATTACK, p_102621_, 1f);
 		
 	}
 }

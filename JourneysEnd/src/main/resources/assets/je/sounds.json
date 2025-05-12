@@ -17,10 +17,25 @@
             "je:endersent/endersent_death/endersent_death3"
         ]
     },
+	"endersent.endersent_summon": {
+	    "subtitles": "sounds.je.endersent_summon",
+	    "sounds": [
+	        "je:endersent/endersent_summon/endersent_summon"
+	    ]
+	},
+	"endersent.endersent_spawn": {
+	    "subtitles": "sounds.je.endersent_spawn",
+	    "sounds": [
+	        "je:endersent/endersent_spawn/endersent_spawn_1",
+			"je:endersent/endersent_spawn/endersent_spawn_2",
+			"je:endersent/endersent_spawn/endersent_spawn_3"
+	    ]
+	},
 	"block.interdimensional_anchor": {
 	    "subtitles": "sounds.je.interdimensional_anchor_place",
 	    "sounds": [
 	        "je:block/interdimensional_anchor/place"
 	    ]
 	}
+	
 }

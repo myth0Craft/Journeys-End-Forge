@@ -2,6 +2,8 @@
 	"entity.je.endersent": "Endersent",
 	"sounds.je.endersent_step": "Endersent",
 	"sounds.je.endersent_death": "Endersent",
+	"sounds.je.endersent_summon": "Endersent",
+	"sounds.je.endersent_spawn": "Endersent",
 	"item.je.endersent_spawn_egg" : "Endersent Spawn Egg",
 	"entity.je.endersent_with_eye": "Endersent",
 	"item.je.endersent_with_eye_spawn_egg" : "Endersent (With Eye) Spawn Egg",

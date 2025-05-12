@@ -7,10 +7,13 @@ import net.je.block.entity.EndStoneFurnaceBlockEntity;
 import net.je.block.entity.ModBlockEntities;
 import net.je.entity.ModEntities;
 import net.je.particle.ModParticles;
+import net.je.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -24,6 +27,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
+import net.minecraft.world.level.block.entity.BeaconBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -66,7 +70,7 @@ public class BejeweledPedestalBlock extends BaseEntityBlock {
 	}
 
 	@Override
-	protected MapCodec<? extends BaseEntityBlock> codec() {
+	protected MapCodec<BejeweledPedestalBlock> codec() {
 		return CODEC;
 	}
 
@@ -80,14 +84,29 @@ public class BejeweledPedestalBlock extends BaseEntityBlock {
 	@Override
 	protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer,
 			BlockHitResult pHitResult) {
-		if (pLevel.getBlockState(pPos).getValue(HAS_EYE)) {
-			Direction facing = pLevel.getBlockState(pPos).getValue(FACING);
-			pLevel.setBlockAndUpdate(pPos,
-					this.stateDefinition.any().setValue(HAS_EYE, false).setValue(FACING, facing));
-				BejeweledPedestalBlockEntity be = (BejeweledPedestalBlockEntity) pLevel.getBlockEntity(pPos);
-				be.spawnEndersent();
+
+		if (pLevel.getBlockEntity(pPos) instanceof BejeweledPedestalBlockEntity be) {
+			if (be.getBlockState().getValue(HAS_EYE)) {
+				if (pLevel.isClientSide) {
+					float pitch = (float) ((Math.random() * 0.1) + 0.6);
+					pLevel.playLocalSound(pPos.getX(), pPos.above().getY(), pPos.getZ(),
+							ModSounds.ENDERSENT_SUMMON.get(), SoundSource.BLOCKS, 1.0F, pitch, false);
+					return InteractionResult.SUCCESS;
+
+				} else {
+					be.spawnEndersent();
+					Direction facing = pLevel.getBlockState(pPos).getValue(FACING);
+					pLevel.setBlockAndUpdate(pPos,
+							this.stateDefinition.any().setValue(HAS_EYE, false).setValue(FACING, facing));
+					return InteractionResult.CONSUME;
+				}
+			} else {
+				return InteractionResult.FAIL;
 			}
-		return InteractionResult.SUCCESS;
+
+		} else {
+			return InteractionResult.FAIL;
+		}
 	}
 
 	@Override
@@ -114,8 +133,7 @@ public class BejeweledPedestalBlock extends BaseEntityBlock {
 	@Override
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState,
 			BlockEntityType<T> pBlockEntityType) {
-		return pLevel.isClientSide ? null
-				: createTickerHelper(pBlockEntityType, ModBlockEntities.BEJEWELED_PEDESTAL_BE.get(),
-						BejeweledPedestalBlockEntity::serverTick);
+		return createTickerHelper(pBlockEntityType, ModBlockEntities.BEJEWELED_PEDESTAL_BE.get(),
+				BejeweledPedestalBlockEntity::tick);
 	}
 }

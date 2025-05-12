@@ -19,6 +19,8 @@ public class ModSounds {
 
 	public static final RegistryObject<SoundEvent> ENDERSENT_STEP = registerSoundEvents("endersent.endersent_step");
 	public static final RegistryObject<SoundEvent> ENDERSENT_DEATH = registerSoundEvents("endersent.endersent_death");
+	public static final RegistryObject<SoundEvent> ENDERSENT_SUMMON = registerSoundEvents("endersent.endersent_summon");
+	public static final RegistryObject<SoundEvent> ENDERSENT_SPAWN = registerSoundEvents("endersent.endersent_spawn");
 
 	public static final RegistryObject<SoundEvent> INTERDIMENSIONAL_ANCHOR_BREAK = registerSoundEvents(
 			"block.interdimensional_anchor");

@@ -99,22 +99,18 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 
-public class Endersent extends Monster {
-	private static final EntityDataAccessor<Boolean> ATTACKING = SynchedEntityData.defineId(Endersent.class,
-			EntityDataSerializers.BOOLEAN);
-	private static final EntityDataAccessor<Boolean> LARGE_ATTACKING = SynchedEntityData.defineId(Endersent.class,
-			EntityDataSerializers.BOOLEAN);
+public class Endersent extends BaseEndersent {
+	
 
 	/*
 	 * private static final EntityDataAccessor<Integer> VARIANT =
 	 * SynchedEntityData.defineId(Endersent.class, EntityDataSerializers.INT);
 	 */
 
-	public Goal endersentLargeAttackGoal = new EndersentLargeAttackGoal(this, 1.0D, true);
+	
 	int teleportTime = 100;
 	int invisibilityTime = -1;
-	public boolean canAttack = true;
-	public int largeAttackCooldown = 140;
+
 
 	public Endersent(EntityType<? extends Monster> p_33002_, Level p_33003_) {
 		super(p_33002_, p_33003_);
@@ -124,22 +120,9 @@ public class Endersent extends Monster {
 	}
 
 	// anim states
-	public final AnimationState attackAnimationState = new AnimationState();
+	
 
-	public final AnimationState largeAttackAnimationState = new AnimationState();
-
-	public int attackAnimationTimeout = 0;
-
-	public int largeAttackAnimationTimeout = 0;
-
-	@Override
-	protected void defineSynchedData(SynchedEntityData.Builder p_333664_) {
-		super.defineSynchedData(p_333664_);
-		p_333664_.define(ATTACKING, false);
-		p_333664_.define(LARGE_ATTACKING, false);
-		//p_333664_.define(VARIANT, 0);
-
-	}
+	
 
 	/*
 	 * private int getTypeVariant() { return this.entityData.get(VARIANT); }
@@ -172,50 +155,9 @@ public class Endersent extends Monster {
 	 * pSpawnGroupData); }
 	 */
 	
-	private void setupAnimationStates() {
-		if (this.isAttacking() && attackAnimationTimeout <= 0 && !this.isLargeAttacking()) {
+	
 
-			attackAnimationTimeout = 10;
-			attackAnimationState.start(this.tickCount);
-
-		} else {
-			--this.attackAnimationTimeout;
-		}
-
-		if (this.isLargeAttacking() && largeAttackAnimationTimeout <= 0 && !this.isAttacking()) {
-			largeAttackAnimationTimeout = 20;
-			largeAttackAnimationState.start(this.tickCount);
-		} else {
-			--this.largeAttackAnimationTimeout;
-		}
-
-		if (!this.isAttacking()) {
-			attackAnimationState.stop();
-		}
-
-		if (!this.isLargeAttacking()) {
-			largeAttackAnimationState.stop();
-		}
-
-	}
-
-	// small attack
-	public void setAttacking(boolean attacking) {
-		this.entityData.set(ATTACKING, attacking);
-	}
-
-	public boolean isAttacking() {
-		return this.entityData.get(ATTACKING);
-	}
-
-	// large attack
-	public void setLargeAttacking(boolean attacking) {
-		this.entityData.set(LARGE_ATTACKING, attacking);
-	}
-
-	public boolean isLargeAttacking() {
-		return this.entityData.get(LARGE_ATTACKING);
-	}
+	
 
 	@Override
 	protected void updateWalkAnimation(float pPartialTick) {
@@ -246,11 +188,6 @@ public class Endersent extends Monster {
 		} else {
 			return null;
 		}
-	}
-
-	@Override
-	public void playAttackSound() {
-		this.playSound(ModSounds.ENDERSENT_STEP.get(), 5.0F, 1.0F);
 	}
 
 	public static AttributeSupplier.Builder createMonsterAttributes() {
@@ -414,10 +351,10 @@ public class Endersent extends Monster {
 
 	@Override
 	public void tick() {
-		super.tick();
+		super.defaultTick();
 
 		if (this.level().isClientSide()) {
-			setupAnimationStates();
+			super.setupAnimationStates();
 		}
 
 		if (teleportTime <= -60) {

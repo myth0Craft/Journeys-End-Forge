@@ -1,5 +1,6 @@
 package net.je.entity.ai;
 
+import net.je.entity.custom.BaseEndersent;
 import net.je.entity.custom.Endersent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
@@ -14,14 +15,14 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
 public class EndersentAttackGoal extends MeleeAttackGoal {
 	private final int ATTACK_RANGE = 4;
-	private final Endersent entity;
+	private final BaseEndersent entity;
 	private int attackDelay = 10;
 	private int ticksUntilNextAttack = 40;
 	private boolean shouldCountTillNextAttack = false;
 
 	public EndersentAttackGoal(PathfinderMob pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
 		super(pMob, pSpeedModifier, pFollowingTargetEvenIfNotSeen);
-		entity = ((Endersent) pMob);
+		entity = ((BaseEndersent) pMob);
 	}
 
 	@Override

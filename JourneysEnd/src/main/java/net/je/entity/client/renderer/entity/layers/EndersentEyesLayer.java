@@ -10,6 +10,7 @@ import com.mojang.blaze3d.vertex.VertexFormat;
 
 import net.je.JourneysEnd;
 import net.je.entity.client.EndersentModel;
+import net.je.entity.custom.BaseEndersent;
 import net.je.entity.custom.Endersent;
 import net.minecraft.Util;
 import net.minecraft.client.model.EntityModel;
@@ -26,12 +27,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class EndersentEyesLayer<T extends Endersent, M extends EndersentModel<T>> extends RenderLayer<T, M>{
+public class EndersentEyesLayer<T extends BaseEndersent, M extends EndersentModel<T>> extends RenderLayer<T, M>{
     
     
     private final ResourceLocation texture;
