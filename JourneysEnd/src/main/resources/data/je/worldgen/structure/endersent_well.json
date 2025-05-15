@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:jigsaw",
+
+  "start_pool": "je:endersent_well/start_pool",
+
+  "size": 2,
+
+  "max_distance_from_center": 80,
+
+  "biomes": "#je:has_structure/endersent_well",
+
+
+  "start_height": {
+    "absolute": -1
+  },
+
+  "project_start_to_heightmap": "WORLD_SURFACE_WG",
+
+  "use_expansion_hack": false,
+  
+  "liquid_settings": "ignore_waterlogging",
+  
+  "spawn_overrides": {},
+  
+  "spawn_overrides": {},
+  
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_thin"
+}

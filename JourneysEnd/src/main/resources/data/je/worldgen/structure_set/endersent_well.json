@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "je:endersent_well",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 164216475,
+    "spacing": 32,
+    "separation": 8,
+    "type": "minecraft:random_spread"
+  }
+}
