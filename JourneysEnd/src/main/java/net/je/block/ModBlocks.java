@@ -6,7 +6,7 @@ import java.util.function.ToIntFunction;
 
 import net.je.JourneysEnd;
 import net.je.block.custom.BejeweledPedestalBlock;
-import net.je.block.custom.CorruptedGrowthBlock;
+import net.je.block.custom.VoidbloomBlock;
 import net.je.block.custom.EndStoneFurnaceBlock;
 import net.je.block.custom.InterdimensionalAnchorBlock;
 //import net.je.block.custom.InterdimensionalAnchorBlock;
@@ -47,14 +47,14 @@ public class ModBlocks {
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
 			JourneysEnd.MODID);
 
-	public static final RegistryObject<LiquidBlock> CORRUPTION = registerBlock("source_corruption",
-			() -> new LiquidBlock(ModFluids.SOURCE_CORRUPTION,
+	public static final RegistryObject<LiquidBlock> VOIDBLIGHT = registerBlock("source_voidblight",
+			() -> new LiquidBlock(ModFluids.SOURCE_VOIDBLIGHT,
 					BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_MAGENTA).replaceable().noCollission()
 							.strength(100.0F).pushReaction(PushReaction.DESTROY).liquid().noLootTable()
 							.lightLevel(p_50755_ -> 7).sound(SoundType.SCULK_SHRIEKER)
 							.emissiveRendering(ModBlocks::always)));
 
-	public static final RegistryObject<Block> SOLID_CORRUPTION = registerBlock("solid_corruption",
+	public static final RegistryObject<Block> VOIDMASS = registerBlock("voidmass",
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_MAGENTA).strength(1.5F)
 					.lightLevel(p_50755_ -> 7).emissiveRendering(ModBlocks::always).sound(SoundType.SCULK_SHRIEKER)));
 
@@ -142,14 +142,15 @@ public class ModBlocks {
 					.strength(50.0F, 1200.0F).requiresCorrectToolForDrops()
 					.sound(SoundType.ANVIL).noLootTable().lightLevel(p_50755_ -> 15)));
 	
-	public static final RegistryObject<Block> CORRUPTED_GROWTH = registerBlock("corrupted_growth",
-			() -> new CorruptedGrowthBlock(BlockBehaviour.Properties.of()
+	public static final RegistryObject<Block> VOIDBLOOM = registerBlock("voidbloom",
+			() -> new VoidbloomBlock(BlockBehaviour.Properties.of()
 					.noCollission()
 	                .instabreak()
 	                .sound(SoundType.SCULK_SHRIEKER)
 	                .pushReaction(PushReaction.DESTROY)
 	                .emissiveRendering(ModBlocks::always)
-	                .lightLevel(p_50755_ -> 5)));
+	                .lightLevel(p_50755_ -> 5)
+	                .noLootTable()));
 	
 	public static final RegistryObject<Block> BEJEWELED_PEDESTAL = registerBlock("bejeweled_pedestal",
 			() -> new BejeweledPedestalBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)

@@ -158,7 +158,7 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
             return map;
         } else {
             Map<Item, Integer> map1 = Maps.newLinkedHashMap();
-            add(map1, ModItems.CORRUPTION_BUCKET.get(), 400);
+            add(map1, ModItems.VOIDBLIGHT_BUCKET.get(), 400);
             fuelCache = map1;
             return map1;
         }
@@ -314,7 +314,7 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
     }
 
     protected int getBurnDuration(ItemStack pFuel) {
-        if (pFuel.isEmpty() || !pFuel.is(ModItems.CORRUPTION_BUCKET.get())) {
+        if (pFuel.isEmpty() || !pFuel.is(ModItems.VOIDBLIGHT_BUCKET.get())) {
             return 0;
         } else {
             return 400;
@@ -327,7 +327,7 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
     }
 
     public static boolean isFuel(ItemStack pStack) {
-        return pStack.is(ModItems.CORRUPTION_BUCKET.get());
+        return pStack.is(ModItems.VOIDBLIGHT_BUCKET.get());
     }
 
     @Override
@@ -385,7 +385,7 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
             return true;
         } else {
             ItemStack itemstack = this.items.get(1);
-            return pStack.is(ModItems.CORRUPTION_BUCKET.get()) || pStack.is(Items.BUCKET) && !itemstack.is(Items.BUCKET);
+            return pStack.is(ModItems.VOIDBLIGHT_BUCKET.get()) || pStack.is(Items.BUCKET) && !itemstack.is(Items.BUCKET);
         }
     }
 

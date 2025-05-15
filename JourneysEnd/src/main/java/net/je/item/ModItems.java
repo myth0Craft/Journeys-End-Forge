@@ -35,13 +35,13 @@ public class ModItems {
 	public static final RegistryObject<ForgeSpawnEggItem> ENDERSENT_WITH_EYE_SPAWN_EGG = ITEMS.register("endersent_with_eye_spawn_egg",
 			() -> new ForgeSpawnEggItem(ModEntities.ENDERSENT_WITH_EYE, 0, 28249, new Item.Properties()));
 
-	public static final RegistryObject<Item> CORRUPTION_BUCKET = ITEMS.register("corruption_bucket",
-			() -> new CorruptionBucketItem(ModFluids.SOURCE_CORRUPTION,
+	public static final RegistryObject<Item> VOIDBLIGHT_BUCKET = ITEMS.register("voidblight_bucket",
+			() -> new VoidblightBucketItem(ModFluids.SOURCE_VOIDBLIGHT,
 					new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)) {
 				@Override
 				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
 						List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-					pTooltipComponents.add(Component.translatable("tooltip.je.corruption_bucket"));
+					pTooltipComponents.add(Component.translatable("tooltip.je.voidblight_bucket"));
 					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
 				}
 				

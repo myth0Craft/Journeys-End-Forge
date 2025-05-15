@@ -29,8 +29,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+        
         dropSelf(ModBlocks.END_STONE_FURNACE.get());
-        dropSelf(ModBlocks.SOLID_CORRUPTION.get());
+        dropSelf(ModBlocks.VOIDMASS.get());
         dropSelf(ModBlocks.COMPRESSED_END_STONE.get());
         dropSelf(ModBlocks.VOIDMETAL_BLOCK.get());
         dropSelf(ModBlocks.END_STONE_PILLAR.get());

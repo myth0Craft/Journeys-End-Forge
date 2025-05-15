@@ -7,7 +7,7 @@
 	"item.je.endersent_spawn_egg" : "Endersent Spawn Egg",
 	"entity.je.endersent_with_eye": "Endersent",
 	"item.je.endersent_with_eye_spawn_egg" : "Endersent (With Eye) Spawn Egg",
-	"item.je.corruption_bucket" : "Bucket of Corruption",
+	"item.je.voidblight_bucket" : "Bucket of Voidblight",
 	"item.je.raw_voidmetal" : "Raw Voidmetal",
 	"item.je.void_dust" : "Void Dust",
 	"item.je.small_void_dust" : "Small Pile of Void Dust",
@@ -35,7 +35,7 @@
 	"item.je.smithing_template.voidmetal_upgrade.base_slot_description": "Add Netherite armor, weapon, or tool",
 	"item.je.smithing_template.voidmetal_upgrade.ingredients": "Voidmetal Ingot",
 	
-	"block.je.solid_corruption" : "Block of Corruption",
+	"block.je.voidmass" : "Voidmass",
 	"block.je.end_stone_furnace" : "End Stone Furnace",
 	"block.je.compressed_end_stone" : "Compressed End Stone",
 	"block.je.voidmetal_block": "Voidmetal Block",
@@ -52,7 +52,7 @@
 	"block.je.lantern_of_warding": "Lantern of Warding",
 	"block.je.interdimensional_anchor": "Interdimensional Anchor",
 	"block.je.ender_vault": "Ender Vault",
-	"block.je.corrupted_growth": "Corrupted Growth",
+	"block.je.voidbloom": "Voidbloom",
 	"block.je.bejeweled_pedestal": "Bejeweled Pedestal",
 	
 	"block.je.void_stone": "Void Stone",
@@ -65,7 +65,7 @@
 	"creativetab.je.items": "Journey's End Items",
 	
 	"tooltip.je.void_dust" : "It does not feel entirely real.",
-	"tooltip.je.corruption_bucket" : "Used as fuel in the end stone furnace.",
+	"tooltip.je.voidblight_bucket" : "Used as fuel in the end stone furnace.",
 	"tooltip.je.corrupted_dirt": "Dirt, tainted by the Void.",
 	"tooltip.je.lantern_of_warding": "It seems to repel the darkness of the Void.",
 	

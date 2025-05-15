@@ -1,4 +1,4 @@
-// 1.21	2025-03-23T16:58:20.9174517	Block States: je
+// 1.21	2025-05-15T17:24:33.305797	Block States: je
 9848562a52631f8fe774199803bf53b63c0a43a4 assets/je/blockstates/chiseled_end_stone.json
 70ef5a172b5a1ddbda52c5b108fbb8526b2661bb assets/je/blockstates/compressed_end_stone.json
 c7fa56628fd3f47c69da1ca552a05e745ea1a727 assets/je/blockstates/corrupted_dirt.json
@@ -10,7 +10,7 @@ cd25960beb35b20a68026b2f122a6950b0674bbb assets/je/blockstates/polished_end_ston
 864e88add0e30d941966ca74da390732c4ad2907 assets/je/blockstates/polished_end_stone_slab.json
 c8a3d1e9a73369047adb0703e016b81d861c3f54 assets/je/blockstates/polished_end_stone_stairs.json
 c0969f42070c45d36087566fa0851f946ba8c558 assets/je/blockstates/polished_end_stone_wall.json
-4dec08aed354955aa63d47413f64d94955c68321 assets/je/blockstates/solid_corruption.json
+c167b0a1226a70730de3f576eea967f9da881932 assets/je/blockstates/voidmass.json
 b943d8b3120f370583bf91912170633f4b7ba3c8 assets/je/blockstates/voidmetal_block.json
 d1ba90e961cfd5bf6118028519061da89cf815c5 assets/je/blockstates/void_stone.json
 0eb4de33594b305d239ecc095d71007a7796ffba assets/je/models/block/chiseled_end_stone.json
@@ -30,7 +30,7 @@ ed92636e54a9e5aa5801967bc65f1d4ef971439d assets/je/models/block/polished_end_sto
 d21c3e67162180bd6afda76b8e0cf8cf477087b5 assets/je/models/block/polished_end_stone_wall_post.json
 54bc9c56542729310548e43be804dab2321d8e3e assets/je/models/block/polished_end_stone_wall_side.json
 71815fab6a001c88cae2508abf6d10106f57cb26 assets/je/models/block/polished_end_stone_wall_side_tall.json
-0c3ef42055fc922f521ee3cd7246e56014db8573 assets/je/models/block/solid_corruption.json
+7ad073b3b6f1a01bcbd559f69a95ca660d444562 assets/je/models/block/voidmass.json
 1f5c0792f4b6039322accdce23da1189ccbaa5a4 assets/je/models/block/voidmetal_block.json
 bc6aec9c234db0f6886c31fc8f37d5954140ac40 assets/je/models/block/void_stone.json
 6170130f4d809423d8b8d6dbf8d01f32e50e2929 assets/je/models/item/chiseled_end_stone.json
@@ -44,6 +44,6 @@ e66ba19848a5a0d5418ca77f8cec164362a0e134 assets/je/models/item/end_stone_pillar.
 28260441ca1e2ef03b745d14c1ed7010030fd48b assets/je/models/item/polished_end_stone.json
 0534658dc6ffd15b48351b7721cbfed6f05526ec assets/je/models/item/polished_end_stone_slab.json
 e700035c2ca3955ce475e7f2e029599d88614f9c assets/je/models/item/polished_end_stone_stairs.json
-832fe3c95fd1e1832fb394110a89c0369f4dae19 assets/je/models/item/solid_corruption.json
+ce2fa32dcbfebaf07698897779e2b2dedcad74ec assets/je/models/item/voidmass.json
 e5dee8813894acb2145af915d1adc97dfabc659d assets/je/models/item/voidmetal_block.json
 da8c1fcfdcf1dcc565d2392fd8aad16c9be72e40 assets/je/models/item/void_stone.json

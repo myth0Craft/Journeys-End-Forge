@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "je:block/solid_corruption"
+    "all": "je:block/voidmass"
   }
 }

@@ -11,11 +11,11 @@ import net.minecraft.world.item.crafting.BlastingRecipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.material.Fluid;
 
-public class CorruptionBucketItem extends BucketItem {
+public class VoidblightBucketItem extends BucketItem {
 
 	private int burnTime = 200;
 
-	public CorruptionBucketItem(Supplier<? extends Fluid> supplier, Properties builder) {
+	public VoidblightBucketItem(Supplier<? extends Fluid> supplier, Properties builder) {
 		super(supplier, builder);
 	}
 

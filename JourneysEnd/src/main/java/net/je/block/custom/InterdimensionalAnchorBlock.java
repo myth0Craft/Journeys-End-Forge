@@ -78,12 +78,12 @@ public class InterdimensionalAnchorBlock extends Block {
 					
 					spreadBlock(Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN, pLevel, pPos, pRandom);
 
-					spreadBlock(ModBlocks.CORRUPTION.get(), Blocks.AIR, pLevel, pPos, pRandom);
+					spreadBlock(ModBlocks.VOIDBLIGHT.get(), Blocks.AIR, pLevel, pPos, pRandom);
 
-					spreadBlock(ModBlocks.SOLID_CORRUPTION.get(), ModBlocks.CORRUPTION.get(), pLevel, pPos, pRandom);
+					spreadBlock(ModBlocks.VOIDMASS.get(), ModBlocks.VOIDBLIGHT.get(), pLevel, pPos, pRandom);
 
-					spreadBlock(ModBlocks.VOID_STONE.get(), ModBlocks.SOLID_CORRUPTION.get(), pLevel, pPos, pRandom);
-					spreadBlock(ModBlocks.FADED_END_STONE.get(), ModBlocks.SOLID_CORRUPTION.get(), pLevel, pPos, pRandom);
+					spreadBlock(ModBlocks.VOID_STONE.get(), ModBlocks.VOIDMASS.get(), pLevel, pPos, pRandom);
+					spreadBlock(ModBlocks.FADED_END_STONE.get(), ModBlocks.VOIDMASS.get(), pLevel, pPos, pRandom);
 
 					spreadBlock(ModBlocks.CORRUPTED_DIRT.get(), ModBlocks.VOID_STONE.get(), pLevel, pPos, pRandom);
 					spreadBlock(Blocks.END_STONE, ModBlocks.FADED_END_STONE.get(), pLevel, pPos, pRandom);
@@ -98,9 +98,9 @@ public class InterdimensionalAnchorBlock extends Block {
 
 					spreadBlock(ModBlocks.CORRUPTED_DIRT.get(), Blocks.GRASS_BLOCK, pLevel, pPos, pRandom);
 
-					spreadBlock(ModBlocks.CORRUPTION.get(), ModBlocks.SOLID_CORRUPTION.get(), pLevel, pPos, pRandom);
+					spreadBlock(ModBlocks.VOIDBLIGHT.get(), ModBlocks.VOIDMASS.get(), pLevel, pPos, pRandom);
 
-					spreadBlock(ModBlocks.SOLID_CORRUPTION.get(), ModBlocks.VOID_STONE.get(), pLevel, pPos, pRandom);
+					spreadBlock(ModBlocks.VOIDMASS.get(), ModBlocks.VOID_STONE.get(), pLevel, pPos, pRandom);
 
 					spreadBlock(ModBlocks.VOID_STONE.get(), ModBlocks.CORRUPTED_DIRT.get(), pLevel, pPos, pRandom);
 

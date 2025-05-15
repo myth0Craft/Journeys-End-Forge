@@ -43,7 +43,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        basicItem(ModItems.CORRUPTION_BUCKET.get());
+        basicItem(ModItems.VOIDBLIGHT_BUCKET.get());
         basicItem(ModItems.VOID_DUST.get());
         basicItem(ModItems.SMALL_VOID_DUST.get());
         basicItem(ModItems.RAW_VOIDMETAL.get());

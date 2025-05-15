@@ -22,16 +22,16 @@ public class ModFluids {
 	 public static final DeferredRegister<Fluid> FLUIDS =
 	            DeferredRegister.create(ForgeRegistries.FLUIDS, JourneysEnd.MODID);
 
-	    public static final RegistryObject<FlowingFluid> SOURCE_CORRUPTION = FLUIDS.register("source_corruption",
-	            () -> new ForgeFlowingFluid.Source(ModFluids.CORRUPTION_PROPERTIES));
-	    public static final RegistryObject<FlowingFluid> FLOWING_CORRUPTION = FLUIDS.register("flowing_corruption",
-	            () -> new ForgeFlowingFluid.Flowing(ModFluids.CORRUPTION_PROPERTIES));
+	    public static final RegistryObject<FlowingFluid> SOURCE_VOIDBLIGHT = FLUIDS.register("source_voidblight",
+	            () -> new ForgeFlowingFluid.Source(ModFluids.VOIDBLIGHT_PROPERTIES));
+	    public static final RegistryObject<FlowingFluid> FLOWING_VOIDBLIGHT = FLUIDS.register("flowing_voidblight",
+	            () -> new ForgeFlowingFluid.Flowing(ModFluids.VOIDBLIGHT_PROPERTIES));
 
 
-	    public static final ForgeFlowingFluid.Properties CORRUPTION_PROPERTIES = new ForgeFlowingFluid.Properties(
-	            ModFluidTypes.CORRUPTION, SOURCE_CORRUPTION, FLOWING_CORRUPTION)
-	            .slopeFindDistance(2).levelDecreasePerBlock(2).block(ModBlocks.CORRUPTION)
-	            .bucket(ModItems.CORRUPTION_BUCKET)
+	    public static final ForgeFlowingFluid.Properties VOIDBLIGHT_PROPERTIES = new ForgeFlowingFluid.Properties(
+	            ModFluidTypes.VOIDBLIGHT, SOURCE_VOIDBLIGHT, FLOWING_VOIDBLIGHT)
+	            .slopeFindDistance(2).levelDecreasePerBlock(2).block(ModBlocks.VOIDBLIGHT)
+	            .bucket(ModItems.VOIDBLIGHT_BUCKET)
 	            .tickRate((int) 30);
 
 

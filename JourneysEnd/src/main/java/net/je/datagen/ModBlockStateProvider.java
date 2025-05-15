@@ -21,7 +21,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        blockWithItem(ModBlocks.SOLID_CORRUPTION);
+        blockWithItem(ModBlocks.VOIDMASS);
         blockWithItem(ModBlocks.COMPRESSED_END_STONE);
         blockWithItem(ModBlocks.VOIDMETAL_BLOCK);
         blockWithItem(ModBlocks.CHISELED_END_STONE);

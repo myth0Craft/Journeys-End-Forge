@@ -10,9 +10,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class CorruptedGrowthBlock extends Block {
+public class VoidbloomBlock extends Block {
 
-	public CorruptedGrowthBlock(BlockBehaviour.Properties pProperties) {
+	public VoidbloomBlock(BlockBehaviour.Properties pProperties) {
         super(pProperties);
     }
 	

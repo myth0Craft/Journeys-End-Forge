@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "je:item/corrupted_growth_item"
+    "layer0": "je:item/voidbloom_item"
   }
 }

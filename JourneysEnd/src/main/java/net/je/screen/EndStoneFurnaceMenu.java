@@ -48,7 +48,7 @@ public class EndStoneFurnaceMenu extends AbstractFurnaceMenu {
 	}
 	@Override
 	protected boolean isFuel(ItemStack pStack) {
-        return pStack.is(ModItems.CORRUPTION_BUCKET.get());
+        return pStack.is(ModItems.VOIDBLIGHT_BUCKET.get());
     }
 
 }

@@ -20,8 +20,8 @@ public class ModCreativeModeTab {
 			.title(Component.translatable("creativetab.je.blocks"))
 			.displayItems((pParameters, pOutput) -> {
 				
-				pOutput.accept(ModBlocks.SOLID_CORRUPTION.get());
-				pOutput.accept(ModBlocks.CORRUPTED_GROWTH.get());
+				pOutput.accept(ModBlocks.VOIDMASS.get());
+				pOutput.accept(ModBlocks.VOIDBLOOM.get());
 				
 				pOutput.accept(ModBlocks.COMPRESSED_END_STONE.get());
 				pOutput.accept(ModBlocks.END_STONE_FURNACE.get());
@@ -52,7 +52,7 @@ public class ModCreativeModeTab {
 			.title(Component.translatable("creativetab.je.items"))
 			.displayItems((pParameters, pOutput) -> {
 				
-				pOutput.accept(ModItems.CORRUPTION_BUCKET.get());
+				pOutput.accept(ModItems.VOIDBLIGHT_BUCKET.get());
 				
 				pOutput.accept(ModItems.SMALL_VOID_DUST.get());
 				pOutput.accept(ModItems.VOID_DUST.get());

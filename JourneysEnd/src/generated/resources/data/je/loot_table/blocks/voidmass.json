@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "je:solid_corruption"
+          "name": "je:voidmass"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "je:blocks/solid_corruption"
+  "random_sequence": "je:blocks/voidmass"
 }
