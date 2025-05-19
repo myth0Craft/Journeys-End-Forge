@@ -102,6 +102,10 @@ public class ModItems {
     public static final RegistryObject<Item> VOIDMETAL_BOOTS = ITEMS.register("voidmetal_boots",
             () -> new ArmorItem(ModArmorMaterials.VOIDMETAL_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(40))));
+    
+    public static final RegistryObject<Item> EYE_FRAGMENT = ITEMS.register("eye_fragment",
+			() -> new Item(new Item.Properties()));
+    
 	public static void register(IEventBus eventBus) {
 		ITEMS.register(eventBus);
 	}

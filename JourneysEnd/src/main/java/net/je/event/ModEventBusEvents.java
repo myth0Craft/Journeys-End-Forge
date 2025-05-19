@@ -1,4 +1,4 @@
-package net.je.events;
+package net.je.event;
 
 import net.je.JourneysEnd;
 import net.je.entity.ModEntities;

@@ -54,6 +54,8 @@ public class ModCreativeModeTab {
 				
 				pOutput.accept(ModItems.VOIDBLIGHT_BUCKET.get());
 				
+				pOutput.accept(ModItems.EYE_FRAGMENT.get());
+				
 				pOutput.accept(ModItems.SMALL_VOID_DUST.get());
 				pOutput.accept(ModItems.VOID_DUST.get());
 				pOutput.accept(ModItems.RAW_VOIDMETAL.get());

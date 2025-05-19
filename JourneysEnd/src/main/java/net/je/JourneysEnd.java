@@ -20,12 +20,17 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.DragonBreathParticle;
 import net.minecraft.client.particle.PortalParticle;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -37,6 +42,8 @@ import net.minecraftforge.registries.IForgeRegistry;
 import net.je.block.ModBlocks;
 import net.je.block.entity.ModBlockEntities;
 import net.je.effect.ModEffects;
+
+import java.util.List;
 
 import org.slf4j.Logger;
 
@@ -94,6 +101,7 @@ public class JourneysEnd {
 	public void onServerStarting(ServerStartingEvent event) {
 
 	}
+	
 
 	@Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 	public static class ClientModEvents {
