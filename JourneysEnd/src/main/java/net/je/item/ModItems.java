@@ -37,25 +37,10 @@ public class ModItems {
 
 	public static final RegistryObject<Item> VOIDBLIGHT_BUCKET = ITEMS.register("voidblight_bucket",
 			() -> new VoidblightBucketItem(ModFluids.SOURCE_VOIDBLIGHT,
-					new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)) {
-				@Override
-				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
-						List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-					pTooltipComponents.add(Component.translatable("tooltip.je.voidblight_bucket"));
-					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
-				}
-				
-			});
+					new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
 	public static final RegistryObject<Item> VOID_DUST = ITEMS.register("void_dust",
-			() -> new Item(new Item.Properties()) {
-				@Override
-				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
-						List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-					pTooltipComponents.add(Component.translatable("tooltip.je.void_dust"));
-					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
-				}
-			});
+			() -> new Item(new Item.Properties()));
 
 	public static final RegistryObject<Item> SMALL_VOID_DUST = ITEMS.register("small_void_dust",
 			() -> new Item(new Item.Properties()));

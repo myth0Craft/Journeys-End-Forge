@@ -70,6 +70,7 @@
 	"tooltip.je.voidblight_bucket" : "Used as fuel in the end stone furnace.",
 	"tooltip.je.corrupted_dirt": "Dirt, tainted by the Void.",
 	"tooltip.je.lantern_of_warding": "It seems to repel the darkness of the Void.",
+	"tooltip.je.unobtainable": "Currently unobtainable in survival mode.",
 	
 	"container.je.end_stone_furnace" : "End Stone Furnace",
 	"gui.recipebook.toggleRecipes.end_stone_furnace" : "Showing End Stone Smeltable"

@@ -14,6 +14,7 @@ import com.mojang.serialization.MapCodec;
 
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import net.je.block.ModBlocks;
 import net.je.item.ModItems;
 import net.je.recipe.EndStoneFurnaceRecipe;
 import net.je.recipe.ModRecipeSerializers;
@@ -158,7 +159,9 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
             return map;
         } else {
             Map<Item, Integer> map1 = Maps.newLinkedHashMap();
-            add(map1, ModItems.VOIDBLIGHT_BUCKET.get(), 400);
+            add(map1, ModItems.VOIDBLIGHT_BUCKET.get(), 100);
+            add(map1, ModBlocks.VOIDMASS.get().asItem(), 10);
+            add(map1, ModBlocks.VOIDBLOOM.get().asItem(), 10);
             fuelCache = map1;
             return map1;
         }
@@ -314,10 +317,12 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
     }
 
     protected int getBurnDuration(ItemStack pFuel) {
-        if (pFuel.isEmpty() || !pFuel.is(ModItems.VOIDBLIGHT_BUCKET.get())) {
-            return 0;
+        if (pFuel.is(ModItems.VOIDBLIGHT_BUCKET.get())) {
+        	return 100;
+        } else if (pFuel.is(ModBlocks.VOIDBLOOM.get().asItem()) || pFuel.is(ModBlocks.VOIDMASS.get().asItem())) {
+        	return 10;
         } else {
-            return 400;
+        	return 0;
         }
     }
 
@@ -327,7 +332,7 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
     }
 
     public static boolean isFuel(ItemStack pStack) {
-        return pStack.is(ModItems.VOIDBLIGHT_BUCKET.get());
+        return pStack.is(ModItems.VOIDBLIGHT_BUCKET.get()) || pStack.is(ModBlocks.VOIDBLOOM.get().asItem()) || pStack.is(ModBlocks.VOIDMASS.get().asItem());
     }
 
     @Override
@@ -385,7 +390,10 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
             return true;
         } else {
             ItemStack itemstack = this.items.get(1);
-            return pStack.is(ModItems.VOIDBLIGHT_BUCKET.get()) || pStack.is(Items.BUCKET) && !itemstack.is(Items.BUCKET);
+            return pStack.is(ModItems.VOIDBLIGHT_BUCKET.get()) 
+            		|| pStack.is(ModBlocks.VOIDBLOOM.get().asItem()) 
+            		|| pStack.is(ModBlocks.VOIDMASS.get().asItem()) 
+            		|| pStack.is(Items.BUCKET) && !itemstack.is(Items.BUCKET);
         }
     }
 

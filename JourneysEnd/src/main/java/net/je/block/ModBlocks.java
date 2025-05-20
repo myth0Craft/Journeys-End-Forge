@@ -105,7 +105,14 @@ public class ModBlocks {
 	public static final RegistryObject<Block> LUSH_END_STONE = registerBlock("lush_end_stone",
 			() -> new LushEndStoneBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE)
 					.strength(3.0F, 9.0F).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
-					.sound(SoundType.NYLIUM).randomTicks()));
+					.sound(SoundType.NYLIUM).randomTicks()){
+				@Override
+				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
+						List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+					pTooltipComponents.add(Component.translatable("tooltip.je.unobtainable"));
+					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+				}
+			});
 
 	public static final RegistryObject<Block> FADED_END_STONE = registerBlock("faded_end_stone",
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(3.0F, 9.0F)
@@ -113,25 +120,19 @@ public class ModBlocks {
 
 	public static final RegistryObject<Block> CORRUPTED_DIRT = registerBlock("corrupted_dirt",
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(0.5F)
-					.requiresCorrectToolForDrops().sound(SoundType.GRAVEL)) {
+					.requiresCorrectToolForDrops().sound(SoundType.GRAVEL)));
+	
+	public static final RegistryObject<Block> LANTERN_OF_WARDING = registerBlock("lantern_of_warding",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(0.5F)
+					.requiresCorrectToolForDrops().sound(SoundType.COPPER_BULB).lightLevel(p_50755_ -> 15).emissiveRendering(ModBlocks::always).hasPostProcess(ModBlocks::always)){
 				@Override
-				public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext,
+				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
 						List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-					pTooltipComponents.add(Component.translatable("tooltip.je.corrupted_dirt"));
+					pTooltipComponents.add(Component.translatable("tooltip.je.unobtainable"));
 					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
 				}
 			});
 	
-	public static final RegistryObject<Block> LANTERN_OF_WARDING = registerBlock("lantern_of_warding",
-			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(0.5F)
-					.requiresCorrectToolForDrops().sound(SoundType.COPPER_BULB).lightLevel(p_50755_ -> 15).emissiveRendering(ModBlocks::always).hasPostProcess(ModBlocks::always)) {
-				@Override
-				public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext,
-						List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-					pTooltipComponents.add(Component.translatable("tooltip.je.lantern_of_warding"));
-					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
-				}
-			});
 	public static final RegistryObject<Block> INTERDIMENSIONAL_ANCHOR = registerBlock("interdimensional_anchor",
 			() -> new InterdimensionalAnchorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE)
 					.strength(3.0F, 9.0F).requiresCorrectToolForDrops()
@@ -140,7 +141,14 @@ public class ModBlocks {
 	public static final RegistryObject<Block> ENDER_VAULT = registerBlock("ender_vault",
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE)
 					.strength(50.0F, 1200.0F).requiresCorrectToolForDrops()
-					.sound(SoundType.ANVIL).noLootTable().lightLevel(p_50755_ -> 15)));
+					.sound(SoundType.ANVIL).noLootTable().lightLevel(p_50755_ -> 15)){
+				@Override
+				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
+						List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+					pTooltipComponents.add(Component.translatable("tooltip.je.unobtainable"));
+					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+				}
+			});
 	
 	public static final RegistryObject<Block> VOIDBLOOM = registerBlock("voidbloom",
 			() -> new VoidbloomBlock(BlockBehaviour.Properties.of()
