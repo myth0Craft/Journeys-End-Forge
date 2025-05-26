@@ -120,7 +120,7 @@ public class ModBlocks {
 
 	public static final RegistryObject<Block> CORRUPTED_DIRT = registerBlock("corrupted_dirt",
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(0.5F)
-					.requiresCorrectToolForDrops().sound(SoundType.GRAVEL)));
+					.sound(SoundType.GRAVEL)));
 	
 	public static final RegistryObject<Block> LANTERN_OF_WARDING = registerBlock("lantern_of_warding",
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(0.5F)
@@ -157,8 +157,7 @@ public class ModBlocks {
 	                .sound(SoundType.SCULK_SHRIEKER)
 	                .pushReaction(PushReaction.DESTROY)
 	                .emissiveRendering(ModBlocks::always)
-	                .lightLevel(p_50755_ -> 5)
-	                .noLootTable()));
+	                .lightLevel(p_50755_ -> 5)));
 	
 	public static final RegistryObject<Block> BEJEWELED_PEDESTAL = registerBlock("bejeweled_pedestal",
 			() -> new BejeweledPedestalBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)
@@ -190,9 +189,4 @@ public class ModBlocks {
 	public static void register(IEventBus eventBus) {
 		BLOCKS.register(eventBus);
 	}
-	
-	public static final SoundType BAMBOO_SAPLING = new SoundType(
-	        1.0F, 1.0F, SoundEvents.BAMBOO_SAPLING_BREAK, SoundEvents.BAMBOO_STEP, SoundEvents.BAMBOO_SAPLING_PLACE, SoundEvents.BAMBOO_SAPLING_HIT, SoundEvents.BAMBOO_FALL
-	    );
-
 }

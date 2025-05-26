@@ -13,10 +13,12 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -39,7 +41,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.END_STONE_TILES.get());
         dropSelf(ModBlocks.POLISHED_END_STONE.get());
         dropSelf(ModBlocks.POLISHED_END_STONE_STAIRS.get());
-        dropSelf(ModBlocks.POLISHED_END_STONE_SLAB.get());
+        this.add(ModBlocks.POLISHED_END_STONE_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.POLISHED_END_STONE_SLAB.get()));
         dropSelf(ModBlocks.POLISHED_END_STONE_WALL.get());
         dropSelf(ModBlocks.VOID_STONE.get());
         dropSelf(ModBlocks.FADED_END_STONE.get());
@@ -47,6 +50,18 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.CORRUPTED_DIRT.get());
         dropSelf(ModBlocks.LANTERN_OF_WARDING.get());
         dropSelf(ModBlocks.INTERDIMENSIONAL_ANCHOR.get());
+        
+        LootTable.Builder loottable$builder = this.createSilkTouchOrShearsDispatchTable(
+        		ModBlocks.VOIDBLOOM.get(),
+                LootItem.lootTableItem(Blocks.AIR));
+            this.add(ModBlocks.VOIDBLOOM.get(), loottable$builder);
+            
+            
+        
+        
+        
+		
+        
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {

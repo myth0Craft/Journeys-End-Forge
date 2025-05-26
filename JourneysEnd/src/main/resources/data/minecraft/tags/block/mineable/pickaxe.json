@@ -6,6 +6,13 @@
 	"je:end_stone_pillar",
 	"je:chiseled_end_stone",
 	"je:end_stone_tiles",
-	"je:polished_end_stone"
+	"je:polished_end_stone",
+	"je:polished_end_stone_slab",
+	"je:polished_end_stone_stairs",
+	"je:polished_end_stone_wall",
+	"je:void_stone",
+	"je:lush_end_stone",
+	"je:faded_end_stone",
+	"je:interdimensional_anchor"
   ]
 }

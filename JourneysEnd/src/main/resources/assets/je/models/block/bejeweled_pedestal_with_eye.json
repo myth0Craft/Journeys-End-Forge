@@ -4,7 +4,7 @@
 	"render_type": "minecraft:cutout",
 	"textures": {
 		"0": "je:block/bejeweled_pedestal_with_eye",
-		"particle": "je:block/bejeweled_pedestal_no_eye"
+		"particle": "je:block/bejeweled_pedestal_particle"
 	},
 	"elements": [
 		{
