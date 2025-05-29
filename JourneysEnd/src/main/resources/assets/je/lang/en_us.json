@@ -21,6 +21,8 @@
 	
 	"item.je.eye_fragment": "Eye Fragment",
 	
+	"item.je.timeworn_journal": "Timeworn Journal",
+	
 	"item.je.voidmetal_helmet": "Voidmetal Helmet",
 	"item.je.voidmetal_chestplate": "Voidmetal Chestplate",
 	"item.je.voidmetal_leggings": "Voidmetal Leggings",
@@ -73,5 +75,7 @@
 	"tooltip.je.unobtainable": "Currently unobtainable in survival mode.",
 	
 	"container.je.end_stone_furnace" : "End Stone Furnace",
-	"gui.recipebook.toggleRecipes.end_stone_furnace" : "Showing End Stone Smeltable"
+	"gui.recipebook.toggleRecipes.end_stone_furnace" : "Showing End Stone Smeltable",
+	
+	"screen.je.timeworn_journal_title" : "Timeworn Journal"
 }

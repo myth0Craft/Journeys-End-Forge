@@ -52,6 +52,8 @@ public class ModCreativeModeTab {
 			.title(Component.translatable("creativetab.je.items"))
 			.displayItems((pParameters, pOutput) -> {
 				
+				pOutput.accept(ModItems.TIMEWORN_JOURNAL.get());
+				
 				pOutput.accept(ModItems.VOIDBLIGHT_BUCKET.get());
 				
 				pOutput.accept(ModItems.EYE_FRAGMENT.get());

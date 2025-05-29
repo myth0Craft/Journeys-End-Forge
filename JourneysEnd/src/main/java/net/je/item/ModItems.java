@@ -57,6 +57,9 @@ public class ModItems {
 	public static final RegistryObject<Item> VOIDMETAL_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("voidmetal_upgrade_smithing_template",
 			() -> new VoidmetalUpgradeTemplateItem());
 	
+	public static final RegistryObject<Item> TIMEWORN_JOURNAL = ITEMS.register("timeworn_journal",
+			() -> new TimewornJournalItem(new Item.Properties().stacksTo(1)));
+	
 	
 	public static final RegistryObject<Item> VOIDMETAL_SWORD = ITEMS.register("voidmetal_sword",
             () -> new SwordItem(ModToolTiers.VOIDMETAL, new Item.Properties()

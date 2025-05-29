@@ -1,8 +1,9 @@
-// 1.21	2025-05-18T19:35:26.0094665	Item Models: je
+// 1.21	2025-05-26T16:35:35.6429173	Item Models: je
 cf50f6423637e2c1ffc8efefe583131bf9ddbe9a assets/je/models/item/eye_fragment.json
 83cc4b29028dd347ce6421a88191acc7790ecc8a assets/je/models/item/polished_end_stone_wall.json
 4628d30ee9cc0594c2420ad6405a54224b9c52f8 assets/je/models/item/raw_voidmetal.json
 d5517f8f20564330954be81f6fac733936318325 assets/je/models/item/small_void_dust.json
+d241ef018ad147d35c80e9c7ad352d34b597fab8 assets/je/models/item/timeworn_journal.json
 da474e3a2f1c02d420e25f3f4d52c1c6ee428050 assets/je/models/item/voidblight_bucket.json
 6ef83afca8c67e6e770f50fe3664705a7c94c5b6 assets/je/models/item/voidmetal_axe.json
 03cb6b7bb16fbd9de9d8c60b45f40285fc0a7348 assets/je/models/item/voidmetal_boots.json
