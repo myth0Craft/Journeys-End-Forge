@@ -14,6 +14,7 @@ import net.je.JourneysEnd;
 import net.je.entity.ModEntities;
 import net.je.entity.custom.Endersent;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ImageButton;
@@ -27,6 +28,7 @@ import net.minecraft.client.gui.screens.recipebook.RecipeBookComponent;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.decoration.ArmorStand;
 
 public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
@@ -40,6 +42,15 @@ public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
 	private static final int ARMOR_STAND_SCALE = 25;
 	private static final int ARMOR_STAND_OFFSET_Y = 75;
 	private static final int ARMOR_STAND_OFFSET_X = 141;
+	
+	private int x1;
+	private int x2;
+	private int x3;
+	private int x4;
+	private int x5;
+	
+	private int y1;
+	private int y2;
 
 	private Endersent endersentPreview;
 
@@ -97,17 +108,17 @@ public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
 		super.init();
 		Component component = Component.translatable("screen.je.timeworn_journal_title");
 
-		int x1 = (int) Math.round(super.getBgStartX() + (super.getBgWidth() / 2 * 0.2));
-		int y1 = (int) Math.round(super.getBgStartY() + (super.getBgHeight() * 0.15));
+		x1 = (int) Math.round(super.getBgStartX() + (super.getBgWidth() / 2 * 0.2));
+		y1 = (int) Math.round(super.getBgStartY() + (super.getBgHeight() * 0.15));
 
-		int x2 = (int) Math.round(super.getBgStartX() + (super.getBgWidth() / 2 * 0.5));
-		int y2 = (int) Math.round(super.getBgStartY() + (super.getBgHeight() * 0.5));
+		x2 = (int) Math.round(super.getBgStartX() + (super.getBgWidth() / 2 * 0.5));
+		y2 = (int) Math.round(super.getBgStartY() + (super.getBgHeight() * 0.5));
 
-		int x3 = (int) Math.round(super.getBgStartX() + (super.getBgWidth()/2) + super.getBgWidth()/2 * 0.05);
+		x3 = (int) Math.round(super.getBgStartX() + (super.getBgWidth()/2) + super.getBgWidth()/2 * 0.05);
 		
-		int x4 = (int) Math.round(super.getBgStartX() + (super.getBgWidth()/2) + super.getBgWidth()/2 * 0.35);
+		x4 = (int) Math.round(super.getBgStartX() + (super.getBgWidth()/2) + super.getBgWidth()/2 * 0.35);
 		
-		int x5 = (int) Math.round(super.getBgStartX() + (super.getBgWidth() / 2 * 0.2) + super.getBgWidth() / 2);
+		x5 = (int) Math.round(super.getBgStartX() + (super.getBgWidth() / 2 * 0.2) + super.getBgWidth() / 2);
 
 		this.addRenderableWidget(new ImageButton(x1, y1, 48, 48, STORY_SPRITES, p_308203_ -> {
 			this.minecraft.setScreen(null);
@@ -170,6 +181,27 @@ public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
 	@Override
 	public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
 		super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
+		
+		Component story = Component.translatable("screen.je.timeworn_journal_home.story");
+		Component progression = Component.translatable("screen.je.timeworn_journal_home.progression");
+		Component biomes = Component.translatable("screen.je.timeworn_journal_home.biomes");
+		Component structures = Component.translatable("screen.je.timeworn_journal_home.structures");
+		Component entities = Component.translatable("screen.je.timeworn_journal_home.entities");
+		Component items = Component.translatable("screen.je.timeworn_journal_home.items");
+		Component blocks = Component.translatable("screen.je.timeworn_journal_home.blocks");
+		
+		
+		//pGuiGraphics.drawString(this.font, this.getCharSequence(storyText), x1, y1, 12559971, false);
+		
+		this.writeText(pGuiGraphics, story, x1 + 24, y1 + 50);
+		this.writeText(pGuiGraphics, progression, x2 + 24, y1 + 50);
+		this.writeText(pGuiGraphics, biomes, x1 + 24, y2 + 50);
+		this.writeText(pGuiGraphics, structures, x2 + 24, y2 + 50);
+		this.writeText(pGuiGraphics, entities, x3 + 24, y1 + 50);
+		this.writeText(pGuiGraphics, items, x4 + 24, y1 + 50);
+		this.writeText(pGuiGraphics, blocks, x5 + 24, y2 + 50);
+		
+		//pGuiGraphics.drawCenteredString(this.font, storyText, x1, y1, 12559971);
 
 		/*
 		 * pGuiGraphics.blit( ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID,
@@ -203,5 +235,9 @@ public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
 		 */
 
 	}
-
+	
+	private void writeText(GuiGraphics pGuiGraphics, Component pText, int pX, int pY) {
+        FormattedCharSequence formattedcharsequence = pText.getVisualOrderText();
+        pGuiGraphics.drawString(this.font, formattedcharsequence, pX - this.font.width(formattedcharsequence) / 2, pY, 12559971, false);
+    }
 }
