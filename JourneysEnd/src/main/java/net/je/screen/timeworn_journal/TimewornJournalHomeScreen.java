@@ -106,6 +106,7 @@ public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
 	protected void init() {
 		// this.addRenderableWidget(ImageButton.builder(title, null -> {})).build();
 		super.init();
+		super.renderBackButton(null);
 		Component component = Component.translatable("screen.je.timeworn_journal_title");
 
 		x1 = (int) Math.round(super.getBgStartX() + (super.getBgWidth() / 2 * 0.2));
@@ -121,34 +122,34 @@ public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
 		x5 = (int) Math.round(super.getBgStartX() + (super.getBgWidth() / 2 * 0.2) + super.getBgWidth() / 2);
 
 		this.addRenderableWidget(new ImageButton(x1, y1, 48, 48, STORY_SPRITES, p_308203_ -> {
-			this.minecraft.setScreen(null);
+			this.minecraft.setScreen(new TimewornJournalChapterListScreen());
 		}));
 
 		this.addRenderableWidget(new ImageButton(x2, y1, 48, 48, PROGRESSION_SPRITES, p_308203_ -> {
-			this.minecraft.setScreen(null);
+			this.minecraft.setScreen(new TimewornJournalProgressionScreen());
 		}));
 
 		this.addRenderableWidget(new ImageButton(x1, y2, 48, 48, BIOMES_SPRITES, p_308203_ -> {
-			this.minecraft.setScreen(null);
+			this.minecraft.setScreen(new TimewornJournalBiomesScreen());
 		}));
 
 		this.addRenderableWidget(new ImageButton(x2, y2, 48, 48, STRUCTURES_SPRITES, p_308203_ -> {
-			this.minecraft.setScreen(null);
+			this.minecraft.setScreen(new TimewornJournalStructuresScreen());
 		}));
 
 		this.addRenderableWidget(new ImageButton(x3, y1, 48, 48,
 				ENTITIES_SPRITES, p_308203_ -> {
-					this.minecraft.setScreen(null);
+					this.minecraft.setScreen(new TimewornJournalEntitiesScreen());
 				}));
 		
 		this.addRenderableWidget(new ImageButton(x4, y1, 48, 48,
 				ITEMS_SPRITES, p_308203_ -> {
-					this.minecraft.setScreen(null);
+					this.minecraft.setScreen(new TimewornJournalItemsScreen());
 				}));
 		
 		this.addRenderableWidget(new ImageButton(x5, y2, 48, 48,
 				BLOCKS_SPRITES, p_308203_ -> {
-					this.minecraft.setScreen(null);
+					this.minecraft.setScreen(new TimewornJournalBlocksScreen());
 				}));
 		
 		

@@ -1,6 +1,7 @@
 package net.je.item;
 
 import net.je.screen.timeworn_journal.TimewornJournalHomeScreen;
+import net.je.screen.timeworn_journal.TimewornJournalScrollableScreen;
 import net.je.sound.ModSounds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponents;
@@ -30,7 +31,7 @@ public class TimewornJournalItem extends Item {
 		if (pLevel.isClientSide()) {
 			pLevel.playSound(pPlayer, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.BOOK_PAGE_TURN,
 					SoundSource.PLAYERS, 1.0F, 1);
-			Minecraft.getInstance().setScreen(new TimewornJournalHomeScreen());
+			Minecraft.getInstance().setScreen(new TimewornJournalScrollableScreen());
 		}
 
 		return InteractionResultHolder.sidedSuccess(itemstack, pLevel.isClientSide());

@@ -1,7 +1,11 @@
 package net.je.screen.timeworn_journal;
 
+import org.jetbrains.annotations.Nullable;
+
 import net.je.JourneysEnd;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.ImageButton;
+import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -22,6 +26,12 @@ public class BaseTimewornJournalScreen extends Screen {
 
 	private int xOffset;
 	private int yOffset;
+	
+	public static final WidgetSprites BACK_BUTTON_SPRITES = new WidgetSprites(
+			ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID,
+					"timeworn_journal/timeworn_journal_back_button"),
+			ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID,
+					"timeworn_journal/timeworn_journal_back_button_highlighted"));
 
 	public BaseTimewornJournalScreen() {
 		super(Component.translatable("screen.je.timeworn_journal_title"));
@@ -47,12 +57,20 @@ public class BaseTimewornJournalScreen extends Screen {
 
 		bgStartX = centerX - ((bookWidth - xOffset) / 2);
 		bgStartY = centerY - (bookHeight / 2) - yOffset;
+		
+		//this.renderBackButton(null);
 	}
 
 	@Override
 	public void renderBackground(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
 		this.renderTransparentBackground(pGuiGraphics);
 		pGuiGraphics.blit(BG_LOCATION, bgStartX, bgStartY, 0, 0, 0, bookWidth, bookHeight, bookWidth, bookHeight);
+	}
+	
+	protected void renderBackButton(@Nullable Screen backScreen) {
+		this.addRenderableWidget(new ImageButton(bgStartX + 18, bgStartY + bookHeight - 36, 20, 20, BACK_BUTTON_SPRITES, p_308203_ -> {
+			this.minecraft.setScreen(backScreen);
+		}));
 	}
 
 	protected int getBgStartX() {
@@ -78,5 +96,4 @@ public class BaseTimewornJournalScreen extends Screen {
 	protected int getBgHeight() {
 		return bookHeight;
 	}
-
 }
