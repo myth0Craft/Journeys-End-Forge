@@ -2,6 +2,8 @@ package net.je.screen.timeworn_journal;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.glfw.GLFW;
@@ -10,9 +12,11 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.je.JourneysEnd;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.ObjectSelectionList;
 import net.minecraft.client.gui.components.PlainTextButton;
 import net.minecraft.client.gui.components.SpriteIconButton;
@@ -21,48 +25,83 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
-
 	private final List<Button> allButtons = new ArrayList<>();
-	private int scrollOffset = 0;
-	private int visibleButtonCount = 10;
-	private int buttonHeight = 17;
-	private int listTop;
-	private int listLeft;
-	private int listWidth;
-	private int listHeight;
-	private boolean isDraggingScrollbar = false;
-	private int dragStartY = 0;
-	private int initialScrollOffset = 0;
+	private List<Button> filteredButtons = new ArrayList<>();
 
-	public TimewornJournalScrollableScreen() {
+	private EditBox searchField;
+	private int scrollOffset = 0;
+	private boolean draggingScrollbar = false;
+	private int lastMouseY = 0;
+
+	private int listTop;
+	private int listHeight;
+	private int listLeft;
+	private int listRight;
+	private int listWidth;
+	private final int buttonHeight = 18;
+	private final int maxVisibleButtons = 8;
+	private int dragStartY = 0;
+	private float initialThumbProgress = 0f;
+	
+	private int searchBoxY;
+	private int searchWidth;
+	private int searchHeight = 16;
+	
+	private int buttonCount;
+
+	public TimewornJournalScrollableScreen(int pButtonCount) {
 		super();
+		this.buttonCount = pButtonCount;
 	}
 
 	@Override
 	protected void init() {
 		super.init();
-		listTop = super.getBgStartY() + 20;
+		listTop = super.getBgStartY() + 40;
 		listLeft = super.getBgStartX() + 40;
+		searchBoxY = listTop - 20;
+		
 
 		listWidth = (int) (Math.round(super.getBgWidth() - 50) * 0.3);
-		listHeight = buttonHeight * visibleButtonCount;
+		searchWidth = listWidth + 10;
 
-		allButtons.clear();
+		listRight = listLeft + listWidth;
+		listHeight = buttonHeight * maxVisibleButtons;
 
-		for (int i = 0; i < 200; i++) {
-			int finalI = i;
+		this.searchField = new TimewornJournalEditBox(font, listLeft - 5, searchBoxY, searchWidth, searchHeight, Component.literal("Search"));
+		this.searchField.setResponder(s -> updateFilteredButtons());
+		this.searchField.setHint(Component.literal("Search").withStyle(ChatFormatting.ITALIC));
+		this.addRenderableWidget(searchField);
+
+		for (int i = 0; i < buttonCount; i++) {
+			int index = i;
+			int buttonDisplayNum = i + 1;
 			allButtons.add(new TimewornJournalButton(listLeft, 0, listWidth, buttonHeight,
-					Component.literal("Button " + i), btn -> onButtonClicked(finalI)));
+					Component.literal("Button " + buttonDisplayNum), btn -> this.onButtonClicked(index)));
 		}
+
+		updateFilteredButtons();
+		this.renderBackButton(new TimewornJournalHomeScreen());
 	}
 
-	private void onButtonClicked(Integer buttonNum) {
+	public void onButtonClicked(Integer buttonNum) {
 		this.minecraft.setScreen(null);
+	}
+
+	private void updateFilteredButtons() {
+		String search = searchField.getValue().toLowerCase();
+
+		filteredButtons = allButtons.stream().filter(btn -> btn.getMessage().getString().toLowerCase().contains(search))
+				.collect(Collectors.toList());
+
+		scrollOffset = 0;
+
+		draggingScrollbar = false;
 	}
 
 	@Override
 	public boolean mouseScrolled(double pMouseX, double pMouseY, double pScrollX, double pScrollY) {
-		int maxScroll = Math.max(0, allButtons.size() - visibleButtonCount);
+		int maxScroll = Math.max(0, filteredButtons.size() - maxVisibleButtons);
 		scrollOffset -= (int) pScrollY;
 		scrollOffset = Mth.clamp(scrollOffset, 0, maxScroll);
 		return true;
@@ -70,130 +109,131 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 
 	@Override
 	public boolean keyPressed(int pKeyCode, int pScanCode, int pModifiers) {
-		int maxScroll = Math.max(0, allButtons.size() - visibleButtonCount);
 
-		if (pKeyCode == GLFW.GLFW_KEY_UP) {
-			scrollOffset = Mth.clamp(scrollOffset - 1, 0, maxScroll);
+		if (pKeyCode == GLFW.GLFW_KEY_ESCAPE && searchField.isFocused()) {
+			searchField.setFocused(false);
+			return true;
+		} else if (pKeyCode == GLFW.GLFW_KEY_UP) {
+			scrollOffset = Mth.clamp(scrollOffset - 1, 0, Math.max(0, filteredButtons.size() - maxVisibleButtons));
 			return true;
 		} else if (pKeyCode == GLFW.GLFW_KEY_DOWN) {
-			scrollOffset = Mth.clamp(scrollOffset + 1, 0, maxScroll);
+			scrollOffset = Mth.clamp(scrollOffset + 1, 0, Math.max(0, filteredButtons.size() - maxVisibleButtons));
 			return true;
 		} else if (pKeyCode == GLFW.GLFW_KEY_PAGE_UP) {
-			scrollOffset = Mth.clamp(scrollOffset - visibleButtonCount, 0, maxScroll);
+			scrollOffset = Mth.clamp(scrollOffset - maxVisibleButtons, 0,
+					Math.max(0, filteredButtons.size() - maxVisibleButtons));
 			return true;
 		} else if (pKeyCode == GLFW.GLFW_KEY_PAGE_DOWN) {
-			scrollOffset = Mth.clamp(scrollOffset + visibleButtonCount, 0, maxScroll);
+			scrollOffset = Mth.clamp(scrollOffset + maxVisibleButtons, 0,
+					Math.max(0, filteredButtons.size() - maxVisibleButtons));
+			return true;
+		} else if (searchField.isFocused() && searchField.keyPressed(pKeyCode, pScanCode, pModifiers)) {
 			return true;
 		}
 		return super.keyPressed(pKeyCode, pScanCode, pModifiers);
 	}
 
 	@Override
-	public boolean mouseClicked(double mouseX, double mouseY, int button) {
+	public void render(GuiGraphics pGuiGraphics, int mouseX, int mouseY, float partialTick) {
+		super.render(pGuiGraphics, mouseX, mouseY, partialTick);
+		searchField.render(pGuiGraphics, mouseX, mouseY, partialTick);
 
-		if (button == 0) {
-			int scrollbarX = listLeft + listWidth + 2;
-			int scrollbarY = getScrollbarY();
-			int scrollbarWidth = 6;
-			int thumbHeight = Math.max(10, (visibleButtonCount * listHeight) / allButtons.size());
+		int visibleStart = scrollOffset;
+		int visibleEnd = Math.min(scrollOffset + maxVisibleButtons, filteredButtons.size());
 
-			if (mouseX >= scrollbarX && mouseX <= scrollbarX + scrollbarWidth && mouseY >= scrollbarY
-					&& mouseY <= scrollbarY + thumbHeight) {
-				isDraggingScrollbar = true;
-				dragStartY = (int) mouseY;
-				initialScrollOffset = scrollOffset;
-				return true;
-			}
+		for (int i = visibleStart; i < visibleEnd; i++) {
+			Button btn = filteredButtons.get(i);
+			btn.setX(listLeft);
+			btn.setY(listTop + (i - visibleStart) * (buttonHeight + 1));
+			btn.render(pGuiGraphics, mouseX, mouseY, partialTick);
 		}
 
-		int start = scrollOffset;
-		int end = Math.min(start + visibleButtonCount, allButtons.size());
+		// Scrollbar
+		int scrollbarX = listRight + 4;
+		int scrollbarY = listTop;
+		int scrollbarHeight = listHeight;
+		int totalButtons = filteredButtons.size();
+		if (totalButtons > maxVisibleButtons) {
+			float ratio = maxVisibleButtons / (float) totalButtons;
+			int thumbHeight = Math.max(10, (int) (ratio * scrollbarHeight));
+			float thumbProgress = scrollOffset / (float) (totalButtons - maxVisibleButtons);
+			int thumbY = scrollbarY + (int) (thumbProgress * (scrollbarHeight - thumbHeight));
 
-		for (int i = start; i < end; i++) {
-			if (allButtons.get(i).mouseClicked(mouseX, mouseY, button)) {
-				return true;
-			}
+			boolean mouseOverThumb = mouseX >= scrollbarX && mouseX < scrollbarX + 6 && mouseY >= thumbY
+					&& mouseY < thumbY + thumbHeight;
+			int thumbColor = draggingScrollbar || mouseOverThumb ? 0xffa38b48 : 0xffb5a070;
+
+			pGuiGraphics.fill(scrollbarX, scrollbarY, scrollbarX + 6, scrollbarY + scrollbarHeight, 0xffd1c196);
+			pGuiGraphics.fill(scrollbarX, thumbY, scrollbarX + 6, thumbY + thumbHeight, thumbColor);
 		}
-		return super.mouseClicked(mouseX, mouseY, button);
+
 	}
 
 	@Override
-	public boolean mouseDragged(double pMouseX, double pMouseY, int pButton, double pDragX, double pDragY) {
-		if (isDraggingScrollbar) {
-			int trackHeight = listHeight;
-			int thumbHeight = Math.max(10, (visibleButtonCount * trackHeight) / allButtons.size());
-			int scrollableHeight = trackHeight - thumbHeight;
+	public boolean mouseClicked(double mouseX, double mouseY, int button) {
+		if (button == 0) {
+			if (!(mouseX >= listLeft && mouseX < listLeft + searchWidth && mouseY >= searchBoxY && mouseY < searchBoxY + searchHeight)) {
+				searchField.setFocused(false);
+			}
+			int scrollbarX = listRight + 4;
+			int scrollbarY = listTop;
+			int scrollbarHeight = listHeight;
+			int totalButtons = filteredButtons.size();
+			if (totalButtons > maxVisibleButtons) {
+				int thumbHeight = Math.max(10, (int) ((maxVisibleButtons / (float) totalButtons) * scrollbarHeight));
+				float thumbProgress = scrollOffset / (float) (totalButtons - maxVisibleButtons);
+				int thumbY = scrollbarY + (int) (thumbProgress * (scrollbarHeight - thumbHeight));
 
-			int deltaY = (int) pMouseY - dragStartY;
-			int maxScroll = Math.max(1, allButtons.size() - visibleButtonCount);
+				if (mouseX >= scrollbarX && mouseX < scrollbarX + 6 && mouseY >= thumbY
+						&& mouseY < thumbY + thumbHeight) {
+					draggingScrollbar = true;
+					dragStartY = (int) mouseY;
+					initialThumbProgress = thumbProgress;
+					return true;
+				}
+			}
+			
+			int visibleStart = scrollOffset;
+		    int visibleEnd = Math.min(scrollOffset + maxVisibleButtons, filteredButtons.size());
 
-			int newOffset = initialScrollOffset + (deltaY * maxScroll) / scrollableHeight;
-			scrollOffset = Mth.clamp(newOffset, 0, maxScroll);
+		    for (int i = visibleStart; i < visibleEnd; i++) {
+		        Button btn = filteredButtons.get(i);
+		        if (btn.mouseClicked(mouseX, mouseY, button)) {
+		            this.onButtonClicked(i);
+		        	return true;
+		        }
+		    }
+		}
+
+		return super.mouseClicked(mouseX, mouseY, button);
+
+	}
+
+	@Override
+	public boolean mouseDragged(double mouseX, double mouseY, int button, double dx, double dy) {
+		if (draggingScrollbar) {
+			int totalButtons = filteredButtons.size();
+			if (totalButtons <= maxVisibleButtons)
+				return true;
+
+			int scrollbarHeight = listHeight;
+			int thumbHeight = Math.max(10, (int) ((maxVisibleButtons / (float) totalButtons) * scrollbarHeight));
+			float deltaY = (int) mouseY - dragStartY;
+			float progressDelta = deltaY / (float) (scrollbarHeight - thumbHeight);
+
+			float newThumbProgress = initialThumbProgress + progressDelta;
+			newThumbProgress = Mth.clamp(newThumbProgress, 0f, 1f);
+
+			scrollOffset = (int) (newThumbProgress * (totalButtons - maxVisibleButtons));
 			return true;
 		}
 
-		return super.mouseDragged(pMouseX, pMouseY, pButton, pDragX, pDragY);
+		return super.mouseDragged(mouseX, mouseY, button, dx, dy);
 	}
 
 	@Override
-	public boolean mouseReleased(double pMouseX, double pMouseY, int pButton) {
-		if (pButton == 0) {
-			isDraggingScrollbar = false;
-		}
-
-		int start = scrollOffset;
-		int end = Math.min(start + visibleButtonCount, allButtons.size());
-		for (int i = start; i < end; i++) {
-			if (allButtons.get(i).mouseReleased(pMouseX, pMouseY, pButton)) {
-				return true;
-			}
-		}
-
-		return super.mouseReleased(pMouseX, pMouseY, pButton);
-	}
-
-	@Override
-	public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
-		super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
-
-		int start = scrollOffset;
-		int end = Math.min(start + visibleButtonCount, allButtons.size());
-
-		for (int i = start; i < end; i++) {
-			Button button = allButtons.get(i);
-			button.setY(listTop + (i - start) * buttonHeight);
-			button.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
-		}
-
-		this.renderScrollbar(pGuiGraphics, pMouseX, pMouseY);
-	}
-
-	private void renderScrollbar(GuiGraphics pGuiGraphics, int mouseX, int mouseY) {
-		int scrollbarX = listLeft + listWidth + 2;
-		int scrollbarWidth = 6;
-
-		int thumbHeight = Math.max(10, (visibleButtonCount * listHeight) / allButtons.size());
-		int scrollbarY = getScrollbarY();
-
-		boolean mouseOverThumb = mouseX >= scrollbarX && mouseX < (scrollbarX + scrollbarWidth) && mouseY >= scrollbarY
-				&& mouseY < (scrollbarY + thumbHeight);
-
-		int thumbColor = mouseOverThumb ? 0xffa38b48 : 0xffb5a070; // lighter on hover
-
-
-		// Draw track
-		pGuiGraphics.fill(scrollbarX, listTop, scrollbarX + scrollbarWidth, listTop + listHeight, 0xffd1c196);
-
-		// Draw thumb
-		pGuiGraphics.fill(scrollbarX, scrollbarY, scrollbarX + scrollbarWidth, scrollbarY + thumbHeight, thumbColor);
-	}
-
-	private int getScrollbarY() {
-		int trackHeight = listHeight;
-		int thumbHeight = Math.max(10, (visibleButtonCount * trackHeight) / allButtons.size());
-		int maxScroll = Math.max(1, allButtons.size() - visibleButtonCount);
-		int scrollableHeight = trackHeight - thumbHeight;
-
-		return listTop + (scrollOffset * scrollableHeight) / maxScroll;
+	public boolean mouseReleased(double mouseX, double mouseY, int button) {
+		draggingScrollbar = false;
+		return super.mouseReleased(mouseX, mouseY, button);
 	}
 }

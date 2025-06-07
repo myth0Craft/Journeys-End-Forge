@@ -122,7 +122,7 @@ public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
 		x5 = (int) Math.round(super.getBgStartX() + (super.getBgWidth() / 2 * 0.2) + super.getBgWidth() / 2);
 
 		this.addRenderableWidget(new ImageButton(x1, y1, 48, 48, STORY_SPRITES, p_308203_ -> {
-			this.minecraft.setScreen(new TimewornJournalChapterListScreen());
+			this.minecraft.setScreen(new TimewornJournalScrollableScreen(100));
 		}));
 
 		this.addRenderableWidget(new ImageButton(x2, y1, 48, 48, PROGRESSION_SPRITES, p_308203_ -> {
