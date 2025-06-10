@@ -1,5 +1,6 @@
 package net.je.screen.timeworn_journal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nullable;
@@ -13,6 +14,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.je.JourneysEnd;
 import net.je.entity.ModEntities;
 import net.je.entity.custom.Endersent;
+import net.je.screen.timeworn_journal.entry.BaseTimewornJournalEntry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -122,7 +124,18 @@ public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
 		x5 = (int) Math.round(super.getBgStartX() + (super.getBgWidth() / 2 * 0.2) + super.getBgWidth() / 2);
 
 		this.addRenderableWidget(new ImageButton(x1, y1, 48, 48, STORY_SPRITES, p_308203_ -> {
-			this.minecraft.setScreen(new TimewornJournalScrollableScreen(100));
+			
+			List<BaseTimewornJournalEntry> chapters = new ArrayList<>();
+			
+			chapters.add(new BaseTimewornJournalEntry("Chapter 1", null));
+			chapters.add(new BaseTimewornJournalEntry("Chapter 2", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."));
+			
+			for (int i = 0; i < 50; i++) {
+				chapters.add(new BaseTimewornJournalEntry("Chapter " + i, null));
+			}
+			
+			
+			this.minecraft.setScreen(new TimewornJournalChapterListScreen(chapters));
 		}));
 
 		this.addRenderableWidget(new ImageButton(x2, y1, 48, 48, PROGRESSION_SPRITES, p_308203_ -> {
@@ -194,13 +207,13 @@ public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
 		
 		//pGuiGraphics.drawString(this.font, this.getCharSequence(storyText), x1, y1, 12559971, false);
 		
-		this.writeText(pGuiGraphics, story, x1 + 24, y1 + 50);
-		this.writeText(pGuiGraphics, progression, x2 + 24, y1 + 50);
-		this.writeText(pGuiGraphics, biomes, x1 + 24, y2 + 50);
-		this.writeText(pGuiGraphics, structures, x2 + 24, y2 + 50);
-		this.writeText(pGuiGraphics, entities, x3 + 24, y1 + 50);
-		this.writeText(pGuiGraphics, items, x4 + 24, y1 + 50);
-		this.writeText(pGuiGraphics, blocks, x5 + 24, y2 + 50);
+		this.writeHomeText(pGuiGraphics, story, x1 + 24, y1 + 50);
+		this.writeHomeText(pGuiGraphics, progression, x2 + 24, y1 + 50);
+		this.writeHomeText(pGuiGraphics, biomes, x1 + 24, y2 + 50);
+		this.writeHomeText(pGuiGraphics, structures, x2 + 24, y2 + 50);
+		this.writeHomeText(pGuiGraphics, entities, x3 + 24, y1 + 50);
+		this.writeHomeText(pGuiGraphics, items, x4 + 24, y1 + 50);
+		this.writeHomeText(pGuiGraphics, blocks, x5 + 24, y2 + 50);
 		
 		//pGuiGraphics.drawCenteredString(this.font, storyText, x1, y1, 12559971);
 
@@ -237,7 +250,7 @@ public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
 
 	}
 	
-	private void writeText(GuiGraphics pGuiGraphics, Component pText, int pX, int pY) {
+	protected void writeHomeText(GuiGraphics pGuiGraphics, Component pText, int pX, int pY) {
         FormattedCharSequence formattedcharsequence = pText.getVisualOrderText();
         pGuiGraphics.drawString(this.font, formattedcharsequence, pX - this.font.width(formattedcharsequence) / 2, pY, 12559971, false);
     }

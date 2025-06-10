@@ -1,37 +1,36 @@
 package net.je.screen.timeworn_journal;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
 import java.util.stream.Collectors;
-
-import org.jetbrains.annotations.Nullable;
 import org.lwjgl.glfw.GLFW;
-
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
-
-import net.je.JourneysEnd;
+import net.je.screen.timeworn_journal.entry.BaseTimewornJournalEntry;
+import net.je.screen.timeworn_journal.entry.renderer.BaseTimewornJournalEntryScreen;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.ObjectSelectionList;
-import net.minecraft.client.gui.components.PlainTextButton;
-import net.minecraft.client.gui.components.SpriteIconButton;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 
 public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 	private final List<Button> allButtons = new ArrayList<>();
 	private List<Button> filteredButtons = new ArrayList<>();
 
+	private List<BaseTimewornJournalEntry> allEntries = new ArrayList<>();
+	private BaseTimewornJournalEntry selectedEntry = null;
+
+	private final Map<Button, BaseTimewornJournalEntry> buttonEntryMap = new HashMap<>();
+
 	private EditBox searchField;
 	private int scrollOffset = 0;
 	private boolean draggingScrollbar = false;
-	private int lastMouseY = 0;
+	// private int lastMouseY = 0;
 
 	private int listTop;
 	private int listHeight;
@@ -42,16 +41,18 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 	private final int maxVisibleButtons = 8;
 	private int dragStartY = 0;
 	private float initialThumbProgress = 0f;
-	
+
 	private int searchBoxY;
 	private int searchWidth;
 	private int searchHeight = 16;
-	
-	private int buttonCount;
 
-	public TimewornJournalScrollableScreen(int pButtonCount) {
+	// private int buttonCount;
+
+	public TimewornJournalScrollableScreen(List<BaseTimewornJournalEntry> pList) {
 		super();
-		this.buttonCount = pButtonCount;
+		allEntries = pList;
+		// this.buttonCount = allEntries.size();
+
 	}
 
 	@Override
@@ -60,7 +61,6 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 		listTop = super.getBgStartY() + 40;
 		listLeft = super.getBgStartX() + 40;
 		searchBoxY = listTop - 20;
-		
 
 		listWidth = (int) (Math.round(super.getBgWidth() - 50) * 0.3);
 		searchWidth = listWidth + 10;
@@ -68,24 +68,32 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 		listRight = listLeft + listWidth;
 		listHeight = buttonHeight * maxVisibleButtons;
 
-		this.searchField = new TimewornJournalEditBox(font, listLeft - 5, searchBoxY, searchWidth, searchHeight, Component.literal("Search"));
+		this.searchField = new TimewornJournalEditBox(font, listLeft - 5, searchBoxY, searchWidth, searchHeight,
+				Component.literal("Search"));
 		this.searchField.setResponder(s -> updateFilteredButtons());
 		this.searchField.setHint(Component.literal("Search").withStyle(ChatFormatting.ITALIC));
 		this.addRenderableWidget(searchField);
 
-		for (int i = 0; i < buttonCount; i++) {
-			int index = i;
-			int buttonDisplayNum = i + 1;
-			allButtons.add(new TimewornJournalButton(listLeft, 0, listWidth, buttonHeight,
-					Component.literal("Button " + buttonDisplayNum), btn -> this.onButtonClicked(index)));
+		/*
+		 * for (int i = 0; i < buttonCount; i++) { int index = i; int buttonDisplayNum =
+		 * i + 1; allButtons.add(new TimewornJournalButton(listLeft, 0, listWidth,
+		 * buttonHeight, Component.literal(entryList.get(i).getName()), btn ->
+		 * this.onButtonClicked(index))); }
+		 */
+
+		for (BaseTimewornJournalEntry entry : allEntries) {
+
+			TimewornJournalButton button = new TimewornJournalButton(listLeft, 0, listWidth, buttonHeight,
+					Component.literal(entry.getName()), b -> {
+						this.minecraft.setScreen(new BaseTimewornJournalEntryScreen(entry));
+					});
+
+			allButtons.add(button);
+			buttonEntryMap.put(button, entry);
 		}
 
 		updateFilteredButtons();
-		this.renderBackButton(new TimewornJournalHomeScreen());
-	}
-
-	public void onButtonClicked(Integer buttonNum) {
-		this.minecraft.setScreen(null);
+		// this.renderBackButton(new TimewornJournalHomeScreen());
 	}
 
 	private void updateFilteredButtons() {
@@ -110,26 +118,19 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 	@Override
 	public boolean keyPressed(int pKeyCode, int pScanCode, int pModifiers) {
 
-		if (pKeyCode == GLFW.GLFW_KEY_ESCAPE && searchField.isFocused()) {
-			searchField.setFocused(false);
-			return true;
-		} else if (pKeyCode == GLFW.GLFW_KEY_UP) {
-			scrollOffset = Mth.clamp(scrollOffset - 1, 0, Math.max(0, filteredButtons.size() - maxVisibleButtons));
-			return true;
-		} else if (pKeyCode == GLFW.GLFW_KEY_DOWN) {
-			scrollOffset = Mth.clamp(scrollOffset + 1, 0, Math.max(0, filteredButtons.size() - maxVisibleButtons));
-			return true;
-		} else if (pKeyCode == GLFW.GLFW_KEY_PAGE_UP) {
-			scrollOffset = Mth.clamp(scrollOffset - maxVisibleButtons, 0,
+		if (pKeyCode == GLFW.GLFW_KEY_UP || pKeyCode == GLFW.GLFW_KEY_DOWN) {
+
+			scrollOffset = Mth.clamp(scrollOffset + (pKeyCode == GLFW.GLFW_KEY_UP ? -1 : 1), 0,
 					Math.max(0, filteredButtons.size() - maxVisibleButtons));
 			return true;
-		} else if (pKeyCode == GLFW.GLFW_KEY_PAGE_DOWN) {
-			scrollOffset = Mth.clamp(scrollOffset + maxVisibleButtons, 0,
+		} else if (pKeyCode == GLFW.GLFW_KEY_PAGE_UP || pKeyCode == GLFW.GLFW_KEY_PAGE_DOWN) {
+
+			scrollOffset = Mth.clamp(scrollOffset + (pKeyCode == GLFW.GLFW_KEY_PAGE_UP ? -1 : 1) * maxVisibleButtons, 0,
 					Math.max(0, filteredButtons.size() - maxVisibleButtons));
 			return true;
-		} else if (searchField.isFocused() && searchField.keyPressed(pKeyCode, pScanCode, pModifiers)) {
-			return true;
+
 		}
+
 		return super.keyPressed(pKeyCode, pScanCode, pModifiers);
 	}
 
@@ -172,7 +173,8 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 	@Override
 	public boolean mouseClicked(double mouseX, double mouseY, int button) {
 		if (button == 0) {
-			if (!(mouseX >= listLeft && mouseX < listLeft + searchWidth && mouseY >= searchBoxY && mouseY < searchBoxY + searchHeight)) {
+			if (!(mouseX >= listLeft && mouseX < listLeft + searchWidth && mouseY >= searchBoxY
+					&& mouseY < searchBoxY + searchHeight)) {
 				searchField.setFocused(false);
 			}
 			int scrollbarX = listRight + 4;
@@ -192,17 +194,21 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 					return true;
 				}
 			}
-			
-			int visibleStart = scrollOffset;
-		    int visibleEnd = Math.min(scrollOffset + maxVisibleButtons, filteredButtons.size());
 
-		    for (int i = visibleStart; i < visibleEnd; i++) {
-		        Button btn = filteredButtons.get(i);
-		        if (btn.mouseClicked(mouseX, mouseY, button)) {
-		            this.onButtonClicked(i);
-		        	return true;
-		        }
-		    }
+			int visibleStart = scrollOffset;
+			int visibleEnd = Math.min(scrollOffset + maxVisibleButtons, filteredButtons.size());
+
+			for (int i = visibleStart; i < visibleEnd; i++) {
+				Button btn = filteredButtons.get(i);
+				if (btn.mouseClicked(mouseX, mouseY, button)) {
+					BaseTimewornJournalEntry entry = buttonEntryMap.get(btn);
+					if (entry != null) {
+						selectedEntry = entry;
+					}
+					return true;
+				}
+			}
+
 		}
 
 		return super.mouseClicked(mouseX, mouseY, button);

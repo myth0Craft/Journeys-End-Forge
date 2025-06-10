@@ -1,9 +1,20 @@
 package net.je.screen.timeworn_journal;
 
-public class TimewornJournalChapterListScreen extends BaseTimewornJournalScreen {
+import java.util.List;
+
+import net.je.screen.timeworn_journal.entry.BaseTimewornJournalEntry;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
+
+public class TimewornJournalChapterListScreen extends TimewornJournalScrollableScreen {
 	
-	public TimewornJournalChapterListScreen() {
-		super();
+	private List<BaseTimewornJournalEntry> chapters;
+	
+	
+	public TimewornJournalChapterListScreen(List<BaseTimewornJournalEntry> pChapters) {
+		
+		super(pChapters);
+		chapters = pChapters;
 	}
 	
 	@Override

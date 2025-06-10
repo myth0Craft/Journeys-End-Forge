@@ -9,6 +9,7 @@ import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FormattedCharSequence;
 
 public class BaseTimewornJournalScreen extends Screen {
 
@@ -96,4 +97,9 @@ public class BaseTimewornJournalScreen extends Screen {
 	protected int getBgHeight() {
 		return bookHeight;
 	}
+	
+	protected void writeText(GuiGraphics pGuiGraphics, Component pText, int pX, int pY) {
+        FormattedCharSequence formattedcharsequence = pText.getVisualOrderText();
+        pGuiGraphics.drawString(this.font, formattedcharsequence, pX - this.font.width(formattedcharsequence) / 2, pY, 12559971, false);
+    }
 }
