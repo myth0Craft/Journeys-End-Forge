@@ -23,12 +23,12 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 	private List<Button> filteredButtons = new ArrayList<>();
 
 	private List<BaseTimewornJournalEntry> allEntries = new ArrayList<>();
-	private BaseTimewornJournalEntry selectedEntry = null;
+	// private BaseTimewornJournalEntry selectedEntry = null;
 
 	private final Map<Button, BaseTimewornJournalEntry> buttonEntryMap = new HashMap<>();
 
 	private EditBox searchField;
-	private int scrollOffset = 0;
+	protected int scrollOffset = 0;
 	private boolean draggingScrollbar = false;
 	// private int lastMouseY = 0;
 
@@ -45,6 +45,8 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 	private int searchBoxY;
 	private int searchWidth;
 	private int searchHeight = 16;
+
+	private String oldSearchValue = "";
 
 	// private int buttonCount;
 
@@ -84,16 +86,24 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 		for (BaseTimewornJournalEntry entry : allEntries) {
 
 			TimewornJournalButton button = new TimewornJournalButton(listLeft, 0, listWidth, buttonHeight,
-					Component.literal(entry.getName()), b -> {
-						this.minecraft.setScreen(new BaseTimewornJournalEntryScreen(entry));
-					});
+					Component.literal(entry.getName()), b -> this.onButtonClicked(entry)
+
+			// {this.minecraft.setScreen(new BaseTimewornJournalEntryScreen(entry));}
+			);
 
 			allButtons.add(button);
 			buttonEntryMap.put(button, entry);
+
 		}
 
 		updateFilteredButtons();
+
+		super.renderBackButton(new TimewornJournalHomeScreen());
 		// this.renderBackButton(new TimewornJournalHomeScreen());
+	}
+
+	protected void onButtonClicked(BaseTimewornJournalEntry pEntry) {
+		// this.minecraft.setScreen(new BaseTimewornJournalEntryScreen(pEntry));
 	}
 
 	private void updateFilteredButtons() {
@@ -102,9 +112,14 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 		filteredButtons = allButtons.stream().filter(btn -> btn.getMessage().getString().toLowerCase().contains(search))
 				.collect(Collectors.toList());
 
-		scrollOffset = 0;
+		// scrollOffset = 0;
 
 		draggingScrollbar = false;
+
+		if (search != oldSearchValue) {
+			scrollOffset = 0;
+			oldSearchValue = search;
+		}
 	}
 
 	@Override
@@ -202,9 +217,7 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 				Button btn = filteredButtons.get(i);
 				if (btn.mouseClicked(mouseX, mouseY, button)) {
 					BaseTimewornJournalEntry entry = buttonEntryMap.get(btn);
-					if (entry != null) {
-						selectedEntry = entry;
-					}
+					this.onButtonClicked(entry);
 					return true;
 				}
 			}

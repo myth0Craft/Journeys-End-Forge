@@ -3,6 +3,7 @@ package net.je.screen.timeworn_journal.entry.renderer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jetbrains.annotations.Nullable;
 import org.lwjgl.glfw.GLFW;
 
 import net.je.screen.timeworn_journal.BaseTimewornJournalScreen;
@@ -10,6 +11,7 @@ import net.je.screen.timeworn_journal.entry.BaseTimewornJournalEntry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.util.Mth;
 
 public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
@@ -27,9 +29,20 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 	private int loreScrollbarX;
 
 	protected BaseTimewornJournalEntry entry;
+	
+	private int scrollOffset;
+	
+	private Screen backScreen;
 
 	public BaseTimewornJournalEntryScreen(BaseTimewornJournalEntry pEntry) {
 		super();
+		this.scrollOffset = 0;
+		entry = pEntry;
+	}
+	
+	public BaseTimewornJournalEntryScreen(BaseTimewornJournalEntry pEntry, int pScrollOffset, @Nullable Screen pBackScreen) {
+		super();
+		this.scrollOffset = pScrollOffset;
 		entry = pEntry;
 	}
 
@@ -39,6 +52,8 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 		loreX = super.getBgStartX() + (int) (Math.round(super.getBgWidth() - 50) * 0.3) + 90;
 		loreY = super.getBgStartY() + 45;
 		loreScrollbarX = loreX + 130;
+		
+		this.renderBackButton(backScreen);
 	}
 
 	@Override

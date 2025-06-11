@@ -14,6 +14,12 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.je.JourneysEnd;
 import net.je.entity.ModEntities;
 import net.je.entity.custom.Endersent;
+import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalBiomesListScreen;
+import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalBlocksListScreen;
+import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalEntitiesListScreen;
+import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalItemsListScreen;
+import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalProgressionListScreen;
+import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalStructuresListScreen;
 import net.je.screen.timeworn_journal.entry.BaseTimewornJournalEntry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.Font;
@@ -125,44 +131,47 @@ public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
 
 		this.addRenderableWidget(new ImageButton(x1, y1, 48, 48, STORY_SPRITES, p_308203_ -> {
 			
-			List<BaseTimewornJournalEntry> chapters = new ArrayList<>();
+			/*
+			 * List<BaseTimewornJournalEntry> chapters = new ArrayList<>();
+			 * 
+			 * chapters.add(new BaseTimewornJournalEntry("Chapter 1", null));
+			 * chapters.add(new BaseTimewornJournalEntry("Chapter 2",
+			 * "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+			 * ));
+			 * 
+			 * for (int i = 0; i < 50; i++) { chapters.add(new
+			 * BaseTimewornJournalEntry("Chapter " + i, null)); }
+			 */
 			
-			chapters.add(new BaseTimewornJournalEntry("Chapter 1", null));
-			chapters.add(new BaseTimewornJournalEntry("Chapter 2", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."));
 			
-			for (int i = 0; i < 50; i++) {
-				chapters.add(new BaseTimewornJournalEntry("Chapter " + i, null));
-			}
-			
-			
-			this.minecraft.setScreen(new TimewornJournalChapterListScreen(chapters));
+			this.minecraft.setScreen(new TimewornJournalListScreens.TimewornJournalChapterListScreen());
 		}));
 
 		this.addRenderableWidget(new ImageButton(x2, y1, 48, 48, PROGRESSION_SPRITES, p_308203_ -> {
-			this.minecraft.setScreen(new TimewornJournalProgressionScreen());
+			this.minecraft.setScreen(new TimewornJournalProgressionListScreen());
 		}));
 
 		this.addRenderableWidget(new ImageButton(x1, y2, 48, 48, BIOMES_SPRITES, p_308203_ -> {
-			this.minecraft.setScreen(new TimewornJournalBiomesScreen());
+			this.minecraft.setScreen(new TimewornJournalBiomesListScreen());
 		}));
 
 		this.addRenderableWidget(new ImageButton(x2, y2, 48, 48, STRUCTURES_SPRITES, p_308203_ -> {
-			this.minecraft.setScreen(new TimewornJournalStructuresScreen());
+			this.minecraft.setScreen(new TimewornJournalStructuresListScreen());
 		}));
 
 		this.addRenderableWidget(new ImageButton(x3, y1, 48, 48,
 				ENTITIES_SPRITES, p_308203_ -> {
-					this.minecraft.setScreen(new TimewornJournalEntitiesScreen());
+					this.minecraft.setScreen(new TimewornJournalEntitiesListScreen());
 				}));
 		
 		this.addRenderableWidget(new ImageButton(x4, y1, 48, 48,
 				ITEMS_SPRITES, p_308203_ -> {
-					this.minecraft.setScreen(new TimewornJournalItemsScreen());
+					this.minecraft.setScreen(new TimewornJournalItemsListScreen());
 				}));
 		
 		this.addRenderableWidget(new ImageButton(x5, y2, 48, 48,
 				BLOCKS_SPRITES, p_308203_ -> {
-					this.minecraft.setScreen(new TimewornJournalBlocksScreen());
+					this.minecraft.setScreen(new TimewornJournalBlocksListScreen());
 				}));
 		
 		
