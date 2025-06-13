@@ -6,13 +6,18 @@ import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.glfw.GLFW;
 
+import com.mojang.blaze3d.vertex.PoseStack;
+
 import net.je.screen.timeworn_journal.BaseTimewornJournalScreen;
 import net.je.screen.timeworn_journal.entry.BaseTimewornJournalEntry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.util.Mth;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
 
 public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 
@@ -187,5 +192,42 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 		}
 
 		return wrappedLines;
+	}
+	
+	public void renderItem(GuiGraphics guiGraphics, ItemStack stack) {
+	    float scale = 120.0f;
+
+	    // This is the position on screen where the *center* of the item will appear
+	    int x = (int) ((this.width / 2) - super.getBgWidth() * 0.21);
+	    int y = (int) ((this.height / 2) - super.getBgHeight() * 0.05);
+
+	    // Required for correct rendering
+	    guiGraphics.flush();
+
+	    PoseStack poseStack = guiGraphics.pose();
+	    poseStack.pushPose();
+
+	    // Move to the correct screen position and adjust for scale
+	    poseStack.translate(x, y, 200);
+
+	    // Apply scaling
+	    poseStack.scale(scale, -scale, scale);
+
+	    // Offset by -8 to center (since the item renders 16x16)
+	    //poseStack.translate(-8.0F, -8.0F, 0.0F);
+
+	    Minecraft.getInstance().getItemRenderer().renderStatic(
+	        stack,
+	        ItemDisplayContext.GUI,
+	        15728880, // lighting
+	        OverlayTexture.NO_OVERLAY,
+	        poseStack,
+	        guiGraphics.bufferSource(),
+	        null,
+	        0
+	    );
+
+	    guiGraphics.flush();
+	    poseStack.popPose();
 	}
 }

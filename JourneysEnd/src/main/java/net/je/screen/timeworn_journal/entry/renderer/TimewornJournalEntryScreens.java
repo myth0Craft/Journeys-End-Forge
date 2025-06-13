@@ -2,6 +2,9 @@ package net.je.screen.timeworn_journal.entry.renderer;
 
 import org.jetbrains.annotations.Nullable;
 
+import com.mojang.blaze3d.vertex.PoseStack;
+
+import net.je.block.ModBlocks;
 import net.je.screen.timeworn_journal.TimewornJournalListScreens;
 import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalBiomesListScreen;
 import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalBlocksListScreen;
@@ -11,8 +14,16 @@ import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournal
 import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalProgressionListScreen;
 import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalStructuresListScreen;
 import net.je.screen.timeworn_journal.entry.BaseTimewornJournalEntry;
+import net.je.screen.timeworn_journal.entry.ItemEntry;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Blocks;
 
 public class TimewornJournalEntryScreens {
 
@@ -139,15 +150,20 @@ public class TimewornJournalEntryScreens {
 	public static class TimewornJournalItemsEntryScreen extends BaseTimewornJournalEntryScreen {
 
 		private int scrollOffset;
+		
+		private ItemEntry entry;
 
-		public TimewornJournalItemsEntryScreen(BaseTimewornJournalEntry pEntry) {
+		public TimewornJournalItemsEntryScreen(ItemEntry pEntry) {
 			super(pEntry);
 			this.scrollOffset = 0;
+			entry = pEntry;
+			
 		}
 
-		public TimewornJournalItemsEntryScreen(BaseTimewornJournalEntry pEntry, int pScrollOffset) {
+		public TimewornJournalItemsEntryScreen(ItemEntry pEntry, int pScrollOffset) {
 			super(pEntry, pScrollOffset, new TimewornJournalListScreens.TimewornJournalItemsListScreen());
 			this.scrollOffset = pScrollOffset;
+			entry = pEntry;
 		}
 
 		@Override
@@ -157,6 +173,16 @@ public class TimewornJournalEntryScreens {
 						this.minecraft.setScreen(new TimewornJournalItemsListScreen(scrollOffset));
 					}));
 		}
+		
+		@Override
+		public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+			super.render(guiGraphics, mouseX, mouseY, partialTick);
+			if (entry != null) {
+
+				 	ItemStack stack = entry.getItem();
+				    super.renderItem(guiGraphics, stack);
+			}
+		}
 
 	}
 
@@ -164,14 +190,18 @@ public class TimewornJournalEntryScreens {
 
 		private int scrollOffset;
 
-		public TimewornJournalBlocksEntryScreen(BaseTimewornJournalEntry pEntry) {
+		private ItemEntry entry;
+
+		public TimewornJournalBlocksEntryScreen(ItemEntry pEntry) {
 			super(pEntry);
 			this.scrollOffset = 0;
+			entry = pEntry;
 		}
 
-		public TimewornJournalBlocksEntryScreen(BaseTimewornJournalEntry pEntry, int pScrollOffset) {
+		public TimewornJournalBlocksEntryScreen(ItemEntry pEntry, int pScrollOffset) {
 			super(pEntry, pScrollOffset, new TimewornJournalListScreens.TimewornJournalBlocksListScreen());
 			this.scrollOffset = pScrollOffset;
+			entry = pEntry;
 		}
 
 		@Override
@@ -182,6 +212,14 @@ public class TimewornJournalEntryScreens {
 					}));
 		}
 
-	}
+		@Override
+		public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+			super.render(guiGraphics, mouseX, mouseY, partialTick);
+			if (entry != null) {
 
+				 	ItemStack stack = entry.getItem();
+				    super.renderItem(guiGraphics, stack);
+			}
+		}
+	}
 }

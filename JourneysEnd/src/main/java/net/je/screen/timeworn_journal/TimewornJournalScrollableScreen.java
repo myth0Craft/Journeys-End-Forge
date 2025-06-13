@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import org.lwjgl.glfw.GLFW;
+
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+
 import net.je.screen.timeworn_journal.entry.BaseTimewornJournalEntry;
 import net.je.screen.timeworn_journal.entry.renderer.BaseTimewornJournalEntryScreen;
 import net.minecraft.ChatFormatting;
@@ -14,9 +18,12 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Blocks;
 
 public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 	private final List<Button> allButtons = new ArrayList<>();
@@ -182,6 +189,18 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 			pGuiGraphics.fill(scrollbarX, scrollbarY, scrollbarX + 6, scrollbarY + scrollbarHeight, 0xffd1c196);
 			pGuiGraphics.fill(scrollbarX, thumbY, scrollbarX + 6, thumbY + thumbHeight, thumbColor);
 		}
+		
+		
+		
+		
+		
+		/*
+		 * ItemStack item = new ItemStack(Blocks.DIAMOND_BLOCK);
+		 * 
+		 * pGuiGraphics.renderItem(item, super.getBgStartX(), super.getBgStartY());
+		 * pGuiGraphics.renderItemDecorations(Minecraft.getInstance().font, item,
+		 * super.getBgStartX(), super.getBgStartY());
+		 */
 
 	}
 

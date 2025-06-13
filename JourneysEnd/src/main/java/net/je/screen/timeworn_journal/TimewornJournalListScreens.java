@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.je.screen.timeworn_journal.entry.BaseTimewornJournalEntry;
+import net.je.screen.timeworn_journal.entry.ItemEntry;
 import net.je.screen.timeworn_journal.entry.TimewornJournalEntries;
 import net.je.screen.timeworn_journal.entry.renderer.BaseTimewornJournalEntryScreen;
 import net.je.screen.timeworn_journal.entry.renderer.TimewornJournalEntryScreens;
@@ -113,39 +114,43 @@ public class TimewornJournalListScreens {
 	public static class TimewornJournalItemsListScreen extends TimewornJournalScrollableScreen {
 
 		public TimewornJournalItemsListScreen() {
-			super(TimewornJournalEntries.CHAPTER_ENTRIES);
+			super(TimewornJournalEntries.ITEM_ENTRIES);
 			this.scrollOffset = 0;
 		}
 
 		public TimewornJournalItemsListScreen(int pScrollOffset) {
-			super(TimewornJournalEntries.CHAPTER_ENTRIES);
+			super(TimewornJournalEntries.ITEM_ENTRIES);
 			this.scrollOffset = pScrollOffset;
 		}
 
 		@Override
 		protected void onButtonClicked(BaseTimewornJournalEntry pEntry) {
+			ItemEntry item = (ItemEntry) pEntry;
 			this.minecraft.setScreen(
-					new TimewornJournalEntryScreens.TimewornJournalItemsEntryScreen(pEntry, this.scrollOffset));
+					new TimewornJournalEntryScreens.TimewornJournalItemsEntryScreen(item, this.scrollOffset));
 		}
 
 	}
 
 	public static class TimewornJournalBlocksListScreen extends TimewornJournalScrollableScreen {
 
+		
+		
 		public TimewornJournalBlocksListScreen() {
-			super(TimewornJournalEntries.CHAPTER_ENTRIES);
+			super(TimewornJournalEntries.BLOCK_ENTRIES);
 			this.scrollOffset = 0;
 		}
 
 		public TimewornJournalBlocksListScreen(int pScrollOffset) {
-			super(TimewornJournalEntries.CHAPTER_ENTRIES);
+			super(TimewornJournalEntries.BLOCK_ENTRIES);
 			this.scrollOffset = pScrollOffset;
 		}
 
 		@Override
 		protected void onButtonClicked(BaseTimewornJournalEntry pEntry) {
+			ItemEntry item = (ItemEntry) pEntry;
 			this.minecraft.setScreen(
-					new TimewornJournalEntryScreens.TimewornJournalBlocksEntryScreen(pEntry, this.scrollOffset));
+					new TimewornJournalEntryScreens.TimewornJournalBlocksEntryScreen(item, this.scrollOffset));
 		}
 
 	}
