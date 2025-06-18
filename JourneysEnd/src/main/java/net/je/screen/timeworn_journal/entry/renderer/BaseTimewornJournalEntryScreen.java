@@ -6,7 +6,9 @@ import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.glfw.GLFW;
 
+import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 
 import net.je.screen.timeworn_journal.BaseTimewornJournalScreen;
 import net.je.screen.timeworn_journal.entry.BaseTimewornJournalEntry;
@@ -14,7 +16,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.renderer.LightTexture;
+import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
@@ -34,9 +40,9 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 	private int loreScrollbarX;
 
 	protected BaseTimewornJournalEntry entry;
-	
+
 	private int scrollOffset;
-	
+
 	private Screen backScreen;
 
 	public BaseTimewornJournalEntryScreen(BaseTimewornJournalEntry pEntry) {
@@ -44,8 +50,9 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 		this.scrollOffset = 0;
 		entry = pEntry;
 	}
-	
-	public BaseTimewornJournalEntryScreen(BaseTimewornJournalEntry pEntry, int pScrollOffset, @Nullable Screen pBackScreen) {
+
+	public BaseTimewornJournalEntryScreen(BaseTimewornJournalEntry pEntry, int pScrollOffset,
+			@Nullable Screen pBackScreen) {
 		super();
 		this.scrollOffset = pScrollOffset;
 		entry = pEntry;
@@ -57,7 +64,7 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 		loreX = super.getBgStartX() + (int) (Math.round(super.getBgWidth() - 50) * 0.3) + 90;
 		loreY = super.getBgStartY() + 45;
 		loreScrollbarX = loreX + 130;
-		
+
 		this.renderBackButton(backScreen);
 	}
 
@@ -65,13 +72,13 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 	public boolean keyPressed(int pKeyCode, int pScanCode, int pModifiers) {
 
 		if (pKeyCode == GLFW.GLFW_KEY_UP || pKeyCode == GLFW.GLFW_KEY_DOWN) {
-			List<String> loreLines = wrapText(font, entry.getLore(), 125);
+			List<String> loreLines = wrapText(font, entry.getLore().toString(), 125);
 			loreScrollOffset = Mth.clamp(loreScrollOffset + (pKeyCode == GLFW.GLFW_KEY_UP ? -1 : 1), 0,
 					Math.max(0, loreLines.size() - maxVisibleLoreLines));
 			return true;
 		} else if (pKeyCode == GLFW.GLFW_KEY_PAGE_UP || pKeyCode == GLFW.GLFW_KEY_PAGE_DOWN) {
 
-			List<String> loreLines = wrapText(font, entry.getLore(), 125);
+			List<String> loreLines = wrapText(font, entry.getLore().toString(), 125);
 			loreScrollOffset = Mth.clamp(
 					loreScrollOffset + (pKeyCode == GLFW.GLFW_KEY_PAGE_UP ? -1 : 1) * maxVisibleLoreLines, 0,
 					Math.max(0, loreLines.size() - maxVisibleLoreLines));
@@ -84,7 +91,7 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 	@Override
 	public void render(GuiGraphics pGuiGraphics, int mouseX, int mouseY, float partialTick) {
 		super.render(pGuiGraphics, mouseX, mouseY, partialTick);
-		List<String> loreLines = wrapText(font, entry.getLore(), 125);
+		List<String> loreLines = wrapText(font, entry.getLore().toString(), 125);
 		int loreHeight = 120;
 
 		int visibleStartLore = loreScrollOffset;
@@ -114,7 +121,7 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 
 	@Override
 	public boolean mouseClicked(double mouseX, double mouseY, int button) {
-		List<String> loreLines = wrapText(font, entry.getLore(), 125);
+		List<String> loreLines = wrapText(font, entry.getLore().toString(), 125);
 		int loreHeight = 120;
 
 		int thumbHeight = Math.max(10, (int) ((maxVisibleLoreLines / (float) loreLines.size()) * loreHeight));
@@ -135,7 +142,7 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 	@Override
 	public boolean mouseDragged(double mouseX, double mouseY, int button, double dx, double dy) {
 		if (draggingLoreScrollbar) {
-			List<String> loreLines = wrapText(font, entry.getLore(), 125);
+			List<String> loreLines = wrapText(font, entry.getLore().toString(), 125);
 			int loreHeight = 120;
 			int thumbHeight = Math.max(10, (int) ((maxVisibleLoreLines / (float) loreLines.size()) * loreHeight));
 			float deltaY = (int) mouseY - loreDragStartY;
@@ -158,7 +165,7 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 
 	@Override
 	public boolean mouseScrolled(double pMouseX, double pMouseY, double pScrollX, double pScrollY) {
-		List<String> loreLines = wrapText(font, entry.getLore(), 125);
+		List<String> loreLines = wrapText(font, entry.getLore().toString(), 125);
 		int maxScroll = Math.max(0, loreLines.size() - maxVisibleLoreLines);
 		loreScrollOffset -= (int) pScrollY;
 		loreScrollOffset = Mth.clamp(loreScrollOffset, 0, maxScroll);
@@ -193,41 +200,54 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 
 		return wrappedLines;
 	}
-	
-	public void renderItem(GuiGraphics guiGraphics, ItemStack stack) {
-	    float scale = 120.0f;
 
-	    // This is the position on screen where the *center* of the item will appear
-	    int x = (int) ((this.width / 2) - super.getBgWidth() * 0.21);
-	    int y = (int) ((this.height / 2) - super.getBgHeight() * 0.05);
+	public void renderBlock(GuiGraphics guiGraphics, ItemStack stack) {
+		float scale = 120.0f;
 
-	    // Required for correct rendering
-	    guiGraphics.flush();
+		// This is the position on screen where the *center* of the item will appear
+		int x = (int) ((this.width / 2) - super.getBgWidth() * 0.21);
+		int y = (int) ((this.height / 2) - super.getBgHeight() * 0.05);
 
-	    PoseStack poseStack = guiGraphics.pose();
-	    poseStack.pushPose();
+		// Required for correct rendering
+		guiGraphics.flush();
 
-	    // Move to the correct screen position and adjust for scale
-	    poseStack.translate(x, y, 200);
+		PoseStack poseStack = guiGraphics.pose();
+		poseStack.pushPose();
 
-	    // Apply scaling
-	    poseStack.scale(scale, -scale, scale);
+		// Move to the correct screen position and adjust for scale
+		poseStack.translate(x, y, 200);
 
-	    // Offset by -8 to center (since the item renders 16x16)
-	    //poseStack.translate(-8.0F, -8.0F, 0.0F);
+		// Apply scaling
+		poseStack.scale(scale, -scale, scale);
 
-	    Minecraft.getInstance().getItemRenderer().renderStatic(
-	        stack,
-	        ItemDisplayContext.GUI,
-	        15728880, // lighting
-	        OverlayTexture.NO_OVERLAY,
-	        poseStack,
-	        guiGraphics.bufferSource(),
-	        null,
-	        0
-	    );
+		/*
+		 * poseStack.mulPose(Axis.YP.rotationDegrees(180.0f));
+		 * 
+		 * poseStack.mulPose(Axis.XP.rotationDegrees(180.0f));
+		 */
 
-	    guiGraphics.flush();
-	    poseStack.popPose();
+		/*
+		 * poseStack.mulPose(Axis.ZP.rotationDegrees(180.0f));
+		 * 
+		 * poseStack.mulPose(Axis.YP.rotationDegrees(180.0f));
+		 */
+
+		// Offset by -8 to center (since the item renders 16x16)
+		// poseStack.translate(-8.0F, -8.0F, 0.0F);
+
+		Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.GUI, 15728880,
+				OverlayTexture.NO_OVERLAY, poseStack, guiGraphics.bufferSource(), null, 0);
+
+		guiGraphics.flush();
+		poseStack.popPose();
+	}
+
+	public void renderItem(GuiGraphics guiGraphics, ResourceLocation pTexture) {
+		float scale = 7;
+		int x = (int) ((this.width / 2) - super.getBgWidth() * 0.21 - (int) scale * 8);
+		int y = (int) ((this.height / 2) - super.getBgHeight() * 0.05 - (int) scale * 8);
+		guiGraphics.blit(pTexture, x, y, 0, 0, 0, (int) scale * 16, (int) scale * 16, (int) scale * 16,
+				(int) scale * 16);
+
 	}
 }

@@ -93,7 +93,7 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 		for (BaseTimewornJournalEntry entry : allEntries) {
 
 			TimewornJournalButton button = new TimewornJournalButton(listLeft, 0, listWidth, buttonHeight,
-					Component.literal(entry.getName()), b -> this.onButtonClicked(entry)
+					entry.getName(), b -> this.onButtonClicked(entry)
 
 			// {this.minecraft.setScreen(new BaseTimewornJournalEntryScreen(entry));}
 			);

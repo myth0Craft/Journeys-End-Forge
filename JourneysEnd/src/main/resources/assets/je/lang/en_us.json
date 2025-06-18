@@ -84,5 +84,6 @@
 	"screen.je.timeworn_journal_home.structures" : "Structures",
 	"screen.je.timeworn_journal_home.entities" : "Entities",
 	"screen.je.timeworn_journal_home.items" : "Items",
-	"screen.je.timeworn_journal_home.blocks" : "Blocks"
+	"screen.je.timeworn_journal_home.blocks" : "Blocks",
+	"screen.je.timeworn_journal.empty": "Empty"
 }
