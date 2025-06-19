@@ -20,11 +20,11 @@ public class ModCreativeModeTab {
 			.title(Component.translatable("creativetab.je.blocks"))
 			.displayItems((pParameters, pOutput) -> {
 				
+				pOutput.accept(ModBlocks.CORRUPTED_DIRT.get());
+				pOutput.accept(ModBlocks.VOID_STONE.get());
 				pOutput.accept(ModBlocks.VOIDMASS.get());
 				pOutput.accept(ModBlocks.VOIDBLOOM.get());
 				
-				pOutput.accept(ModBlocks.COMPRESSED_END_STONE.get());
-				pOutput.accept(ModBlocks.END_STONE_FURNACE.get());
 				pOutput.accept(ModBlocks.END_STONE_PILLAR.get());
 				pOutput.accept(ModBlocks.CHISELED_END_STONE.get());
 				pOutput.accept(ModBlocks.END_STONE_TILES.get());
@@ -34,14 +34,14 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModBlocks.POLISHED_END_STONE_WALL.get());
 				pOutput.accept(ModBlocks.FADED_END_STONE.get());
 				pOutput.accept(ModBlocks.LUSH_END_STONE.get());
-				pOutput.accept(ModBlocks.CORRUPTED_DIRT.get());
-				pOutput.accept(ModBlocks.LANTERN_OF_WARDING.get());
+				pOutput.accept(ModBlocks.COMPRESSED_END_STONE.get());
+				
+				pOutput.accept(ModBlocks.END_STONE_FURNACE.get());
 				pOutput.accept(ModBlocks.INTERDIMENSIONAL_ANCHOR.get());
-				pOutput.accept(ModBlocks.ENDER_VAULT.get());
 				pOutput.accept(ModBlocks.BEJEWELED_PEDESTAL.get());
-				
-				pOutput.accept(ModBlocks.VOID_STONE.get());
-				
+				pOutput.accept(ModBlocks.LANTERN_OF_WARDING.get());
+				pOutput.accept(ModBlocks.ENDER_VAULT.get());
+
 				pOutput.accept(ModBlocks.VOIDMETAL_BLOCK.get());
 
 			})

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.je.screen.timeworn_journal.entry.BaseTimewornJournalEntry;
+import net.je.screen.timeworn_journal.entry.EntityEntry;
 import net.je.screen.timeworn_journal.entry.ImageEntry;
 import net.je.screen.timeworn_journal.entry.ItemEntry;
 import net.je.screen.timeworn_journal.entry.TimewornJournalEntries;
@@ -27,7 +28,7 @@ public class TimewornJournalListScreens {
 		@Override
 		protected void onButtonClicked(BaseTimewornJournalEntry pEntry) {
 			this.minecraft.setScreen(
-					new TimewornJournalEntryScreens.TimewornJournalChapterEntryScreen(pEntry, this.scrollOffset));
+					new TimewornJournalEntryScreens.TimewornJournalEmptyEntryScreen(pEntry, this.scrollOffset, this));
 		}
 
 	}
@@ -35,19 +36,20 @@ public class TimewornJournalListScreens {
 	public static class TimewornJournalProgressionListScreen extends TimewornJournalScrollableScreen {
 
 		public TimewornJournalProgressionListScreen() {
-			super(TimewornJournalEntries.CHAPTER_ENTRIES);
+			super(TimewornJournalEntries.PROGRESSION_ENTRIES);
 			this.scrollOffset = 0;
 		}
 
 		public TimewornJournalProgressionListScreen(int pScrollOffset) {
-			super(TimewornJournalEntries.CHAPTER_ENTRIES);
+			super(TimewornJournalEntries.PROGRESSION_ENTRIES);
 			this.scrollOffset = pScrollOffset;
 		}
 
 		@Override
 		protected void onButtonClicked(BaseTimewornJournalEntry pEntry) {
+			ImageEntry item = (ImageEntry) pEntry;
 			this.minecraft.setScreen(
-					new TimewornJournalEntryScreens.TimewornJournalProgressionEntryScreen(pEntry, this.scrollOffset));
+					new TimewornJournalEntryScreens.TimewornJournalImageEntryScreen(item, this.scrollOffset, false, this));
 		}
 
 	}
@@ -55,19 +57,20 @@ public class TimewornJournalListScreens {
 	public static class TimewornJournalBiomesListScreen extends TimewornJournalScrollableScreen {
 
 		public TimewornJournalBiomesListScreen() {
-			super(TimewornJournalEntries.CHAPTER_ENTRIES);
+			super(TimewornJournalEntries.BIOME_ENTRIES);
 			this.scrollOffset = 0;
 		}
 
 		public TimewornJournalBiomesListScreen(int pScrollOffset) {
-			super(TimewornJournalEntries.CHAPTER_ENTRIES);
+			super(TimewornJournalEntries.BIOME_ENTRIES);
 			this.scrollOffset = pScrollOffset;
 		}
 
 		@Override
 		protected void onButtonClicked(BaseTimewornJournalEntry pEntry) {
+			ImageEntry item = (ImageEntry) pEntry;
 			this.minecraft.setScreen(
-					new TimewornJournalEntryScreens.TimewornJournalBiomesEntryScreen(pEntry, this.scrollOffset));
+					new TimewornJournalEntryScreens.TimewornJournalImageEntryScreen(item, this.scrollOffset, true, this));
 		}
 
 	}
@@ -75,19 +78,20 @@ public class TimewornJournalListScreens {
 	public static class TimewornJournalStructuresListScreen extends TimewornJournalScrollableScreen {
 
 		public TimewornJournalStructuresListScreen() {
-			super(TimewornJournalEntries.CHAPTER_ENTRIES);
+			super(TimewornJournalEntries.STRUCTURE_ENTRIES);
 			this.scrollOffset = 0;
 		}
 
 		public TimewornJournalStructuresListScreen(int pScrollOffset) {
-			super(TimewornJournalEntries.CHAPTER_ENTRIES);
+			super(TimewornJournalEntries.STRUCTURE_ENTRIES);
 			this.scrollOffset = pScrollOffset;
 		}
 
 		@Override
 		protected void onButtonClicked(BaseTimewornJournalEntry pEntry) {
+			ImageEntry item = (ImageEntry) pEntry;
 			this.minecraft.setScreen(
-					new TimewornJournalEntryScreens.TimewornJournalStructuresEntryScreen(pEntry, this.scrollOffset));
+					new TimewornJournalEntryScreens.TimewornJournalImageEntryScreen(item, this.scrollOffset, true, this));
 		}
 
 	}
@@ -95,19 +99,20 @@ public class TimewornJournalListScreens {
 	public static class TimewornJournalEntitiesListScreen extends TimewornJournalScrollableScreen {
 
 		public TimewornJournalEntitiesListScreen() {
-			super(TimewornJournalEntries.CHAPTER_ENTRIES);
+			super(TimewornJournalEntries.ENTITY_ENTRIES);
 			this.scrollOffset = 0;
 		}
 
 		public TimewornJournalEntitiesListScreen(int pScrollOffset) {
-			super(TimewornJournalEntries.CHAPTER_ENTRIES);
+			super(TimewornJournalEntries.ENTITY_ENTRIES);
 			this.scrollOffset = pScrollOffset;
 		}
 
 		@Override
 		protected void onButtonClicked(BaseTimewornJournalEntry pEntry) {
+			EntityEntry entity = (EntityEntry) pEntry;
 			this.minecraft.setScreen(
-					new TimewornJournalEntryScreens.TimewornJournalEntitiesEntryScreen(pEntry, this.scrollOffset));
+					new TimewornJournalEntryScreens.TimewornJournalEntityEntryScreen(entity, this.scrollOffset, this));
 		}
 
 	}
@@ -128,7 +133,7 @@ public class TimewornJournalListScreens {
 		protected void onButtonClicked(BaseTimewornJournalEntry pEntry) {
 			ImageEntry item = (ImageEntry) pEntry;
 			this.minecraft.setScreen(
-					new TimewornJournalEntryScreens.TimewornJournalItemsEntryScreen(item, this.scrollOffset));
+					new TimewornJournalEntryScreens.TimewornJournalImageEntryScreen(item, this.scrollOffset, false, this));
 		}
 
 	}
@@ -155,7 +160,7 @@ public class TimewornJournalListScreens {
 				
 				if (item.getItem() != null) {
 					this.minecraft.setScreen(
-							new TimewornJournalEntryScreens.TimewornJournalBlocksEntryScreen(item, this.scrollOffset));
+							new TimewornJournalEntryScreens.TimewornJournalBlockEntryScreen(item, this.scrollOffset, this));
 				}
 				
 				
@@ -164,7 +169,7 @@ public class TimewornJournalListScreens {
 				
 				if (item.getImage() != null) {
 					this.minecraft.setScreen(
-							new TimewornJournalEntryScreens.TimewornJournalBlocksEntryScreen(item, this.scrollOffset));
+							new TimewornJournalEntryScreens.TimewornJournalImageEntryScreen(item, this.scrollOffset, false, this));
 				}
 			}
 			

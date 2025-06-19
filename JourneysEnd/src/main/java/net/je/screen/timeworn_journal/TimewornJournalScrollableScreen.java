@@ -29,10 +29,11 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 	private final List<Button> allButtons = new ArrayList<>();
 	private List<Button> filteredButtons = new ArrayList<>();
 
-	private List<BaseTimewornJournalEntry> allEntries = new ArrayList<>();
+	private List<BaseTimewornJournalEntry> allEntries;
 	// private BaseTimewornJournalEntry selectedEntry = null;
 
 	private final Map<Button, BaseTimewornJournalEntry> buttonEntryMap = new HashMap<>();
+	private final Map<Button, String> trimmedButtonTooltips = new HashMap<>();
 
 	private EditBox searchField;
 	protected int scrollOffset = 0;
@@ -59,8 +60,8 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 
 	public TimewornJournalScrollableScreen(List<BaseTimewornJournalEntry> pList) {
 		super();
-		allEntries = pList;
-		// this.buttonCount = allEntries.size();
+		allEntries = new ArrayList<>(pList);
+		allEntries.sort((a, b) -> a.getName().getString().compareToIgnoreCase(b.getName().getString()));
 
 	}
 
@@ -78,9 +79,9 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 		listHeight = buttonHeight * maxVisibleButtons;
 
 		this.searchField = new TimewornJournalEditBox(font, listLeft - 5, searchBoxY, searchWidth, searchHeight,
-				Component.literal("Search"));
+				Component.translatable("screen.je.search"));
 		this.searchField.setResponder(s -> updateFilteredButtons());
-		this.searchField.setHint(Component.literal("Search").withStyle(ChatFormatting.ITALIC));
+		this.searchField.setHint(Component.translatable("screen.je.search").withStyle(ChatFormatting.ITALIC));
 		this.addRenderableWidget(searchField);
 
 		/*
@@ -91,16 +92,24 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 		 */
 
 		for (BaseTimewornJournalEntry entry : allEntries) {
+			String fullText = entry.getName().getString();
+			int maxTextWidth = listWidth - 10;
+
+			String trimmedText = font.plainSubstrByWidth(fullText, maxTextWidth);
+			if (!trimmedText.equals(fullText)) {
+				trimmedText = font.plainSubstrByWidth(fullText, maxTextWidth - font.width("...")) + "...";
+			}
 
 			TimewornJournalButton button = new TimewornJournalButton(listLeft, 0, listWidth, buttonHeight,
-					entry.getName(), b -> this.onButtonClicked(entry)
-
-			// {this.minecraft.setScreen(new BaseTimewornJournalEntryScreen(entry));}
-			);
+				Component.literal(trimmedText), b -> this.onButtonClicked(entry));
 
 			allButtons.add(button);
 			buttonEntryMap.put(button, entry);
 
+			// Store the full name for tooltip if it was trimmed
+			if (!trimmedText.equals(fullText)) {
+				trimmedButtonTooltips.put(button, fullText);
+			}
 		}
 
 		updateFilteredButtons();
@@ -112,21 +121,44 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 	protected void onButtonClicked(BaseTimewornJournalEntry pEntry) {
 		// this.minecraft.setScreen(new BaseTimewornJournalEntryScreen(pEntry));
 	}
+	
+	public void setScrollOffset(int pScrollOffset) {
+		this.scrollOffset = pScrollOffset;
+	}
 
 	private void updateFilteredButtons() {
+		allEntries.sort((a, b) -> a.getName().getString().compareToIgnoreCase(b.getName().getString()));
 		String search = searchField.getValue().toLowerCase();
+		filteredButtons.clear();
+		trimmedButtonTooltips.clear();
 
-		filteredButtons = allButtons.stream().filter(btn -> btn.getMessage().getString().toLowerCase().contains(search))
-				.collect(Collectors.toList());
+		for (BaseTimewornJournalEntry entry : allEntries) {
+			String fullName = entry.getName().getString();
+			if (!fullName.toLowerCase().contains(search)) continue;
 
-		// scrollOffset = 0;
+			int maxTextWidth = listWidth - 10;
+			String trimmedText = font.plainSubstrByWidth(fullName, maxTextWidth);
+			if (!trimmedText.equals(fullName)) {
+				trimmedText = font.plainSubstrByWidth(fullName, maxTextWidth - font.width("...")) + "...";
+			}
 
-		draggingScrollbar = false;
+			TimewornJournalButton button = new TimewornJournalButton(listLeft, 0, listWidth, buttonHeight,
+					Component.literal(trimmedText), b -> this.onButtonClicked(entry));
 
-		if (search != oldSearchValue) {
+			filteredButtons.add(button);
+			buttonEntryMap.put(button, entry);
+
+			if (!trimmedText.equals(fullName)) {
+				trimmedButtonTooltips.put(button, fullName);
+			}
+		}
+
+		if (!search.equals(oldSearchValue)) {
 			scrollOffset = 0;
 			oldSearchValue = search;
 		}
+
+		draggingScrollbar = false;
 	}
 
 	@Override
@@ -169,6 +201,13 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 			btn.setX(listLeft);
 			btn.setY(listTop + (i - visibleStart) * (buttonHeight + 1));
 			btn.render(pGuiGraphics, mouseX, mouseY, partialTick);
+			
+			// Render tooltip if mouse is over a trimmed button
+			if (btn.isMouseOver(mouseX, mouseY) && trimmedButtonTooltips.containsKey(btn)) {
+				pGuiGraphics.renderTooltip(font,
+					Component.literal(trimmedButtonTooltips.get(btn)),
+					mouseX, mouseY);
+			}
 		}
 
 		// Scrollbar

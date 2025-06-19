@@ -10,6 +10,7 @@ import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 
+import net.je.JourneysEnd;
 import net.je.screen.timeworn_journal.BaseTimewornJournalScreen;
 import net.je.screen.timeworn_journal.entry.BaseTimewornJournalEntry;
 import net.minecraft.client.Minecraft;
@@ -17,11 +18,15 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.LightTexture;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
@@ -64,21 +69,21 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 		loreX = super.getBgStartX() + (int) (Math.round(super.getBgWidth() - 50) * 0.3) + 90;
 		loreY = super.getBgStartY() + 45;
 		loreScrollbarX = loreX + 130;
-
 		this.renderBackButton(backScreen);
+		
 	}
 
 	@Override
 	public boolean keyPressed(int pKeyCode, int pScanCode, int pModifiers) {
 
 		if (pKeyCode == GLFW.GLFW_KEY_UP || pKeyCode == GLFW.GLFW_KEY_DOWN) {
-			List<String> loreLines = wrapText(font, entry.getLore().toString(), 125);
+			List<String> loreLines = wrapText(font, entry.getLore().getString(), 125);
 			loreScrollOffset = Mth.clamp(loreScrollOffset + (pKeyCode == GLFW.GLFW_KEY_UP ? -1 : 1), 0,
 					Math.max(0, loreLines.size() - maxVisibleLoreLines));
 			return true;
 		} else if (pKeyCode == GLFW.GLFW_KEY_PAGE_UP || pKeyCode == GLFW.GLFW_KEY_PAGE_DOWN) {
 
-			List<String> loreLines = wrapText(font, entry.getLore().toString(), 125);
+			List<String> loreLines = wrapText(font, entry.getLore().getString(), 125);
 			loreScrollOffset = Mth.clamp(
 					loreScrollOffset + (pKeyCode == GLFW.GLFW_KEY_PAGE_UP ? -1 : 1) * maxVisibleLoreLines, 0,
 					Math.max(0, loreLines.size() - maxVisibleLoreLines));
@@ -91,7 +96,7 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 	@Override
 	public void render(GuiGraphics pGuiGraphics, int mouseX, int mouseY, float partialTick) {
 		super.render(pGuiGraphics, mouseX, mouseY, partialTick);
-		List<String> loreLines = wrapText(font, entry.getLore().toString(), 125);
+		List<String> loreLines = wrapText(font, entry.getLore().getString(), 125);
 		int loreHeight = 120;
 
 		int visibleStartLore = loreScrollOffset;
@@ -121,7 +126,7 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 
 	@Override
 	public boolean mouseClicked(double mouseX, double mouseY, int button) {
-		List<String> loreLines = wrapText(font, entry.getLore().toString(), 125);
+		List<String> loreLines = wrapText(font, entry.getLore().getString(), 125);
 		int loreHeight = 120;
 
 		int thumbHeight = Math.max(10, (int) ((maxVisibleLoreLines / (float) loreLines.size()) * loreHeight));
@@ -142,7 +147,7 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 	@Override
 	public boolean mouseDragged(double mouseX, double mouseY, int button, double dx, double dy) {
 		if (draggingLoreScrollbar) {
-			List<String> loreLines = wrapText(font, entry.getLore().toString(), 125);
+			List<String> loreLines = wrapText(font, entry.getLore().getString(), 125);
 			int loreHeight = 120;
 			int thumbHeight = Math.max(10, (int) ((maxVisibleLoreLines / (float) loreLines.size()) * loreHeight));
 			float deltaY = (int) mouseY - loreDragStartY;
@@ -165,7 +170,7 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 
 	@Override
 	public boolean mouseScrolled(double pMouseX, double pMouseY, double pScrollX, double pScrollY) {
-		List<String> loreLines = wrapText(font, entry.getLore().toString(), 125);
+		List<String> loreLines = wrapText(font, entry.getLore().getString(), 125);
 		int maxScroll = Math.max(0, loreLines.size() - maxVisibleLoreLines);
 		loreScrollOffset -= (int) pScrollY;
 		loreScrollOffset = Mth.clamp(loreScrollOffset, 0, maxScroll);
@@ -249,5 +254,13 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 		guiGraphics.blit(pTexture, x, y, 0, 0, 0, (int) scale * 16, (int) scale * 16, (int) scale * 16,
 				(int) scale * 16);
 
+	}
+	
+	public void renderImageFrame(GuiGraphics guiGraphics) {
+		float scale = 9;
+		int x = (int) ((this.width / 2) - super.getBgWidth() * 0.21 - (int) scale * 8);
+		int y = (int) ((this.height / 2) - super.getBgHeight() * 0.05 - (int) scale * 8);
+		guiGraphics.blit(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "textures/gui/timeworn_journal_button_frame.png"), x, y, 0, 0, 0, (int) scale * 16, (int) scale * 16, (int) scale * 16,
+				(int) scale * 16);
 	}
 }
