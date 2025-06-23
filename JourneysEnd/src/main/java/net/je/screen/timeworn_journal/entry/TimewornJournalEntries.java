@@ -7,10 +7,14 @@ import net.je.JourneysEnd;
 import net.je.block.ModBlocks;
 import net.je.entity.ModEntities;
 import net.je.entity.custom.Endersent;
+import net.je.entity.custom.EndersentWithEye;
 import net.je.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.monster.Endermite;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -69,7 +73,9 @@ public class TimewornJournalEntries {
 			);
 	
 	public static final List<BaseTimewornJournalEntry> ENTITY_ENTRIES = List.of(
-			new EntityEntry(name("endersent"), lore("endersent"), new Endersent(ModEntities.ENDERSENT.get(), Minecraft.getInstance().level))
+			new EntityEntry(name("endersent"), lore("endersent"), new EndersentWithEye(ModEntities.ENDERSENT_WITH_EYE.get(), Minecraft.getInstance().level), 25f, 0.3f),
+			new EntityEntry(name("enderman"), lore("enderman"), new EnderMan(EntityType.ENDERMAN, Minecraft.getInstance().level), 50f, 0.3f),
+			new EntityEntry(name("endermite"), lore("endermite"), new Endermite(EntityType.ENDERMITE, Minecraft.getInstance().level), 120f, 0.1f)
 			);
 	
 	

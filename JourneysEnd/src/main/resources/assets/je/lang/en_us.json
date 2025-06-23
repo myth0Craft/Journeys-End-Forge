@@ -77,6 +77,10 @@
 	"screen.je.timeworn_journal.empty": "Empty",
 	"screen.je.search": "Search...",
 	//
+	//
+	// ******Timeworn Journal entry names and lore******
+	//
+	//
 	"screen.je.title.chapter_1": "Chapter 1",
 	"screen.je.lore.chapter_1": "lore",
 	"screen.je.title.chapter_2": "Chapter 2",
@@ -120,7 +124,7 @@
 	//
 	"screen.je.title.timeworn_journal": "Timeworn Journal",
 	"screen.je.lore.timeworn_journal": "book",
-	"screen.je.title.voidblight_bucket": "VoidBlight Bucket",
+	"screen.je.title.voidblight_bucket": "Voidblight Bucket",
 	"screen.je.lore.voidblight_bucket": "dangerous acid",
 	"screen.je.title.eye_fragment": "Eye Fragment",
 	"screen.je.lore.eye_fragment": "really good",
@@ -143,5 +147,12 @@
 	"screen.je.title.main_island": "The Main Island",
 	"screen.je.lore.main_island": "big dragon",
 	"screen.je.title.outer_islands": "End Wastes",
-	"screen.je.lore.outer_islands": "The vanilla End. An endless desolate wasteland. End cities can generate occasionally."
+	"screen.je.lore.outer_islands": "The vanilla End. An endless desolate wasteland. End cities can generate occasionally.",
+	//
+	"screen.je.title.enderman": "Enderman",
+	"screen.je.lore.enderman": "Scary teleport",
+	"screen.je.title.endersent": "Endersent",
+	"screen.je.lore.endersent": "Dangerous eye beast",
+	"screen.je.title.endermite": "Endermite",
+	"screen.je.lore.endermite": "The Jedi are vermin. I kill vermin on my farm."
 }

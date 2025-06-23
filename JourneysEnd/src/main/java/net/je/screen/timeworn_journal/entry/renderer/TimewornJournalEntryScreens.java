@@ -133,6 +133,8 @@ public class TimewornJournalEntryScreens {
 		private EntityEntry entry;
 
 		private TimewornJournalScrollableScreen backScreen;
+		
+		private float scale;
 
 		public TimewornJournalEntityEntryScreen(EntityEntry pEntry, TimewornJournalScrollableScreen listScreen) {
 			super(pEntry);
@@ -141,6 +143,8 @@ public class TimewornJournalEntryScreens {
 			this.backScreen = listScreen;
 			this.backScreen.setScrollOffset(scrollOffset);
 			entity = (LivingEntity) entry.getEntity();
+			this.scale = entry.getScale();
+			
 		}
 
 		public TimewornJournalEntityEntryScreen(EntityEntry pEntry, int pScrollOffset,
@@ -151,6 +155,7 @@ public class TimewornJournalEntryScreens {
 			this.backScreen = listScreen;
 			this.backScreen.setScrollOffset(scrollOffset);
 			entity = (LivingEntity) entry.getEntity();
+			this.scale = entry.getScale();
 
 		}
 
@@ -162,57 +167,42 @@ public class TimewornJournalEntryScreens {
 					}));
 		}
 
-		public static void renderEntityInGui(PoseStack poseStack, int x, int y, float scale, float mouseX, float mouseY,
-				LivingEntity entity) {
-			Minecraft mc = Minecraft.getInstance();
-			EntityRenderDispatcher dispatcher = mc.getEntityRenderDispatcher();
-			MultiBufferSource.BufferSource buffer = mc.renderBuffers().bufferSource();
-
-			poseStack.pushPose();
-			poseStack.translate(x, y, 50); // Position entity on screen
-			poseStack.scale(-scale, scale, scale); // Flip for GUI
-
-			float yaw = 210f;
-			float pitch = 25f;
-
-			// Save original rotations
-			float bodyRot = entity.yBodyRot;
-			float yRot = entity.getYRot();
-			float xRot = entity.getXRot();
-
-			entity.yBodyRot = yaw;
-			entity.setYRot(yaw);
-			entity.setXRot(-pitch); // Negative to tilt downward
-
-			dispatcher.setRenderShadow(false);
-			dispatcher.render(entity, 0, 0, 0, 0, 1.0f, poseStack, buffer, 15728880);
-			buffer.endBatch();
-			dispatcher.setRenderShadow(true);
-
-			// Restore original rotations
-			entity.yBodyRot = bodyRot;
-			entity.setYRot(yRot);
-			entity.setXRot(xRot);
-
-			poseStack.popPose();
-		}
-
 		@Override
 		public void init() {
+
 			super.init();
-			this.entity.yBodyRot = 210.0F;
-			this.entity.setXRot(25.0F);
-			this.entity.yHeadRot = this.entity.getYRot();
-			this.entity.yHeadRotO = this.entity.getYRot();
+			
+			float bodyYaw = 210F;
+			//float pitch = -25F;
+
+			entity.yBodyRot = bodyYaw;
+			entity.setYRot(bodyYaw);
+			entity.setYHeadRot(bodyYaw);
+
+			/*
+			 * entity.yHeadRot = bodyYaw; entity.setYHeadRot(bodyYaw); entity.yHeadRotO =
+			 * bodyYaw;
+			 */
+
+			
+			
+			
+			
+			//entity.setXRot(pitch);
+
 		}
 
 		@Override
 		public void render(GuiGraphics pGuiGraphics, int mouseX, int mouseY, float partialTick) {
 			super.render(pGuiGraphics, mouseX, mouseY, partialTick);
 
-			InventoryScreen.renderEntityInInventory(pGuiGraphics, this.width / 2, this.height / 2, 25.0F,
-					new Vector3f(), new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI), null,
-					this.entity);
+			
+			int x = (int) ((this.width / 2) - super.getBgWidth() * 0.21);
+			int y = (int)(super.getBgStartY() + super.getBgHeight() / 2 + entry.getYOffset() * super.getBgHeight());
+			InventoryScreen.renderEntityInInventory(pGuiGraphics, x, y, this.scale,
+					new Vector3f(), new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI), null, entity);
+			// TimewornJournalEntityEntryScreen.renderStaticEntity(pGuiGraphics.pose(),
+			// this.width / 2 - 50, this.height / 2 + 50, 20, entity, 1, 1);
 		}
 
 	}
