@@ -92,40 +92,56 @@
 	"screen.je.lore.progression_2": "need good metal strong weapon lots durability",
 	//
 	"screen.je.title.corrupted_dirt": "Corrupted Dirt",
-	"screen.je.lore.corrupted_dirt": "Dirt, tainted by the Void.",
+	"screen.je.lore.corrupted_dirt": "Dirt, tainted by the Void. This block can only be found by placing an Interdimensional Anchor in the Overworld. It currently does not have a use.",
 	"screen.je.title.void_stone": "Void Stone",
-	"screen.je.lore.void_stone": "bad stone",
+	"screen.je.lore.void_stone": "A darker, more tainted version of End Stone. It can only be found by placing an 
+	Interdimensional Anchor in the Overworld. It currently does not have a use.",
 	"screen.je.title.voidmass": "Voidmass",
-	"screen.je.lore.voidmass": "gross",
+	"screen.je.lore.voidmass": "Voidblight, hardened into a solid block. This block contains the very essence of the End's taint. 
+	It can be found anywhere near a source of Voidblight. It currently does not have a use.",
 	"screen.je.title.voidbloom": "Voidbloom",
-	"screen.je.lore.voidbloom": "Plant",
+	"screen.je.lore.voidbloom": "A living tendril of the Void. It can be found anywhere near a source of Voidblight. It currently does not have a use.",
 	"screen.je.title.voidblight": "Voidblight",
-	"screen.je.lore.voidblight": "Flow",
+	"screen.je.lore.voidblight": "The Void, distilled into liquid form. It will harm any non-Void creature who comes into contact with it, giving them the Void Strke effect.
+	It can be found near Bejeweled Pedestals. Addtionally, 
+	Interdimensional Anchors, when placed in the Overworld, will slowly corrupt the nearby landscape, eventually turning it into pure Voidblight. 
+	It can be collected using a bucket and is the most viable fuel source for an End Stone Furnace.",
 	"screen.je.title.end_stone": "End Stone",
-	"screen.je.lore.end_stone": "strong rock",
+	"screen.je.lore.end_stone": "This rock is the foundation of the End's floating islands. Though it may have once been similar to regular stone, the Void
+	 has twisted it into something else entirely. It can be found almost anywhere in the End. 9 blocks of End Stone can be used to craft Compressed End Stone,
+	  which is a crucial ingredient in the End Stone Furnace. Additionally, End Stone can be crafted into pillars, tiles, bricks, as well as chiseled and polished variants.
+	  Stone can also be substituted for End Stone in most recipes.",
 	"screen.je.title.faded_end_stone": "Faded End Stone",
-	"screen.je.lore.faded_end_stone": "old rock",
+	"screen.je.lore.faded_end_stone": "End Stone that has been exposed to the Void for millenia. This block can only be found by placing an Interdimensional Anchor in the Overworld.
+	 It currently does not have a use.",
 	"screen.je.title.lush_end_stone": "Lush End Stone",
-	"screen.je.lore.lush_end_stone": "plant rock",
+	"screen.je.lore.lush_end_stone": "How vegetaion has managed to grow on solid rock, with no sunlight, is a mystery. This block currently is unobtainable in Survival Mode. 
+	It currently does not have a use.",
 	"screen.je.title.compressed_end_stone": "Compressed End Stone",
-	"screen.je.lore.compressed_end_stone": "heavy rock",
+	"screen.je.lore.compressed_end_stone": "An extremely dense variant of End Stone. It cannot generate naturally but is obtained by placing 9 End Stone in a crafting grid. 8 of these are required
+	 to craft an End Stone Furnace. It has no further use besides this.",
 	"screen.je.title.end_stone_furnace": "End Stone Furnace",
-	"screen.je.lore.end_stone_furnace": "smelt",
+	"screen.je.lore.end_stone_furnace": "Made from a massive amount of End Stone, only an End Stone Furnace can safely contain Voidblight and use it as a fuel.
+	 It is crafted out of 8 Compressed End Stone and a Blast Furnace. A crucial block for progression, 
+	 It is used to refine most raw ores from the End. It accepts Voidblight, Voidmass, and Voidblooms as fuel. Out of these, Voidblight is by far the most efficient.",
 	"screen.je.title.interdimensional_anchor": "Interdimensional Anchor",
 	"screen.je.lore.interdimensional_anchor": "good",
 	"screen.je.title.bejeweled_pedestal": "Bejeweled Pedestal",
-	"screen.je.lore.bejeweled_pedestal": "rare",
+	"screen.je.lore.bejeweled_pedestal": "Long ago the Eyes of Ender were secured inside these pedestals. Dark magic was used to bind the eyes to the pedestals so that they could never be removed again.
+	 However, the spell that was casted upon the pedestals is fading. In theory, you may be able to remove the eyes... though you may cast the Void's attention on you.",
 	"screen.je.title.lantern_of_warding": "Lantern of Warding",
-	"screen.je.lore.lantern_of_warding": "uncraftable",
+	"screen.je.lore.lantern_of_warding": "Contains a light that repels the darkness of the Void. It is currently unobtainable in Survival Mode. It currently does not have a use.",
 	"screen.je.title.ender_vault": "Ender Vault",
-	"screen.je.lore.ender_vault": "uncraftable",
+	"screen.je.lore.ender_vault": "Contains a mysterious energy allowing it to summon creatures from the Void. It is currently unobtainable in Survival Mode. It currently does not have a use
+	 or any functionality.",
 	"screen.je.title.voidmetal_block": "Voidmetal Block",
-	"screen.je.lore.voidmetal_block": "lots of metal",
+	"screen.je.lore.voidmetal_block": "Crafted out of 9 Voidmetal Ingots. It can be crafted back into 9 Voidmetal Ingots.",
 	//
 	"screen.je.title.timeworn_journal": "Timeworn Journal",
-	"screen.je.lore.timeworn_journal": "book",
+	"screen.je.lore.timeworn_journal": "My old journal. This is where I recorded all of my knowledge from my many trips to the End. Only one who will continue my quest may read the words within.
+	 Many dark secrets can be found within these pages that some should never learn.",
 	"screen.je.title.voidblight_bucket": "Voidblight Bucket",
-	"screen.je.lore.voidblight_bucket": "dangerous acid",
+	"screen.je.lore.voidblight_bucket": "Can be used as fuel in an End Stone Furance. See the Voidblight page under the Blocks list for more info.",
 	"screen.je.title.eye_fragment": "Eye Fragment",
 	"screen.je.lore.eye_fragment": "really good",
 	"screen.je.title.small_void_dust": "Small Void Dust",
