@@ -127,19 +127,22 @@
 	"screen.je.title.interdimensional_anchor": "Interdimensional Anchor",
 	"screen.je.lore.interdimensional_anchor": "good",
 	"screen.je.title.bejeweled_pedestal": "Bejeweled Pedestal",
-	"screen.je.lore.bejeweled_pedestal": "Long ago the Eyes of Ender were secured inside these pedestals. Dark magic was used to bind the eyes to the pedestals so that they could never be removed again.
-	 However, the spell that was casted upon the pedestals is fading. In theory, you may be able to remove the eyes... though you may cast the Void's attention on you.",
+	"screen.je.lore.bejeweled_pedestal": "Long ago the Eyes of Ender were secured inside these pedestals. Dark magic was used to bind the eyes to the pedestals so that they could never be removed again,
+	leaving the End Portal sealed for eternity.
+	 However, the spell that was casted upon the pedestals is weakening as the Void grows stronger.
+	 Removal of the eyes may once again be possible... though it may set things in motion that cannot be undone. This block cannot be obtained in Survival Mode.",
 	"screen.je.title.lantern_of_warding": "Lantern of Warding",
 	"screen.je.lore.lantern_of_warding": "Contains a light that repels the darkness of the Void. It is currently unobtainable in Survival Mode. It currently does not have a use.",
 	"screen.je.title.ender_vault": "Ender Vault",
-	"screen.je.lore.ender_vault": "Contains a mysterious energy allowing it to summon creatures from the Void. It is currently unobtainable in Survival Mode. It currently does not have a use
+	"screen.je.lore.ender_vault": "Contains a mysterious energy allowing it to summon dark creatures from the Void. It is currently unobtainable in Survival Mode. It currently does not have a use
 	 or any functionality.",
 	"screen.je.title.voidmetal_block": "Voidmetal Block",
 	"screen.je.lore.voidmetal_block": "Crafted out of 9 Voidmetal Ingots. It can be crafted back into 9 Voidmetal Ingots.",
 	//
 	"screen.je.title.timeworn_journal": "Timeworn Journal",
 	"screen.je.lore.timeworn_journal": "My old journal. This is where I recorded all of my knowledge from my many trips to the End. Only one who will continue my quest may read the words within.
-	 Many dark secrets can be found within these pages that some should never learn.",
+	 Many dark secrets can be found within these pages that some should never learn. As of right now, you will only be able to view certain pages of this book. However, as you progress on your
+	  quest, more knowledge may be unlocked.",
 	"screen.je.title.voidblight_bucket": "Voidblight Bucket",
 	"screen.je.lore.voidblight_bucket": "Can be used as fuel in an End Stone Furance. See the Voidblight page under the Blocks list for more info.",
 	"screen.je.title.eye_fragment": "Eye Fragment",
