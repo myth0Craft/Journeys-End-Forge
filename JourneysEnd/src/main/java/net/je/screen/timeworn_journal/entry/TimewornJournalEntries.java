@@ -24,7 +24,8 @@ public class TimewornJournalEntries {
 
 	public static final List<BaseTimewornJournalEntry> CHAPTER_ENTRIES = List.of(
 			new BaseTimewornJournalEntry(name("chapter_1"), lore("chapter_1")),
-			new BaseTimewornJournalEntry(name("chapter_2"), lore("chapter_2"))
+			new BaseTimewornJournalEntry(name("chapter_2"), lore("chapter_2")),
+			new BaseTimewornJournalEntry(name("about"), lore("about"))
 			);
 	
 	public static final List<BaseTimewornJournalEntry> PROGRESSION_ENTRIES = List.of(
@@ -54,6 +55,8 @@ public class TimewornJournalEntries {
 	public static final List<BaseTimewornJournalEntry> ITEM_ENTRIES = List.of(
 			new ImageEntry(name("timeworn_journal"), lore("timeworn_journal"), ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "textures/item/timeworn_journal.png")),
 			new ImageEntry(name("voidblight_bucket"), lore("voidblight_bucket"), ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "textures/item/voidblight_bucket.png")),
+			new ImageEntry(name("ender_pearl"), lore("ender_pearl"), ResourceLocation.withDefaultNamespace("textures/item/ender_pearl.png")),
+			new ImageEntry(name("ender_eye"), lore("ender_eye"), ResourceLocation.withDefaultNamespace("textures/item/ender_eye.png")),
 			new ImageEntry(name("eye_fragment"), lore("eye_fragment"), ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "textures/item/eye_fragment.png")),
 			new ImageEntry(name("small_void_dust"), lore("small_void_dust"), ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "textures/item/small_void_dust.png")),
 			new ImageEntry(name("void_dust"), lore("void_dust"), ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "textures/item/void_dust.png")),
@@ -64,7 +67,9 @@ public class TimewornJournalEntries {
 			);
 	
 	public static final List<BaseTimewornJournalEntry> STRUCTURE_ENTRIES = List.of(
-			new ImageEntry(name("endersent_well"), lore("endersent_well"), ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "textures/gui/journal_icons/endersent_well.png"))
+			new ImageEntry(name("endersent_well"), lore("endersent_well"), ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "textures/gui/journal_icons/endersent_well.png")),
+			new ImageEntry(name("end_city"), lore("end_city"), ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "textures/gui/journal_icons/end_city.png")),
+			new ImageEntry(name("stronghold"), lore("stronghold"), ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "textures/gui/journal_icons/stronghold.png"))
 			);
 	
 	public static final List<BaseTimewornJournalEntry> BIOME_ENTRIES = List.of(
@@ -75,7 +80,8 @@ public class TimewornJournalEntries {
 	public static final List<BaseTimewornJournalEntry> ENTITY_ENTRIES = List.of(
 			new EntityEntry(name("endersent"), lore("endersent"), new EndersentWithEye(ModEntities.ENDERSENT_WITH_EYE.get(), Minecraft.getInstance().level), 25f, 0.3f),
 			new EntityEntry(name("enderman"), lore("enderman"), new EnderMan(EntityType.ENDERMAN, Minecraft.getInstance().level), 50f, 0.3f),
-			new EntityEntry(name("endermite"), lore("endermite"), new Endermite(EntityType.ENDERMITE, Minecraft.getInstance().level), 120f, 0.1f)
+			new EntityEntry(name("endermite"), lore("endermite"), new Endermite(EntityType.ENDERMITE, Minecraft.getInstance().level), 120f, 0.1f),
+			new ImageEntry(name("ender_dragon"), lore("ender_dragon"), ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "textures/gui/journal_icons/ender_dragon.png"))
 			);
 	
 	

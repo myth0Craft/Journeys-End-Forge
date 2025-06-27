@@ -65,9 +65,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 				.unlockedBy("has_voidmetal_ingot_for_nuggets", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput);
 		
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TIMEWORN_JOURNAL.get(), 1)
-				.requires(ModItems.VOID_DUST.get())
+				.requires(Items.ENDER_PEARL)
 				.requires(Items.BOOK)
-				.unlockedBy("has_voidmetal_ingot_for_nuggets", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput);
+				.unlockedBy("has_cobblestone", has(Items.COBBLESTONE)).save(recipeOutput);
 		
 		
 		
