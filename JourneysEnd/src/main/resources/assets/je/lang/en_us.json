@@ -20,7 +20,8 @@
 	"item.je.voidmetal_shovel": "Voidmetal Shovel",
 	"item.je.voidmetal_hoe": "Voidmetal Hoe",
 	"item.je.eye_fragment": "Eye Fragment",
-	"item.je.timeworn_journal": "Timeworn Journal",
+	"item.je.timeworn_journal_item_t0": "Timeworn Journal",
+	"item.je.timeworn_journal_item_t1": "Timeworn Journal",
 	"item.je.voidmetal_helmet": "Voidmetal Helmet",
 	"item.je.voidmetal_chestplate": "Voidmetal Chestplate",
 	"item.je.voidmetal_leggings": "Voidmetal Leggings",
@@ -81,21 +82,25 @@
 	// ******Timeworn Journal entry names and lore******
 	//
 	//
-	"screen.je.title.about": "Journey's End",
-	"screen.je.lore.about": "Welcome to the Journey's End mod for Minecraft Forge! This mod aims to improve Minecraft's End dimension by adding lots of new content, including new bosses, ores, biomes, 
-	and lore. This book serves as a guide for the mod. 
+	"screen.je.title.about_mod": "Journey's End",
+	"screen.je.lore.about_mod": "Welcome to the Journey's End mod for Minecraft Forge! This mod aims to improve Minecraft's End dimension by adding lots of new content, including new bosses, ores, biomes, 
+	and lore. As this mod is 
+	still heavily in development, there is a high chance of encountering a bug. If you find a bug, please report it on the mod's Github Issues page and it will get fixed eventually (if possible)! 
+	Comments reporting bugs on CurseForge or Modrinth may not get read, though these sites are a great place to give general feedback.",
+	"screen.je.title.about_book": "About this Book",
+	"screen.je.lore.about_book": "This book serves as a guide for the mod. 
 	The Story tab contains information about the mod's storyline, which is based on lore throughout the mod and the base game. It does not conatin any useful information gameplay-wise, so feel free to 
 	ignore the tab if you don't want to do further reading. The Progression tab includes detailed instructions on progression through certain aspects of the mod, such as how to get certain weapon upgrades. 
-	Every other tab containes information about all modded features of that category, or tweaked vanilla features. If you are not sure what a certain item does, look it up in the book! As this mod is 
-	still heavily in development, there is a high chance of encountering a bug. If you find a bug, please report it on the mod's Github Issues page and it will get fixed eventually (if possible)! 
-	Comments put on CurseForge or Modrinth may not get read, though they are a great place to give general feedback.",
+	Every other tab containes information about all modded features of that category, or tweaked vanilla features. If you are not sure what a certain item does, look it up on the correct tab in
+	 the book!",
 	"screen.je.title.chapter_1": "Chapter 1",
 	"screen.je.lore.chapter_1": "lore",
 	"screen.je.title.chapter_2": "Chapter 2",
 	"screen.je.lore.chapter_2": "lore",
 	//
 	"screen.je.title.progression_1": "Getting to the End",
-	"screen.je.lore.progression_1": "Journey's End makes getting to the End dimension much harder. You will need to travel around the Overworld and find rare structures conatining Bejeweled Pedestals. 
+	"screen.je.lore.progression_1": "Journey's End makes getting to the End dimension much harder than it is in Vanilla. You will need to travel around the Overworld and find
+	 rare structures conatining Bejeweled Pedestals. 
 	All modded structures are documented in the Structures tab of this book. 
 	When right-clicked, a Bejeweled Pedestal will summon an Endersent, which you must kill to get 1-2 Eye Fragments. These are used to craft Eyes of Ender by combining them with Blaze Powder and
 	 Echo Shards in a Crafting Table. Using Ender Pearls to craft Eyes of Ender will not work! Once you have Eyes of Ender, the progression to get to the End is the exact same as Vanilla - throw 
@@ -160,10 +165,14 @@
 	"screen.je.title.voidmetal_block": "Voidmetal Block",
 	"screen.je.lore.voidmetal_block": "A solid block of Voidmetal. Crafted out of 9 Voidmetal Ingots. It can be crafted back into 9 Voidmetal Ingots.",
 	//
-	"screen.je.title.timeworn_journal": "Timeworn Journal",
-	"screen.je.lore.timeworn_journal": "My old journal. This is where I recorded all of my knowledge from my many trips to the End. Only one who will continue my quest may read the words within, as
+	"screen.je.title.timeworn_journal_t0": "Timeworn Journal",
+	"screen.je.lore.timeworn_journal_t0": "My old journal. This is where I recorded all of my knowledge from my many trips to the End. Only one who will continue my quest may read the words within, as
 	 many dark secrets can be found within these pages. As of right now, you will only be able to view certain pages of this book. However, as you progress on your
-	  quest, more knowledge may be unlocked.",
+	  quest, more knowledge may be unlocked. Upgrade the journal to unlock more entries by combining it with End Stone in a Crafting Table.",
+	 "screen.je.title.timeworn_journal_t1": "Timeworn Journal",
+	 "screen.je.lore.timeworn_journal_t1": "My old journal. This is where I recorded all of my knowledge from my many trips to the End. Only one who will continue my quest may read the words within, as
+	  many dark secrets can be found within these pages. As of right now, you will only be able to view certain pages of this book. However, as you progress on your
+	  quest, more knowledge may be unlocked. The journal cannot be upgraded any further.",
 	"screen.je.title.voidblight_bucket": "Voidblight Bucket",
 	"screen.je.lore.voidblight_bucket": "Can be used as fuel in an End Stone Furance. See the Voidblight page under the Blocks list for more info.",
 	"screen.je.title.eye_fragment": "Eye Fragment",

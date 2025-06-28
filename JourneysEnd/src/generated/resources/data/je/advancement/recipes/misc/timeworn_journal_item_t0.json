@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "je:timeworn_journal"
+        "recipe": "je:timeworn_journal_item_t0"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "je:timeworn_journal"
+      "je:timeworn_journal_item_t0"
     ]
   }
 }

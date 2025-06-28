@@ -40,17 +40,6 @@ import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.decoration.ArmorStand;
 
 public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
-	private final List<Button> exitButtons = Lists.newArrayList();
-	@Nullable
-	private Button exitToTitleButton;
-
-	private static final Vector3f ARMOR_STAND_TRANSLATION = new Vector3f();
-	private static final Quaternionf ARMOR_STAND_ANGLE = new Quaternionf().rotationXYZ(0.43633232F, 0.0F,
-			(float) Math.PI);
-	private static final int ARMOR_STAND_SCALE = 25;
-	private static final int ARMOR_STAND_OFFSET_Y = 75;
-	private static final int ARMOR_STAND_OFFSET_X = 141;
-	
 	private int x1;
 	private int x2;
 	private int x3;
@@ -59,8 +48,8 @@ public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
 	
 	private int y1;
 	private int y2;
-
-	private Endersent endersentPreview;
+	
+	private int tier;
 
 	public static final WidgetSprites STORY_SPRITES = new WidgetSprites(
 			ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID,
@@ -106,8 +95,8 @@ public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
 
 	// private LocalPlayer player;
 
-	public TimewornJournalHomeScreen() {
-
+	public TimewornJournalHomeScreen(int pTier) {
+		this.tier = pTier;
 	}
 
 	@Override
@@ -144,34 +133,34 @@ public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
 			 */
 			
 			
-			this.minecraft.setScreen(new TimewornJournalListScreens.TimewornJournalChapterListScreen());
+			this.minecraft.setScreen(new TimewornJournalListScreens.TimewornJournalChapterListScreen(tier));
 		}));
 
 		this.addRenderableWidget(new ImageButton(x2, y1, 48, 48, PROGRESSION_SPRITES, p_308203_ -> {
-			this.minecraft.setScreen(new TimewornJournalProgressionListScreen());
+			this.minecraft.setScreen(new TimewornJournalProgressionListScreen(tier));
 		}));
 
 		this.addRenderableWidget(new ImageButton(x1, y2, 48, 48, BIOMES_SPRITES, p_308203_ -> {
-			this.minecraft.setScreen(new TimewornJournalBiomesListScreen());
+			this.minecraft.setScreen(new TimewornJournalBiomesListScreen(tier));
 		}));
 
 		this.addRenderableWidget(new ImageButton(x2, y2, 48, 48, STRUCTURES_SPRITES, p_308203_ -> {
-			this.minecraft.setScreen(new TimewornJournalStructuresListScreen());
+			this.minecraft.setScreen(new TimewornJournalStructuresListScreen(tier));
 		}));
 
 		this.addRenderableWidget(new ImageButton(x3, y1, 48, 48,
 				ENTITIES_SPRITES, p_308203_ -> {
-					this.minecraft.setScreen(new TimewornJournalEntitiesListScreen());
+					this.minecraft.setScreen(new TimewornJournalEntitiesListScreen(tier));
 				}));
 		
 		this.addRenderableWidget(new ImageButton(x4, y1, 48, 48,
 				ITEMS_SPRITES, p_308203_ -> {
-					this.minecraft.setScreen(new TimewornJournalItemsListScreen());
+					this.minecraft.setScreen(new TimewornJournalItemsListScreen(tier));
 				}));
 		
 		this.addRenderableWidget(new ImageButton(x5, y2, 48, 48,
 				BLOCKS_SPRITES, p_308203_ -> {
-					this.minecraft.setScreen(new TimewornJournalBlocksListScreen());
+					this.minecraft.setScreen(new TimewornJournalBlocksListScreen(tier));
 				}));
 		
 		

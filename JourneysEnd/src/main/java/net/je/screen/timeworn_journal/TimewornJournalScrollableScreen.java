@@ -10,6 +10,7 @@ import org.lwjgl.glfw.GLFW;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 
+import net.je.item.ModItems;
 import net.je.screen.timeworn_journal.entry.BaseTimewornJournalEntry;
 import net.je.screen.timeworn_journal.entry.renderer.BaseTimewornJournalEntryScreen;
 import net.minecraft.ChatFormatting;
@@ -22,8 +23,10 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
+import net.je.item.TimewornJournalItem;
 
 public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 	private final List<Button> allButtons = new ArrayList<>();
@@ -114,7 +117,6 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 
 		updateFilteredButtons();
 
-		super.renderBackButton(new TimewornJournalHomeScreen());
 		// this.renderBackButton(new TimewornJournalHomeScreen());
 	}
 

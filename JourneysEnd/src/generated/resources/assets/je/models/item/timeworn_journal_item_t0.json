@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "je:item/timeworn_journal"
+    "layer0": "je:item/timeworn_journal_item_t0"
   }
 }

@@ -19,8 +19,12 @@ import net.minecraftforge.fml.DistExecutor;
 
 public class TimewornJournalItem extends Item {
 
-	public TimewornJournalItem(Properties pProperties) {
+	
+	private int tier;
+	
+	public TimewornJournalItem(Properties pProperties, int pTier) {
 		super(pProperties);
+		this.tier = pTier;
 	}
 
 	@Override
@@ -31,7 +35,7 @@ public class TimewornJournalItem extends Item {
 		if (pLevel.isClientSide()) {
 			pLevel.playSound(pPlayer, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.BOOK_PAGE_TURN,
 					SoundSource.PLAYERS, 1.0F, 1);
-			Minecraft.getInstance().setScreen(new TimewornJournalHomeScreen());
+			Minecraft.getInstance().setScreen(new TimewornJournalHomeScreen(tier));
 		}
 
 		return InteractionResultHolder.sidedSuccess(itemstack, pLevel.isClientSide());

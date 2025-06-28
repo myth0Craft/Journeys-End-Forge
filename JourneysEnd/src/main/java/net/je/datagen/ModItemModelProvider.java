@@ -51,7 +51,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.VOIDMETAL_NUGGET.get());
         basicItem(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get());
         basicItem(ModItems.EYE_FRAGMENT.get());
-        basicItem(ModItems.TIMEWORN_JOURNAL.get());
+        basicItem(ModItems.TIMEWORN_JOURNAL_T0.get());
+        basicItem(ModItems.TIMEWORN_JOURNAL_T1.get());
         
         handheldItem(ModItems.VOIDMETAL_PICKAXE);
         handheldItem(ModItems.VOIDMETAL_AXE);

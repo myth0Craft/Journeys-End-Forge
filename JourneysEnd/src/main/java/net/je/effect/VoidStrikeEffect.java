@@ -1,6 +1,7 @@
 package net.je.effect;
 
 import net.je.entity.custom.Endersent;
+import net.je.util.ModTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -20,7 +21,7 @@ public class VoidStrikeEffect extends MobEffect {
     public boolean applyEffectTick(LivingEntity pEntity, int p_298645_) {
 		DamageSource voidStrike =
 	            new ModDamageSources(pEntity.level().registryAccess()).voidStrike();
-		if (!(pEntity instanceof EnderMan) && !(pEntity instanceof Endermite) && !(pEntity instanceof Endersent)) {
+		if (!(pEntity.getTags().contains("je:end_mobs"))) {
 			
 			pEntity.hurt(voidStrike, 1.0F);
 			
