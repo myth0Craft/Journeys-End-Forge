@@ -23,9 +23,9 @@ public class ModFluids {
 	            DeferredRegister.create(ForgeRegistries.FLUIDS, JourneysEnd.MODID);
 
 	    public static final RegistryObject<FlowingFluid> SOURCE_VOIDBLIGHT = FLUIDS.register("source_voidblight",
-	            () -> new ForgeFlowingFluid.Source(ModFluids.VOIDBLIGHT_PROPERTIES));
+	            () -> new VoidblightFluid.Source());
 	    public static final RegistryObject<FlowingFluid> FLOWING_VOIDBLIGHT = FLUIDS.register("flowing_voidblight",
-	            () -> new ForgeFlowingFluid.Flowing(ModFluids.VOIDBLIGHT_PROPERTIES));
+	            () -> new VoidblightFluid.Flowing());
 
 
 	    public static final ForgeFlowingFluid.Properties VOIDBLIGHT_PROPERTIES = new ForgeFlowingFluid.Properties(

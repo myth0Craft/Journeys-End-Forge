@@ -21,7 +21,7 @@ public class VoidStrikeEffect extends MobEffect {
     public boolean applyEffectTick(LivingEntity pEntity, int p_298645_) {
 		DamageSource voidStrike =
 	            new ModDamageSources(pEntity.level().registryAccess()).voidStrike();
-		if (!(pEntity.getTags().contains("je:end_mobs"))) {
+		if (!pEntity.getType().is(ModTags.Entities.END_MOBS)) {
 			
 			pEntity.hurt(voidStrike, 1.0F);
 			
