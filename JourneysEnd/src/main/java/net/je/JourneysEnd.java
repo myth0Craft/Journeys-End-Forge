@@ -33,16 +33,23 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLLoader;
+import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.je.block.ModBlocks;
 import net.je.block.entity.ModBlockEntities;
+import net.je.conditions.ModConditions;
+import net.je.config.CommonConfig;
 import net.je.effect.ModEffects;
 
+import java.io.File;
+import java.nio.file.Path;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -57,6 +64,10 @@ public class JourneysEnd {
 
 	public JourneysEnd() {
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		
+		MinecraftForge.EVENT_BUS.register(this);
+		
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
 
 		ModCreativeModeTab.register(modEventBus);
 
@@ -67,8 +78,6 @@ public class JourneysEnd {
 		ModEffects.register(modEventBus);
 
 		modEventBus.addListener(this::commonSetup);
-
-		MinecraftForge.EVENT_BUS.register(this);
 
 		modEventBus.addListener(this::addCreative);
 
@@ -86,6 +95,8 @@ public class JourneysEnd {
 	    ModLootModifiers.register(modEventBus);
 	    
 	    ModParticles.register(modEventBus);
+	    
+	    ModConditions.register(modEventBus);
 	    
 	}
 

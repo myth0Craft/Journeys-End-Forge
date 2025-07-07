@@ -1,0 +1,30 @@
+{
+  "type": "forge:conditional",
+  "forge:condition": {
+    "type": "je:config_enabled",
+    "key": "eye_requires_echo_shards"
+  },
+  "recipes": [
+    {
+      "recipe": {
+        "type": "minecraft:crafting_shapeless",
+        "category": "misc",
+        "ingredients": [
+          {
+            "item": "je:eye_fragment"
+          },
+          {
+            "item": "minecraft:blaze_powder"
+          },
+          {
+            "item": "minecraft:echo_shard"
+          }
+        ],
+        "result": {
+          "count": 1,
+          "id": "minecraft:ender_eye"
+        }
+      }
+    }
+  ]
+}

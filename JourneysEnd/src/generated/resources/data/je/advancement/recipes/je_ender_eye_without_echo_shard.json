@@ -1,0 +1,43 @@
+{
+  "advancements": [
+    {
+      "parent": "minecraft:recipes/root",
+      "criteria": {
+        "has_eye_fragment": {
+          "conditions": {
+            "items": [
+              {
+                "items": "je:eye_fragment"
+              }
+            ]
+          },
+          "trigger": "minecraft:inventory_changed"
+        },
+        "has_the_recipe": {
+          "conditions": {
+            "recipe": "minecraft:ender_eye"
+          },
+          "trigger": "minecraft:recipe_unlocked"
+        }
+      },
+      "forge:condition": {
+        "type": "je:not",
+        "value": {
+          "type": "je:config_enabled",
+          "key": "eye_requires_echo_shards"
+        }
+      },
+      "requirements": [
+        [
+          "has_the_recipe",
+          "has_eye_fragment"
+        ]
+      ],
+      "rewards": {
+        "recipes": [
+          "minecraft:ender_eye"
+        ]
+      }
+    }
+  ]
+}

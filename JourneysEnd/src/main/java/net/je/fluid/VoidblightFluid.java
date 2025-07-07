@@ -73,6 +73,6 @@ public abstract class VoidblightFluid extends ForgeFlowingFluid {
 			entity.addEffect(new MobEffectInstance(holder, 60, 1));
 		}
 
-		pLevel.scheduleTick(pPos, this, 20);
+		pLevel.scheduleTick(pPos, this, 10);
 	}
 }

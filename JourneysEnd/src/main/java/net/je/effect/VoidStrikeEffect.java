@@ -22,8 +22,10 @@ public class VoidStrikeEffect extends MobEffect {
 		DamageSource voidStrike =
 	            new ModDamageSources(pEntity.level().registryAccess()).voidStrike();
 		if (!pEntity.getType().is(ModTags.Entities.END_MOBS)) {
-			
+			Vec3 delta = pEntity.getDeltaMovement();
 			pEntity.hurt(voidStrike, 1.0F);
+			pEntity.setDeltaMovement(0.0, 0.0, 0.0);
+		    pEntity.setDeltaMovement(delta);
 			
 			
 		} else {

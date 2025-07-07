@@ -5,6 +5,10 @@ import java.util.concurrent.CompletableFuture;
 
 import net.je.JourneysEnd;
 import net.je.block.ModBlocks;
+import net.je.conditions.ModConditions;
+import net.je.conditions.ModConfigEnabledCondition;
+import net.je.conditions.ModNotCondition;
+import net.je.config.CommonConfig;
 import net.je.item.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -15,6 +19,7 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.BlastingRecipe;
@@ -23,7 +28,11 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.crafting.ConditionalRecipe;
+import net.minecraftforge.common.crafting.conditions.FalseCondition;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import net.minecraftforge.common.crafting.conditions.NotCondition;
+import net.minecraftforge.common.crafting.conditions.TrueCondition;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
 	public ModRecipeProvider(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pRegistries) {
@@ -37,12 +46,33 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 				.pattern("AAA").pattern("AAA").define('A', Blocks.END_STONE)
 				.unlockedBy("has_end_stone", has(Blocks.END_STONE)).save(recipeOutput);
 
+		ConditionalRecipe.builder().condition(new ModConfigEnabledCondition("vanilla_eye_recipe_enabled"))
+				.recipe(consumer -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.ENDER_EYE)
+						.requires(Items.ENDER_PEARL).requires(Items.BLAZE_POWDER)
+						.unlockedBy("has_ender_pearl", has(Items.ENDER_PEARL)).save(consumer))
+				.save(recipeOutput, ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "mod_ender_eye"));
+
+		ConditionalRecipe.builder().condition(new ModConfigEnabledCondition("eye_requires_echo_shards"))
+				.recipe(consumer -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.ENDER_EYE)
+						.requires(ModItems.EYE_FRAGMENT.get()).requires(Items.BLAZE_POWDER).requires(Items.ECHO_SHARD)
+						.unlockedBy("has_eye_fragment", has(ModItems.EYE_FRAGMENT.get())).save(consumer))
+				.save(recipeOutput,
+						ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "je_ender_eye_with_echo_shard"));
+
+		ConditionalRecipe.builder()
+				.condition(new ModNotCondition(new ModConfigEnabledCondition("eye_requires_echo_shards")))
+				.recipe(consumer -> ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.ENDER_EYE)
+						.requires(ModItems.EYE_FRAGMENT.get()).requires(Items.BLAZE_POWDER)
+						.unlockedBy("has_eye_fragment", has(ModItems.EYE_FRAGMENT.get())).save(consumer))
+				.save(recipeOutput,
+						ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "je_ender_eye_without_echo_shard"));
+
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.END_STONE_FURNACE.get()).pattern("AAA").pattern("ABA")
 				.pattern("AAA").define('A', ModBlocks.COMPRESSED_END_STONE.get()).define('B', Blocks.BLAST_FURNACE)
 				.unlockedBy("has_compressed_end_stone", has(ModBlocks.COMPRESSED_END_STONE.get())).save(recipeOutput);
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.VOIDMETAL_BLOCK.get()).pattern("AAA").pattern("AAA")
-				.pattern("AAA").define('A', ModItems.VOIDMETAL_INGOT.get())
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.VOIDMETAL_BLOCK.get()).pattern("AAA")
+				.pattern("AAA").pattern("AAA").define('A', ModItems.VOIDMETAL_INGOT.get())
 				.unlockedBy("has_voidmetal", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get(), 2)
@@ -59,99 +89,103 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.VOIDMETAL_INGOT.get(), 9)
 				.requires(ModBlocks.VOIDMETAL_BLOCK.get())
 				.unlockedBy("has_voidmetal_block", has(ModBlocks.VOIDMETAL_BLOCK.get())).save(recipeOutput);
-		
+
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.VOIDMETAL_NUGGET.get(), 9)
 				.requires(ModItems.VOIDMETAL_INGOT.get())
 				.unlockedBy("has_voidmetal_ingot_for_nuggets", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput);
-		
+
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TIMEWORN_JOURNAL_T0.get(), 1)
-				.requires(Items.ENDER_PEARL)
-				.requires(Items.BOOK)
-				.unlockedBy("has_cobblestone", has(Items.COBBLESTONE)).save(recipeOutput);
-		
-		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TIMEWORN_JOURNAL_T1.get(), 1)
-		.requires(Blocks.END_STONE)
-		.requires(ModItems.TIMEWORN_JOURNAL_T0.get())
-		.unlockedBy("has_end_stone", has(Blocks.END_STONE)).save(recipeOutput);
-		
-		
-		
-		//end stone block set
-
-		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE_SLAB.get(), 6).pattern("AAA")
-				.define('A', ModBlocks.POLISHED_END_STONE.get())
-				.unlockedBy("has_polished_end_stone", has(ModBlocks.POLISHED_END_STONE.get())).save(recipeOutput);
-		
-		
-		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.POLISHED_END_STONE_WALL.get(), 6).pattern("AAA").pattern("AAA")
-				.define('A', ModBlocks.POLISHED_END_STONE.get())
-				.unlockedBy("has_polished_end_stone", has(ModBlocks.POLISHED_END_STONE.get())).save(recipeOutput);
-		
-
-		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE_STAIRS.get(), 4).pattern("A  ")
-				.pattern("AA ").pattern("AAA").define('A', ModBlocks.POLISHED_END_STONE.get())
-				.unlockedBy("has_polished_end_stone", has(ModBlocks.POLISHED_END_STONE.get())).save(recipeOutput);
-		
-
-		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.END_STONE_TILES.get(), 4).pattern("AA").pattern("AA")
-				.define('A', Blocks.END_STONE_BRICKS).unlockedBy("has_end_stone_bricks", has(Blocks.END_STONE_BRICKS))
+				.requires(Items.ENDER_PEARL).requires(Items.BOOK).unlockedBy("has_cobblestone", has(Items.COBBLESTONE))
 				.save(recipeOutput);
-		
 
-		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_END_STONE.get(), 1).pattern("A").pattern("A")
-				.define('A', Blocks.END_STONE_BRICK_SLAB)
-				.unlockedBy("has_end_stone_bricks", has(Blocks.END_STONE_BRICKS)).save(recipeOutput, "chiseled_end_stone_from_end_brick_slab");
-		
-
-		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_END_STONE.get(), 1).pattern("A").pattern("A")
-				.define('A', ModBlocks.POLISHED_END_STONE_SLAB.get())
-				.unlockedBy("has_polished_end_stone", has(ModBlocks.POLISHED_END_STONE.get())).save(recipeOutput);
-		
-		
-		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.END_STONE_BRICKS, 4).pattern("AA").pattern("AA")
-				.define('A', ModBlocks.POLISHED_END_STONE.get())
-				.unlockedBy("has_polished_end_stone", has(ModBlocks.POLISHED_END_STONE.get())).save(recipeOutput);
-		
-		
-		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE.get(), 4).pattern("AA").pattern("AA")
-				.define('A', Blocks.END_STONE)
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TIMEWORN_JOURNAL_T1.get(), 1)
+				.requires(Blocks.END_STONE).requires(ModItems.TIMEWORN_JOURNAL_T0.get())
 				.unlockedBy("has_end_stone", has(Blocks.END_STONE)).save(recipeOutput);
-		
-		
-		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.END_STONE_PILLAR.get(), 2).pattern("A").pattern("A")
-				.define('A', ModBlocks.POLISHED_END_STONE.get())
+
+		// end stone block set
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE_SLAB.get(), 6)
+				.pattern("AAA").define('A', ModBlocks.POLISHED_END_STONE.get())
 				.unlockedBy("has_polished_end_stone", has(ModBlocks.POLISHED_END_STONE.get())).save(recipeOutput);
-		
-		
-		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE.get(), Blocks.END_STONE);
-		
-		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.END_STONE_BRICKS, ModBlocks.POLISHED_END_STONE.get());
-		
-		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.END_STONE_TILES.get(), Blocks.END_STONE);
-		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.END_STONE_TILES.get(), ModBlocks.POLISHED_END_STONE.get());
-		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.END_STONE_TILES.get(), Blocks.END_STONE_BRICKS);
 
-		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_END_STONE.get(), Blocks.END_STONE);
-		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_END_STONE.get(), ModBlocks.POLISHED_END_STONE.get());
-		
-		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.END_STONE_PILLAR.get(), Blocks.END_STONE);
-		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.END_STONE_PILLAR.get(), ModBlocks.POLISHED_END_STONE.get());
-		
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE_SLAB.get(), Blocks.END_STONE, 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE_STAIRS.get(), Blocks.END_STONE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.POLISHED_END_STONE_WALL.get(), Blocks.END_STONE);
-        
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE_SLAB.get(), ModBlocks.POLISHED_END_STONE.get(), 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE_STAIRS.get(), ModBlocks.POLISHED_END_STONE.get());
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.POLISHED_END_STONE_WALL.get(), ModBlocks.POLISHED_END_STONE.get());
-        
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.END_STONE_BRICK_SLAB, ModBlocks.POLISHED_END_STONE.get(), 2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.END_STONE_BRICK_STAIRS, ModBlocks.POLISHED_END_STONE.get());
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, Blocks.END_STONE_BRICK_WALL, ModBlocks.POLISHED_END_STONE.get());
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.POLISHED_END_STONE_WALL.get(), 6)
+				.pattern("AAA").pattern("AAA").define('A', ModBlocks.POLISHED_END_STONE.get())
+				.unlockedBy("has_polished_end_stone", has(ModBlocks.POLISHED_END_STONE.get())).save(recipeOutput);
 
-		
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE_STAIRS.get(), 4)
+				.pattern("A  ").pattern("AA ").pattern("AAA").define('A', ModBlocks.POLISHED_END_STONE.get())
+				.unlockedBy("has_polished_end_stone", has(ModBlocks.POLISHED_END_STONE.get())).save(recipeOutput);
 
-		//smithing
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.END_STONE_TILES.get(), 4).pattern("AA")
+				.pattern("AA").define('A', Blocks.END_STONE_BRICKS)
+				.unlockedBy("has_end_stone_bricks", has(Blocks.END_STONE_BRICKS)).save(recipeOutput);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_END_STONE.get(), 1).pattern("A")
+				.pattern("A").define('A', Blocks.END_STONE_BRICK_SLAB)
+				.unlockedBy("has_end_stone_bricks", has(Blocks.END_STONE_BRICKS))
+				.save(recipeOutput, "chiseled_end_stone_from_end_brick_slab");
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_END_STONE.get(), 1).pattern("A")
+				.pattern("A").define('A', ModBlocks.POLISHED_END_STONE_SLAB.get())
+				.unlockedBy("has_polished_end_stone", has(ModBlocks.POLISHED_END_STONE.get())).save(recipeOutput);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, Blocks.END_STONE_BRICKS, 4).pattern("AA")
+				.pattern("AA").define('A', ModBlocks.POLISHED_END_STONE.get())
+				.unlockedBy("has_polished_end_stone", has(ModBlocks.POLISHED_END_STONE.get())).save(recipeOutput);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE.get(), 4).pattern("AA")
+				.pattern("AA").define('A', Blocks.END_STONE).unlockedBy("has_end_stone", has(Blocks.END_STONE))
+				.save(recipeOutput);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.END_STONE_PILLAR.get(), 2).pattern("A")
+				.pattern("A").define('A', ModBlocks.POLISHED_END_STONE.get())
+				.unlockedBy("has_polished_end_stone", has(ModBlocks.POLISHED_END_STONE.get())).save(recipeOutput);
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE.get(),
+				Blocks.END_STONE);
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.END_STONE_BRICKS,
+				ModBlocks.POLISHED_END_STONE.get());
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.END_STONE_TILES.get(),
+				Blocks.END_STONE);
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.END_STONE_TILES.get(),
+				ModBlocks.POLISHED_END_STONE.get());
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.END_STONE_TILES.get(),
+				Blocks.END_STONE_BRICKS);
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_END_STONE.get(),
+				Blocks.END_STONE);
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_END_STONE.get(),
+				ModBlocks.POLISHED_END_STONE.get());
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.END_STONE_PILLAR.get(),
+				Blocks.END_STONE);
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.END_STONE_PILLAR.get(),
+				ModBlocks.POLISHED_END_STONE.get());
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE_SLAB.get(),
+				Blocks.END_STONE, 2);
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS,
+				ModBlocks.POLISHED_END_STONE_STAIRS.get(), Blocks.END_STONE);
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.POLISHED_END_STONE_WALL.get(),
+				Blocks.END_STONE);
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE_SLAB.get(),
+				ModBlocks.POLISHED_END_STONE.get(), 2);
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS,
+				ModBlocks.POLISHED_END_STONE_STAIRS.get(), ModBlocks.POLISHED_END_STONE.get());
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, ModBlocks.POLISHED_END_STONE_WALL.get(),
+				ModBlocks.POLISHED_END_STONE.get());
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.END_STONE_BRICK_SLAB,
+				ModBlocks.POLISHED_END_STONE.get(), 2);
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, Blocks.END_STONE_BRICK_STAIRS,
+				ModBlocks.POLISHED_END_STONE.get());
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, Blocks.END_STONE_BRICK_WALL,
+				ModBlocks.POLISHED_END_STONE.get());
+
+		// smithing
 
 		SmithingTransformRecipeBuilder
 				.smithing(Ingredient.of(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get()),
@@ -215,6 +249,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 						RecipeCategory.MISC, ModItems.VOIDMETAL_BOOTS.get())
 				.unlocks("has_voidmetal", has(ModItems.VOIDMETAL_INGOT.get()))
 				.save(recipeOutput, "voidmetal_boots_smithing");
+
 	}
 
 	protected static void oreSmelting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory,

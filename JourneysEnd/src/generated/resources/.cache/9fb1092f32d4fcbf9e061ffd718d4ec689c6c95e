@@ -1,4 +1,4 @@
-// 1.21	2025-06-28T09:48:14.2311258	Recipes
+// 1.21	2025-07-07T10:34:57.1646495	Recipes
 4ddbe375df8d52b8def82a1db901bb9a408a396f data/je/advancement/recipes/building_blocks/chiseled_end_stone.json
 e6175a515b7f353ee6c9f6a06d3258ec7c621586 data/je/advancement/recipes/building_blocks/compressed_end_stone.json
 feeb8f94922d792756bde75102fab23888214022 data/je/advancement/recipes/building_blocks/end_stone_pillar.json
@@ -8,6 +8,8 @@ b452429f11a093542d49f5b89aee22cff298d4b7 data/je/advancement/recipes/building_bl
 a535e58bbdbf4a46cb8a6adf2e40fccbf8dafcd3 data/je/advancement/recipes/building_blocks/polished_end_stone_stairs.json
 dbdbb011b06afad5d50aa9a2282ebb8bdbb01482 data/je/advancement/recipes/building_blocks/voidmetal_block.json
 15e9c5cf266689d5652fc637094a0cc58ffabdb2 data/je/advancement/recipes/decorations/polished_end_stone_wall.json
+7561ab23060dadb3d3477522d0d734e2e94d2fbc data/je/advancement/recipes/je_ender_eye_without_echo_shard.json
+bcadbea09ae71b1be77e9a80c4c190f55f22a9db data/je/advancement/recipes/je_ender_eye_with_echo_shard.json
 edd406164bb6fe0218512c7f164e03476f04e06c data/je/advancement/recipes/misc/end_stone_furnace.json
 91e1ce6a1dcdbd1f67530907c1b9322f51a28bb2 data/je/advancement/recipes/misc/interdimensional_anchor.json
 d06073302bdf0e39118484baa1d2d2386ec60595 data/je/advancement/recipes/misc/timeworn_journal_item_t0.json
@@ -15,12 +17,16 @@ ab3422b1110733949a37ea05acfcf4c0355025e4 data/je/advancement/recipes/misc/timewo
 131d325591927e6c480a83b4dcdf6e424d877385 data/je/advancement/recipes/misc/voidmetal_ingot.json
 37f289c9ee502882aba20d2db2d5a480fa1f2c23 data/je/advancement/recipes/misc/voidmetal_nugget.json
 be5aba7975e7cd614ac8f1624c16ff8c4f3c8396 data/je/advancement/recipes/misc/voidmetal_upgrade_smithing_template.json
+392396544264d1405884413c7dc116e5ce971db7 data/je/advancement/recipes/mod_ender_eye.json
 de40b45da8318df3b31064fc10f3b03b0402f330 data/je/recipe/chiseled_end_stone.json
 c5ff2c4af63a299572ae55447aedc86525a15bdd data/je/recipe/compressed_end_stone.json
 a2002d15189ce7c51fa05f37c29122fae5c264b6 data/je/recipe/end_stone_furnace.json
 f1504adc7800491dc2e33756e6596bef8958c203 data/je/recipe/end_stone_pillar.json
 177cb64e376a303ad36f44d497091ae6da47d2e8 data/je/recipe/end_stone_tiles.json
 305bf6a2496b4807d2e902425f8f40f2a5d690fb data/je/recipe/interdimensional_anchor.json
+6abb05ce9ca0eab1adcbfdce253830bdaaa777fd data/je/recipe/je_ender_eye_without_echo_shard.json
+83865b65859a2e5b2216def426c8af8df86fe15d data/je/recipe/je_ender_eye_with_echo_shard.json
+a734dc97613a85bcb0a2eb188ae0e92fa75ee760 data/je/recipe/mod_ender_eye.json
 3b67c9e034d04517dd342c6b2e89f643313a7124 data/je/recipe/polished_end_stone.json
 9ac0a43736518eaa3da36d5d1c8a47603a6caa98 data/je/recipe/polished_end_stone_slab.json
 7e5bf35d2f20f0c1b0b23aa55184bc04f5afad84 data/je/recipe/polished_end_stone_stairs.json
