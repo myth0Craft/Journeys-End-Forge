@@ -9,7 +9,6 @@ import com.google.common.collect.ImmutableMap.Builder;
 
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
-
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;

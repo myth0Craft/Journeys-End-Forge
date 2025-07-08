@@ -31,7 +31,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.FADED_END_STONE);
         blockWithItem(ModBlocks.CORRUPTED_DIRT);
         blockWithItem(ModBlocks.LANTERN_OF_WARDING);
-        
+
         blockItem(ModBlocks.END_STONE_PILLAR);
         blockItem(ModBlocks.POLISHED_END_STONE_SLAB);
         blockItem(ModBlocks.POLISHED_END_STONE_STAIRS);
@@ -39,9 +39,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         //blockItem(ModBlocks.ENDER_VAULT);
         //blockItem(ModBlocks.INTERDIMENSIONAL_ANCHOR);
         //blockItem(ModBlocks.POLISHED_END_STONE_WALL);
-        
+
         axisBlock((RotatedPillarBlock) ModBlocks.END_STONE_PILLAR.get());
-        
+
         stairsBlock(((StairBlock) ModBlocks.POLISHED_END_STONE_STAIRS.get()), blockTexture(ModBlocks.POLISHED_END_STONE.get()));
         slabBlock(((SlabBlock) ModBlocks.POLISHED_END_STONE_SLAB.get()), blockTexture(ModBlocks.POLISHED_END_STONE.get()), blockTexture(ModBlocks.POLISHED_END_STONE.get()));
         wallBlock(((WallBlock) ModBlocks.POLISHED_END_STONE_WALL.get()), blockTexture(ModBlocks.POLISHED_END_STONE.get()));
@@ -51,7 +51,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(blockRegistryObject.get(), new ModelFile.UncheckedModelFile("je:block/" +
                 ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath()));
     }
-    
+
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
     }

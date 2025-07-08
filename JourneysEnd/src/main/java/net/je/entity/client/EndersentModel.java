@@ -1,16 +1,10 @@
 package net.je.entity.client;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-
 import net.je.JourneysEnd;
 import net.je.entity.animations.EndersentAnim;
 import net.je.entity.animations.EndersentAttackAnim;
 import net.je.entity.custom.BaseEndersent;
-import net.je.entity.custom.Endersent;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HierarchicalModel;
-import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -19,13 +13,12 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+@SuppressWarnings("unused")
 @OnlyIn(Dist.CLIENT)
 public class EndersentModel<T extends Entity> extends HierarchicalModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
@@ -52,7 +45,7 @@ public class EndersentModel<T extends Entity> extends HierarchicalModel<T> {
 		this.leftLeg = this.root.getChild("leftLeg");
 	}
 
-	
+
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
@@ -60,7 +53,7 @@ public class EndersentModel<T extends Entity> extends HierarchicalModel<T> {
 		PartDefinition root = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, -20.0F, 0.0F));
 
 		//PartDefinition body = root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-12.0F, -19.0F, -7.0F, 24.0F, 28.0F, 14.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -9.0F, 0.0F));
-		
+
 		PartDefinition body = root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-12.0F, -19.0F, -7.0F, 24.0F, 28.0F, 14.0F, new CubeDeformation(0.0F))
 				.texOffs(0, 120).addBox(-6.5F, -10.0F, -7.01F, 13.0F, 13.0F, 0.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -9.0F, 0.0F));
 
@@ -85,7 +78,6 @@ public class EndersentModel<T extends Entity> extends HierarchicalModel<T> {
 
 	@Override
 	public ModelPart root() {
-		// TODO Auto-generated method stub
 		return this.root;
 	}
 
@@ -95,10 +87,10 @@ public class EndersentModel<T extends Entity> extends HierarchicalModel<T> {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
 		this.head.xRot = p_102623_* (float) (Math.PI/180.0);
         this.head.yRot = p_102622_* (float) (Math.PI/180.0);
-        
+
         this.animateWalk(EndersentAnim.WALK, p_102619_, p_102620_, 2f, 2.5f);
         this.animate(((BaseEndersent) p_102618_).attackAnimationState, EndersentAttackAnim.ATTACK, p_102621_, 1f);
         this.animate(((BaseEndersent) p_102618_).largeAttackAnimationState, EndersentAttackAnim.LARGE_ATTACK, p_102621_, 1f);
-		
+
 	}
 }

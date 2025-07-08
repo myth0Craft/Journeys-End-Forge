@@ -19,12 +19,12 @@ public class ModCreativeModeTab {
 			() -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.VOIDMETAL_BLOCK.get()))
 			.title(Component.translatable("creativetab.je.blocks"))
 			.displayItems((pParameters, pOutput) -> {
-				
+
 				pOutput.accept(ModBlocks.CORRUPTED_DIRT.get());
 				pOutput.accept(ModBlocks.VOID_STONE.get());
 				pOutput.accept(ModBlocks.VOIDMASS.get());
 				pOutput.accept(ModBlocks.VOIDBLOOM.get());
-				
+
 				pOutput.accept(ModBlocks.END_STONE_PILLAR.get());
 				pOutput.accept(ModBlocks.CHISELED_END_STONE.get());
 				pOutput.accept(ModBlocks.END_STONE_TILES.get());
@@ -35,7 +35,7 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModBlocks.FADED_END_STONE.get());
 				pOutput.accept(ModBlocks.LUSH_END_STONE.get());
 				pOutput.accept(ModBlocks.COMPRESSED_END_STONE.get());
-				
+
 				pOutput.accept(ModBlocks.END_STONE_FURNACE.get());
 				pOutput.accept(ModBlocks.INTERDIMENSIONAL_ANCHOR.get());
 				pOutput.accept(ModBlocks.BEJEWELED_PEDESTAL.get());
@@ -46,18 +46,18 @@ public class ModCreativeModeTab {
 
 			})
 			.build());
-	
+
 	public static final RegistryObject<CreativeModeTab> ITEMS_TAB = CREATIVE_MODE_TABS.register("aje_items_tab",
 			() -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.VOIDMETAL_SWORD.get()))
 			.title(Component.translatable("creativetab.je.items"))
 			.displayItems((pParameters, pOutput) -> {
-				
+
 				pOutput.accept(ModItems.TIMEWORN_JOURNAL_T0.get());
-				
+
 				pOutput.accept(ModItems.VOIDBLIGHT_BUCKET.get());
-				
+
 				pOutput.accept(ModItems.EYE_FRAGMENT.get());
-				
+
 				pOutput.accept(ModItems.SMALL_VOID_DUST.get());
 				pOutput.accept(ModItems.VOID_DUST.get());
 				pOutput.accept(ModItems.RAW_VOIDMETAL.get());
@@ -73,13 +73,13 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModItems.VOIDMETAL_LEGGINGS.get());
 				pOutput.accept(ModItems.VOIDMETAL_BOOTS.get());
 				pOutput.accept(ModItems.VOIDMETAL_UPGRADE_SMITHING_TEMPLATE.get());
-				
+
 				pOutput.accept(ModItems.ENDERSENT_SPAWN_EGG.get());
 				pOutput.accept(ModItems.ENDERSENT_WITH_EYE_SPAWN_EGG.get());
 
 			})
 			.build());
-	
+
 	public static void register(IEventBus EventBus) {
 		CREATIVE_MODE_TABS.register(EventBus);
 	}

@@ -6,7 +6,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -19,14 +18,14 @@ public class JEGrassBlock extends Block {
 	public JEGrassBlock (BlockBehaviour.Properties p_55057_) {
         super(p_55057_);
     }
-	
+
 	public static final MapCodec<JEGrassBlock> CODEC = simpleCodec(JEGrassBlock::new);
 
     @Override
     public MapCodec<JEGrassBlock> codec() {
         return CODEC;
     }
-    
+
     private static boolean canBeGrowing(BlockState pState, LevelReader pReader, BlockPos pPos) {
         BlockPos blockpos = pPos.above();
         BlockState blockstate = pReader.getBlockState(blockpos);

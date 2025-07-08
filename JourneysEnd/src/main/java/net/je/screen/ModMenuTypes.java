@@ -15,11 +15,11 @@ public class ModMenuTypes {
 
 	//public static final RegistryObject<MenuType<EndStoneFurnaceMenu>> END_STONE_FURNACE_MENU = registerMenuType(
 			//"end_stone_furnace_menu", EndStoneFurnaceMenu::new);
-	
+
 	public static final RegistryObject<MenuType<EndStoneFurnaceMenu>> END_STONE_FURNACE_MENU = MENUS.register("end_stone_furnace_menu", () -> IForgeMenuType.create((windowId, inv, data) -> {
 		return new EndStoneFurnaceMenu(windowId, inv);
     }));
- 
+
 	/*
 	 * private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>>
 	 * registerMenuType(String name, IContainerFactory<T> factory) { return

@@ -1,7 +1,6 @@
 package net.je.fluid;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 import net.je.effect.ModEffects;
 import net.minecraft.core.BlockPos;
@@ -9,18 +8,13 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
-import net.minecraftforge.fluids.ForgeFlowingFluid.Properties;
 
 public abstract class VoidblightFluid extends ForgeFlowingFluid {
 
@@ -30,15 +24,18 @@ public abstract class VoidblightFluid extends ForgeFlowingFluid {
 			registerDefaultState(getStateDefinition().any().setValue(LEVEL, 7));
 		}
 
+		@Override
 		protected void createFluidStateDefinition(StateDefinition.Builder<Fluid, FluidState> builder) {
 			super.createFluidStateDefinition(builder);
 			builder.add(LEVEL);
 		}
 
+		@Override
 		public int getAmount(FluidState state) {
 			return state.getValue(LEVEL);
 		}
 
+		@Override
 		public boolean isSource(FluidState state) {
 			return false;
 		}
@@ -49,10 +46,12 @@ public abstract class VoidblightFluid extends ForgeFlowingFluid {
 			super();
 		}
 
+		@Override
 		public int getAmount(FluidState state) {
 			return 8;
 		}
 
+		@Override
 		public boolean isSource(FluidState state) {
 			return true;
 		}

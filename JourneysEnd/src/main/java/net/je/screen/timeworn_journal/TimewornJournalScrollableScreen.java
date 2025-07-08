@@ -4,36 +4,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+
 import org.lwjgl.glfw.GLFW;
 
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-
-import net.je.item.ModItems;
 import net.je.screen.timeworn_journal.entry.BaseTimewornJournalEntry;
-import net.je.screen.timeworn_journal.entry.renderer.BaseTimewornJournalEntryScreen;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Blocks;
-import net.je.item.TimewornJournalItem;
 
 public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 	private final List<Button> allButtons = new ArrayList<>();
 	private List<Button> filteredButtons = new ArrayList<>();
 
 	private List<BaseTimewornJournalEntry> allEntries;
-	// private BaseTimewornJournalEntry selectedEntry = null;
 
 	private final Map<Button, BaseTimewornJournalEntry> buttonEntryMap = new HashMap<>();
 	private final Map<Button, String> trimmedButtonTooltips = new HashMap<>();
@@ -41,7 +27,6 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 	private EditBox searchField;
 	protected int scrollOffset = 0;
 	private boolean draggingScrollbar = false;
-	// private int lastMouseY = 0;
 
 	private int listTop;
 	private int listHeight;
@@ -59,7 +44,6 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 
 	private String oldSearchValue = "";
 
-	// private int buttonCount;
 
 	public TimewornJournalScrollableScreen(List<BaseTimewornJournalEntry> pList) {
 		super();
@@ -87,12 +71,6 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 		this.searchField.setHint(Component.translatable("screen.je.search").withStyle(ChatFormatting.ITALIC));
 		this.addRenderableWidget(searchField);
 
-		/*
-		 * for (int i = 0; i < buttonCount; i++) { int index = i; int buttonDisplayNum =
-		 * i + 1; allButtons.add(new TimewornJournalButton(listLeft, 0, listWidth,
-		 * buttonHeight, Component.literal(entryList.get(i).getName()), btn ->
-		 * this.onButtonClicked(index))); }
-		 */
 
 		for (BaseTimewornJournalEntry entry : allEntries) {
 			String fullText = entry.getName().getString();
@@ -109,7 +87,6 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 			allButtons.add(button);
 			buttonEntryMap.put(button, entry);
 
-			// Store the full name for tooltip if it was trimmed
 			if (!trimmedText.equals(fullText)) {
 				trimmedButtonTooltips.put(button, fullText);
 			}
@@ -117,13 +94,11 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 
 		updateFilteredButtons();
 
-		// this.renderBackButton(new TimewornJournalHomeScreen());
 	}
 
 	protected void onButtonClicked(BaseTimewornJournalEntry pEntry) {
-		// this.minecraft.setScreen(new BaseTimewornJournalEntryScreen(pEntry));
 	}
-	
+
 	public void setScrollOffset(int pScrollOffset) {
 		this.scrollOffset = pScrollOffset;
 	}
@@ -136,7 +111,9 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 
 		for (BaseTimewornJournalEntry entry : allEntries) {
 			String fullName = entry.getName().getString();
-			if (!fullName.toLowerCase().contains(search)) continue;
+			if (!fullName.toLowerCase().contains(search)) {
+				continue;
+			}
 
 			int maxTextWidth = listWidth - 10;
 			String trimmedText = font.plainSubstrByWidth(fullName, maxTextWidth);
@@ -203,8 +180,7 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 			btn.setX(listLeft);
 			btn.setY(listTop + (i - visibleStart) * (buttonHeight + 1));
 			btn.render(pGuiGraphics, mouseX, mouseY, partialTick);
-			
-			// Render tooltip if mouse is over a trimmed button
+
 			if (btn.isMouseOver(mouseX, mouseY) && trimmedButtonTooltips.containsKey(btn)) {
 				pGuiGraphics.renderTooltip(font,
 					Component.literal(trimmedButtonTooltips.get(btn)),
@@ -230,18 +206,6 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 			pGuiGraphics.fill(scrollbarX, scrollbarY, scrollbarX + 6, scrollbarY + scrollbarHeight, 0xffd1c196);
 			pGuiGraphics.fill(scrollbarX, thumbY, scrollbarX + 6, thumbY + thumbHeight, thumbColor);
 		}
-		
-		
-		
-		
-		
-		/*
-		 * ItemStack item = new ItemStack(Blocks.DIAMOND_BLOCK);
-		 * 
-		 * pGuiGraphics.renderItem(item, super.getBgStartX(), super.getBgStartY());
-		 * pGuiGraphics.renderItemDecorations(Minecraft.getInstance().font, item,
-		 * super.getBgStartX(), super.getBgStartY());
-		 */
 
 	}
 
@@ -292,13 +256,14 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 	public boolean mouseDragged(double mouseX, double mouseY, int button, double dx, double dy) {
 		if (draggingScrollbar) {
 			int totalButtons = filteredButtons.size();
-			if (totalButtons <= maxVisibleButtons)
+			if (totalButtons <= maxVisibleButtons) {
 				return true;
+			}
 
 			int scrollbarHeight = listHeight;
 			int thumbHeight = Math.max(10, (int) ((maxVisibleButtons / (float) totalButtons) * scrollbarHeight));
 			float deltaY = (int) mouseY - dragStartY;
-			float progressDelta = deltaY / (float) (scrollbarHeight - thumbHeight);
+			float progressDelta = deltaY / (scrollbarHeight - thumbHeight);
 
 			float newThumbProgress = initialThumbProgress + progressDelta;
 			newThumbProgress = Mth.clamp(newThumbProgress, 0f, 1f);

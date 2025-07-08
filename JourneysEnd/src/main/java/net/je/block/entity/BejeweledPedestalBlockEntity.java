@@ -1,25 +1,17 @@
 package net.je.block.entity;
 
-import org.jetbrains.annotations.NotNull;
-
 import net.je.entity.ModEntities;
 import net.je.entity.custom.EndersentWithEye;
 import net.je.particle.ModParticles;
 import net.je.sound.ModSounds;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.TickingBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BejeweledPedestalBlockEntity extends BlockEntity {
@@ -46,7 +38,7 @@ public class BejeweledPedestalBlockEntity extends BlockEntity {
 						EntityType<EndersentWithEye> entity = ModEntities.ENDERSENT_WITH_EYE.get();
 
 						entity.spawn(server, pPos.above(), MobSpawnType.MOB_SUMMONED);
-						
+
 						pLevel.playSound(null, pPos.getX(), pPos.above().getY(), pPos.getZ(), ModSounds.ENDERSENT_SPAWN.get(),
 								SoundSource.BLOCKS, 1.0F, 1);
 

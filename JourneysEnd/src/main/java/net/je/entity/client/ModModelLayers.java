@@ -11,9 +11,10 @@ import net.minecraft.resources.ResourceLocation;
 
 public class ModModelLayers extends ModelLayers{
 
-	private static final Set<ModelLayerLocation> ALL_MOD_MODELS = Sets.newHashSet();    
-    
-    private static ModelLayerLocation register(String p_171294_) {
+	private static final Set<ModelLayerLocation> ALL_MOD_MODELS = Sets.newHashSet();
+
+    @SuppressWarnings("unused")
+	private static ModelLayerLocation register(String p_171294_) {
         return register(p_171294_, "main");
     }
 
@@ -29,7 +30,7 @@ public class ModModelLayers extends ModelLayers{
     private static ModelLayerLocation createLocation(String p_171301_, String p_171302_) {
         return new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, p_171301_), p_171302_);
     }
-            
+
 
 }
 

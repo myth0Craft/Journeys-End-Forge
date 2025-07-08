@@ -1,15 +1,13 @@
 package net.je.datagen;
 
+import java.util.Set;
+
 import net.je.block.ModBlocks;
-import net.je.item.ModItems;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
@@ -18,11 +16,8 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.Set;
 
 public class ModBlockLootTables extends BlockLootSubProvider {
     protected ModBlockLootTables(HolderLookup.Provider pRegistries) {
@@ -31,7 +26,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        
+
         dropSelf(ModBlocks.END_STONE_FURNACE.get());
         dropSelf(ModBlocks.VOIDMASS.get());
         dropSelf(ModBlocks.COMPRESSED_END_STONE.get());
@@ -50,18 +45,18 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.CORRUPTED_DIRT.get());
         dropSelf(ModBlocks.LANTERN_OF_WARDING.get());
         dropSelf(ModBlocks.INTERDIMENSIONAL_ANCHOR.get());
-        
+
         LootTable.Builder loottable$builder = this.createSilkTouchOrShearsDispatchTable(
         		ModBlocks.VOIDBLOOM.get(),
                 LootItem.lootTableItem(Blocks.AIR));
             this.add(ModBlocks.VOIDBLOOM.get(), loottable$builder);
-            
-            
-        
-        
-        
-		
-        
+
+
+
+
+
+
+
     }
 
     protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {

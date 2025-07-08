@@ -17,7 +17,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
-import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -41,12 +40,12 @@ public class EndStoneFurnaceBlock extends AbstractFurnaceBlock {
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
         return new EndStoneFurnaceBlockEntity(pPos, pState);
     }
-    
+
     @Override
     public int getLightEmission(BlockState state, BlockGetter world, BlockPos pos) {
         return state.getValue(BlockStateProperties.LIT) ? 14 : 0;
     }
-    
+
     @Nullable
     protected static <T extends BlockEntity> BlockEntityTicker<T> createEndStoneFurnaceTicker(
         Level pLevel, BlockEntityType<T> pServerType, BlockEntityType<EndStoneFurnaceBlockEntity> pClientType
@@ -71,20 +70,19 @@ public class EndStoneFurnaceBlock extends AbstractFurnaceBlock {
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         if (pState.getValue(LIT)) {
-            double d0 = (double)pPos.getX() + 0.5;
-            double d1 = (double)pPos.getY();
-            double d2 = (double)pPos.getZ() + 0.5;
+            double d0 = pPos.getX() + 0.5;
+            double d1 = pPos.getY();
+            double d2 = pPos.getZ() + 0.5;
             if (pRandom.nextDouble() < 0.2) {
                 pLevel.playLocalSound(d0, d1, d2, SoundEvents.REDSTONE_TORCH_BURNOUT, SoundSource.BLOCKS, 0.1F, 0.01F, false);
             }
 
             Direction direction = pState.getValue(FACING);
             Direction.Axis direction$axis = direction.getAxis();
-            double d3 = 0.52;
             double d4 = pRandom.nextDouble() * 0.6 - 0.3;
-            double d5 = direction$axis == Direction.Axis.X ? (double)direction.getStepX() * 0.52 : d4;
+            double d5 = direction$axis == Direction.Axis.X ? direction.getStepX() * 0.52 : d4;
             double d6 = pRandom.nextDouble() * 9.0 / 16.0;
-            double d7 = direction$axis == Direction.Axis.Z ? (double)direction.getStepZ() * 0.52 : d4;
+            double d7 = direction$axis == Direction.Axis.Z ? direction.getStepZ() * 0.52 : d4;
             pLevel.addParticle(ParticleTypes.SMOKE, d0 + d5, d1 + d6, d2 + d7, 0.0, 0.0, 0.0);
         }
     }

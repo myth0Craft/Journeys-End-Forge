@@ -3,14 +3,11 @@ package net.je.event;
 import java.lang.reflect.Field;
 
 import net.je.JourneysEnd;
-import net.je.conditions.ModConditions;
 import net.je.config.CommonConfig;
 import net.je.entity.ModEntities;
 import net.je.entity.custom.Endersent;
 import net.je.entity.custom.EndersentWithEye;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.SpawnPlacementTypes;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -19,7 +16,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraft.world.level.levelgen.Heightmap;
 
 @Mod.EventBusSubscriber(modid = JourneysEnd.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventBusEvents {
@@ -28,11 +24,11 @@ public class ModEventBusEvents {
         event.put(ModEntities.ENDERSENT.get(), Endersent.createMonsterAttributes().build());
         event.put(ModEntities.ENDERSENT_WITH_EYE.get(), EndersentWithEye.createMonsterAttributes().build());
     }
-    
+
     @SubscribeEvent
     public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
     }
-    
+
     @SubscribeEvent
     public static void onCommonSetup(FMLCommonSetupEvent event) {
     	event.enqueueWork(() -> {
@@ -43,7 +39,7 @@ public class ModEventBusEvents {
     		} else {
     			System.out.println("[OK] forge:conditional serializer is registerd: " + serializer);
     		}
-    		
+
         	System.out.println(CommonConfig.ENABLE_VANILLA_EYE_RECIPE.get());
     		System.out.println("========Recipe Manager Fields=========");
     		for (Field field : RecipeManager.class.getDeclaredFields()) {
@@ -53,6 +49,6 @@ public class ModEventBusEvents {
     		System.out.println("=======================================");
     	});
     }
-    
-    
+
+
 }

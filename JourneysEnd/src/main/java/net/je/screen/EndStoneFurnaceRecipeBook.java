@@ -6,7 +6,6 @@ import net.je.block.entity.EndStoneFurnaceBlockEntity;
 import net.minecraft.client.gui.screens.recipebook.AbstractFurnaceRecipeBookComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 
 public class EndStoneFurnaceRecipeBook extends AbstractFurnaceRecipeBookComponent {
 

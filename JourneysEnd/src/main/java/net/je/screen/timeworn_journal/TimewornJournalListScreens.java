@@ -1,14 +1,10 @@
 package net.je.screen.timeworn_journal;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.je.screen.timeworn_journal.entry.BaseTimewornJournalEntry;
 import net.je.screen.timeworn_journal.entry.EntityEntry;
 import net.je.screen.timeworn_journal.entry.ImageEntry;
 import net.je.screen.timeworn_journal.entry.ItemEntry;
 import net.je.screen.timeworn_journal.entry.TimewornJournalEntries;
-import net.je.screen.timeworn_journal.entry.renderer.BaseTimewornJournalEntryScreen;
 import net.je.screen.timeworn_journal.entry.renderer.TimewornJournalEntryScreens;
 
 public class TimewornJournalListScreens {
@@ -16,7 +12,7 @@ public class TimewornJournalListScreens {
 	public static class TimewornJournalChapterListScreen extends TimewornJournalScrollableScreen {
 
 		int tier;
-		
+
 		public TimewornJournalChapterListScreen(int pTier) {
 			super(TimewornJournalEntries.getChapterList(pTier));
 			this.scrollOffset = 0;
@@ -34,7 +30,7 @@ public class TimewornJournalListScreens {
 			this.minecraft.setScreen(
 					new TimewornJournalEntryScreens.TimewornJournalEmptyEntryScreen(pEntry, this.scrollOffset, this));
 		}
-		
+
 		@Override
 		public void init() {
 			super.init();
@@ -45,7 +41,7 @@ public class TimewornJournalListScreens {
 
 	public static class TimewornJournalProgressionListScreen extends TimewornJournalScrollableScreen {
 
-		
+
 		int tier;
 		public TimewornJournalProgressionListScreen(int pTier) {
 			super(TimewornJournalEntries.getProgressionList(pTier));
@@ -65,7 +61,7 @@ public class TimewornJournalListScreens {
 			this.minecraft.setScreen(new TimewornJournalEntryScreens.TimewornJournalImageEntryScreen(item,
 					this.scrollOffset, false, this));
 		}
-		
+
 		@Override
 		public void init() {
 			super.init();
@@ -95,7 +91,7 @@ public class TimewornJournalListScreens {
 			this.minecraft.setScreen(new TimewornJournalEntryScreens.TimewornJournalImageEntryScreen(item,
 					this.scrollOffset, true, this));
 		}
-		
+
 		@Override
 		public void init() {
 			super.init();
@@ -125,7 +121,7 @@ public class TimewornJournalListScreens {
 			this.minecraft.setScreen(new TimewornJournalEntryScreens.TimewornJournalImageEntryScreen(item,
 					this.scrollOffset, true, this));
 		}
-		
+
 		@Override
 		public void init() {
 			super.init();
@@ -136,7 +132,7 @@ public class TimewornJournalListScreens {
 
 	public static class TimewornJournalEntitiesListScreen extends TimewornJournalScrollableScreen {
 
-		
+
 		int tier;
 		public TimewornJournalEntitiesListScreen(int pTier) {
 			super(TimewornJournalEntries.getEntityList(pTier));
@@ -167,7 +163,7 @@ public class TimewornJournalListScreens {
 				}
 			}
 		}
-		
+
 		@Override
 		public void init() {
 			super.init();
@@ -178,7 +174,7 @@ public class TimewornJournalListScreens {
 
 	public static class TimewornJournalItemsListScreen extends TimewornJournalScrollableScreen {
 
-		
+
 		int tier;
 		public TimewornJournalItemsListScreen(int pTier) {
 			super(TimewornJournalEntries.getItemList(pTier));
@@ -198,7 +194,7 @@ public class TimewornJournalListScreens {
 			this.minecraft.setScreen(new TimewornJournalEntryScreens.TimewornJournalImageEntryScreen(item,
 					this.scrollOffset, false, this));
 		}
-		
+
 		@Override
 		public void init() {
 			super.init();
@@ -209,7 +205,7 @@ public class TimewornJournalListScreens {
 
 	public static class TimewornJournalBlocksListScreen extends TimewornJournalScrollableScreen {
 
-		
+
 		int tier;
 		public TimewornJournalBlocksListScreen(int pTier) {
 			super(TimewornJournalEntries.getBlockList(pTier));
@@ -244,7 +240,7 @@ public class TimewornJournalListScreens {
 			}
 
 		}
-		
+
 		@Override
 		public void init() {
 			super.init();

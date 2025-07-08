@@ -1,7 +1,6 @@
 package net.je.screen.timeworn_journal;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.je.JourneysEnd;
 import net.minecraft.client.Minecraft;
@@ -9,15 +8,12 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.WidgetSprites;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.FormattedCharSequence;
-import net.minecraft.util.Mth;
 
 public class TimewornJournalButton extends Button {
-	
+
 	protected static final WidgetSprites TIMEWORN_JOURNAL_SPRITES = new WidgetSprites(
 	        ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "timeworn_journal/timeworn_journal_button"),
 	        ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "timeworn_journal/timeworn_journal_button_highlighted"),
@@ -36,13 +32,12 @@ public class TimewornJournalButton extends Button {
         RenderSystem.enableDepthTest();
         pGuiGraphics.blitSprite(TIMEWORN_JOURNAL_SPRITES.get(this.active, this.isHoveredOrFocused()), this.getX(), this.getY(), this.getWidth(), this.getHeight());
         pGuiGraphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
-        int i = getFGColor();
-        
+
         Font font = Minecraft.getInstance().font;
         int textWidth = font.width(this.getMessage());
         int textX = this.getX() + (this.width - textWidth) / 2;
         int textY = this.getY() + (this.height - 8) / 2;
-        
+
         MultiBufferSource.BufferSource bufferSource = minecraft.renderBuffers().bufferSource();
 
         font.drawInBatch(
@@ -57,10 +52,5 @@ public class TimewornJournalButton extends Button {
         );
 
         bufferSource.endBatch();
-
-        
-        
-        //font.draw(pGuiGraphics.pose(), this.getMessage(), textX, textY, 0xffa38b48);
-        //this.renderString(pGuiGraphics, minecraft.font, 0xffa38b48);
     }
 }

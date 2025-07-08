@@ -1,17 +1,10 @@
 package net.je.entity.ai;
 
 import net.je.entity.custom.BaseEndersent;
-import net.je.entity.custom.Endersent;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
 public class EndersentAttackGoal extends MeleeAttackGoal {
 	private final int ATTACK_RANGE = 4;
@@ -35,7 +28,7 @@ public class EndersentAttackGoal extends MeleeAttackGoal {
 	@Override
 	protected void checkAndPerformAttack(LivingEntity pEnemy) {
 		if (!entity.isLargeAttacking()) {
-			if (entity.canAttack == true) {
+			if (entity.canAttack) {
 				if (isEnemyWithinAttackDistance(pEnemy)) {
 					shouldCountTillNextAttack = true;
 
@@ -61,15 +54,17 @@ public class EndersentAttackGoal extends MeleeAttackGoal {
 		int diffX = Math.abs(pEnemy.getBlockX() - entity.getBlockX());
 		int diffY = Math.abs(pEnemy.getBlockY() - entity.getBlockY());
 		int diffZ = Math.abs(pEnemy.getBlockZ() - entity.getBlockZ());
-		
+
 
 		return diffX + diffY + diffZ <= this.ATTACK_RANGE;
 	}
 
+	@Override
 	protected void resetAttackCooldown() {
 		this.ticksUntilNextAttack = this.adjustedTickDelay(attackDelay);
 	}
 
+	@Override
 	protected boolean isTimeToAttack() {
 		return this.ticksUntilNextAttack <= 0;
 	}
@@ -78,6 +73,7 @@ public class EndersentAttackGoal extends MeleeAttackGoal {
 		return this.ticksUntilNextAttack <= attackDelay;
 	}
 
+	@Override
 	protected int getTicksUntilNextAttack() {
 		return this.ticksUntilNextAttack;
 	}
@@ -87,7 +83,7 @@ public class EndersentAttackGoal extends MeleeAttackGoal {
 		this.mob.swing(InteractionHand.MAIN_HAND);
 		this.mob.doHurtTarget(pEnemy);
 	}
-	
+
 
 	@Override
 	public void tick() {

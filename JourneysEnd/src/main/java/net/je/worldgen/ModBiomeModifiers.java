@@ -1,18 +1,11 @@
 package net.je.worldgen;
 
-import java.util.List;
-
 import net.je.JourneysEnd;
-import net.je.entity.ModEntities;
-import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.common.world.ForgeBiomeModifiers;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModBiomeModifiers {
@@ -20,6 +13,8 @@ public class ModBiomeModifiers {
 	public static final ResourceKey<BiomeModifier> SPAWN_ENDERSENT = registerKey("spawn_endersent");
 	public static final ResourceKey<BiomeModifier> SPAWN_ENDERSENT_WITH_EYE = registerKey("spawn_endersent_with_eye");
 
+	
+	@SuppressWarnings("unused")
 	public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeature = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);

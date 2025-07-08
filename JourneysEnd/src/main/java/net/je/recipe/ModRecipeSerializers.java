@@ -1,12 +1,7 @@
 package net.je.recipe;
 
 import net.je.JourneysEnd;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
-import net.minecraft.world.item.crafting.BlastingRecipe;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SimpleCookingSerializer;
@@ -44,7 +39,7 @@ public class ModRecipeSerializers {
 	 * ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, type); return
 	 * Registry.register(BuiltInRegistries.RECIPE_TYPE, recipeTypeId, new
 	 * RecipeType<T>() {
-	 * 
+	 *
 	 * @Override public String toString() { return type; } }); }
 	 */
 

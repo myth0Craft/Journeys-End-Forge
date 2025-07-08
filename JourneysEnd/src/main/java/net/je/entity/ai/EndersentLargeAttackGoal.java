@@ -1,18 +1,13 @@
 package net.je.entity.ai;
 
 import net.je.entity.custom.BaseEndersent;
-import net.je.entity.custom.Endersent;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
 public class EndersentLargeAttackGoal extends MeleeAttackGoal {
 	private final int ATTACK_RANGE = 7;
@@ -35,7 +30,7 @@ public class EndersentLargeAttackGoal extends MeleeAttackGoal {
 
 	@Override
 	protected void checkAndPerformAttack(LivingEntity pEnemy) {
-		if (entity.canAttack == true) {
+		if (entity.canAttack) {
 			if (!entity.isAttacking()) {
 				if (entity.largeAttackCooldown <= 0) {
 					if (isEnemyWithinAttackDistance(pEnemy)) {
@@ -63,17 +58,19 @@ public class EndersentLargeAttackGoal extends MeleeAttackGoal {
 	private boolean isEnemyWithinAttackDistance(LivingEntity pEnemy) {
 		int diffX = Math.abs(pEnemy.getBlockX() - entity.getBlockX());
 		int diffY = Math.abs(pEnemy.getBlockY() - entity.getBlockY());
-		;
+
 		int diffZ = Math.abs(pEnemy.getBlockZ() - entity.getBlockZ());
-		;
+
 
 		return diffX + diffY + diffZ <= this.ATTACK_RANGE;
 	}
 
+	@Override
 	protected void resetAttackCooldown() {
 		this.ticksUntilNextAttack = this.adjustedTickDelay(attackDelay);
 	}
 
+	@Override
 	protected boolean isTimeToAttack() {
 		return this.ticksUntilNextAttack <= 0;
 	}
@@ -82,6 +79,7 @@ public class EndersentLargeAttackGoal extends MeleeAttackGoal {
 		return this.ticksUntilNextAttack <= attackDelay;
 	}
 
+	@Override
 	protected int getTicksUntilNextAttack() {
 		return this.ticksUntilNextAttack;
 	}
@@ -91,10 +89,10 @@ public class EndersentLargeAttackGoal extends MeleeAttackGoal {
 		this.mob.swing(InteractionHand.MAIN_HAND);
 		this.endersentHurtTarget(pEnemy);
 		entity.largeAttackCooldown = 140;
-		
+
 		entity.goalSelector.removeGoal(entity.endersentLargeAttackGoal);
 	}
-	
+
     public boolean endersentHurtTarget(Entity p_21372_) {
         DamageSource damagesource = entity.damageSources().mobAttack(entity);
         boolean flag = p_21372_.hurt(damagesource, 15);
@@ -102,9 +100,9 @@ public class EndersentLargeAttackGoal extends MeleeAttackGoal {
             float f1 = 30;
             if (f1 > 0.0F && p_21372_ instanceof LivingEntity livingentity) {
                 livingentity.knockback(
-                    (double)(f1 * 0.5F),
-                    (double)Mth.sin(entity.getYRot() * (float) (Math.PI / 180.0)),
-                    (double)(-Mth.cos(entity.getYRot() * (float) (Math.PI / 180.0)))
+                    f1 * 0.5F,
+                    Mth.sin(entity.getYRot() * (float) (Math.PI / 180.0)),
+                    (-Mth.cos(entity.getYRot() * (float) (Math.PI / 180.0)))
                 );
                 entity.setDeltaMovement(entity.getDeltaMovement().multiply(0.6, 1.0, 0.6));
             }

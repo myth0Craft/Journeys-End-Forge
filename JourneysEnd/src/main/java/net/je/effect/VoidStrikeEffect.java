@@ -1,14 +1,10 @@
 package net.je.effect;
 
-import net.je.entity.custom.Endersent;
 import net.je.util.ModTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.EnderMan;
-import net.minecraft.world.entity.monster.Endermite;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 public class VoidStrikeEffect extends MobEffect {
@@ -26,8 +22,8 @@ public class VoidStrikeEffect extends MobEffect {
 			pEntity.hurt(voidStrike, 1.0F);
 			pEntity.setDeltaMovement(0.0, 0.0, 0.0);
 		    pEntity.setDeltaMovement(delta);
-			
-			
+
+
 		} else {
 			pEntity.heal(1.0F);
 		}
@@ -38,7 +34,7 @@ public class VoidStrikeEffect extends MobEffect {
     public boolean shouldApplyEffectTickThisTick(int p_299625_, int p_297396_) {
         int i = 40 >> p_297396_;
         return i > 0 ? p_299625_ % i == 0 : true;
-        
+
     }
 
 }

@@ -6,9 +6,7 @@ import java.util.List;
 import org.jetbrains.annotations.Nullable;
 import org.lwjgl.glfw.GLFW;
 
-import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
 
 import net.je.JourneysEnd;
 import net.je.screen.timeworn_journal.BaseTimewornJournalScreen;
@@ -17,16 +15,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.renderer.LightTexture;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
@@ -46,6 +37,7 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 
 	protected BaseTimewornJournalEntry entry;
 
+	@SuppressWarnings("unused")
 	private int scrollOffset;
 
 	private Screen backScreen;
@@ -70,7 +62,7 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 		loreY = super.getBgStartY() + 45;
 		loreScrollbarX = loreX + 130;
 		this.renderBackButton(backScreen);
-		
+
 	}
 
 	@Override
@@ -151,7 +143,7 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 			int loreHeight = 120;
 			int thumbHeight = Math.max(10, (int) ((maxVisibleLoreLines / (float) loreLines.size()) * loreHeight));
 			float deltaY = (int) mouseY - loreDragStartY;
-			float progressDelta = deltaY / (float) (loreHeight - thumbHeight);
+			float progressDelta = deltaY / (loreHeight - thumbHeight);
 
 			float newThumbProgress = initialLoreThumbProgress + progressDelta;
 			newThumbProgress = Mth.clamp(newThumbProgress, 0f, 1f);
@@ -179,10 +171,10 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 
 	public static List<String> wrapText(Font font, String text, int maxWidth) {
 		List<String> wrappedLines = new ArrayList<>();
-		if (text == null || text.isEmpty())
+		if (text == null || text.isEmpty()) {
 			return wrappedLines;
+		}
 
-		// Split into words
 		String[] words = text.split("\\s+");
 		StringBuilder currentLine = new StringBuilder();
 
@@ -190,7 +182,6 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 			String testLine = currentLine.isEmpty() ? word : currentLine + " " + word;
 
 			if (font.width(testLine) > maxWidth) {
-				// Line too long, commit currentLine and start new
 				wrappedLines.add(currentLine.toString());
 				currentLine = new StringBuilder(word);
 			} else {
@@ -198,7 +189,6 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 			}
 		}
 
-		// Add remaining text
 		if (!currentLine.isEmpty()) {
 			wrappedLines.add(currentLine.toString());
 		}
@@ -209,36 +199,18 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 	public void renderBlock(GuiGraphics guiGraphics, ItemStack stack) {
 		float scale = 120.0f;
 
-		// This is the position on screen where the *center* of the item will appear
 		int x = (int) ((this.width / 2) - super.getBgWidth() * 0.21);
 		int y = (int) ((this.height / 2) - super.getBgHeight() * 0.05);
 
-		// Required for correct rendering
 		guiGraphics.flush();
 
 		PoseStack poseStack = guiGraphics.pose();
 		poseStack.pushPose();
 
-		// Move to the correct screen position and adjust for scale
 		poseStack.translate(x, y, 200);
 
-		// Apply scaling
 		poseStack.scale(scale, -scale, scale);
 
-		/*
-		 * poseStack.mulPose(Axis.YP.rotationDegrees(180.0f));
-		 * 
-		 * poseStack.mulPose(Axis.XP.rotationDegrees(180.0f));
-		 */
-
-		/*
-		 * poseStack.mulPose(Axis.ZP.rotationDegrees(180.0f));
-		 * 
-		 * poseStack.mulPose(Axis.YP.rotationDegrees(180.0f));
-		 */
-
-		// Offset by -8 to center (since the item renders 16x16)
-		// poseStack.translate(-8.0F, -8.0F, 0.0F);
 
 		Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.GUI, 15728880,
 				OverlayTexture.NO_OVERLAY, poseStack, guiGraphics.bufferSource(), null, 0);
@@ -255,7 +227,7 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 				(int) scale * 16);
 
 	}
-	
+
 	public void renderImageFrame(GuiGraphics guiGraphics) {
 		float scale = 9;
 		int x = (int) ((this.width / 2) - super.getBgWidth() * 0.21 - (int) scale * 8);

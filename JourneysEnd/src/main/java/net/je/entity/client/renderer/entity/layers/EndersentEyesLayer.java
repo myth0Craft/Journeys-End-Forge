@@ -1,41 +1,24 @@
 package net.je.entity.client.renderer.entity.layers;
 
-import java.util.List;
-import java.util.function.BiFunction;
-
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.blaze3d.vertex.VertexFormat;
 
-import net.je.JourneysEnd;
 import net.je.entity.client.EndersentModel;
 import net.je.entity.custom.BaseEndersent;
-import net.je.entity.custom.Endersent;
-import net.minecraft.Util;
-import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
-import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
-import net.minecraft.client.renderer.entity.layers.WardenEmissiveLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class EndersentEyesLayer<T extends BaseEndersent, M extends EndersentModel<T>> extends RenderLayer<T, M>{
-    
-    
+
+
     private final ResourceLocation texture;
 
 
@@ -48,7 +31,8 @@ public class EndersentEyesLayer<T extends BaseEndersent, M extends EndersentMode
         this.texture = p_234886_;
     }
 
-    public void render(
+    @Override
+	public void render(
         PoseStack p_234902_,
         MultiBufferSource p_234903_,
         int p_234904_,
@@ -66,9 +50,9 @@ public class EndersentEyesLayer<T extends BaseEndersent, M extends EndersentMode
             this.getParentModel().renderToBuffer(p_234902_, vertexconsumer, p_234904_, LivingEntityRenderer.getOverlayCoords(p_234905_, 0.0F), i);
         }
     }
-	
-	
 
-	
+
+
+
 
 }

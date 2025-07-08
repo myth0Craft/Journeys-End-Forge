@@ -2,9 +2,7 @@ package net.je.block.entity;
 
 import net.je.JourneysEnd;
 import net.je.block.ModBlocks;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.FurnaceBlockEntity;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -17,7 +15,7 @@ public class ModBlockEntities {
 	public static final RegistryObject<BlockEntityType<EndStoneFurnaceBlockEntity>> END_STONE_FURNACE_BE = BLOCK_ENTITIES
 			.register("end_stone_furnace_be", () -> BlockEntityType.Builder
 					.of(EndStoneFurnaceBlockEntity::new, ModBlocks.END_STONE_FURNACE.get()).build(null));
-	
+
 	public static final RegistryObject<BlockEntityType<BejeweledPedestalBlockEntity>> BEJEWELED_PEDESTAL_BE = BLOCK_ENTITIES
 			.register("bejeweled_pedestal_be", () -> BlockEntityType.Builder
 					.of(BejeweledPedestalBlockEntity::new, ModBlocks.BEJEWELED_PEDESTAL.get()).build(null));

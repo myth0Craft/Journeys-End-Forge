@@ -7,9 +7,7 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 
 public class ModDamageSources {
@@ -27,11 +25,13 @@ public class ModDamageSources {
         return new DamageSource(this.damageTypes.getHolderOrThrow(pDamageTypeKey));
     }
 
-    private DamageSource source(ResourceKey<DamageType> pDamageTypeKey, @Nullable Entity pEntity) {
+    @SuppressWarnings("unused")
+	private DamageSource source(ResourceKey<DamageType> pDamageTypeKey, @Nullable Entity pEntity) {
         return new DamageSource(this.damageTypes.getHolderOrThrow(pDamageTypeKey), pEntity);
     }
 
-    private DamageSource source(ResourceKey<DamageType> pDamageTypeKey, @Nullable Entity pCausingEntity, @Nullable Entity pDirectEntity) {
+    @SuppressWarnings("unused")
+	private DamageSource source(ResourceKey<DamageType> pDamageTypeKey, @Nullable Entity pCausingEntity, @Nullable Entity pDirectEntity) {
         return new DamageSource(this.damageTypes.getHolderOrThrow(pDamageTypeKey), pCausingEntity, pDirectEntity);
     }
 

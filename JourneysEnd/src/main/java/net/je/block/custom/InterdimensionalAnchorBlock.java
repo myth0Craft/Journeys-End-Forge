@@ -1,32 +1,24 @@
 package net.je.block.custom;
 
-import org.joml.Random;
-
 import com.mojang.serialization.MapCodec;
 
 import net.je.block.ModBlocks;
-import net.je.block.entity.EndStoneFurnaceBlockEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RenderShape;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
 public class InterdimensionalAnchorBlock extends Block {
-	
+
 	Level blockLevel;
-	
+
 	public static final IntegerProperty DIMENSION = IntegerProperty.create("dim", 0, 2);
 
 	public static final MapCodec<InterdimensionalAnchorBlock> CODEC = simpleCodec(InterdimensionalAnchorBlock::new);
@@ -69,13 +61,13 @@ public class InterdimensionalAnchorBlock extends Block {
 	protected void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
 		super.randomTick(pState, pLevel, pPos, pRandom);
 		if (blockLevel != null) {
-			
+
 			RandomSource random = RandomSource.create();
-			
+
 			if (random.nextIntBetweenInclusive(1, 4) == 1) {
-				
+
 				if (blockLevel.dimension() == Level.OVERWORLD) {
-					
+
 					spreadBlock(Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN, pLevel, pPos, pRandom);
 
 					spreadBlock(ModBlocks.VOIDBLIGHT.get(), Blocks.AIR, pLevel, pPos, pRandom);
@@ -91,9 +83,9 @@ public class InterdimensionalAnchorBlock extends Block {
 					spreadBlock(Blocks.GRASS_BLOCK, ModBlocks.CORRUPTED_DIRT.get(), pLevel, pPos, pRandom);
 					spreadBlock(Blocks.DIRT, ModBlocks.CORRUPTED_DIRT.get(), pLevel, pPos, pRandom);
 					spreadBlock(Blocks.STONE, Blocks.END_STONE, pLevel, pPos, pRandom);
-					
+
 				} else if (blockLevel.dimension() == Level.END) {
-					
+
 					spreadBlock(Blocks.CRYING_OBSIDIAN, Blocks.OBSIDIAN, pLevel, pPos, pRandom);
 
 					spreadBlock(ModBlocks.CORRUPTED_DIRT.get(), Blocks.GRASS_BLOCK, pLevel, pPos, pRandom);
@@ -112,11 +104,13 @@ public class InterdimensionalAnchorBlock extends Block {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	protected void spreadBlock(Block blockToReplace, Block blockToSpawn, ServerLevel pLevel, BlockPos pPos,
 			RandomSource pRandom) {
 		// RandomSource pRandom = RandomSource.create();
-		if (!pLevel.isAreaLoaded(pPos, 3))
+		if (!pLevel.isAreaLoaded(pPos, 3)) {
 			return;
+		}
 		for (int i = 0; i < 4; i++) {
 			BlockPos blockpos = pPos.offset(pRandom.nextInt(3) - 1, pRandom.nextInt(5) - 3, pRandom.nextInt(3) - 1);
 			if (pLevel.getBlockState(blockpos).is(blockToReplace)) {

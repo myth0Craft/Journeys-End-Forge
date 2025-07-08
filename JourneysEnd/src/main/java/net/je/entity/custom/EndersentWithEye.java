@@ -1,22 +1,14 @@
 package net.je.entity.custom;
 
 import net.je.entity.ai.EndersentAttackGoal;
-import net.je.entity.ai.EndersentLargeAttackGoal;
 import net.je.sound.ModSounds;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -25,7 +17,6 @@ import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
@@ -41,10 +32,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.phys.Vec3;
 
 public class EndersentWithEye extends BaseEndersent {
 
@@ -64,31 +52,31 @@ public class EndersentWithEye extends BaseEndersent {
 
 	/*
 	 * private int getTypeVariant() { return this.entityData.get(VARIANT); }
-	 * 
+	 *
 	 * public EndersentVariant getVariant() { return
 	 * EndersentVariant.byId(this.getTypeVariant() & 255); }
-	 * 
+	 *
 	 * private void setVariant(EndersentVariant variant) {
 	 * this.entityData.set(VARIANT, variant.getId() & 255); }
-	 * 
+	 *
 	 * @Override public void addAdditionalSaveData(CompoundTag pCompound) {
 	 * super.addAdditionalSaveData(pCompound); pCompound.putInt("Variant",
 	 * this.getTypeVariant()); }
-	 * 
+	 *
 	 * @Override public void readAdditionalSaveData(CompoundTag pCompound) {
 	 * super.readAdditionalSaveData(pCompound); this.entityData.set(VARIANT,
 	 * pCompound.getInt("Variant")); }
-	 * 
+	 *
 	 * @Override public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel,
 	 * DifficultyInstance pDifficulty, MobSpawnType pSpawnType, @Nullable
 	 * SpawnGroupData pSpawnGroupData) {
-	 * 
-	 * 
+	 *
+	 *
 	 * if (this.level().dimension() == Level.END || this.level().dimension() ==
 	 * Level.NETHER) { this.setVariant(EndersentVariant.WITHOUT_EYE); } else {
 	 * EndersentVariant variant = Util.getRandom(EndersentVariant.values(),
 	 * this.random); this.setVariant(variant);
-	 * 
+	 *
 	 * } return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType,
 	 * pSpawnGroupData); }
 	 */
@@ -117,7 +105,7 @@ public class EndersentWithEye extends BaseEndersent {
 
 	@Override
 	protected SoundEvent getAmbientSound() {
-		if (canAttack == true) {
+		if (canAttack) {
 			return SoundEvents.ENDERMAN_AMBIENT;
 		} else {
 			return null;
@@ -126,7 +114,7 @@ public class EndersentWithEye extends BaseEndersent {
 
 
 	public static AttributeSupplier.Builder createMonsterAttributes() {
-		return Endersent.createMobAttributes().add(Attributes.ATTACK_DAMAGE, 8f).add(Attributes.MAX_HEALTH, 100D)
+		return Mob.createMobAttributes().add(Attributes.ATTACK_DAMAGE, 8f).add(Attributes.MAX_HEALTH, 100D)
 				.add(Attributes.FOLLOW_RANGE, 64.0).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.ARMOR, 2.0D)
 				.add(Attributes.ATTACK_KNOCKBACK, 20D).add(Attributes.STEP_HEIGHT, 1.0)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 100.0D);
@@ -190,7 +178,6 @@ public class EndersentWithEye extends BaseEndersent {
 		return potioncontents.is(Potions.WATER) ? super.hurt(p_186273_, p_186275_) : false;
 	}
 
-	@SuppressWarnings("resource")
 	@Override
 	public void aiStep() {
 		if (this.level().isClientSide) {

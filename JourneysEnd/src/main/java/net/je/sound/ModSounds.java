@@ -1,7 +1,5 @@
 package net.je.sound;
 
-import java.util.function.Supplier;
-
 import net.je.JourneysEnd;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -26,9 +24,9 @@ public class ModSounds {
 			"block.interdimensional_anchor");
 
 	public static final ForgeSoundType INTERDIMENSIONAL_ANCHOR_SOUNDS = new ForgeSoundType(1f, 1f,
-			ModSounds.INTERDIMENSIONAL_ANCHOR_BREAK, 
-			()-> SoundEvents.METAL_STEP, 
-			()-> SoundEvents.RESPAWN_ANCHOR_CHARGE, 
+			ModSounds.INTERDIMENSIONAL_ANCHOR_BREAK,
+			()-> SoundEvents.METAL_STEP,
+			()-> SoundEvents.RESPAWN_ANCHOR_CHARGE,
 			()-> SoundEvents.METAL_HIT,
 			()-> SoundEvents.METAL_FALL);
 

@@ -66,6 +66,8 @@
 	"tooltip.je.unobtainable": "Currently unobtainable in Survival mode.",
 	"container.je.end_stone_furnace": "End Stone Furnace",
 	"gui.recipebook.toggleRecipes.end_stone_furnace": "Showing End Stone Smeltable",
+	
+	"tooltip.je.tier": "Tier ",
 	//
 	"screen.je.timeworn_journal_title": "Timeworn Journal",
 	"screen.je.timeworn_journal_home.story": "Story",
@@ -94,9 +96,14 @@
 	Every other tab containes information about all modded features of that category, or tweaked vanilla features. If you are not sure what a certain item does, look it up on the correct tab in
 	 the book!",
 	"screen.je.title.chapter_1": "Chapter 1",
-	"screen.je.lore.chapter_1": "lore",
+	"screen.je.lore.chapter_1": "If you are reading this, it may already be too late. Something stirs in the darkness of the Void. An ancient evil from ages long past yet also of the future. 
+	Long ago, it was sealed in an alternate reality known as the End so that its taint would no longer be able to reach the Overworld. However, its power is growing, and its strength returns. 
+	You may be the last hope to save the Overworld. You must seek out the eyes of Ender and reignite the gateway to the End. Long ago the eyes were scattered across the Overworld to prevent 
+	the End Portal from opening once more. You will have to travel far and wide to find them. Good luck.",
 	"screen.je.title.chapter_2": "Chapter 2",
-	"screen.je.lore.chapter_2": "lore",
+	"screen.je.lore.chapter_2": "If you are reading this, then you have already made it to the End and reopened the gateway. However, this is only the beginning of your quest. You will 
+	have to travel through lands blighted and shattered to find the §kDark Tower§r and defeat the §kShadow Lord§r that lurks within. I suggest getting Voidmetal gear, made from the residue of Endermen. The journey 
+	may be difficult, but everything depends on it. Good luck.",
 	//
 	"screen.je.title.progression_1": "Getting to the End",
 	"screen.je.lore.progression_1": "Journey's End makes getting to the End dimension much harder than it is in Vanilla. You will need to travel around the Overworld and find

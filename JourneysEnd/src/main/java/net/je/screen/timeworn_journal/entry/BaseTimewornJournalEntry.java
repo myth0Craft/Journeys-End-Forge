@@ -1,8 +1,5 @@
 package net.je.screen.timeworn_journal.entry;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.network.chat.Component;
 
 public class BaseTimewornJournalEntry {
@@ -10,7 +7,7 @@ public class BaseTimewornJournalEntry {
 	protected Component name;
 
 	protected Component lore;
-	
+
 	private Component empty = Component.translatable("screen.je.timeworn_journal.empty");
 
 	public BaseTimewornJournalEntry(Component pName, Component pLore) {
@@ -33,15 +30,15 @@ public class BaseTimewornJournalEntry {
 			return empty;
 		}
 	}
-	
+
 	public Boolean isEntity() {
 		return false;
 	}
-	
+
 	public Boolean isImage() {
 		return false;
 	}
-	
+
 	public Boolean isItem() {
 		return false;
 	}

@@ -1,27 +1,17 @@
 package net.je.event;
 
-import java.util.function.Supplier;
-
-import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import net.je.JourneysEnd;
 import net.je.effect.ModEffects;
-import net.je.entity.client.EndersentModel;
-import net.je.entity.client.ModModelLayers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.CustomizeGuiOverlayEvent;
-import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -31,7 +21,7 @@ public class ModEventBusClientEvents {
 	/*
 	 * @SubscribeEvent public static void onCustomizeOverlay() { Minecraft mc =
 	 * Minecraft.getInstance();
-	 * 
+	 *
 	 * if (mc.player == null || mc.level == null) return; //if
 	 * (mc.player.hasEffect(ModEffects.VOID_STRIKE_EFFECT.get())) {
 	 * RenderSystem.setShaderColor(60, 0, 97, 1); //} }
@@ -41,8 +31,9 @@ public class ModEventBusClientEvents {
 	public static void customize(CustomizeGuiOverlayEvent pEvent) {
 		Minecraft mc = Minecraft.getInstance();
 		Holder<MobEffect> holder = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ModEffects.VOID_STRIKE_EFFECT.get());
-		if (mc.player == null || mc.level == null)
+		if (mc.player == null || mc.level == null) {
 			return;
+		}
 
 		boolean isActive = mc.player.hasEffect(holder);
 
@@ -115,7 +106,7 @@ public class ModEventBusClientEvents {
 	 * Mth.ceil(player.getHealth()); int maxHealth =
 	 * Mth.ceil(player.getMaxHealth()); int left = screenWidth / 2 - 91; int top =
 	 * screenHeight - 39;
-	 * 
+	 *
 	 * for (int i = 0; i < maxHealth / 2; ++i) { int x = left + i * 8; boolean full
 	 * = i * 2 + 1 < health; boolean half = i * 2 + 1 == health;
 	 * graphics.blit(HEART_TEXTURE, x, top, 16, 0, 9, 9, 32, 9); if (full) {

@@ -1,11 +1,10 @@
 package net.je.datagen;
 
+import java.util.LinkedHashMap;
+
 import net.je.JourneysEnd;
 import net.je.block.ModBlocks;
 import net.je.item.ModItems;
-
-import java.util.LinkedHashMap;
-
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -36,7 +35,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimMaterials.put(TrimMaterials.LAPIS, 0.9F);
         trimMaterials.put(TrimMaterials.AMETHYST, 1.0F);
     }
-	
+
 	public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, JourneysEnd.MODID, existingFileHelper);
     }
@@ -53,27 +52,27 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.EYE_FRAGMENT.get());
         basicItem(ModItems.TIMEWORN_JOURNAL_T0.get());
         basicItem(ModItems.TIMEWORN_JOURNAL_T1.get());
-        
+
         handheldItem(ModItems.VOIDMETAL_PICKAXE);
         handheldItem(ModItems.VOIDMETAL_AXE);
         handheldItem(ModItems.VOIDMETAL_SHOVEL);
         handheldItem(ModItems.VOIDMETAL_HOE);
         handheldItem(ModItems.VOIDMETAL_SWORD);
-        
+
         trimmedArmorItem(ModItems.VOIDMETAL_HELMET);
         trimmedArmorItem(ModItems.VOIDMETAL_CHESTPLATE);
         trimmedArmorItem(ModItems.VOIDMETAL_LEGGINGS);
         trimmedArmorItem(ModItems.VOIDMETAL_BOOTS);
-        
+
         wallItem(ModBlocks.POLISHED_END_STONE_WALL, ModBlocks.POLISHED_END_STONE);
     }
-    
+
     private ItemModelBuilder handheldItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),
                 ResourceLocation.parse("item/handheld")).texture("layer0",
                 ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID,"item/" + item.getId().getPath()));
     }
-    
+
     private void trimmedArmorItem(RegistryObject<Item> itemRegistryObject) {
         final String MOD_ID = JourneysEnd.MODID;
 
@@ -97,7 +96,7 @@ public class ModItemModelProvider extends ItemModelProvider {
                 ResourceLocation trimNameResLoc = ResourceLocation.parse(currentTrimName);
 
                 existingFileHelper.trackGenerated(trimResLoc, PackType.CLIENT_RESOURCES, ".png", "textures");
-                
+
                 getBuilder(currentTrimName)
                         .parent(new ModelFile.UncheckedModelFile("item/generated"))
                         .texture("layer0", armorItemResLoc.getNamespace() + ":item/" + armorItemResLoc.getPath())
@@ -114,7 +113,7 @@ public class ModItemModelProvider extends ItemModelProvider {
             });
         }
     }
-    
+
     public void wallItem(RegistryObject<Block> block, RegistryObject<Block> baseBlock) {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/wall_inventory"))
                 .texture("wall",  ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID,

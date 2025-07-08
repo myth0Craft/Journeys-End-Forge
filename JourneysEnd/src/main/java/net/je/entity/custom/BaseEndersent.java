@@ -16,7 +16,7 @@ public class BaseEndersent extends Monster {
 			EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Boolean> LARGE_ATTACKING = SynchedEntityData.defineId(BaseEndersent.class,
 			EntityDataSerializers.BOOLEAN);
-	
+
 	public final AnimationState attackAnimationState = new AnimationState();
 
 	public final AnimationState largeAttackAnimationState = new AnimationState();
@@ -24,16 +24,16 @@ public class BaseEndersent extends Monster {
 	public int attackAnimationTimeout = 0;
 
 	public int largeAttackAnimationTimeout = 0;
-	
+
 	public Goal endersentLargeAttackGoal = new EndersentLargeAttackGoal(this, 1.0D, true);
-	
+
 	public boolean canAttack = true;
 	public int largeAttackCooldown = 140;
-	
+
 	public BaseEndersent(EntityType<? extends Monster> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
 	}
-	
+
 	@Override
 	protected void defineSynchedData(SynchedEntityData.Builder p_333664_) {
 		super.defineSynchedData(p_333664_);
@@ -42,7 +42,7 @@ public class BaseEndersent extends Monster {
 		//p_333664_.define(VARIANT, 0);
 
 	}
-	
+
 	// small attack
 		public void setAttacking(boolean attacking) {
 			this.entityData.set(ATTACKING, attacking);
@@ -60,7 +60,7 @@ public class BaseEndersent extends Monster {
 		public boolean isLargeAttacking() {
 			return this.entityData.get(LARGE_ATTACKING);
 		}
-		
+
 		protected void setupAnimationStates() {
 			if (this.isAttacking() && attackAnimationTimeout <= 0 && !this.isLargeAttacking()) {
 
@@ -87,16 +87,16 @@ public class BaseEndersent extends Monster {
 			}
 
 		}
-		
+
 		protected void defaultTick() {
 			super.tick();
 		}
-		
+
 		@Override
 		public void playAttackSound() {
 			this.playSound(ModSounds.ENDERSENT_STEP.get(), 5.0F, 1.0F);
 		}
-		
+
 		@Override
 		public void tick() {
 			defaultTick();
@@ -110,6 +110,6 @@ public class BaseEndersent extends Monster {
 				this.goalSelector.addGoal(1, endersentLargeAttackGoal);
 			}
 		}
-	
-	
+
+
 }

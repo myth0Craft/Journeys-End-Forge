@@ -5,10 +5,8 @@ import java.util.concurrent.CompletableFuture;
 
 import net.je.JourneysEnd;
 import net.je.block.ModBlocks;
-import net.je.conditions.ModConditions;
 import net.je.conditions.ModConfigEnabledCondition;
 import net.je.conditions.ModNotCondition;
-import net.je.config.CommonConfig;
 import net.je.item.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -29,10 +27,7 @@ import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
-import net.minecraftforge.common.crafting.conditions.FalseCondition;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
-import net.minecraftforge.common.crafting.conditions.NotCondition;
-import net.minecraftforge.common.crafting.conditions.TrueCondition;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
 	public ModRecipeProvider(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pRegistries) {

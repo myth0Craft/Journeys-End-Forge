@@ -15,7 +15,7 @@ public class VoidbloomBlock extends Block {
 	public VoidbloomBlock(BlockBehaviour.Properties pProperties) {
         super(pProperties);
     }
-	
+
 	@Override
     protected BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
         return !pState.canSurvive(pLevel, pCurrentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);

@@ -1,6 +1,5 @@
 package net.je.block.custom;
 
-import net.je.block.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -14,11 +13,13 @@ public class LushEndStoneBlock extends JEGrassBlock {
 		super(p_55057_);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
 		super.randomTick(pState, pLevel, pPos, pRandom);
-		if (!pLevel.isAreaLoaded(pPos, 3))
+		if (!pLevel.isAreaLoaded(pPos, 3)) {
 			return;
+		}
 		BlockState blockstate = this.defaultBlockState();
 		for (int i = 0; i < 4; i++) {
 			BlockPos blockpos = pPos.offset(pRandom.nextInt(3) - 1, pRandom.nextInt(5) - 3, pRandom.nextInt(3) - 1);

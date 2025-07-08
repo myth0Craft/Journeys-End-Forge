@@ -1,39 +1,25 @@
 package net.je.screen;
 
 import net.je.block.ModBlocks;
-import net.je.block.entity.EndStoneFurnaceBlockEntity;
 import net.je.item.ModItems;
-import net.je.recipe.EndStoneFurnaceRecipe;
 import net.je.recipe.ModRecipeSerializers;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.AbstractFurnaceMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.FurnaceFuelSlot;
 import net.minecraft.world.inventory.FurnaceResultSlot;
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.world.inventory.RecipeBookMenu;
-import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.items.SlotItemHandler;
 
+@SuppressWarnings("unused")
 public class EndStoneFurnaceMenu extends AbstractContainerMenu {
 
 	/*
@@ -41,7 +27,7 @@ public class EndStoneFurnaceMenu extends AbstractContainerMenu {
 	 * super(ModMenuTypes.END_STONE_FURNACE_MENU.get(),
 	 * ModRecipeSerializers.END_STONE_FURNACE_RECIPE_TYPE.get(),
 	 * RecipeBookType.BLAST_FURNACE, pContainerId, pPlayerInventory); }
-	 * 
+	 *
 	 * public EndStoneFurnaceMenu(int pContainerId, Inventory pPlayerInventory,
 	 * Container pEndStoneFurnaceContainer, ContainerData pEndStoneFurnaceData) {
 	 * super(ModMenuTypes.END_STONE_FURNACE_MENU.get(),
@@ -152,6 +138,7 @@ public class EndStoneFurnaceMenu extends AbstractContainerMenu {
 		return itemstack;
 	}
 
+	@SuppressWarnings("unchecked")
 	protected boolean canSmelt(ItemStack pStack) {
 		return this.level.getRecipeManager().getRecipeFor((RecipeType<AbstractCookingRecipe>) this.recipeType,
 				new SingleRecipeInput(pStack), this.level).isPresent();

@@ -18,16 +18,16 @@ public class BaseTimewornJournalScreen extends Screen {
 
 	private int bgStartX;
 	private int bgStartY;
-	
+
 	private int bookWidth;
 	private int bookHeight;
-	
+
 	private int centerX;
 	private int centerY;
 
 	private int xOffset;
 	private int yOffset;
-	
+
 	public static final WidgetSprites BACK_BUTTON_SPRITES = new WidgetSprites(
 			ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID,
 					"timeworn_journal/timeworn_journal_back_button"),
@@ -46,10 +46,10 @@ public class BaseTimewornJournalScreen extends Screen {
 	@Override
 	protected void init() {
 		super.init();
-		
+
 		bookWidth = 400;
 		bookHeight = 216;
-		
+
 		centerX = this.width / 2;
 		centerY = this.height / 2;
 
@@ -58,8 +58,6 @@ public class BaseTimewornJournalScreen extends Screen {
 
 		bgStartX = centerX - ((bookWidth - xOffset) / 2);
 		bgStartY = centerY - (bookHeight / 2) - yOffset;
-		
-		//this.renderBackButton(null);
 	}
 
 	@Override
@@ -67,7 +65,7 @@ public class BaseTimewornJournalScreen extends Screen {
 		this.renderTransparentBackground(pGuiGraphics);
 		pGuiGraphics.blit(BG_LOCATION, bgStartX, bgStartY, 0, 0, 0, bookWidth, bookHeight, bookWidth, bookHeight);
 	}
-	
+
 	protected void renderBackButton(@Nullable Screen backScreen) {
 		this.addRenderableWidget(new ImageButton(bgStartX + 18, bgStartY + bookHeight - 36, 20, 20, BACK_BUTTON_SPRITES, p_308203_ -> {
 			this.minecraft.setScreen(backScreen);
@@ -89,15 +87,15 @@ public class BaseTimewornJournalScreen extends Screen {
 	protected int getBgEndY() {
 		return bgStartY + bookHeight;
 	}
-	
+
 	protected int getBgWidth() {
 		return bookWidth;
 	}
-	
+
 	protected int getBgHeight() {
 		return bookHeight;
 	}
-	
+
 	protected void writeText(GuiGraphics pGuiGraphics, Component pText, int pX, int pY) {
         FormattedCharSequence formattedcharsequence = pText.getVisualOrderText();
         pGuiGraphics.drawString(this.font, formattedcharsequence, pX - this.font.width(formattedcharsequence) / 2, pY, 12559971, false);

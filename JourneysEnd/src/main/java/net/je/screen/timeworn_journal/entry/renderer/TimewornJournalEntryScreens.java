@@ -4,37 +4,18 @@ import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-
-import net.je.block.ModBlocks;
-import net.je.screen.timeworn_journal.TimewornJournalListScreens;
-import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalBiomesListScreen;
-import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalBlocksListScreen;
-import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalChapterListScreen;
-import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalEntitiesListScreen;
-import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalItemsListScreen;
-import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalProgressionListScreen;
-import net.je.screen.timeworn_journal.TimewornJournalListScreens.TimewornJournalStructuresListScreen;
 import net.je.screen.timeworn_journal.TimewornJournalScrollableScreen;
 import net.je.screen.timeworn_journal.entry.BaseTimewornJournalEntry;
 import net.je.screen.timeworn_journal.entry.EntityEntry;
 import net.je.screen.timeworn_journal.entry.ImageEntry;
 import net.je.screen.timeworn_journal.entry.ItemEntry;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Zombie;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Blocks;
 
 public class TimewornJournalEntryScreens {
 
@@ -133,7 +114,7 @@ public class TimewornJournalEntryScreens {
 		private EntityEntry entry;
 
 		private TimewornJournalScrollableScreen backScreen;
-		
+
 		private float scale;
 
 		public TimewornJournalEntityEntryScreen(EntityEntry pEntry, TimewornJournalScrollableScreen listScreen) {
@@ -144,7 +125,7 @@ public class TimewornJournalEntryScreens {
 			this.backScreen.setScrollOffset(scrollOffset);
 			entity = (LivingEntity) entry.getEntity();
 			this.scale = entry.getScale();
-			
+
 		}
 
 		public TimewornJournalEntityEntryScreen(EntityEntry pEntry, int pScrollOffset,
@@ -171,24 +152,12 @@ public class TimewornJournalEntryScreens {
 		public void init() {
 
 			super.init();
-			
+
 			float bodyYaw = 210F;
-			//float pitch = -25F;
 
 			entity.yBodyRot = bodyYaw;
 			entity.setYRot(bodyYaw);
 			entity.setYHeadRot(bodyYaw);
-
-			/*
-			 * entity.yHeadRot = bodyYaw; entity.setYHeadRot(bodyYaw); entity.yHeadRotO =
-			 * bodyYaw;
-			 */
-
-			
-			
-			
-			
-			//entity.setXRot(pitch);
 
 		}
 
@@ -196,13 +165,11 @@ public class TimewornJournalEntryScreens {
 		public void render(GuiGraphics pGuiGraphics, int mouseX, int mouseY, float partialTick) {
 			super.render(pGuiGraphics, mouseX, mouseY, partialTick);
 
-			
+
 			int x = (int) ((this.width / 2) - super.getBgWidth() * 0.21);
 			int y = (int)(super.getBgStartY() + super.getBgHeight() / 2 + entry.getYOffset() * super.getBgHeight());
 			InventoryScreen.renderEntityInInventory(pGuiGraphics, x, y, this.scale,
 					new Vector3f(), new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI), null, entity);
-			// TimewornJournalEntityEntryScreen.renderStaticEntity(pGuiGraphics.pose(),
-			// this.width / 2 - 50, this.height / 2 + 50, 20, entity, 1, 1);
 		}
 
 	}

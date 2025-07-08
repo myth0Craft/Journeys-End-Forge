@@ -2,46 +2,31 @@ package net.je.block.entity;
 
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
 
 import javax.annotation.Nullable;
 
-import org.jetbrains.annotations.NotNull;
-
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
 
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.je.block.ModBlocks;
 import net.je.item.ModItems;
 import net.je.recipe.EndStoneFurnaceRecipe;
 import net.je.recipe.ModRecipeSerializers;
 import net.je.screen.EndStoneFurnaceMenu;
-import net.minecraft.SharedConstants;
-import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
-import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.Containers;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Inventory;
@@ -49,7 +34,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.StackedContents;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.inventory.FurnaceMenu;
 import net.minecraft.world.inventory.RecipeCraftingHolder;
 import net.minecraft.world.inventory.StackedContentsCompatible;
 import net.minecraft.world.item.Item;
@@ -63,20 +47,11 @@ import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
-import net.minecraft.world.level.block.BlastFurnaceBlock;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
 
 public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer, RecipeCraftingHolder, StackedContentsCompatible {
     protected static final int SLOT_INPUT = 0;
@@ -92,7 +67,7 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
     public static final int NUM_DATA_VALUES = 4;
     public static final int BURN_TIME_STANDARD = 200;
     public static final int BURN_COOL_SPEED = 2;
-    private final RecipeType<? extends AbstractCookingRecipe> recipeType;
+    //private final RecipeType<? extends AbstractCookingRecipe> recipeType;
     protected NonNullList<ItemStack> items = NonNullList.withSize(3, ItemStack.EMPTY);
     int litTime;
     int litDuration;
@@ -142,17 +117,18 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
     private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
     private final RecipeManager.CachedCheck<SingleRecipeInput, ? extends AbstractCookingRecipe> quickCheck;
 
-    public EndStoneFurnaceBlockEntity(
+    @SuppressWarnings("unchecked")
+	public EndStoneFurnaceBlockEntity(
         BlockPos pPos, BlockState pBlockState
     ) {
         super(ModBlockEntities.END_STONE_FURNACE_BE.get(), pPos, pBlockState);
         //this.quickCheck = RecipeManager.createCheck((RecipeType)EndStoneFurnaceRecipe.TYPE1);
         //this.recipeType = EndStoneFurnaceRecipe.TYPE1;
-        this.quickCheck = RecipeManager.createCheck((RecipeType) ModRecipeSerializers.END_STONE_FURNACE_RECIPE_TYPE.get());
-        this.recipeType = ModRecipeSerializers.END_STONE_FURNACE_RECIPE_TYPE.get();
+        this.quickCheck = RecipeManager.createCheck((RecipeType<EndStoneFurnaceRecipe>) ModRecipeSerializers.END_STONE_FURNACE_RECIPE_TYPE.get());
+        //this.recipeType = ModRecipeSerializers.END_STONE_FURNACE_RECIPE_TYPE.get();
     }
 
-    
+
     public static Map<Item, Integer> getFuel() {
         Map<Item, Integer> map = fuelCache;
         if (map != null) {
@@ -166,13 +142,13 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
             return map1;
         }
     }
-    
+
 
     private static void add(Map<Item, Integer> pMap, ItemLike pItem, int pBurnTime) {
         Item item = pItem.asItem();
         pMap.put(item, pBurnTime);
     }
-    
+
     public static void invalidateCache() {
         fuelCache = null;
     }
@@ -238,7 +214,7 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
                         pBlockEntity.items.set(1, itemstack.getCraftingRemainingItem());
                     } else
                     if (flag3) {
-                        Item item = itemstack.getItem();
+                        //Item item = itemstack.getItem();
                         itemstack.shrink(1);
                         if (itemstack.isEmpty()) {
                             pBlockEntity.items.set(1, itemstack.getCraftingRemainingItem());
@@ -276,7 +252,8 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
         }
     }
 
-    private boolean canBurn(RegistryAccess pRegistryAccess, @Nullable RecipeHolder<?> pRecipe, NonNullList<ItemStack> pInventory, int pMaxStackSize) {
+    @SuppressWarnings("unchecked")
+	private boolean canBurn(RegistryAccess pRegistryAccess, @Nullable RecipeHolder<?> pRecipe, NonNullList<ItemStack> pInventory, int pMaxStackSize) {
         if (!pInventory.get(0).isEmpty() && pRecipe != null) {
             ItemStack itemstack = ((RecipeHolder<net.minecraft.world.item.crafting.Recipe<SingleRecipeInput>>)pRecipe).value().assemble(new SingleRecipeInput(this.getItem(0)), pRegistryAccess);
             if (itemstack.isEmpty()) {
@@ -298,7 +275,8 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
         }
     }
 
-    private boolean burn(RegistryAccess pRegistryAccess, @Nullable RecipeHolder<?> pRecipe, NonNullList<ItemStack> pInventory, int pMaxStackSize) {
+    @SuppressWarnings("unchecked")
+	private boolean burn(RegistryAccess pRegistryAccess, @Nullable RecipeHolder<?> pRecipe, NonNullList<ItemStack> pInventory, int pMaxStackSize) {
         if (pRecipe != null && canBurn(pRegistryAccess, pRecipe, pInventory, pMaxStackSize)) {
             ItemStack itemstack = pInventory.get(0);
             ItemStack itemstack1 = ((RecipeHolder<net.minecraft.world.item.crafting.Recipe<SingleRecipeInput>>)pRecipe).value().assemble(new SingleRecipeInput(this.getItem(0)), pRegistryAccess);
@@ -390,9 +368,9 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
             return true;
         } else {
             ItemStack itemstack = this.items.get(1);
-            return pStack.is(ModItems.VOIDBLIGHT_BUCKET.get()) 
-            		|| pStack.is(ModBlocks.VOIDBLOOM.get().asItem()) 
-            		|| pStack.is(ModBlocks.VOIDMASS.get().asItem()) 
+            return pStack.is(ModItems.VOIDBLIGHT_BUCKET.get())
+            		|| pStack.is(ModBlocks.VOIDBLOOM.get().asItem())
+            		|| pStack.is(ModBlocks.VOIDMASS.get().asItem())
             		|| pStack.is(Items.BUCKET) && !itemstack.is(Items.BUCKET);
         }
     }
@@ -433,7 +411,7 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
 
         for (Entry<ResourceLocation> entry : this.recipesUsed.object2IntEntrySet()) {
             pLevel.getRecipeManager().byKey(entry.getKey()).ifPresent(p_296949_ -> {
-                list.add((RecipeHolder<?>)p_296949_);
+                list.add(p_296949_);
                 createExperience(pLevel, pPopVec, entry.getIntValue(), ((AbstractCookingRecipe)p_296949_.value()).getExperience());
             });
         }
@@ -442,9 +420,9 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
     }
 
     private static void createExperience(ServerLevel pLevel, Vec3 pPopVec, int pRecipeIndex, float pExperience) {
-        int i = Mth.floor((float)pRecipeIndex * pExperience);
-        float f = Mth.frac((float)pRecipeIndex * pExperience);
-        if (f != 0.0F && Math.random() < (double)f) {
+        int i = Mth.floor(pRecipeIndex * pExperience);
+        float f = Mth.frac(pRecipeIndex * pExperience);
+        if (f != 0.0F && Math.random() < f) {
             i++;
         }
 
@@ -476,8 +454,8 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
     @Override
     public void invalidateCaps() {
         super.invalidateCaps();
-        for (int x = 0; x < handlers.length; x++) {
-            handlers[x].invalidate();
+        for (LazyOptional<? extends IItemHandler> handler : handlers) {
+            handler.invalidate();
         }
     }
 

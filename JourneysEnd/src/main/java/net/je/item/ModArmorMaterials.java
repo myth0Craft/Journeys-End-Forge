@@ -1,5 +1,9 @@
 package net.je.item;
 
+import java.util.EnumMap;
+import java.util.List;
+import java.util.function.Supplier;
+
 import net.je.JourneysEnd;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
@@ -12,10 +16,6 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
-
-import java.util.EnumMap;
-import java.util.List;
-import java.util.function.Supplier;
 
 public class ModArmorMaterials {
 	public static final Holder<ArmorMaterial> VOIDMETAL_ARMOR_MATERIAL = register("voidmetal", Util.make(new EnumMap<>(ArmorItem.Type.class),

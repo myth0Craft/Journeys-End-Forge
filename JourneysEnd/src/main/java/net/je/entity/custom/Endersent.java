@@ -1,113 +1,51 @@
 package net.je.entity.custom;
 
-import java.util.EnumSet;
-import net.minecraft.Util;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
-import java.util.UUID;
-import java.util.function.Predicate;
-
-import javax.annotation.Nullable;
-
-import org.joml.Vector3f;
-
 import net.je.entity.ai.EndersentAttackGoal;
-import net.je.entity.ai.EndersentLargeAttackGoal;
-import net.je.entity.animations.EndersentAnim;
 import net.je.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtUtils;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.TimeUtil;
-import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.Pose;
-import net.minecraft.world.entity.SpawnGroupData;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.MoveThroughVillageGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.ZombieAttackGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.animal.IronGolem;
-import net.minecraft.world.entity.animal.Turtle;
-import net.minecraft.world.entity.animal.armadillo.Armadillo;
-import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Endermite;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.Vex;
-import net.minecraft.world.entity.monster.Zombie;
-import net.minecraft.world.entity.monster.ZombifiedPiglin;
-import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.pathfinder.PathType;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 
 public class Endersent extends BaseEndersent {
-	
+
 
 	/*
 	 * private static final EntityDataAccessor<Integer> VARIANT =
 	 * SynchedEntityData.defineId(Endersent.class, EntityDataSerializers.INT);
 	 */
 
-	
+
 	int teleportTime = 100;
 	int invisibilityTime = -1;
 
@@ -120,44 +58,44 @@ public class Endersent extends BaseEndersent {
 	}
 
 	// anim states
-	
 
-	
+
+
 
 	/*
 	 * private int getTypeVariant() { return this.entityData.get(VARIANT); }
-	 * 
+	 *
 	 * public EndersentVariant getVariant() { return
 	 * EndersentVariant.byId(this.getTypeVariant() & 255); }
-	 * 
+	 *
 	 * private void setVariant(EndersentVariant variant) {
 	 * this.entityData.set(VARIANT, variant.getId() & 255); }
-	 * 
+	 *
 	 * @Override public void addAdditionalSaveData(CompoundTag pCompound) {
 	 * super.addAdditionalSaveData(pCompound); pCompound.putInt("Variant",
 	 * this.getTypeVariant()); }
-	 * 
+	 *
 	 * @Override public void readAdditionalSaveData(CompoundTag pCompound) {
 	 * super.readAdditionalSaveData(pCompound); this.entityData.set(VARIANT,
 	 * pCompound.getInt("Variant")); }
-	 * 
+	 *
 	 * @Override public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel,
 	 * DifficultyInstance pDifficulty, MobSpawnType pSpawnType, @Nullable
 	 * SpawnGroupData pSpawnGroupData) {
-	 * 
-	 * 
+	 *
+	 *
 	 * if (this.level().dimension() == Level.END || this.level().dimension() ==
 	 * Level.NETHER) { this.setVariant(EndersentVariant.WITHOUT_EYE); } else {
 	 * EndersentVariant variant = Util.getRandom(EndersentVariant.values(),
 	 * this.random); this.setVariant(variant);
-	 * 
+	 *
 	 * } return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType,
 	 * pSpawnGroupData); }
 	 */
-	
-	
 
-	
+
+
+
 
 	@Override
 	protected void updateWalkAnimation(float pPartialTick) {
@@ -183,7 +121,7 @@ public class Endersent extends BaseEndersent {
 
 	@Override
 	protected SoundEvent getAmbientSound() {
-		if (canAttack == true) {
+		if (canAttack) {
 			return SoundEvents.ENDERMAN_AMBIENT;
 		} else {
 			return null;
@@ -191,7 +129,7 @@ public class Endersent extends BaseEndersent {
 	}
 
 	public static AttributeSupplier.Builder createMonsterAttributes() {
-		return Endersent.createMobAttributes().add(Attributes.ATTACK_DAMAGE, 8f).add(Attributes.MAX_HEALTH, 100D)
+		return Mob.createMobAttributes().add(Attributes.ATTACK_DAMAGE, 8f).add(Attributes.MAX_HEALTH, 100D)
 				.add(Attributes.FOLLOW_RANGE, 64.0).add(Attributes.MOVEMENT_SPEED, 0.25D).add(Attributes.ARMOR, 2.0D)
 				.add(Attributes.ATTACK_KNOCKBACK, 20D).add(Attributes.STEP_HEIGHT, 1.0)
 				.add(Attributes.KNOCKBACK_RESISTANCE, 100.0D);
@@ -249,7 +187,6 @@ public class Endersent extends BaseEndersent {
 		return potioncontents.is(Potions.WATER) ? super.hurt(p_186273_, p_186275_) : false;
 	}
 
-	@SuppressWarnings("resource")
 	@Override
 	public void aiStep() {
 		if (this.level().isClientSide && invisibilityTime < 0) {
@@ -283,7 +220,7 @@ public class Endersent extends BaseEndersent {
 	protected boolean teleport() {
 		if (!this.level().isClientSide() && this.isAlive()) {
 			double d0 = this.getX() + (this.random.nextDouble() - 0.5) * 64.0;
-			double d1 = this.getY() + (double) (this.random.nextInt(64) - 32);
+			double d1 = this.getY() + (this.random.nextInt(64) - 32);
 			double d2 = this.getZ() + (this.random.nextDouble() - 0.5) * 64.0;
 			return this.teleport(d0, d1, d2);
 		} else {
@@ -295,13 +232,13 @@ public class Endersent extends BaseEndersent {
 		Vec3 vec3 = new Vec3(this.getX() - p_32501_.getX(), this.getY(0.5) - p_32501_.getEyeY(),
 				this.getZ() - p_32501_.getZ());
 		vec3 = vec3.normalize();
-		double d0 = 16.0;
 		double d1 = this.getX() + (this.random.nextDouble() - 0.5) * 8.0 - vec3.x * 16.0;
-		double d2 = this.getY() + (double) (this.random.nextInt(16) - 8) - vec3.y * 16.0;
+		double d2 = this.getY() + (this.random.nextInt(16) - 8) - vec3.y * 16.0;
 		double d3 = this.getZ() + (this.random.nextDouble() - 0.5) * 8.0 - vec3.z * 16.0;
 		return this.teleport(d1, d2, d3);
 	}
 
+	@SuppressWarnings("deprecation")
 	private boolean teleport(double p_32544_, double p_32545_, double p_32546_) {
 		BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos(p_32544_, p_32545_, p_32546_);
 
@@ -311,13 +248,15 @@ public class Endersent extends BaseEndersent {
 		}
 
 		BlockState blockstate = this.level().getBlockState(blockpos$mutableblockpos);
+		
 		boolean flag = blockstate.blocksMotion();
 		boolean flag1 = blockstate.getFluidState().is(FluidTags.WATER);
 		if (flag && !flag1) {
 			net.minecraftforge.event.entity.EntityTeleportEvent.EnderEntity event = net.minecraftforge.event.ForgeEventFactory
 					.onEnderTeleport(this, p_32544_, p_32545_, p_32546_);
-			if (event.isCanceled())
+			if (event.isCanceled()) {
 				return false;
+			}
 			Vec3 vec3 = this.position();
 			boolean flag2 = this.randomTeleport(event.getTargetX(), event.getTargetY(), event.getTargetZ(), true);
 			if (flag2) {

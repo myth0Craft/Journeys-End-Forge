@@ -1,17 +1,10 @@
 package net.je.fluid;
 
-import java.util.function.Supplier;
-
 import net.je.JourneysEnd;
 import net.je.block.ModBlocks;
 import net.je.item.ModItems;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.EmptyFluid;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.registries.DeferredRegister;
@@ -32,7 +25,7 @@ public class ModFluids {
 	            ModFluidTypes.VOIDBLIGHT, SOURCE_VOIDBLIGHT, FLOWING_VOIDBLIGHT)
 	            .slopeFindDistance(2).levelDecreasePerBlock(2).block(ModBlocks.VOIDBLIGHT)
 	            .bucket(ModItems.VOIDBLIGHT_BUCKET)
-	            .tickRate((int) 30);
+	            .tickRate(30);
 
 
 	    public static void register(IEventBus eventBus) {
