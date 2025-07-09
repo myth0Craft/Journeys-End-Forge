@@ -36,7 +36,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "je:timeworn_journal",
+          "name": "je:timeworn_journal_item_t0",
           "weight": 5
         }
       ],
