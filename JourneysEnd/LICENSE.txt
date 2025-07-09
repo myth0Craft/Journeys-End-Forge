@@ -1,0 +1,6 @@
+MIT License with the following additional terms:
+
+- You may use this mod in public and private modpacks.
+- You may reference or reuse small portions of code (such as utility methods or interfaces) as long as attribution is given.
+- You may NOT reuse or replicate entire features, assets, or gameplay mechanics without explicit permission.
+- You may NOT reupload or redistribute the mod outside of official channels without consent.
