@@ -76,6 +76,7 @@ public class ModAdvancementProvider implements DataProvider {
 
 
 
+			@SuppressWarnings("removal")
 			AdvancementHolder eyeFragAdvancement = Advancement.Builder.advancement()
 					.parent(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "endersent_well"))
 					.display(ModItems.EYE_FRAGMENT.get(), Component.translatable("advancements.je.eye_fragment.title"),

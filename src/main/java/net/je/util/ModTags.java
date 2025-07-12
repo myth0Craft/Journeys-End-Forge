@@ -33,6 +33,7 @@ public class ModTags {
 	public static class Structures {
 		//public static final TagKey<Structure> ENDERSENT_WELL = createTag("endersent_well");
 
+		@SuppressWarnings("unused")
 		private static TagKey<Structure> createTag(String name) {
 			return StructureTags.create(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, name));
 		}

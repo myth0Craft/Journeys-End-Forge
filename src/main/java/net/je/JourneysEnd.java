@@ -49,6 +49,7 @@ public class JourneysEnd {
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogUtils.getLogger();
 
+	@SuppressWarnings("removal")
 	public JourneysEnd() {
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
