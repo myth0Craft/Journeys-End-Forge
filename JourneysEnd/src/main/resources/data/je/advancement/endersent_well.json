@@ -1,0 +1,39 @@
+{
+  "parent": "je:timeworn_journal_t0",
+  "criteria": {
+    "enter_endersent_well": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structures": "je:endersent_well"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.je.endersent_well.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:stone_bricks"
+    },
+    "title": {
+      "translate": "advancements.je.endersent_well.title"
+    }
+  },
+  "requirements": [
+    [
+      "enter_endersent_well"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

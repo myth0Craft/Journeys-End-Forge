@@ -1,0 +1,33 @@
+{
+  "parent": "je:endersent_well",
+  "criteria": {
+    "has_eye_fragment": {
+      "conditions": {
+        "items": [
+          {
+            "items": "je:eye_fragment"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.je.eye_fragment.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "je:eye_fragment"
+    },
+    "title": {
+      "translate": "advancements.je.eye_fragment.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_eye_fragment"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

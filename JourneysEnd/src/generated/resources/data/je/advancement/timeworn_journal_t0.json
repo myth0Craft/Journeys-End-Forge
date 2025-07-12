@@ -1,0 +1,33 @@
+{
+  "criteria": {
+    "has_timeworn_journal_t0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "je:timeworn_journal_item_t0"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/gui/advancements/backgrounds/end.png",
+    "description": {
+      "translate": "advancements.je.timeworn_journal_t0.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "je:timeworn_journal_item_t0"
+    },
+    "title": {
+      "translate": "advancements.je.timeworn_journal_t0.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_timeworn_journal_t0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

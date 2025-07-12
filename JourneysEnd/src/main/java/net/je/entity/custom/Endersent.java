@@ -248,7 +248,7 @@ public class Endersent extends BaseEndersent {
 		}
 
 		BlockState blockstate = this.level().getBlockState(blockpos$mutableblockpos);
-		
+
 		boolean flag = blockstate.blocksMotion();
 		boolean flag1 = blockstate.getFluidState().is(FluidTags.WATER);
 		if (flag && !flag1) {

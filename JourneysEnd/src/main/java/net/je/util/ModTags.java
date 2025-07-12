@@ -4,9 +4,11 @@ import net.je.JourneysEnd;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.tags.StructureTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.levelgen.structure.Structure;
 
 public class ModTags {
 	public static class Blocks {
@@ -25,6 +27,14 @@ public class ModTags {
 
 		private static TagKey<EntityType<?>> createTag(String name) {
 			return EntityTypeTags.create(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, name));
+		}
+	}
+
+	public static class Structures {
+		//public static final TagKey<Structure> ENDERSENT_WELL = createTag("endersent_well");
+
+		private static TagKey<Structure> createTag(String name) {
+			return StructureTags.create(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, name));
 		}
 	}
 

@@ -66,6 +66,13 @@
 	"tooltip.je.unobtainable": "Currently unobtainable in Survival mode.",
 	"container.je.end_stone_furnace": "End Stone Furnace",
 	"gui.recipebook.toggleRecipes.end_stone_furnace": "Showing End Stone Smeltable",
+	//
+	"advancements.je.timeworn_journal_t0.desc": "Obtain a Timeworn Journal and begin your quest",
+	"advancements.je.timeworn_journal_t0.title": "Journey's End",
+	"advancements.je.eye_fragment.desc": "Defeat an Endersent and obtain an Eye Fragment",
+	"advancements.je.eye_fragment.title": "...Has been found",
+	"advancements.je.endersent_well.desc": "Find an Ancient Well",
+	"advancements.je.endersent_well.title": "What was once lost...",
 	
 	"tooltip.je.tier": "Tier ",
 	//
@@ -156,9 +163,10 @@
 	 it is used to refine most raw ores from the End. It accepts Voidblight, Voidmass, and Voidblooms as fuel. Out of these, Voidblight is by far the most efficient.",
 	"screen.je.title.interdimensional_anchor": "Interdimensional Anchor",
 	"screen.je.lore.interdimensional_anchor": "A direct link through time and space between the Overworld and the End. Though expensive, 1 or more Interdimensional Anchors will be well worth it, 
-	especially later on. 1 Interdimensional Anchor requires a Nether Star, 4 Netherite Ingots, and 4 Voidmetal Ingots. When placed in the Overworld, it will slowly corrupt the surrounding landscape in several stages, allowing you to have an infinite source of End Stone, Faded End Stone, 
-	Corrupted Dirt, Void Stone, Voidmass, and most importantly, Voidblight. You will have to closely monitor the anchor's progress as it will eventually disintegrate nearby blocks of Voidblight into 
-	nothingness. When placed in the End, it will have a different affect, slowly spreading Overworld blocks into the End and reversing the corruption.",
+	especially later on. 1 Interdimensional Anchor requires a Nether Star, 4 Netherite Ingots, and 4 Voidmetal Ingots. When placed in the Overworld, it will slowly corrupt the 
+	surrounding landscape in several stages, allowing you to have an infinite source of End Stone, Faded End Stone, 
+	Corrupted Dirt, Void Stone, Voidmass, and most importantly, Voidblight. When placed in the End, it will have a different affect, slowly spreading Overworld blocks into 
+	the End and reversing the End's corruption.",
 	"screen.je.title.bejeweled_pedestal": "Bejeweled Pedestal",
 	"screen.je.lore.bejeweled_pedestal": "Long ago the Eyes of Ender were secured inside these pedestals. Dark magic was used to bind the eyes to the pedestals so that they could never be removed again,
 	leaving the End Portal sealed for eternity.

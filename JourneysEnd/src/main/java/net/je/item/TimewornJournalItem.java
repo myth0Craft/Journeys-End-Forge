@@ -40,7 +40,7 @@ public class TimewornJournalItem extends Item {
 		return InteractionResultHolder.sidedSuccess(itemstack, pLevel.isClientSide());
 
 	}
-	
+
 	@Override
 	public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
 		String tooltip = Component.translatable("tooltip.je.tier").getString() + tier;

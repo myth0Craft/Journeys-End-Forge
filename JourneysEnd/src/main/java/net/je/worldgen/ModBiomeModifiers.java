@@ -13,7 +13,7 @@ public class ModBiomeModifiers {
 	public static final ResourceKey<BiomeModifier> SPAWN_ENDERSENT = registerKey("spawn_endersent");
 	public static final ResourceKey<BiomeModifier> SPAWN_ENDERSENT_WITH_EYE = registerKey("spawn_endersent_with_eye");
 
-	
+
 	@SuppressWarnings("unused")
 	public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeature = context.lookup(Registries.PLACED_FEATURE);

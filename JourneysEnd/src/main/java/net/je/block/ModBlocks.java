@@ -165,7 +165,7 @@ public class ModBlocks {
 	/*
 	 * private static boolean never(BlockState p_50806_, BlockGetter p_50807_,
 	 * BlockPos p_50808_) { return false; }
-	 * 
+	 *
 	 * private static ToIntFunction<BlockState> litBlockEmission(int pLightValue) {
 	 * return p_50763_ -> p_50763_.getValue(BlockStateProperties.LIT) ? pLightValue
 	 * : 0; }

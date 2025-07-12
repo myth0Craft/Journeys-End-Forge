@@ -70,8 +70,6 @@ public class InterdimensionalAnchorBlock extends Block {
 
 					spreadBlock(Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN, pLevel, pPos, pRandom);
 
-					spreadBlock(ModBlocks.VOIDBLIGHT.get(), Blocks.AIR, pLevel, pPos, pRandom);
-
 					spreadBlock(ModBlocks.VOIDMASS.get(), ModBlocks.VOIDBLIGHT.get(), pLevel, pPos, pRandom);
 
 					spreadBlock(ModBlocks.VOID_STONE.get(), ModBlocks.VOIDMASS.get(), pLevel, pPos, pRandom);
