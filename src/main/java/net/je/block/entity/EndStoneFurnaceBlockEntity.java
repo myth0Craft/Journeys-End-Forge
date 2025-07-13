@@ -12,7 +12,6 @@ import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.je.block.ModBlocks;
 import net.je.item.ModItems;
-import net.je.recipe.EndStoneFurnaceRecipe;
 import net.je.recipe.ModRecipeSerializers;
 import net.je.screen.EndStoneFurnaceMenu;
 import net.minecraft.core.BlockPos;
@@ -42,7 +41,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
@@ -117,14 +115,14 @@ public class EndStoneFurnaceBlockEntity extends BaseContainerBlockEntity impleme
     private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
     private final RecipeManager.CachedCheck<SingleRecipeInput, ? extends AbstractCookingRecipe> quickCheck;
 
-    @SuppressWarnings("unchecked")
+
 	public EndStoneFurnaceBlockEntity(
         BlockPos pPos, BlockState pBlockState
     ) {
         super(ModBlockEntities.END_STONE_FURNACE_BE.get(), pPos, pBlockState);
         //this.quickCheck = RecipeManager.createCheck((RecipeType)EndStoneFurnaceRecipe.TYPE1);
         //this.recipeType = EndStoneFurnaceRecipe.TYPE1;
-        this.quickCheck = RecipeManager.createCheck((RecipeType<EndStoneFurnaceRecipe>) ModRecipeSerializers.END_STONE_FURNACE_RECIPE_TYPE.get());
+        this.quickCheck = RecipeManager.createCheck(ModRecipeSerializers.END_STONE_FURNACE_RECIPE_TYPE.get());
         //this.recipeType = ModRecipeSerializers.END_STONE_FURNACE_RECIPE_TYPE.get();
     }
 

@@ -1,7 +1,6 @@
 package net.je.recipe;
 
 import net.je.JourneysEnd;
-import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SimpleCookingSerializer;
@@ -20,7 +19,7 @@ public class ModRecipeSerializers {
 	public static final RegistryObject<RecipeSerializer<?>> END_STONE_FURNACE_RECIPE = RECIPE_SERIALIZERS
 			.register("end_stone_furnace_recipe", () -> new SimpleCookingSerializer<>(EndStoneFurnaceRecipe::new, 100));
 
-	public static final RegistryObject<RecipeType<? extends AbstractCookingRecipe>> END_STONE_FURNACE_RECIPE_TYPE = RECIPE_TYPES
+	public static final RegistryObject<RecipeType<EndStoneFurnaceRecipe>> END_STONE_FURNACE_RECIPE_TYPE = RECIPE_TYPES
 			.register("end_stone_furnace_recipe", () -> new RecipeType<EndStoneFurnaceRecipe>() {
 				@Override
 				public String toString() {
