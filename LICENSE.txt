@@ -1,6 +1,15 @@
-MIT License with the following additional terms:
+Journey’s End Mod License  
+Copyright (c) 2025 myth0Craft
 
-- You may use this mod in public and private modpacks.
-- You may reference or reuse small portions of code (such as utility methods or interfaces) as long as attribution is given.
-- You may NOT reuse or replicate entire features, assets, or gameplay mechanics without explicit permission.
-- You may NOT reupload or redistribute the mod outside of official channels without consent.
+You are free to:
+- Use this mod in public or private modpacks.
+- Reference or reuse small portions of the codebase (e.g., utility methods or interfaces) in your own mod projects.
+
+You may NOT:
+- Copy or replicate full features, systems, or gameplay mechanics from this mod without explicit written permission.
+- Reuse any assets (textures, models, sounds, GUIs, etc.) without explicit permission.
+- Reupload or redistribute this mod outside of official distribution platforms (such as Modrinth, CurseForge, or GitHub) without consent from the author.
+
+This mod is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability or fitness for a particular purpose.
+
+By using, referencing, or distributing this mod, you agree to the above terms.
