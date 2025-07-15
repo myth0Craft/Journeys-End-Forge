@@ -1,7 +1,8 @@
-// 1.21.1	2025-07-09T08:39:13.4580168	Item Models: je
+// 1.21.1	2025-07-15T10:01:58.9417471	Item Models: je
 cf50f6423637e2c1ffc8efefe583131bf9ddbe9a assets/je/models/item/eye_fragment.json
 83cc4b29028dd347ce6421a88191acc7790ecc8a assets/je/models/item/polished_end_stone_wall.json
 4628d30ee9cc0594c2420ad6405a54224b9c52f8 assets/je/models/item/raw_voidmetal.json
+c34355db078bd04944ad667119da462dd8456704 assets/je/models/item/shadow_block.json
 d5517f8f20564330954be81f6fac733936318325 assets/je/models/item/small_void_dust.json
 042a0909ab77cd890fe272f7055adcda2436ef41 assets/je/models/item/timeworn_journal_item_t0.json
 44ba1140f71cb25c838a1a1ffbcbd66c384d6619 assets/je/models/item/timeworn_journal_item_t1.json

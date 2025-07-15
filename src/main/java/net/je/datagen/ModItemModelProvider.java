@@ -52,6 +52,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.EYE_FRAGMENT.get());
         basicItem(ModItems.TIMEWORN_JOURNAL_T0.get());
         basicItem(ModItems.TIMEWORN_JOURNAL_T1.get());
+        
 
         handheldItem(ModItems.VOIDMETAL_PICKAXE);
         handheldItem(ModItems.VOIDMETAL_AXE);
@@ -65,6 +66,13 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.VOIDMETAL_BOOTS);
 
         wallItem(ModBlocks.POLISHED_END_STONE_WALL, ModBlocks.POLISHED_END_STONE);
+        
+        blockItem(ModBlocks.SHADOW_BLOCK.get());
+    }
+    
+    private ItemModelBuilder blockItem(Block block) {
+    	return withExistingParent(ForgeRegistries.BLOCKS.getKey(block).getPath(),
+            	modLoc("block/" + ForgeRegistries.BLOCKS.getKey(block).getPath()));
     }
 
     private ItemModelBuilder handheldItem(RegistryObject<Item> item) {

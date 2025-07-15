@@ -1,5 +1,7 @@
 package net.je;
 
+import java.util.Map;
+
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -23,8 +25,12 @@ import net.je.recipe.ModRecipeSerializers;
 import net.je.screen.EndStoneFurnaceScreen;
 import net.je.screen.ModMenuTypes;
 import net.je.sound.ModSounds;
+import net.minecraft.Util;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.DragonBreathParticle;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
@@ -107,6 +113,9 @@ public class JourneysEnd {
 		@SubscribeEvent
 		public static void onClientSetup(FMLClientSetupEvent event) {
 			MenuScreens.register(ModMenuTypes.END_STONE_FURNACE_MENU.get(), EndStoneFurnaceScreen::new);
+			//BlockRenderLayerMap.put(RenderType.translucent(), ModBlocks.SHADOW_BLOCK.get());
+			
+			
 		}
 		@SubscribeEvent
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {

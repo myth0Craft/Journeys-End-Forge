@@ -54,6 +54,8 @@
 	"block.je.voidbloom": "Voidbloom",
 	"block.je.bejeweled_pedestal": "Bejeweled Pedestal",
 	"block.je.void_stone": "Void Stone",
+	"block.je.shadow_block": "Shadow Block",
+	"block.je.shadow_stone_bricks": "Shadow Stone Bricks",
 	//
 	"effect.je.void_strike": "Void Strike",
 	"death.attack.void_strike": "%1$s was consumed by the Void",

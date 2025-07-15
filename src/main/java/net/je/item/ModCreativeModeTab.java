@@ -43,6 +43,9 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModBlocks.ENDER_VAULT.get());
 
 				pOutput.accept(ModBlocks.VOIDMETAL_BLOCK.get());
+				
+				pOutput.accept(ModBlocks.SHADOW_STONE_BRICKS.get());
+				pOutput.accept(ModBlocks.SHADOW_BLOCK.get());
 
 			})
 			.build());

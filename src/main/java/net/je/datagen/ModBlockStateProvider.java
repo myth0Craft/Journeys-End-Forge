@@ -31,6 +31,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.FADED_END_STONE);
         blockWithItem(ModBlocks.CORRUPTED_DIRT);
         blockWithItem(ModBlocks.LANTERN_OF_WARDING);
+        
+        blockWithItem(ModBlocks.SHADOW_STONE_BRICKS);
+        //blockWithItem(ModBlocks.SHADOW_BLOCK);
 
         blockItem(ModBlocks.END_STONE_PILLAR);
         blockItem(ModBlocks.POLISHED_END_STONE_SLAB);

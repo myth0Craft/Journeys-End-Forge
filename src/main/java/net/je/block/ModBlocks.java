@@ -8,6 +8,7 @@ import net.je.block.custom.BejeweledPedestalBlock;
 import net.je.block.custom.EndStoneFurnaceBlock;
 import net.je.block.custom.InterdimensionalAnchorBlock;
 import net.je.block.custom.LushEndStoneBlock;
+import net.je.block.custom.ShadowBlock;
 import net.je.block.custom.VoidbloomBlock;
 import net.je.fluid.ModFluids;
 import net.je.item.ModItems;
@@ -21,11 +22,14 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HalfTransparentBlock;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.TransparentBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -98,8 +102,7 @@ public class ModBlocks {
 
 	public static final RegistryObject<Block> LUSH_END_STONE = registerBlock("lush_end_stone",
 			() -> new LushEndStoneBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE)
-					.strength(3.0F, 9.0F).requiresCorrectToolForDrops()
-					.sound(SoundType.NYLIUM).randomTicks()){
+					.strength(3.0F, 9.0F).requiresCorrectToolForDrops().sound(SoundType.NYLIUM).randomTicks()) {
 				@Override
 				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
 						List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
@@ -112,13 +115,13 @@ public class ModBlocks {
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().sound(SoundType.CALCITE)));
 
-	public static final RegistryObject<Block> CORRUPTED_DIRT = registerBlock("corrupted_dirt",
-			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(0.5F)
-					.sound(SoundType.GRAVEL)));
+	public static final RegistryObject<Block> CORRUPTED_DIRT = registerBlock("corrupted_dirt", () -> new Block(
+			BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(0.5F).sound(SoundType.GRAVEL)));
 
 	public static final RegistryObject<Block> LANTERN_OF_WARDING = registerBlock("lantern_of_warding",
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(0.5F)
-					.requiresCorrectToolForDrops().sound(SoundType.COPPER_BULB).lightLevel(p_50755_ -> 15).emissiveRendering(ModBlocks::always).hasPostProcess(ModBlocks::always)){
+					.requiresCorrectToolForDrops().sound(SoundType.COPPER_BULB).lightLevel(p_50755_ -> 15)
+					.emissiveRendering(ModBlocks::always).hasPostProcess(ModBlocks::always)) {
 				@Override
 				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
 						List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
@@ -129,13 +132,12 @@ public class ModBlocks {
 
 	public static final RegistryObject<Block> INTERDIMENSIONAL_ANCHOR = registerBlock("interdimensional_anchor",
 			() -> new InterdimensionalAnchorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE)
-					.strength(3.0F, 9.0F).requiresCorrectToolForDrops()
-					.sound(ModSounds.INTERDIMENSIONAL_ANCHOR_SOUNDS).randomTicks()));
+					.strength(3.0F, 9.0F).requiresCorrectToolForDrops().sound(ModSounds.INTERDIMENSIONAL_ANCHOR_SOUNDS)
+					.randomTicks()));
 
 	public static final RegistryObject<Block> ENDER_VAULT = registerBlock("ender_vault",
-			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE)
-					.strength(50.0F, 1200.0F).requiresCorrectToolForDrops()
-					.sound(SoundType.ANVIL).noLootTable().lightLevel(p_50755_ -> 15)){
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).strength(50.0F, 1200.0F)
+					.requiresCorrectToolForDrops().sound(SoundType.ANVIL).noLootTable().lightLevel(p_50755_ -> 15)) {
 				@Override
 				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
 						List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
@@ -145,27 +147,33 @@ public class ModBlocks {
 			});
 
 	public static final RegistryObject<Block> VOIDBLOOM = registerBlock("voidbloom",
-			() -> new VoidbloomBlock(BlockBehaviour.Properties.of()
-					.noCollission()
-	                .instabreak()
-	                .sound(SoundType.SCULK_SHRIEKER)
-	                .pushReaction(PushReaction.DESTROY)
-	                .emissiveRendering(ModBlocks::always)
-	                .lightLevel(p_50755_ -> 5)));
+			() -> new VoidbloomBlock(BlockBehaviour.Properties.of().noCollission().instabreak()
+					.sound(SoundType.SCULK_SHRIEKER).pushReaction(PushReaction.DESTROY)
+					.emissiveRendering(ModBlocks::always).lightLevel(p_50755_ -> 5)));
 
 	public static final RegistryObject<Block> BEJEWELED_PEDESTAL = registerBlock("bejeweled_pedestal",
-			() -> new BejeweledPedestalBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)
-					.strength(50.0F, 1200.0F).noLootTable()
-					.sound(SoundType.STONE).noLootTable().pushReaction(PushReaction.IGNORE)));
+			() -> new BejeweledPedestalBlock(
+					BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(50.0F, 1200.0F).noLootTable()
+							.sound(SoundType.STONE).noLootTable().pushReaction(PushReaction.IGNORE)));
+
+	public static final RegistryObject<Block> SHADOW_STONE_BRICKS = registerBlock("shadow_stone_bricks",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> SHADOW_BLOCK = registerBlock("shadow_block",
+			() -> new ShadowBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(-1.0F, 3600000.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).noLootTable().noOcclusion()
+					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never)));
 
 	private static boolean always(BlockState p_50775_, BlockGetter p_50776_, BlockPos p_50777_) {
 		return true;
 	}
 
+	private static boolean never(BlockState p_50806_, BlockGetter p_50807_, BlockPos p_50808_) {
+		return false;
+	}
+
 	/*
-	 * private static boolean never(BlockState p_50806_, BlockGetter p_50807_,
-	 * BlockPos p_50808_) { return false; }
-	 *
 	 * private static ToIntFunction<BlockState> litBlockEmission(int pLightValue) {
 	 * return p_50763_ -> p_50763_.getValue(BlockStateProperties.LIT) ? pLightValue
 	 * : 0; }
