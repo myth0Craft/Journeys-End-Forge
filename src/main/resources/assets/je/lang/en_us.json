@@ -236,10 +236,11 @@
 	"screen.je.lore.outer_islands": "The vanilla End. An endless desolate wasteland made of End Stone. End cities can generate occasionally.",
 	//
 	"screen.je.title.enderman": "Enderman",
-	"screen.je.lore.enderman": "Scary teleport",
+	"screen.je.lore.enderman": "A dark, mysterious creature, Enderman are the eyes and ears of the Void. They are watching you. Do not look them in the eyes! They drop 
+	0-1 Ender Pearls.",
 	"screen.je.title.endersent": "Endersent",
 	"screen.je.lore.endersent": "The defenders of the Eyes of Ender, the Endersent were sent to the Overworld by their dark master. Their sole mission is to guard the Eyes of Ender to
-	 prevent anyone from reigniting the End Portal and entering the End.",
+	 prevent anyone from reigniting the End Portal and entering the End. They drop 1-2 Eye Fragments and a small amount of Void Dust.",
 	"screen.je.title.endermite": "Endermite",
 	"screen.je.lore.endermite": "An interdimensional parasite. Endermites occasionally get warped into the Overworld when an Ender Pearl is thrown because of the unstable energies created
 	 through teleportation.",
