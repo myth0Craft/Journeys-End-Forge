@@ -4,7 +4,7 @@
 
 ## About the Mod
 Journey's End is a progression based mod with the goal of creating a unique gameplay experience to overhaul the End dimension. While still in early beta, this mod will eventually include many custom biomes, custom bosses, new ore tiers, and dungeons to enhance the End dimension. Contains optional built in functionality with JEI for custom recipes. See LICENSE.txt for licensing details.
-To install the mod, put the mod's .jar file into the "mods" folder in a 1.21.1 Minecraft installation with Forge 52+. Mod downloads can be found on [Modrinth](https://modrinth.com/mod/journeys-end-mod) and [Curseforge]().
+To install the mod, put the mod's .jar file into the "mods" folder in a 1.21.1 Minecraft installation with Forge 52+. Mod downloads can be found on [Modrinth](https://modrinth.com/mod/journeys-end-mod) and [Curseforge](https://www.curseforge.com/minecraft/mc-mods/journeys-end).
 
 ## Current Features
 - An updated progression to how Eyes of Ender are obtained, making them much more difficult to get.
