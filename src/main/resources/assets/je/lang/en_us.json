@@ -60,10 +60,10 @@
 	"creativetab.je.blocks": "Journey's End Blocks",
 	"creativetab.je.items": "Journey's End Items",
 	"tooltip.je.void_dust": "It does not feel entirely real.",
-	"tooltip.je.voidblight_bucket": "Used as fuel in the end stone furnace.",
-	"tooltip.je.corrupted_dirt": "Dirt, tainted by the Void.",
-	"tooltip.je.lantern_of_warding": "It seems to repel the darkness of the Void.",
-	"tooltip.je.unobtainable": "Currently unobtainable in Survival mode.",
+	//"tooltip.je.voidblight_bucket": "Used as fuel in the end stone furnace.",
+	//"tooltip.je.corrupted_dirt": "Dirt, tainted by the Void.",
+	//"tooltip.je.lantern_of_warding": "It seems to repel the darkness of the Void.",
+	"tooltip.je.unobtainable": "Currently unobtainable in Survival Mode.",
 	"container.je.end_stone_furnace": "End Stone Furnace",
 	"gui.recipebook.toggleRecipes.end_stone_furnace": "Showing End Stone Smeltable",
 	//
@@ -98,9 +98,9 @@
 	Comments reporting bugs on CurseForge or Modrinth may not get read, though these sites are a great place to give general feedback.",
 	"screen.je.title.about_book": "About this Book",
 	"screen.je.lore.about_book": "This book serves as a guide for the mod. 
-	The Story tab contains information about the mod's storyline, which is based on lore throughout the mod and the base game. It does not conatin any useful information gameplay-wise, so feel free to 
+	The Story tab contains information about the mod's storyline, which is based on lore throughout the mod and the base game. It does not contain any useful information gameplay-wise, so feel free to 
 	ignore the tab if you don't want to do further reading. The Progression tab includes detailed instructions on progression through certain aspects of the mod, such as how to get certain weapon upgrades. 
-	Every other tab containes information about all modded features of that category, or tweaked vanilla features. If you are not sure what a certain item does, look it up on the correct tab in
+	Every other tab contains information about all modded features of that category, or tweaked vanilla features. If you are not sure what a certain item does, look it up on the correct tab in
 	 the book!",
 	"screen.je.title.chapter_1": "Chapter 1",
 	"screen.je.lore.chapter_1": "If you are reading this, it may already be too late. Something stirs in the darkness of the Void. An ancient evil from ages long past yet also of the future. 
@@ -109,23 +109,24 @@
 	the End Portal from opening once more. You will have to travel far and wide to find them. Good luck.",
 	"screen.je.title.chapter_2": "Chapter 2",
 	"screen.je.lore.chapter_2": "If you are reading this, then you have already made it to the End and reopened the gateway. However, this is only the beginning of your quest. You will 
-	have to travel through lands blighted and shattered to find the §kDark Tower§r and defeat the §kShadow Lord§r that lurks within. I suggest getting Voidmetal gear, made from the residue of Endermen. The journey 
+	have to travel through lands blighted and shattered, to find the §kDark Tower§r and defeat the §kShadow Lord§r lurking within. I suggest getting Voidmetal gear, made from the residue of Endermen. The journey 
 	may be difficult, but everything depends on it. Good luck.",
 	//
 	"screen.je.title.progression_1": "Getting to the End",
 	"screen.je.lore.progression_1": "Journey's End makes getting to the End dimension much harder than it is in Vanilla. You will need to travel around the Overworld and find
-	 rare structures conatining Bejeweled Pedestals. 
+	 rare structures containing Bejeweled Pedestals. 
 	All modded structures are documented in the Structures tab of this book. 
 	When right-clicked, a Bejeweled Pedestal will summon an Endersent, which you must kill to get 1-2 Eye Fragments. These are used to craft Eyes of Ender by combining them with Blaze Powder and
-	 Echo Shards in a Crafting Table. Using Ender Pearls to craft Eyes of Ender will not work! Once you have Eyes of Ender, the progression to get to the End is the exact same as Vanilla - throw 
+	 Echo Shards in a Crafting Table. Eyes of Ender cannot be crafted from Ender Pearls! (This can be reenabled in the config.) Once you have Eyes of Ender, the progression to get to the End is
+	 the exact same as Vanilla - throw 
 	 the Eyes and follow them to the Stronghold.",
 	"screen.je.title.progression_2": "Voidmetal",
 	"screen.je.lore.progression_2": "Voidmetal is the first ore tier of the mod. To get full Voidmetal gear, you will need to kill a lot of Endermen - setting up an Enderman farm is recommended.
-	 You will also need an End Stone Furnace, crafted from 8 Compressed End Stone and a Blast Furnace. Finally, you will need a solid source of Voidblight or another fuel for the End Stone Furance.
+	 You will also need an End Stone Furnace, crafted from 8 Compressed End Stone and a Blast Furnace. Finally, you will need a solid source of Voidblight or another fuel for the End Stone Furnace.
 	  Currently, Voidblight can only be found by using Interdimensional Anchors or finding it in Endersent Structures. Future versions of the mod will implement custom worldgen allowing it to 
-	  generate naturally. To make Voidmetal, first smelt down a lot of Ender Pearls in the End Stone Furance. Take the resulting Small Piles of Void Dust and craft them into full Piles of Void Dust.
+	  generate naturally. To make Voidmetal, first smelt down a lot of Ender Pearls in the End Stone Furnace. Take the resulting Small Piles of Void Dust and craft them into full Piles of Void Dust.
 	  Combine 9 Void Dust in a Crafting Table to make 1 Raw Voidmetal. Finally, smelt the Raw Voidmetal in an End Stone Furnace to get a Voidmetal Ingot. To apply it to Netherite gear, you will need a
-	  Voidmetal Upgrade Template, found occasionally in End Cities. Combine the Netherite gear, a Voidmetal Ingot, and a Voidmetal Upgrade Template to upgrade the Netherite to Voidmetal. Voidmetal 
+	  Voidmetal Upgrade Template, occasionally found in End Cities. Combine the Netherite gear, a Voidmetal Ingot, and a Voidmetal Upgrade Template to upgrade the Netherite to Voidmetal. Voidmetal 
 	 gear has more durability than Netherite, does slightly more damage, and has more protection.",
 	//
 	"screen.je.title.corrupted_dirt": "Corrupted Dirt",
@@ -139,8 +140,8 @@
 	"screen.je.title.voidbloom": "Voidbloom",
 	"screen.je.lore.voidbloom": "A living tendril of the Void. It can be found anywhere near a source of Voidblight. It currently does not have a use.",
 	"screen.je.title.voidblight": "Voidblight",
-	"screen.je.lore.voidblight": "The Void, distilled into liquid form. It will harm any non-Void creature who comes into contact with it, giving them the Void Strke effect.
-	It can be found near Bejeweled Pedestals. Addtionally, 
+	"screen.je.lore.voidblight": "The Void, distilled into liquid form. It will harm any non-Void creature who comes into contact with it, giving them the Void Strike effect.
+	It can be found near Bejeweled Pedestals. Additionally, 
 	Interdimensional Anchors, when placed in the Overworld, will slowly corrupt the nearby landscape, eventually turning it into pure Voidblight. 
 	It can be collected using a bucket and is the most viable fuel source for an End Stone Furnace.",
 	"screen.je.title.end_stone": "End Stone",
@@ -149,10 +150,10 @@
 	  which is a crucial ingredient in the End Stone Furnace. Additionally, End Stone can be crafted into pillars, tiles, bricks, as well as chiseled and polished variants.
 	  Stone can also be substituted for End Stone in most recipes.",
 	"screen.je.title.faded_end_stone": "Faded End Stone",
-	"screen.je.lore.faded_end_stone": "End Stone that has been exposed to the Void for millenia. This block can only be found by placing an Interdimensional Anchor in the Overworld.
+	"screen.je.lore.faded_end_stone": "End Stone that has been exposed to the Void for millennia. This block can only be found by placing an Interdimensional Anchor in the Overworld.
 	 It currently does not have a use.",
 	"screen.je.title.lush_end_stone": "Lush End Stone",
-	"screen.je.lore.lush_end_stone": "How vegetaion has managed to grow on solid rock, with no sunlight, is a mystery. This block currently is unobtainable in Survival Mode. 
+	"screen.je.lore.lush_end_stone": "How vegetation has managed to grow on solid rock, with no sunlight, is a mystery. This block is currently unobtainable in Survival Mode. 
 	It currently does not have a use.",
 	"screen.je.title.compressed_end_stone": "Compressed End Stone",
 	"screen.je.lore.compressed_end_stone": "An extremely dense variant of End Stone. It cannot generate naturally but is obtained by placing 9 End Stone in a crafting grid. 8 of these are required
@@ -163,14 +164,14 @@
 	 it is used to refine most raw ores from the End. It accepts Voidblight, Voidmass, and Voidblooms as fuel. Out of these, Voidblight is by far the most efficient.",
 	"screen.je.title.interdimensional_anchor": "Interdimensional Anchor",
 	"screen.je.lore.interdimensional_anchor": "A direct link through time and space between the Overworld and the End. Though expensive, 1 or more Interdimensional Anchors will be well worth it, 
-	especially later on. 1 Interdimensional Anchor requires a Nether Star, 4 Netherite Ingots, and 4 Voidmetal Ingots. When placed in the Overworld, it will slowly corrupt the 
+	especially in the later stages of the game. 1 Interdimensional Anchor requires a Nether Star, 4 Netherite Ingots, and 4 Voidmetal Ingots. When placed in the Overworld, it will slowly corrupt the 
 	surrounding landscape in several stages, allowing you to have an infinite source of End Stone, Faded End Stone, 
-	Corrupted Dirt, Void Stone, Voidmass, and most importantly, Voidblight. When placed in the End, it will have a different affect, slowly spreading Overworld blocks into 
+	Corrupted Dirt, Void Stone, Voidmass, and most importantly, Voidblight. When placed in the End, it will have a different effect, slowly spreading Overworld blocks into 
 	the End and reversing the End's corruption.",
 	"screen.je.title.bejeweled_pedestal": "Bejeweled Pedestal",
 	"screen.je.lore.bejeweled_pedestal": "Long ago the Eyes of Ender were secured inside these pedestals. Dark magic was used to bind the eyes to the pedestals so that they could never be removed again,
 	leaving the End Portal sealed for eternity.
-	 However, the spell that was casted upon the pedestals is weakening as the Void rises once more.
+	 However, the spell that was cast upon the pedestals is weakening as the Void rises once more.
 	 Removal of the eyes may once again be possible... though it may set things in motion that cannot be undone. This block cannot be obtained in Survival Mode.",
 	"screen.je.title.lantern_of_warding": "Lantern of Warding",
 	"screen.je.lore.lantern_of_warding": "Contains a light that repels the darkness of the Void. It is currently unobtainable in Survival Mode. It currently does not have a use.",
@@ -189,12 +190,12 @@
 	  many dark secrets can be found within these pages. As of right now, you will only be able to view certain pages of this book. However, as you progress on your
 	  quest, more knowledge may be unlocked. The journal cannot be upgraded any further.",
 	"screen.je.title.voidblight_bucket": "Voidblight Bucket",
-	"screen.je.lore.voidblight_bucket": "Can be used as fuel in an End Stone Furance. See the Voidblight page under the Blocks list for more info.",
+	"screen.je.lore.voidblight_bucket": "Can be used as fuel in an End Stone Furnace. See the Voidblight entry under the Blocks list for more info.",
 	"screen.je.title.eye_fragment": "Eye Fragment",
 	"screen.je.lore.eye_fragment": "A fragment of a larger whole. They can be gained from defeating an Endersent carrying an eye, as the eye shatters into these shards upon the Endersent's death.
-	 It can be forged back into a complete Eye of Ender by combining it in a crafting table with an Echo Shard and Blaze Powder.",
+	 It can be forged back into a complete Eye of Ender by combining it in a Crafting Table with an Echo Shard and Blaze Powder.",
 	"screen.je.title.ender_pearl": "Ender Pearl",
-	"screen.je.lore.ender_pearl": "It feels strangely cold to the touch. They are dropped from Endermen and are a rarity that can be found throughout the Overworld. 
+	"screen.je.lore.ender_pearl": "It feels strangely cold to the touch. They are dropped from Endermen but can also be found throughout the Overworld. 
 	Throwing one will result in the thrower teleporting to where the pearl lands. They cannot be crafted into an Eye of Ender! See the Eye of Ender entry for more information about how
 	 to gain one.",
 	"screen.je.title.ender_eye": "Eye of Ender",
@@ -216,21 +217,21 @@
 	"screen.je.title.voidmetal_nugget": "Voidmetal Nugget",
 	"screen.je.lore.voidmetal_nugget": "A small fragment of the Void. It is crafted from a Voidmetal Ingot, and 9 of them can be crafted back into a Voidmetal Ingot.",
 	"screen.je.title.voidmetal_upgrade_smithing_template": "Voidmetal Upgrade Template",
-	"screen.je.lore.voidmetal_upgrade_smithing_template": "Used to upgrade Netherite gear to Voidmetal, along with a Voidmetal Ingot. It can be found in End City chests, and cloned in a Crafting Table 
+	"screen.je.lore.voidmetal_upgrade_smithing_template": "Used to upgrade Netherite gear to Voidmetal, along with a Voidmetal Ingot. It can be found in End City chests and cloned in a Crafting Table 
 	using diamonds and End Stone.",
 	//
 	"screen.je.title.endersent_well": "Ancient Well",
-	"screen.je.lore.endersent_well": "These wells dot the surface of the Overworld, build by some bygone civilization. Some of them have secret underground storerooms if you swim down
+	"screen.je.lore.endersent_well": "These wells dot the surface of the Overworld, built by some bygone civilization. Some of them have secret underground storerooms if you swim down
 	 in the water. There's probably loot down there...",
 	"screen.je.title.stronghold": "Stronghold",
 	"screen.je.lore.stronghold": "Mighty fortresses built around the End Portals long ago, strongholds are now crumbling and ruined from the passage of time. They can be located by 
 	following the Eyes of Ender.",
 	"screen.je.title.end_city": "End City",
-	"screen.je.lore.end_city": "Alien cities can be found throughout the End, though who built them I'm not sure. They contain very valuable loot such as enchanted gear, Voidmetal
+	"screen.je.lore.end_city": "Alien cities can be found throughout the End, though who built them remains a mystery. They contain very valuable loot such as enchanted gear, Voidmetal
 	 Upgrade Templates, and Elytra.",
 	//
 	"screen.je.title.main_island": "The Main Island",
-	"screen.je.lore.main_island": "The center of the End dimension, this is where you arrive when traveling through an End Portal. The Main Island is home to the Ender Dragon, which you must kill to
+	"screen.je.lore.main_island": "The center of the End dimension, this is where you arrive when traveling through an End Portal. The Main Island is home to the Ender Dragon, which you must defeat to
 	 open the gateways to the Outer End.",
 	"screen.je.title.outer_islands": "End Wastes",
 	"screen.je.lore.outer_islands": "The vanilla End. An endless desolate wasteland made of End Stone. End cities can generate occasionally.",
@@ -242,10 +243,10 @@
 	"screen.je.lore.endersent": "The defenders of the Eyes of Ender, the Endersent were sent to the Overworld by their dark master. Their sole mission is to guard the Eyes of Ender to
 	 prevent anyone from reigniting the End Portal and entering the End. They drop 1-2 Eye Fragments and a small amount of Void Dust.",
 	"screen.je.title.endermite": "Endermite",
-	"screen.je.lore.endermite": "An interdimensional parasite. Endermites occasionally get warped into the Overworld when an Ender Pearl is thrown because of the unstable energies created
-	 through teleportation.",
+	"screen.je.lore.endermite": "An interdimensional parasite. Endermites occasionally get warped into the Overworld when an Ender Pearl is thrown, due to the unstable energies released
+	 during teleportation.",
 	"screen.je.title.ender_dragon": "Ender Dragon",
 	"screen.je.lore.ender_dragon": "The last guardian of the End, the Ender Dragon was created to prevent anyone from proceeding to the Outer End if the Endersent failed. It restores health
-	 from Ender Crystals on top of pillars around the Main Island. Once you make it to the End, the only way to enter the Outer Islands or go back to the Overworld is to kill the dragon...
-	  or be killed."
+	 from Ender Crystals on top of pillars around the Main Island. Once reach the End, the only way to enter the Outer Islands or go back to the Overworld is to kill the dragon - 
+	 or die trying."
 }
