@@ -162,7 +162,7 @@ public class ModBlocks {
 
 	public static final RegistryObject<Block> SHADOW_BLOCK = registerBlock("shadow_block",
 			() -> new ShadowBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(-1.0F, 3600000.0F)
-					.instrument(NoteBlockInstrument.BASEDRUM).noLootTable().noOcclusion()
+					.noLootTable().noOcclusion()
 					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never)));
 
 	private static boolean always(BlockState p_50775_, BlockGetter p_50776_, BlockPos p_50777_) {
