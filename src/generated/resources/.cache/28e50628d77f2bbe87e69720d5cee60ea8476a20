@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-15T10:01:58.943805	Block States: je
+// 1.21.1	2025-07-16T09:01:36.8214975	Block States: je
 9848562a52631f8fe774199803bf53b63c0a43a4 assets/je/blockstates/chiseled_end_stone.json
 70ef5a172b5a1ddbda52c5b108fbb8526b2661bb assets/je/blockstates/compressed_end_stone.json
 c7fa56628fd3f47c69da1ca552a05e745ea1a727 assets/je/blockstates/corrupted_dirt.json
@@ -10,6 +10,7 @@ cd25960beb35b20a68026b2f122a6950b0674bbb assets/je/blockstates/polished_end_ston
 864e88add0e30d941966ca74da390732c4ad2907 assets/je/blockstates/polished_end_stone_slab.json
 c8a3d1e9a73369047adb0703e016b81d861c3f54 assets/je/blockstates/polished_end_stone_stairs.json
 c0969f42070c45d36087566fa0851f946ba8c558 assets/je/blockstates/polished_end_stone_wall.json
+18e3607849d3c9768b66df6f013d73370f179d05 assets/je/blockstates/shadow_prism.json
 9e2347a72fd52bb33882b83d50e4474b6df317f5 assets/je/blockstates/shadow_stone_bricks.json
 c167b0a1226a70730de3f576eea967f9da881932 assets/je/blockstates/voidmass.json
 b943d8b3120f370583bf91912170633f4b7ba3c8 assets/je/blockstates/voidmetal_block.json
@@ -31,6 +32,7 @@ ed92636e54a9e5aa5801967bc65f1d4ef971439d assets/je/models/block/polished_end_sto
 d21c3e67162180bd6afda76b8e0cf8cf477087b5 assets/je/models/block/polished_end_stone_wall_post.json
 54bc9c56542729310548e43be804dab2321d8e3e assets/je/models/block/polished_end_stone_wall_side.json
 71815fab6a001c88cae2508abf6d10106f57cb26 assets/je/models/block/polished_end_stone_wall_side_tall.json
+46754845cb003f8ecdfffa30e627bdd89df6b266 assets/je/models/block/shadow_prism.json
 39f8dc24b6fef7911ee1da8209506b2a787f1a99 assets/je/models/block/shadow_stone_bricks.json
 7ad073b3b6f1a01bcbd559f69a95ca660d444562 assets/je/models/block/voidmass.json
 1f5c0792f4b6039322accdce23da1189ccbaa5a4 assets/je/models/block/voidmetal_block.json
@@ -46,6 +48,7 @@ e66ba19848a5a0d5418ca77f8cec164362a0e134 assets/je/models/item/end_stone_pillar.
 28260441ca1e2ef03b745d14c1ed7010030fd48b assets/je/models/item/polished_end_stone.json
 0534658dc6ffd15b48351b7721cbfed6f05526ec assets/je/models/item/polished_end_stone_slab.json
 e700035c2ca3955ce475e7f2e029599d88614f9c assets/je/models/item/polished_end_stone_stairs.json
+e254a367b86ee4ce0f19fae9eabd671445429da2 assets/je/models/item/shadow_prism.json
 be8849fb0abac58e2a750e99b8f18d6c38f969ad assets/je/models/item/shadow_stone_bricks.json
 ce2fa32dcbfebaf07698897779e2b2dedcad74ec assets/je/models/item/voidmass.json
 e5dee8813894acb2145af915d1adc97dfabc659d assets/je/models/item/voidmetal_block.json

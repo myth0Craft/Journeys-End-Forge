@@ -33,6 +33,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.LANTERN_OF_WARDING);
         
         blockWithItem(ModBlocks.SHADOW_STONE_BRICKS);
+        //blockWithItem(ModBlocks.SHADOW_PRISM);
         //blockWithItem(ModBlocks.SHADOW_BLOCK);
 
         blockItem(ModBlocks.END_STONE_PILLAR);

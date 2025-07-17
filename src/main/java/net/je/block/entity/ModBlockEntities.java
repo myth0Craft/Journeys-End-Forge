@@ -19,6 +19,10 @@ public class ModBlockEntities {
 	public static final RegistryObject<BlockEntityType<BejeweledPedestalBlockEntity>> BEJEWELED_PEDESTAL_BE = BLOCK_ENTITIES
 			.register("bejeweled_pedestal_be", () -> BlockEntityType.Builder
 					.of(BejeweledPedestalBlockEntity::new, ModBlocks.BEJEWELED_PEDESTAL.get()).build(null));
+	
+	public static final RegistryObject<BlockEntityType<ShadowPrismBlockEntity>> SHADOW_PRISM_BLOCK_ENTITY = BLOCK_ENTITIES
+			.register("shadow_prism_block_entity", () -> BlockEntityType.Builder
+					.of(ShadowPrismBlockEntity::new, ModBlocks.SHADOW_PRISM.get()).build(null));
 
 	public static void register(IEventBus eventBus) {
 		BLOCK_ENTITIES.register(eventBus);

@@ -1,9 +1,11 @@
 package net.je;
 
+import java.io.IOException;
 import java.util.Map;
 
 import org.slf4j.Logger;
 
+import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.logging.LogUtils;
 
 import net.je.block.ModBlocks;
@@ -22,18 +24,25 @@ import net.je.item.ModItems;
 import net.je.loot.ModLootModifiers;
 import net.je.particle.ModParticles;
 import net.je.recipe.ModRecipeSerializers;
+import net.je.render.ModRenderTypes;
+import net.je.render.ShadowPrismRenderer;
 import net.je.screen.EndStoneFurnaceScreen;
 import net.je.screen.ModMenuTypes;
 import net.je.sound.ModSounds;
 import net.minecraft.Util;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.DragonBreathParticle;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.ForgeHooksClient.ClientEvents;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.minecraftforge.client.event.RegisterShadersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -51,6 +60,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class JourneysEnd {
 
 	public static final String MODID = "je";
+	
+	
 
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogUtils.getLogger();
@@ -91,6 +102,8 @@ public class JourneysEnd {
 	    ModParticles.register(modEventBus);
 
 	    ModConditions.register(modEventBus);
+	    
+	    
 
 	}
 
@@ -113,15 +126,33 @@ public class JourneysEnd {
 		@SubscribeEvent
 		public static void onClientSetup(FMLClientSetupEvent event) {
 			MenuScreens.register(ModMenuTypes.END_STONE_FURNACE_MENU.get(), EndStoneFurnaceScreen::new);
+			ModRenderTypes.registerShaders();
+			
+			
+			
 			//BlockRenderLayerMap.put(RenderType.translucent(), ModBlocks.SHADOW_BLOCK.get());
+			//ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHADOW_PRISM.get(), ModRenderTypes.SHADOW_PRISM);
+			
 			
 			
 		}
+		
+		public static ShaderInstance SHADER;
+		
+		@SubscribeEvent
+		public static void registerShaders(RegisterShadersEvent event) throws IOException {
+			event.registerShader(new ShaderInstance(event.getResourceProvider(), ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "shadow_prism"), DefaultVertexFormat.POSITION),
+					shaderInstance -> {
+						SHADER = shaderInstance;
+					});
+		}
+		
 		@SubscribeEvent
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
             // Entities
             event.registerEntityRenderer(ModEntities.ENDERSENT.get(), EndersentRenderer::new);
             event.registerEntityRenderer(ModEntities.ENDERSENT_WITH_EYE.get(), EndersentWithEyeRenderer::new);
+            event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_PRISM_BLOCK_ENTITY.get(), ShadowPrismRenderer::new);
 
         }
         @SubscribeEvent

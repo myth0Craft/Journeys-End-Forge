@@ -1,5 +1,7 @@
 #version 150
 
+#moj_import <matrix.glsl>
+
 uniform sampler2D Sampler0;
 uniform sampler2D Sampler1;
 
@@ -8,15 +10,23 @@ uniform int EndPortalLayers;
 
 in vec4 texProj0;
 
-out vec4 fragColor;
-
-const vec3 COLORS[16] = vec3[](
-    vec3(0.022, 0.098, 0.110), vec3(0.011, 0.095, 0.089), vec3(0.027, 0.101, 0.100),
-    vec3(0.046, 0.109, 0.114), vec3(0.064, 0.117, 0.097), vec3(0.063, 0.086, 0.123),
-    vec3(0.084, 0.111, 0.166), vec3(0.097, 0.154, 0.091), vec3(0.106, 0.131, 0.195),
-    vec3(0.097, 0.110, 0.187), vec3(0.133, 0.138, 0.148), vec3(0.070, 0.243, 0.235),
-    vec3(0.196, 0.142, 0.214), vec3(0.047, 0.315, 0.321), vec3(0.204, 0.390, 0.302),
-    vec3(0.080, 0.314, 0.661)
+const vec3[] COLORS = vec3[](
+    vec3(0.022087, 0.098399, 0.110818),
+    vec3(0.011892, 0.095924, 0.089485),
+    vec3(0.027636, 0.101689, 0.100326),
+    vec3(0.046564, 0.109883, 0.114838),
+    vec3(0.064901, 0.117696, 0.097189),
+    vec3(0.063761, 0.086895, 0.123646),
+    vec3(0.084817, 0.111994, 0.166380),
+    vec3(0.097489, 0.154120, 0.091064),
+    vec3(0.106152, 0.131144, 0.195191),
+    vec3(0.097721, 0.110188, 0.187229),
+    vec3(0.133516, 0.138278, 0.148582),
+    vec3(0.070006, 0.243332, 0.235792),
+    vec3(0.196766, 0.142899, 0.214696),
+    vec3(0.047281, 0.315338, 0.321970),
+    vec3(0.204675, 0.390010, 0.302066),
+    vec3(0.080955, 0.314821, 0.661491)
 );
 
 const mat4 SCALE_TRANSLATE = mat4(
@@ -25,12 +35,6 @@ const mat4 SCALE_TRANSLATE = mat4(
     0.0, 0.0, 1.0, 0.0,
     0.0, 0.0, 0.0, 1.0
 );
-
-mat2 mat2_rotate_z(float angle) {
-    float s = sin(angle);
-    float c = cos(angle);
-    return mat2(c, -s, s, c);
-}
 
 mat4 end_portal_layer(float layer) {
     mat4 translate = mat4(
@@ -41,17 +45,13 @@ mat4 end_portal_layer(float layer) {
     );
 
     mat2 rotate = mat2_rotate_z(radians((layer * layer * 4321.0 + layer * 9.0) * 2.0));
+
     mat2 scale = mat2((4.5 - layer / 4.0) * 2.0);
 
-    mat4 m = mat4(
-        scale[0][0] * rotate[0][0], scale[0][0] * rotate[0][1], 0.0, 0.0,
-        scale[1][0] * rotate[1][0], scale[1][0] * rotate[1][1], 0.0, 0.0,
-        0.0, 0.0, 1.0, 0.0,
-        0.0, 0.0, 0.0, 1.0
-    );
-
-    return m * translate * SCALE_TRANSLATE;
+    return mat4(scale * rotate) * translate * SCALE_TRANSLATE;
 }
+
+out vec4 fragColor;
 
 void main() {
     vec3 color = textureProj(Sampler0, texProj0).rgb * COLORS[0];

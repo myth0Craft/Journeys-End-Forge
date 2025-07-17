@@ -9,6 +9,7 @@ import net.je.block.custom.EndStoneFurnaceBlock;
 import net.je.block.custom.InterdimensionalAnchorBlock;
 import net.je.block.custom.LushEndStoneBlock;
 import net.je.block.custom.ShadowBlock;
+import net.je.block.custom.ShadowPrismBlock;
 import net.je.block.custom.VoidbloomBlock;
 import net.je.fluid.ModFluids;
 import net.je.item.ModItems;
@@ -163,6 +164,12 @@ public class ModBlocks {
 	public static final RegistryObject<Block> SHADOW_BLOCK = registerBlock("shadow_block",
 			() -> new ShadowBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(-1.0F, 3600000.0F)
 					.noLootTable().noOcclusion()
+					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never)));
+	
+	
+	public static final RegistryObject<Block> SHADOW_PRISM = registerBlock("shadow_prism",
+			() -> new ShadowPrismBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(-1.0F, 3600000.0F)
+					.noLootTable().noOcclusion().lightLevel(p_50755_ -> 15)
 					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never)));
 
 	private static boolean always(BlockState p_50775_, BlockGetter p_50776_, BlockPos p_50777_) {
