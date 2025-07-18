@@ -33,6 +33,8 @@
 	"item.je.smithing_template.voidmetal_upgrade.applies_to": "Netherite Equipment",
 	"item.je.smithing_template.voidmetal_upgrade.base_slot_description": "Add Netherite armor, weapon, or tool",
 	"item.je.smithing_template.voidmetal_upgrade.ingredients": "Voidmetal Ingot",
+	
+	"item.je.wardbreaker_pickaxe": "Wardbreaker Pickaxe",
 	//
 	"block.je.voidmass": "Voidmass",
 	"block.je.end_stone_furnace": "End Stone Furnace",
@@ -56,6 +58,7 @@
 	"block.je.void_stone": "Void Stone",
 	"block.je.shadow_block": "Shadow Block",
 	"block.je.shadow_stone_bricks": "Shadow Stone Bricks",
+	"block.je.shadow_prism": "Shadow Prism",
 	//
 	"effect.je.void_strike": "Void Strike",
 	"death.attack.void_strike": "%1$s was consumed by the Void",
@@ -66,6 +69,7 @@
 	//"tooltip.je.corrupted_dirt": "Dirt, tainted by the Void.",
 	//"tooltip.je.lantern_of_warding": "It seems to repel the darkness of the Void.",
 	"tooltip.je.unobtainable": "Currently unobtainable in Survival Mode.",
+	"tooltip.je.placeholder": "This is a placeholder item and cannot be obtained in Survival Mode.",
 	"container.je.end_stone_furnace": "End Stone Furnace",
 	"gui.recipebook.toggleRecipes.end_stone_furnace": "Showing End Stone Smeltable",
 	//

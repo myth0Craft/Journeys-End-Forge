@@ -16,7 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 public class ModRenderTypes {
 	public static RenderType SHADOW_PRISM;
 
-	public static void registerShaders() {
+	public static void registerRenderTypes() {
 		SHADOW_PRISM = RenderType.create("shadow_prism", DefaultVertexFormat.POSITION, VertexFormat.Mode.QUADS, 1536,
 				false, false,
 				RenderType.CompositeState.builder()

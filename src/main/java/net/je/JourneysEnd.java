@@ -36,6 +36,7 @@ import net.minecraft.client.particle.DragonBreathParticle;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShaderInstance;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
@@ -60,8 +61,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class JourneysEnd {
 
 	public static final String MODID = "je";
-	
-	
 
 	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LogUtils.getLogger();
@@ -91,19 +90,17 @@ public class JourneysEnd {
 		ModBlocks.register(modEventBus);
 
 		ModFluids.register(modEventBus);
-	    ModFluidTypes.register(modEventBus);
-	    ModBlockEntities.register(modEventBus);
-	    ModMenuTypes.register(modEventBus);
+		ModFluidTypes.register(modEventBus);
+		ModBlockEntities.register(modEventBus);
+		ModMenuTypes.register(modEventBus);
 
-	    ModRecipeSerializers.register(modEventBus);
+		ModRecipeSerializers.register(modEventBus);
 
-	    ModLootModifiers.register(modEventBus);
+		ModLootModifiers.register(modEventBus);
 
-	    ModParticles.register(modEventBus);
+		ModParticles.register(modEventBus);
 
-	    ModConditions.register(modEventBus);
-	    
-	    
+		ModConditions.register(modEventBus);
 
 	}
 
@@ -120,49 +117,64 @@ public class JourneysEnd {
 
 	}
 
-
 	@Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 	public static class ClientModEvents {
 		@SubscribeEvent
 		public static void onClientSetup(FMLClientSetupEvent event) {
 			MenuScreens.register(ModMenuTypes.END_STONE_FURNACE_MENU.get(), EndStoneFurnaceScreen::new);
-			ModRenderTypes.registerShaders();
+
+			if (CommonConfig.ALLOW_FANCY_VISUALS.get()) {
+				ModRenderTypes.registerRenderTypes();
+				BlockEntityRenderers.register(ModBlockEntities.SHADOW_PRISM_BLOCK_ENTITY.get(), ShadowPrismRenderer::new);
+			}
 			
 			
 			
-			//BlockRenderLayerMap.put(RenderType.translucent(), ModBlocks.SHADOW_BLOCK.get());
-			//ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHADOW_PRISM.get(), ModRenderTypes.SHADOW_PRISM);
-			
-			
-			
+			/*
+			 * event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_PRISM_BLOCK_ENTITY.
+			 * get(), ShadowPrismRenderer::new);
+			 */
+
+			// BlockRenderLayerMap.put(RenderType.translucent(),
+			// ModBlocks.SHADOW_BLOCK.get());
+			// ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHADOW_PRISM.get(),
+			// ModRenderTypes.SHADOW_PRISM);
+
 		}
-		
+
 		public static ShaderInstance SHADER;
-		
+
 		@SubscribeEvent
 		public static void registerShaders(RegisterShadersEvent event) throws IOException {
-			event.registerShader(new ShaderInstance(event.getResourceProvider(), ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "shadow_prism"), DefaultVertexFormat.POSITION),
-					shaderInstance -> {
-						SHADER = shaderInstance;
-					});
+			if (CommonConfig.ALLOW_FANCY_VISUALS.get()) {
+				event.registerShader(new ShaderInstance(event.getResourceProvider(),
+						ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "shadow_prism"),
+						DefaultVertexFormat.POSITION), shaderInstance -> {
+							SHADER = shaderInstance;
+						});
+			}
 		}
-		
-		@SubscribeEvent
-        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-            // Entities
-            event.registerEntityRenderer(ModEntities.ENDERSENT.get(), EndersentRenderer::new);
-            event.registerEntityRenderer(ModEntities.ENDERSENT_WITH_EYE.get(), EndersentWithEyeRenderer::new);
-            event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_PRISM_BLOCK_ENTITY.get(), ShadowPrismRenderer::new);
 
-        }
-        @SubscribeEvent
-    	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-    	    event.registerLayerDefinition(EndersentModel.ENDERSENT_LAYER, EndersentModel::createBodyLayer);
-    	}
-        @SubscribeEvent
-        public static void registerParticleProvider(RegisterParticleProvidersEvent event) {
-            event.registerSpriteSet(ModParticles.ENDERSENT_SPAWN_PARTICLES.get(), DragonBreathParticle.Provider::new);
-        }
+		@SubscribeEvent
+		public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+			// Entities
+			event.registerEntityRenderer(ModEntities.ENDERSENT.get(), EndersentRenderer::new);
+			event.registerEntityRenderer(ModEntities.ENDERSENT_WITH_EYE.get(), EndersentWithEyeRenderer::new);
+
+			
+				
+
+		}
+
+		@SubscribeEvent
+		public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+			event.registerLayerDefinition(EndersentModel.ENDERSENT_LAYER, EndersentModel::createBodyLayer);
+		}
+
+		@SubscribeEvent
+		public static void registerParticleProvider(RegisterParticleProvidersEvent event) {
+			event.registerSpriteSet(ModParticles.ENDERSENT_SPAWN_PARTICLES.get(), DragonBreathParticle.Provider::new);
+		}
 	}
 
 }
