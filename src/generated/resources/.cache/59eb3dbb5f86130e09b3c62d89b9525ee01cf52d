@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-15T09:26:14.1364606	Loot Tables
+// 1.21.1	2025-07-19T08:26:51.9839532	Loot Tables
 8667f98a1f0ea3068b88a0df51c17eb5b3615506 data/je/loot_table/blocks/chiseled_end_stone.json
 e188ab287e2e33d68c8b7c3d4a175b783d06209b data/je/loot_table/blocks/compressed_end_stone.json
 ab5387a826d7344de8fe756aaa140841dcda5373 data/je/loot_table/blocks/corrupted_dirt.json
@@ -18,3 +18,4 @@ aacfe24f2d71a8ad2530e81410ae814118386034 data/je/loot_table/blocks/voidbloom.jso
 f572ee20702e682a5b64b2416d5568c87c5e748d data/je/loot_table/blocks/voidmass.json
 c84219926abdf9fe98537d068a33f92281530f0c data/je/loot_table/blocks/voidmetal_block.json
 0c5e8b1f452a3bc881cb260bc79d4cf08424c636 data/je/loot_table/blocks/void_stone.json
+6d1afff90633a91c4b11ecbd709944bc73516f45 data/je/loot_table/blocks/warded_shadow_stone_bricks.json
