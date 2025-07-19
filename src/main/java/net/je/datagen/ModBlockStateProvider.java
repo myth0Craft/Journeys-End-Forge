@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.ModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -33,6 +34,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.LANTERN_OF_WARDING);
         
         blockWithItem(ModBlocks.SHADOW_STONE_BRICKS);
+        blockWithItem(ModBlocks.WARDED_SHADOW_STONE_BRICKS, "shadow_stone_bricks");
         //blockWithItem(ModBlocks.SHADOW_PRISM);
         //blockWithItem(ModBlocks.SHADOW_BLOCK);
 
@@ -58,5 +60,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
+    }
+    
+    private void blockWithItem(RegistryObject<Block> blockRegistryObject, String path) {
+        simpleBlockWithItem(blockRegistryObject.get(), models().cubeAll(ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath(),
+        		ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).withPath(p -> "block/" + path)));
     }
 }

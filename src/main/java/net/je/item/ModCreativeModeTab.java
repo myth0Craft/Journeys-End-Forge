@@ -46,11 +46,12 @@ public class ModCreativeModeTab {
 				
 				pOutput.accept(ModBlocks.SHADOW_STONE_BRICKS.get());
 				pOutput.accept(ModBlocks.SHADOW_BLOCK.get());
+				pOutput.accept(ModBlocks.SHADOW_PRISM.get());
 
 			})
 			.build());
 
-	public static final RegistryObject<CreativeModeTab> ITEMS_TAB = CREATIVE_MODE_TABS.register("aje_items_tab",
+	public static final RegistryObject<CreativeModeTab> ITEMS_TAB = CREATIVE_MODE_TABS.register("je_items_tab",
 			() -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.VOIDMETAL_SWORD.get()))
 			.title(Component.translatable("creativetab.je.items"))
 			.displayItems((pParameters, pOutput) -> {
@@ -79,6 +80,8 @@ public class ModCreativeModeTab {
 
 				pOutput.accept(ModItems.ENDERSENT_SPAWN_EGG.get());
 				pOutput.accept(ModItems.ENDERSENT_WITH_EYE_SPAWN_EGG.get());
+				
+				pOutput.accept(ModItems.WARDBREAKER_PICKAXE.get());
 
 			})
 			.build());

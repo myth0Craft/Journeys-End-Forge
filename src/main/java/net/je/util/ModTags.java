@@ -4,8 +4,10 @@ import net.je.JourneysEnd;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
 public class ModTags {
@@ -37,6 +39,14 @@ public class ModTags {
 		 * StructureTags.create(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID,
 		 * name)); }
 		 */
+	}
+	
+	public static class Items {
+		public static final TagKey<Item> WARDBREAKER = createTag("wardbreaker");
+		
+		private static TagKey<Item> createTag(String name) {
+			return ItemTags.create(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, name));
+		}
 	}
 
 }

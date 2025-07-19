@@ -58,6 +58,7 @@
 	"block.je.void_stone": "Void Stone",
 	"block.je.shadow_block": "Shadow Block",
 	"block.je.shadow_stone_bricks": "Shadow Stone Bricks",
+	"block.je.warded_shadow_stone_bricks": "Warded Shadow Stone Bricks",
 	"block.je.shadow_prism": "Shadow Prism",
 	//
 	"effect.je.void_strike": "Void Strike",
@@ -65,6 +66,7 @@
 	"creativetab.je.blocks": "Journey's End Blocks",
 	"creativetab.je.items": "Journey's End Items",
 	"tooltip.je.void_dust": "It does not feel entirely real.",
+	"message.je.warded_block": "Warded by a dark spell, this block seems to resist your touch...",
 	//"tooltip.je.voidblight_bucket": "Used as fuel in the end stone furnace.",
 	//"tooltip.je.corrupted_dirt": "Dirt, tainted by the Void.",
 	//"tooltip.je.lantern_of_warding": "It seems to repel the darkness of the Void.",

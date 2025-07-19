@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-15T10:01:58.9417471	Item Models: je
+// 1.21.1	2025-07-18T10:02:52.7090534	Item Models: je
 cf50f6423637e2c1ffc8efefe583131bf9ddbe9a assets/je/models/item/eye_fragment.json
 83cc4b29028dd347ce6421a88191acc7790ecc8a assets/je/models/item/polished_end_stone_wall.json
 4628d30ee9cc0594c2420ad6405a54224b9c52f8 assets/je/models/item/raw_voidmetal.json
@@ -60,3 +60,4 @@ a47581cd5d1b6d3f49f8fa95d3d6204d98eb83b0 assets/je/models/item/voidmetal_shovel.
 a7577e970244cfa4e7064c602e56fc91e8a9a10c assets/je/models/item/voidmetal_sword.json
 33c7180629bed59851aa1f615782ddb85d3c2c98 assets/je/models/item/voidmetal_upgrade_smithing_template.json
 85a80edf442922ed39e8d7811b33bb8a50ebc1dd assets/je/models/item/void_dust.json
+d828c967cd834283bff20a209441e269f7224090 assets/je/models/item/wardbreaker_pickaxe.json

@@ -11,6 +11,7 @@ import net.je.block.custom.LushEndStoneBlock;
 import net.je.block.custom.ShadowBlock;
 import net.je.block.custom.ShadowPrismBlock;
 import net.je.block.custom.VoidbloomBlock;
+import net.je.block.custom.WardedBlock;
 import net.je.fluid.ModFluids;
 import net.je.item.ModItems;
 import net.je.sound.ModSounds;
@@ -171,6 +172,9 @@ public class ModBlocks {
 			() -> new ShadowPrismBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(-1.0F, 3600000.0F)
 					.noLootTable().noOcclusion().lightLevel(p_50755_ -> 15)
 					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never)));
+	
+	public static final RegistryObject<Block> WARDED_SHADOW_STONE_BRICKS = registerBlock("warded_shadow_stone_bricks",
+			() -> new WardedBlock());
 
 	private static boolean always(BlockState p_50775_, BlockGetter p_50776_, BlockPos p_50777_) {
 		return true;
