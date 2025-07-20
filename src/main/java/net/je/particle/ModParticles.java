@@ -15,6 +15,9 @@ public class ModParticles {
 	public static final RegistryObject<SimpleParticleType> ENDERSENT_SPAWN_PARTICLES = PARTICLE_TYPES
 			.register("endersent_spawn_particles", () -> new SimpleParticleType(true));
 
+	public static final RegistryObject<SimpleParticleType> WARDED_PARTICLES = PARTICLE_TYPES
+			.register("warded_particles", () -> new SimpleParticleType(true));
+
 	public static void register(IEventBus eventBus) {
 		PARTICLE_TYPES.register(eventBus);
 	}

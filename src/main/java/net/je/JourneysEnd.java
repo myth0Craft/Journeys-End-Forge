@@ -23,6 +23,7 @@ import net.je.item.ModCreativeModeTab;
 import net.je.item.ModItems;
 import net.je.loot.ModLootModifiers;
 import net.je.particle.ModParticles;
+import net.je.particle.WardedParticleProvider;
 import net.je.recipe.ModRecipeSerializers;
 import net.je.render.ModRenderTypes;
 import net.je.render.ShadowPrismRenderer;
@@ -130,6 +131,8 @@ public class JourneysEnd {
 			
 			
 			
+			
+			
 			/*
 			 * event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_PRISM_BLOCK_ENTITY.
 			 * get(), ShadowPrismRenderer::new);
@@ -153,6 +156,11 @@ public class JourneysEnd {
 							SHADER = shaderInstance;
 						});
 			}
+		}
+		
+		@SubscribeEvent
+		public static void registerParticles(RegisterParticleProvidersEvent event) {
+			event.registerSpriteSet(ModParticles.WARDED_PARTICLES.get(), (spriteSet) -> new WardedParticleProvider(spriteSet));
 		}
 
 		@SubscribeEvent
