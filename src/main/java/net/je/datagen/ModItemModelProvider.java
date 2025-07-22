@@ -52,14 +52,15 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.EYE_FRAGMENT.get());
         basicItem(ModItems.TIMEWORN_JOURNAL_T0.get());
         basicItem(ModItems.TIMEWORN_JOURNAL_T1.get());
-        
+        //basicItem(ModItems.ECLIPSE_KEY.get());
+
 
         handheldItem(ModItems.VOIDMETAL_PICKAXE);
         handheldItem(ModItems.VOIDMETAL_AXE);
         handheldItem(ModItems.VOIDMETAL_SHOVEL);
         handheldItem(ModItems.VOIDMETAL_HOE);
         handheldItem(ModItems.VOIDMETAL_SWORD);
-        
+
         withExistingParent(ModItems.WARDBREAKER_PICKAXE.getId().getPath(),
                 ResourceLocation.parse("item/handheld")).texture("layer0",
                 ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID,"item/" + ModItems.VOIDMETAL_PICKAXE.getId().getPath()));
@@ -70,10 +71,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.VOIDMETAL_BOOTS);
 
         wallItem(ModBlocks.POLISHED_END_STONE_WALL, ModBlocks.POLISHED_END_STONE);
-        
+
         blockItem(ModBlocks.SHADOW_BLOCK.get());
     }
-    
+
     private ItemModelBuilder blockItem(Block block) {
     	return withExistingParent(ForgeRegistries.BLOCKS.getKey(block).getPath(),
             	modLoc("block/" + ForgeRegistries.BLOCKS.getKey(block).getPath()));

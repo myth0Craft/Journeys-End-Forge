@@ -13,10 +13,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -93,6 +93,9 @@ public class ModItems {
 
 	public static final RegistryObject<Item> EYE_FRAGMENT = ITEMS.register("eye_fragment",
 			() -> new Item(new Item.Properties()));
+	
+	public static final RegistryObject<Item> ECLIPSE_KEY = ITEMS.register("eclipse_key",
+			() -> new EclipseKeyItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
 	public static final RegistryObject<Item> WARDBREAKER_PICKAXE = ITEMS.register("wardbreaker_pickaxe",
 			() -> new PickaxeItem(ModToolTiers.VOIDMETAL, new Item.Properties()

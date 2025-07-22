@@ -40,10 +40,12 @@ public class ModTags {
 		 * name)); }
 		 */
 	}
-	
+
 	public static class Items {
 		public static final TagKey<Item> WARDBREAKER = createTag("wardbreaker");
 		
+		public static final TagKey<Item> CAN_PASS_THROUGH_SHADOW_BLOCKS = createTag("can_pass_through_shadow_blocks");
+
 		private static TagKey<Item> createTag(String name) {
 			return ItemTags.create(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, name));
 		}

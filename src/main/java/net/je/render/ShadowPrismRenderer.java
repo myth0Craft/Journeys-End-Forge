@@ -7,16 +7,12 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 
 import net.je.JourneysEnd;
 import net.je.block.entity.ShadowPrismBlockEntity;
-import net.je.config.CommonConfig;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.entity.TheEndPortalBlockEntity;
 
 public class ShadowPrismRenderer implements BlockEntityRenderer<ShadowPrismBlockEntity> {
 	public static final ResourceLocation END_SKY_LOCATION = ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID,
@@ -27,13 +23,14 @@ public class ShadowPrismRenderer implements BlockEntityRenderer<ShadowPrismBlock
 	public ShadowPrismRenderer(BlockEntityRendererProvider.Context pContext) {
 	}
 
+	@Override
 	public void render(ShadowPrismBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack,
 			MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
-		
-		
+
+
 			Matrix4f matrix4f = pPoseStack.last().pose();
 			this.renderCube(pBlockEntity, matrix4f, pBufferSource.getBuffer(this.renderType()));
-		
+
 	}
 
 	private void renderCube(ShadowPrismBlockEntity pBlockEntity, Matrix4f pPose, VertexConsumer pConsumer) {

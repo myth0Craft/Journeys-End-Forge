@@ -24,14 +24,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.HalfTransparentBlock;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.TransparentBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -165,14 +162,14 @@ public class ModBlocks {
 	public static final RegistryObject<Block> SHADOW_BLOCK = registerBlock("shadow_block",
 			() -> new ShadowBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(-1.0F, 3600000.0F)
 					.noLootTable().noOcclusion()
-					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never)));
-	
-	
+					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking((s, l, p) -> false).pushReaction(PushReaction.IGNORE)));
+
+
 	public static final RegistryObject<Block> SHADOW_PRISM = registerBlock("shadow_prism",
 			() -> new ShadowPrismBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(-1.0F, 3600000.0F)
 					.noLootTable().noOcclusion().lightLevel(p_50755_ -> 15)
-					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never)));
-	
+					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).pushReaction(PushReaction.IGNORE)));
+
 	public static final RegistryObject<Block> WARDED_SHADOW_STONE_BRICKS = registerBlock("warded_shadow_stone_bricks",
 			() -> new WardedBlock());
 

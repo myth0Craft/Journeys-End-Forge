@@ -5,13 +5,9 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
 
 import net.je.JourneysEnd;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderStateShard.ShaderStateShard;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.blockentity.TheEndPortalRenderer;
-import net.minecraft.resources.ResourceLocation;
 
 public class ModRenderTypes {
 	public static RenderType SHADOW_PRISM;

@@ -1,8 +1,8 @@
 package net.je;
 
 import java.io.IOException;
-import java.util.Map;
 
+import org.joml.Matrix4f;
 import org.slf4j.Logger;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
@@ -30,7 +30,7 @@ import net.je.render.ShadowPrismRenderer;
 import net.je.screen.EndStoneFurnaceScreen;
 import net.je.screen.ModMenuTypes;
 import net.je.sound.ModSounds;
-import net.minecraft.Util;
+import net.je.util.ClientModData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.DragonBreathParticle;
@@ -38,15 +38,18 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.ForgeHooksClient.ClientEvents;
+import net.minecraftforge.client.event.CustomizeGuiOverlayEvent;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.client.event.RegisterShadersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.TickEvent.Phase;
+import net.minecraftforge.event.TickEvent.RenderTickEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -120,6 +123,8 @@ public class JourneysEnd {
 
 	@Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 	public static class ClientModEvents {
+		
+		
 		@SubscribeEvent
 		public static void onClientSetup(FMLClientSetupEvent event) {
 			MenuScreens.register(ModMenuTypes.END_STONE_FURNACE_MENU.get(), EndStoneFurnaceScreen::new);
@@ -128,11 +133,9 @@ public class JourneysEnd {
 				ModRenderTypes.registerRenderTypes();
 				BlockEntityRenderers.register(ModBlockEntities.SHADOW_PRISM_BLOCK_ENTITY.get(), ShadowPrismRenderer::new);
 			}
-			
-			
-			
-			
-			
+
+			//ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHADOW_BLOCK.get(), RenderType.translucent());
+
 			/*
 			 * event.registerBlockEntityRenderer(ModBlockEntities.SHADOW_PRISM_BLOCK_ENTITY.
 			 * get(), ShadowPrismRenderer::new);
@@ -157,7 +160,7 @@ public class JourneysEnd {
 						});
 			}
 		}
-		
+
 		@SubscribeEvent
 		public static void registerParticles(RegisterParticleProvidersEvent event) {
 			event.registerSpriteSet(ModParticles.WARDED_PARTICLES.get(), (spriteSet) -> new WardedParticleProvider(spriteSet));
@@ -169,8 +172,8 @@ public class JourneysEnd {
 			event.registerEntityRenderer(ModEntities.ENDERSENT.get(), EndersentRenderer::new);
 			event.registerEntityRenderer(ModEntities.ENDERSENT_WITH_EYE.get(), EndersentWithEyeRenderer::new);
 
-			
-				
+
+
 
 		}
 

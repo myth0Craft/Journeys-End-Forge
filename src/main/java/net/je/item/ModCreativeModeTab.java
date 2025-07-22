@@ -43,7 +43,7 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModBlocks.ENDER_VAULT.get());
 
 				pOutput.accept(ModBlocks.VOIDMETAL_BLOCK.get());
-				
+
 				pOutput.accept(ModBlocks.SHADOW_STONE_BRICKS.get());
 				pOutput.accept(ModBlocks.SHADOW_BLOCK.get());
 				pOutput.accept(ModBlocks.SHADOW_PRISM.get());
@@ -80,8 +80,10 @@ public class ModCreativeModeTab {
 
 				pOutput.accept(ModItems.ENDERSENT_SPAWN_EGG.get());
 				pOutput.accept(ModItems.ENDERSENT_WITH_EYE_SPAWN_EGG.get());
-				
+
 				pOutput.accept(ModItems.WARDBREAKER_PICKAXE.get());
+				
+				pOutput.accept(ModItems.ECLIPSE_KEY.get());
 
 			})
 			.build());

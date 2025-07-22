@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:block/cube_all",
   "render_type": "translucent",
+  "ambientocclusion": false,
   "textures": {
     "all": "je:block/shadow_block"
   }

@@ -4,6 +4,8 @@ import com.mojang.blaze3d.systems.RenderSystem;
 
 import net.je.JourneysEnd;
 import net.je.effect.ModEffects;
+import net.je.util.ClientModData;
+import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.Holder;
@@ -30,11 +32,34 @@ public class ModEventBusClientEvents {
 	@SubscribeEvent
 	public static void customize(CustomizeGuiOverlayEvent pEvent) {
 		Minecraft mc = Minecraft.getInstance();
-		Holder<MobEffect> holder = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ModEffects.VOID_STRIKE_EFFECT.get());
+
 		if (mc.player == null || mc.level == null) {
 			return;
 		}
 
+		if (ClientModData.isPlayerInsideShadowBlock()) {
+			if (mc.options.getCameraType() == CameraType.FIRST_PERSON) {
+				int width = mc.getWindow().getGuiScaledWidth();
+				int height = mc.getWindow().getGuiScaledHeight();
+
+				int alpha = 200; // 0-255
+				int red = 11;
+				int green = 9;
+				int blue = 12;
+
+				int argb = (alpha << 24) | (red << 16) | (green << 8) | blue;
+
+				pEvent.getGuiGraphics().fill(0, 0, width, height, argb);
+			}
+			
+		}
+
+		voidblightOverlayInit(pEvent.getGuiGraphics(), mc);
+
+	}
+
+	private static void voidblightOverlayInit(GuiGraphics pGraphics, Minecraft mc) {
+		Holder<MobEffect> holder = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(ModEffects.VOID_STRIKE_EFFECT.get());
 		boolean isActive = mc.player.hasEffect(holder);
 
 		if (isActive) {
@@ -50,7 +75,7 @@ public class ModEventBusClientEvents {
 			} else {
 				alpha = 1.0f;
 			}
-			renderVoidblightOverlay(pEvent.getGuiGraphics(), mc, alpha);
+			renderVoidblightOverlay(pGraphics, mc, alpha);
 			VoidStrikeOverlayState.wasActiveLastTick = true;
 
 		} else if (VoidStrikeOverlayState.wasActiveLastTick || VoidStrikeOverlayState.fadeOutTicks > 0) {
@@ -61,7 +86,7 @@ public class ModEventBusClientEvents {
 			}
 
 			float alpha = VoidStrikeOverlayState.fadeOutTicks / (float) VoidStrikeOverlayState.MAX_FADE_TICKS;
-			renderVoidblightOverlay(pEvent.getGuiGraphics(), mc, alpha);
+			renderVoidblightOverlay(pGraphics, mc, alpha);
 			VoidStrikeOverlayState.fadeOutTicks--;
 		}
 	}
@@ -98,19 +123,7 @@ public class ModEventBusClientEvents {
 		public static boolean isFadingIn = false;
 	}
 
-	/*
-	 * public static void renderCustomHearts(GuiGraphics graphics, Minecraft mc) {
-	 * LocalPlayer player = mc.player; int screenWidth =
-	 * mc.getWindow().getGuiScaledWidth(); int screenHeight =
-	 * mc.getWindow().getGuiScaledHeight(); int health =
-	 * Mth.ceil(player.getHealth()); int maxHealth =
-	 * Mth.ceil(player.getMaxHealth()); int left = screenWidth / 2 - 91; int top =
-	 * screenHeight - 39;
-	 *
-	 * for (int i = 0; i < maxHealth / 2; ++i) { int x = left + i * 8; boolean full
-	 * = i * 2 + 1 < health; boolean half = i * 2 + 1 == health;
-	 * graphics.blit(HEART_TEXTURE, x, top, 16, 0, 9, 9, 32, 9); if (full) {
-	 * graphics.blit(HEART_TEXTURE, x, top, 16, 0, 9, 9, 32, 9); } } }
-	 */
+	public static void renderShadowBlockOverlay(GuiGraphics pGraphics, Minecraft mc, float alpha) {
 
+	}
 }
