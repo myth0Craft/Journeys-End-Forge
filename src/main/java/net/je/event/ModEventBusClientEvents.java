@@ -42,17 +42,46 @@ public class ModEventBusClientEvents {
 				int width = mc.getWindow().getGuiScaledWidth();
 				int height = mc.getWindow().getGuiScaledHeight();
 
-				int alpha = 200; // 0-255
-				int red = 11;
-				int green = 9;
-				int blue = 12;
-
+				int alpha = 150; // 0-255 int red = 14; int green = 0; int blue = 31;
+				int red = 14;
+				int green = 0;
+				int blue = 31;
 				int argb = (alpha << 24) | (red << 16) | (green << 8) | blue;
 
-				pEvent.getGuiGraphics().fill(0, 0, width, height, argb);
+				pEvent.getGuiGraphics().fill(0, 0, width, height, -100, argb);
 			}
-			
+
 		}
+
+		/*
+		 * if (ClientModData.isPlayerInsideShadowBlock()) { if
+		 * (mc.options.getCameraType() == CameraType.FIRST_PERSON) {
+		 *
+		 * int width = mc.getWindow().getGuiScaledWidth(); int height =
+		 * mc.getWindow().getGuiScaledHeight();
+		 *
+		 * RenderSystem.disableDepthTest(); RenderSystem.enableBlend();
+		 * RenderSystem.defaultBlendFunc();
+		 * RenderSystem.setShader(GameRenderer::getPositionColorShader);
+		 *
+		 * Tesselator tesselator = Tesselator.getInstance(); BufferBuilder buffer =
+		 * tesselator.begin(VertexFormat.Mode.QUADS,
+		 * DefaultVertexFormat.POSITION_COLOR);
+		 *
+		 * Matrix4f matrix = new Matrix4f(); matrix.identity();
+		 *
+		 * // ARGB: translucent purple buffer.addVertex(matrix, 0, height,
+		 * 0).setColor(136, 0, 136, 136); // Bottom-left buffer.addVertex(matrix, width,
+		 * height, 0).setColor(136, 0, 136, 136); // Bottom-right
+		 * buffer.addVertex(matrix, width, 0, 0).setColor(136, 0, 136, 136); //
+		 * Top-right buffer.addVertex(matrix, 0, 0, 0).setColor(136, 0, 136, 136); //
+		 * Top-left MeshData mesh = buffer.buildOrThrow();
+		 * BufferUploader.drawWithShader(mesh); RenderSystem.disableBlend();
+		 * RenderSystem.enableDepthTest();
+		 *
+		 *
+		 * } }
+		 */
 
 		voidblightOverlayInit(pEvent.getGuiGraphics(), mc);
 

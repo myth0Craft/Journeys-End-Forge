@@ -82,7 +82,7 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModItems.ENDERSENT_WITH_EYE_SPAWN_EGG.get());
 
 				pOutput.accept(ModItems.WARDBREAKER_PICKAXE.get());
-				
+
 				pOutput.accept(ModItems.ECLIPSE_KEY.get());
 
 			})

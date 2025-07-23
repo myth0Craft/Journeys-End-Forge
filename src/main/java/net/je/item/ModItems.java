@@ -93,7 +93,7 @@ public class ModItems {
 
 	public static final RegistryObject<Item> EYE_FRAGMENT = ITEMS.register("eye_fragment",
 			() -> new Item(new Item.Properties()));
-	
+
 	public static final RegistryObject<Item> ECLIPSE_KEY = ITEMS.register("eclipse_key",
 			() -> new EclipseKeyItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
