@@ -32,7 +32,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.CORRUPTED_DIRT);
         blockWithItem(ModBlocks.LANTERN_OF_WARDING);
 
+        blockWithItem(ModBlocks.SHADOW_STONE);
         blockWithItem(ModBlocks.SHADOW_STONE_BRICKS);
+        blockWithItem(ModBlocks.WARDED_SHADOW_STONE, "shadow_stone");
         blockWithItem(ModBlocks.WARDED_SHADOW_STONE_BRICKS, "shadow_stone_bricks");
         //blockWithItem(ModBlocks.SHADOW_PRISM);
         //blockWithItem(ModBlocks.SHADOW_BLOCK);

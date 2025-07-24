@@ -47,6 +47,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.INTERDIMENSIONAL_ANCHOR.get());
         dropSelf(ModBlocks.SHADOW_STONE_BRICKS.get());
         dropSelf(ModBlocks.WARDED_SHADOW_STONE_BRICKS.get());
+        dropSelf(ModBlocks.SHADOW_STONE.get());
+        dropSelf(ModBlocks.WARDED_SHADOW_STONE.get());
 
         LootTable.Builder loottable$builder = this.createSilkTouchOrShearsDispatchTable(
         		ModBlocks.VOIDBLOOM.get(),

@@ -154,6 +154,10 @@ public class ModBlocks {
 			() -> new BejeweledPedestalBlock(
 					BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(50.0F, 1200.0F).noLootTable()
 							.sound(SoundType.STONE).noLootTable().pushReaction(PushReaction.IGNORE)));
+	
+	public static final RegistryObject<Block> SHADOW_STONE = registerBlock("shadow_stone",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
 
 	public static final RegistryObject<Block> SHADOW_STONE_BRICKS = registerBlock("shadow_stone_bricks",
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
@@ -170,6 +174,9 @@ public class ModBlocks {
 					.noLootTable().noOcclusion().lightLevel(p_50755_ -> 15)
 					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).pushReaction(PushReaction.IGNORE)));
 
+	public static final RegistryObject<Block> WARDED_SHADOW_STONE = registerBlock("warded_shadow_stone",
+			() -> new WardedBlock());
+	
 	public static final RegistryObject<Block> WARDED_SHADOW_STONE_BRICKS = registerBlock("warded_shadow_stone_bricks",
 			() -> new WardedBlock());
 
