@@ -15,6 +15,12 @@
 	"je:faded_end_stone",
 	"je:interdimensional_anchor",
 	"je:shadow_stone_bricks",
-	"je:shadow_stone"
+	"je:shadow_stone",
+	"je:shadow_stone_stairs",
+	"je:shadow_stone_slab",
+	"je:shadow_stone_wall",
+	"je:shadow_stone_brick_stairs",
+	"je:shadow_stone_brick_slab",
+	"je:shadow_stone_brick_wall"
   ]
 }

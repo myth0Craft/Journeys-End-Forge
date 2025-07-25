@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "je:block/shadow_stone_slab"
+    },
+    "type=double": {
+      "model": "je:block/shadow_stone"
+    },
+    "type=top": {
+      "model": "je:block/shadow_stone_slab_top"
+    }
+  }
+}

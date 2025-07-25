@@ -1,5 +1,7 @@
 {
   "values": [
-    "je:polished_end_stone_wall"
+    "je:polished_end_stone_wall",
+    "je:shadow_stone_wall",
+    "je:shadow_stone_brick_wall"
   ]
 }

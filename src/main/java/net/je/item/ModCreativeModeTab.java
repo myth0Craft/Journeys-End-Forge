@@ -45,7 +45,13 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModBlocks.VOIDMETAL_BLOCK.get());
 
 				pOutput.accept(ModBlocks.SHADOW_STONE.get());
+				pOutput.accept(ModBlocks.SHADOW_STONE_STAIRS.get());
+				pOutput.accept(ModBlocks.SHADOW_STONE_SLAB.get());
+				pOutput.accept(ModBlocks.SHADOW_STONE_WALL.get());
 				pOutput.accept(ModBlocks.SHADOW_STONE_BRICKS.get());
+				pOutput.accept(ModBlocks.SHADOW_STONE_BRICK_STAIRS.get());
+				pOutput.accept(ModBlocks.SHADOW_STONE_BRICK_SLAB.get());
+				pOutput.accept(ModBlocks.SHADOW_STONE_BRICK_WALL.get());
 				pOutput.accept(ModBlocks.SHADOW_BLOCK.get());
 				pOutput.accept(ModBlocks.SHADOW_PRISM.get());
 

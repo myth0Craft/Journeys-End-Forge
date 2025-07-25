@@ -71,6 +71,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.VOIDMETAL_BOOTS);
 
         wallItem(ModBlocks.POLISHED_END_STONE_WALL, ModBlocks.POLISHED_END_STONE);
+        wallItem(ModBlocks.SHADOW_STONE_WALL, ModBlocks.SHADOW_STONE);
+        wallItem(ModBlocks.SHADOW_STONE_BRICK_WALL, ModBlocks.SHADOW_STONE_BRICKS);
 
         blockItem(ModBlocks.SHADOW_BLOCK.get());
     }

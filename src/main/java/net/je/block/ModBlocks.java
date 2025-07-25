@@ -159,8 +159,30 @@ public class ModBlocks {
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
 
+	public static final RegistryObject<Block> SHADOW_STONE_STAIRS = registerBlock("shadow_stone_stairs",
+			() -> new StairBlock(ModBlocks.SHADOW_STONE.get().defaultBlockState(),
+					BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+							.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+	public static final RegistryObject<Block> SHADOW_STONE_SLAB = registerBlock("shadow_stone_slab",
+			() -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+	public static final RegistryObject<Block> SHADOW_STONE_WALL = registerBlock("shadow_stone_wall",
+			() -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+
 	public static final RegistryObject<Block> SHADOW_STONE_BRICKS = registerBlock("shadow_stone_bricks",
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> SHADOW_STONE_BRICK_STAIRS = registerBlock("shadow_stone_brick_stairs",
+			() -> new StairBlock(ModBlocks.SHADOW_STONE.get().defaultBlockState(),
+					BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+							.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+	public static final RegistryObject<Block> SHADOW_STONE_BRICK_SLAB = registerBlock("shadow_stone_brick_slab",
+			() -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+	public static final RegistryObject<Block> SHADOW_STONE_BRICK_WALL = registerBlock("shadow_stone_brick_wall",
+			() -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
 
 	public static final RegistryObject<Block> SHADOW_BLOCK = registerBlock("shadow_block",
@@ -175,10 +197,10 @@ public class ModBlocks {
 					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).pushReaction(PushReaction.IGNORE)));
 
 	public static final RegistryObject<Block> WARDED_SHADOW_STONE = registerBlock("warded_shadow_stone",
-			() -> new WardedBlock());
+			WardedBlock::new);
 	
 	public static final RegistryObject<Block> WARDED_SHADOW_STONE_BRICKS = registerBlock("warded_shadow_stone_bricks",
-			() -> new WardedBlock());
+			WardedBlock::new);
 
 	private static boolean always(BlockState p_50775_, BlockGetter p_50776_, BlockPos p_50777_) {
 		return true;

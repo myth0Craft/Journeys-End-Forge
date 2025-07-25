@@ -36,22 +36,22 @@ public class WardedBlock extends Block {
 			 */
 			if (!pLevel.isClientSide) {
 				ServerLevel server = (ServerLevel) pLevel;
-				for (float i = 0; i <= 1; i += 0.2) {
+				for (float i = 0; i <= 1; i += 0.2f) {
 					server.sendParticles(ModParticles.WARDED_PARTICLES.get(), pPos.getX()-0.1, pPos.getY() + 0.1, pPos.getZ() + i,
 							1, 0, 0, 0, 0.1);
 				}
 
-				for (float i = 0; i <= 1; i += 0.2) {
+				for (float i = 0; i <= 1; i += 0.2f) {
 					server.sendParticles(ModParticles.WARDED_PARTICLES.get(), pPos.getX() + i, pPos.getY() + 0.1, pPos.getZ()-0.1,
 							1, 0, 0, 0, 0.1);
 				}
 
-				for (float i = 0; i <= 1; i += 0.2) {
+				for (float i = 0; i <= 1; i += 0.2f) {
 					server.sendParticles(ModParticles.WARDED_PARTICLES.get(), pPos.getX() + 1.1, pPos.getY() + 0.1, pPos.getZ() + i,
 							1, 0, 0, 0, 0.1);
 				}
 
-				for (float i = 0; i <= 1; i += 0.2) {
+				for (float i = 0; i <= 1; i += 0.2f) {
 					server.sendParticles(ModParticles.WARDED_PARTICLES.get(), pPos.getX() + i, pPos.getY() + 0.1, pPos.getZ() + 1.1,
 							1, 0, 0, 0, 0.1);
 				}

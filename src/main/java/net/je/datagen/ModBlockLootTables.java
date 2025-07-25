@@ -50,6 +50,16 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.SHADOW_STONE.get());
         dropSelf(ModBlocks.WARDED_SHADOW_STONE.get());
 
+        dropSelf(ModBlocks.SHADOW_STONE_STAIRS.get());
+        this.add(ModBlocks.SHADOW_STONE_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.SHADOW_STONE_SLAB.get()));
+        dropSelf(ModBlocks.SHADOW_STONE_WALL.get());
+
+        dropSelf(ModBlocks.SHADOW_STONE_BRICK_STAIRS.get());
+        this.add(ModBlocks.SHADOW_STONE_BRICK_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.SHADOW_STONE_BRICK_SLAB.get()));
+        dropSelf(ModBlocks.SHADOW_STONE_BRICK_WALL.get());
+
         LootTable.Builder loottable$builder = this.createSilkTouchOrShearsDispatchTable(
         		ModBlocks.VOIDBLOOM.get(),
                 LootItem.lootTableItem(Blocks.AIR));

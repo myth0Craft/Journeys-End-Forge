@@ -43,6 +43,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.POLISHED_END_STONE_SLAB);
         blockItem(ModBlocks.POLISHED_END_STONE_STAIRS);
         blockItem(ModBlocks.LUSH_END_STONE);
+
+        blockItem(ModBlocks.SHADOW_STONE_STAIRS);
+        blockItem(ModBlocks.SHADOW_STONE_SLAB);
+
+        blockItem(ModBlocks.SHADOW_STONE_BRICK_STAIRS);
+        blockItem(ModBlocks.SHADOW_STONE_BRICK_SLAB);
         //blockItem(ModBlocks.ENDER_VAULT);
         //blockItem(ModBlocks.INTERDIMENSIONAL_ANCHOR);
         //blockItem(ModBlocks.POLISHED_END_STONE_WALL);
@@ -52,6 +58,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         stairsBlock(((StairBlock) ModBlocks.POLISHED_END_STONE_STAIRS.get()), blockTexture(ModBlocks.POLISHED_END_STONE.get()));
         slabBlock(((SlabBlock) ModBlocks.POLISHED_END_STONE_SLAB.get()), blockTexture(ModBlocks.POLISHED_END_STONE.get()), blockTexture(ModBlocks.POLISHED_END_STONE.get()));
         wallBlock(((WallBlock) ModBlocks.POLISHED_END_STONE_WALL.get()), blockTexture(ModBlocks.POLISHED_END_STONE.get()));
+
+        stairsBlock(((StairBlock) ModBlocks.SHADOW_STONE_STAIRS.get()), blockTexture(ModBlocks.SHADOW_STONE.get()));
+        slabBlock(((SlabBlock) ModBlocks.SHADOW_STONE_SLAB.get()), blockTexture(ModBlocks.SHADOW_STONE.get()), blockTexture(ModBlocks.SHADOW_STONE.get()));
+        wallBlock(((WallBlock) ModBlocks.SHADOW_STONE_WALL.get()), blockTexture(ModBlocks.SHADOW_STONE.get()));
+
+        stairsBlock(((StairBlock) ModBlocks.SHADOW_STONE_BRICK_STAIRS.get()), blockTexture(ModBlocks.SHADOW_STONE_BRICKS.get()));
+        slabBlock(((SlabBlock) ModBlocks.SHADOW_STONE_BRICK_SLAB.get()), blockTexture(ModBlocks.SHADOW_STONE_BRICKS.get()), blockTexture(ModBlocks.SHADOW_STONE_BRICKS.get()));
+        wallBlock(((WallBlock) ModBlocks.SHADOW_STONE_BRICK_WALL.get()), blockTexture(ModBlocks.SHADOW_STONE_BRICKS.get()));
     }
 
     private void blockItem(RegistryObject<Block> blockRegistryObject) {

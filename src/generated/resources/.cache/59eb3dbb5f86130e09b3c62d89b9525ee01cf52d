@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-24T08:53:58.2771985	Loot Tables
+// 1.21.1	2025-07-25T09:19:47.5045415	Loot Tables
 8667f98a1f0ea3068b88a0df51c17eb5b3615506 data/je/loot_table/blocks/chiseled_end_stone.json
 e188ab287e2e33d68c8b7c3d4a175b783d06209b data/je/loot_table/blocks/compressed_end_stone.json
 ab5387a826d7344de8fe756aaa140841dcda5373 data/je/loot_table/blocks/corrupted_dirt.json
@@ -15,6 +15,12 @@ e22990ab8ca0cb93530028435a9b9be8e385c5c8 data/je/loot_table/blocks/polished_end_
 7ddcdd8d1b3e3fb2e86038f8c328ff2cedf94756 data/je/loot_table/blocks/polished_end_stone_wall.json
 da7a87a3e000c9bb3ce95d7568cc9a5075daf03c data/je/loot_table/blocks/shadow_stone.json
 de5382b79adbade0de3688d5d8a557438478c15c data/je/loot_table/blocks/shadow_stone_bricks.json
+ab8d09a2fc2687168f72b0e55c9520a86f22ca62 data/je/loot_table/blocks/shadow_stone_brick_slab.json
+708660d29abfa81d36a3932a71cd1760fe6f8286 data/je/loot_table/blocks/shadow_stone_brick_stairs.json
+5c94fcde3a33a006d069719a03e3aa62a7ec18dc data/je/loot_table/blocks/shadow_stone_brick_wall.json
+69763cf538ec1e59bd7fd4725ba48e8d647a8811 data/je/loot_table/blocks/shadow_stone_slab.json
+d660fcadb4d9645185dd0bebddac963711fea76f data/je/loot_table/blocks/shadow_stone_stairs.json
+b55af7dcbb30c6aa26ef0cdd5e8a9571d32a991d data/je/loot_table/blocks/shadow_stone_wall.json
 aacfe24f2d71a8ad2530e81410ae814118386034 data/je/loot_table/blocks/voidbloom.json
 f572ee20702e682a5b64b2416d5568c87c5e748d data/je/loot_table/blocks/voidmass.json
 c84219926abdf9fe98537d068a33f92281530f0c data/je/loot_table/blocks/voidmetal_block.json
