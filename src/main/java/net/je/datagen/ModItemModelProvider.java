@@ -18,6 +18,7 @@ import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -73,6 +74,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         wallItem(ModBlocks.POLISHED_END_STONE_WALL, ModBlocks.POLISHED_END_STONE);
         wallItem(ModBlocks.SHADOW_STONE_WALL, ModBlocks.SHADOW_STONE);
         wallItem(ModBlocks.SHADOW_STONE_BRICK_WALL, ModBlocks.SHADOW_STONE_BRICKS);
+        wallItem(ModBlocks.POLISHED_SHADOW_STONE_WALL, ModBlocks.POLISHED_SHADOW_STONE);
 
         blockItem(ModBlocks.SHADOW_BLOCK.get());
     }

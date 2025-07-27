@@ -58,6 +58,7 @@
 	"block.je.bejeweled_pedestal": "Bejeweled Pedestal",
 	"block.je.void_stone": "Void Stone",
 	"block.je.shadow_block": "Shadow Block",
+
 	"block.je.shadow_stone": "Shadow Stone",
   	"block.je.shadow_stone_stairs": "Shadow Stone Stairs",
   	"block.je.shadow_stone_slab": "Shadow Stone Slab",
@@ -68,7 +69,15 @@
   	"block.je.shadow_stone_brick_slab": "Shadow Stone Brick Slab",
   	"block.je.shadow_stone_brick_wall": "Shadow Stone Brick Wall",
 	"block.je.warded_shadow_stone_bricks": "Warded Shadow Stone Bricks",
+  	"block.je.polished_shadow_stone": "Polished Shadow Stone",
+  	"block.je.polished_shadow_stone_stairs": "Polished Shadow Stone Stairs",
+  	"block.je.polished_shadow_stone_slab": "Polished Shadow Stone Slab",
+  	"block.je.polished_shadow_stone_wall": "Polished Shadow Stone Wall",
+  	"block.je.warded_polished_shadow_stone": "Warded Polished Shadow Stone",
+
 	"block.je.shadow_prism": "Shadow Prism",
+  	"block.je.voidglass": "Voidglass",
+  	"block.je.warded_voidglass": "Warded Voidglass",
 	//
 	"effect.je.void_strike": "Void Strike",
 	"death.attack.void_strike": "%1$s was consumed by the Void",

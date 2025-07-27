@@ -4,32 +4,20 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import net.je.JourneysEnd;
-import net.je.block.custom.BejeweledPedestalBlock;
-import net.je.block.custom.EndStoneFurnaceBlock;
-import net.je.block.custom.InterdimensionalAnchorBlock;
-import net.je.block.custom.LushEndStoneBlock;
-import net.je.block.custom.ShadowBlock;
-import net.je.block.custom.ShadowPrismBlock;
-import net.je.block.custom.VoidbloomBlock;
-import net.je.block.custom.WardedBlock;
+import net.je.block.custom.*;
 import net.je.fluid.ModFluids;
 import net.je.item.ModItems;
 import net.je.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.LiquidBlock;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -185,6 +173,21 @@ public class ModBlocks {
 			() -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
 
+	public static final RegistryObject<Block> POLISHED_SHADOW_STONE = registerBlock("polished_shadow_stone",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> POLISHED_SHADOW_STONE_STAIRS = registerBlock("polished_shadow_stone_stairs",
+			() -> new StairBlock(ModBlocks.SHADOW_STONE.get().defaultBlockState(),
+					BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+							.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+	public static final RegistryObject<Block> POLISHED_SHADOW_STONE_SLAB = registerBlock("polished_shadow_stone_slab",
+			() -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+	public static final RegistryObject<Block> POLISHED_SHADOW_STONE_WALL = registerBlock("polished_shadow_stone_wall",
+			() -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+
 	public static final RegistryObject<Block> SHADOW_BLOCK = registerBlock("shadow_block",
 			() -> new ShadowBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(-1.0F, 3600000.0F)
 					.noLootTable().noOcclusion()
@@ -198,15 +201,55 @@ public class ModBlocks {
 
 	public static final RegistryObject<Block> WARDED_SHADOW_STONE = registerBlock("warded_shadow_stone",
 			WardedBlock::new);
-	
+
 	public static final RegistryObject<Block> WARDED_SHADOW_STONE_BRICKS = registerBlock("warded_shadow_stone_bricks",
 			WardedBlock::new);
+
+	public static final RegistryObject<Block> WARDED_POLISHED_SHADOW_STONE = registerBlock("warded_polished_shadow_stone",
+			WardedBlock::new);
+
+	public static final RegistryObject<Block> VOIDGLASS = registerBlock(
+			"voidglass",
+			() -> new CustomTransparentBlock(
+					BlockBehaviour.Properties.of()
+							.instrument(NoteBlockInstrument.HAT)
+							.strength(0.3F)
+							.sound(SoundType.GLASS)
+							.noOcclusion()
+							.isValidSpawn(ModBlocks::never)
+							.isRedstoneConductor(ModBlocks::never)
+							.isSuffocating(ModBlocks::never)
+							.isViewBlocking(ModBlocks::never)
+			)
+	);
+
+	public static final RegistryObject<Block> WARDED_VOIDGLASS = registerBlock(
+			"warded_voidglass",
+			() -> new TransparentWardedBlock(
+					BlockBehaviour.Properties.of()
+							.instrument(NoteBlockInstrument.HAT)
+							.strength(0.3F)
+							.sound(SoundType.GLASS)
+							.noOcclusion()
+							.isValidSpawn(ModBlocks::never)
+							.isRedstoneConductor(ModBlocks::never)
+							.isSuffocating(ModBlocks::never)
+							.isViewBlocking(ModBlocks::never)
+							.mapColor(MapColor.COLOR_LIGHT_GRAY)
+			)
+	);
+
+
 
 	private static boolean always(BlockState p_50775_, BlockGetter p_50776_, BlockPos p_50777_) {
 		return true;
 	}
 
 	private static boolean never(BlockState p_50806_, BlockGetter p_50807_, BlockPos p_50808_) {
+		return false;
+	}
+
+	private static Boolean never(BlockState p_50779_, BlockGetter p_50780_, BlockPos p_50781_, EntityType<?> p_50782_) {
 		return false;
 	}
 

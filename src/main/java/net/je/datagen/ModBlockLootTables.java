@@ -49,11 +49,18 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.WARDED_SHADOW_STONE_BRICKS.get());
         dropSelf(ModBlocks.SHADOW_STONE.get());
         dropSelf(ModBlocks.WARDED_SHADOW_STONE.get());
+        dropSelf(ModBlocks.POLISHED_SHADOW_STONE.get());
+        dropSelf(ModBlocks.WARDED_POLISHED_SHADOW_STONE.get());
 
         dropSelf(ModBlocks.SHADOW_STONE_STAIRS.get());
         this.add(ModBlocks.SHADOW_STONE_SLAB.get(),
                 block -> createSlabItemTable(ModBlocks.SHADOW_STONE_SLAB.get()));
         dropSelf(ModBlocks.SHADOW_STONE_WALL.get());
+
+        dropSelf(ModBlocks.POLISHED_SHADOW_STONE_STAIRS.get());
+        this.add(ModBlocks.POLISHED_SHADOW_STONE_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.POLISHED_SHADOW_STONE_SLAB.get()));
+        dropSelf(ModBlocks.POLISHED_SHADOW_STONE_WALL.get());
 
         dropSelf(ModBlocks.SHADOW_STONE_BRICK_STAIRS.get());
         this.add(ModBlocks.SHADOW_STONE_BRICK_SLAB.get(),
@@ -65,7 +72,15 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 LootItem.lootTableItem(Blocks.AIR));
             this.add(ModBlocks.VOIDBLOOM.get(), loottable$builder);
 
+        LootTable.Builder voidglass = this.createSilkTouchDispatchTable(
+                ModBlocks.VOIDGLASS.get(),
+                LootItem.lootTableItem(Blocks.AIR));
+        this.add(ModBlocks.VOIDGLASS.get(), voidglass);
 
+        LootTable.Builder warded_voidglass = this.createSilkTouchDispatchTable(
+                ModBlocks.WARDED_VOIDGLASS.get(),
+                LootItem.lootTableItem(Blocks.AIR));
+        this.add(ModBlocks.WARDED_VOIDGLASS.get(), warded_voidglass);
 
 
 

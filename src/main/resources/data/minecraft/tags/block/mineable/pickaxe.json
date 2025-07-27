@@ -21,6 +21,10 @@
 	"je:shadow_stone_wall",
 	"je:shadow_stone_brick_stairs",
 	"je:shadow_stone_brick_slab",
-	"je:shadow_stone_brick_wall"
+	"je:shadow_stone_brick_wall",
+	"je:polished_shadow_stone",
+	"je:polished_shadow_stone_stairs",
+	"je:polished_shadow_stone_slab",
+	"je:polished_shadow_stone_wall"
   ]
 }
