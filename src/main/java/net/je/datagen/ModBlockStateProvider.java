@@ -38,6 +38,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.WARDED_SHADOW_STONE, "shadow_stone");
         blockWithItem(ModBlocks.WARDED_SHADOW_STONE_BRICKS, "shadow_stone_bricks");
         blockWithItem(ModBlocks.WARDED_POLISHED_SHADOW_STONE, "polished_shadow_stone");
+        blockWithItem(ModBlocks.CORRUPTED_SHADOW_STONE);
+        blockWithItem(ModBlocks.WARDED_CORRUPTED_SHADOW_STONE, "corrupted_shadow_stone");
+        blockWithItem(ModBlocks.BLIGHTED_SHADOW_STONE);
+        blockWithItem(ModBlocks.WARDED_BLIGHTED_SHADOW_STONE, "blighted_shadow_stone");
+        blockWithItem(ModBlocks.CRACKED_SHADOW_STONE_BRICKS);
+        blockWithItem(ModBlocks.WARDED_CRACKED_SHADOW_STONE_BRICKS, "cracked_shadow_stone_bricks");
+        blockWithItem(ModBlocks.CHISELED_SHADOW_STONE);
+        blockWithItem(ModBlocks.WARDED_CHISELED_SHADOW_STONE, "chiseled_shadow_stone");
+
+        blockWithItem(ModBlocks.VOID_LANTERN);
 
         //blockWithItem(ModBlocks.SHADOW_PRISM);
         //blockWithItem(ModBlocks.SHADOW_BLOCK);

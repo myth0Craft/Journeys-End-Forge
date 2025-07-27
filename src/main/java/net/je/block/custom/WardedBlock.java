@@ -27,7 +27,7 @@ public class WardedBlock extends Block {
 	}
 
 	public WardedBlock(BlockBehaviour.Properties properties) {
-		super(properties);
+		super(properties.pushReaction(PushReaction.IGNORE).explosionResistance(3600000.0F));
 	}
 
 	@Override

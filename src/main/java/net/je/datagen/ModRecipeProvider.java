@@ -180,6 +180,141 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 		stonecutterResultFromBase(recipeOutput, RecipeCategory.DECORATIONS, Blocks.END_STONE_BRICK_WALL,
 				ModBlocks.POLISHED_END_STONE.get());
 
+		//shadow stone block set
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SHADOW_STONE.get(), 4).pattern("AA")
+				.pattern("AA").define('A', ModBlocks.SHADOW_STONE.get()).unlockedBy("has_shadow_stone", has(ModBlocks.SHADOW_STONE.get()))
+				.save(recipeOutput);
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SHADOW_STONE.get(),
+				ModBlocks.SHADOW_STONE.get());
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_BRICKS.get(), 4).pattern("AA")
+				.pattern("AA").define('A', ModBlocks.POLISHED_SHADOW_STONE.get())
+				.unlockedBy("has_polished_shadow_stone", has(ModBlocks.POLISHED_SHADOW_STONE.get()))
+				.save(recipeOutput);
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_BRICKS.get(),
+				ModBlocks.POLISHED_SHADOW_STONE.get());
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_BRICKS.get(),
+				ModBlocks.SHADOW_STONE.get());
+
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SHADOW_STONE_SLAB.get(), 6)
+				.pattern("AAA").define('A', ModBlocks.POLISHED_SHADOW_STONE.get())
+				.unlockedBy("has_polished_shadow_stone", has(ModBlocks.POLISHED_SHADOW_STONE.get())).save(recipeOutput);
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SHADOW_STONE_SLAB.get(),
+				ModBlocks.POLISHED_SHADOW_STONE.get());
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SHADOW_STONE_SLAB.get(),
+				ModBlocks.SHADOW_STONE.get());
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.POLISHED_SHADOW_STONE_WALL.get(), 6)
+				.pattern("AAA").pattern("AAA").define('A', ModBlocks.POLISHED_SHADOW_STONE.get())
+				.unlockedBy("has_polished_shadow_stone", has(ModBlocks.POLISHED_SHADOW_STONE.get())).save(recipeOutput);
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SHADOW_STONE_WALL.get(),
+				ModBlocks.POLISHED_SHADOW_STONE.get());
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SHADOW_STONE_WALL.get(),
+				ModBlocks.SHADOW_STONE.get());
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SHADOW_STONE_STAIRS.get(), 4)
+				.pattern("A  ").pattern("AA ").pattern("AAA").define('A', ModBlocks.POLISHED_SHADOW_STONE.get())
+				.unlockedBy("has_polished_shadow_stone", has(ModBlocks.POLISHED_SHADOW_STONE.get())).save(recipeOutput);
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SHADOW_STONE_STAIRS.get(),
+				ModBlocks.POLISHED_SHADOW_STONE.get());
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SHADOW_STONE_STAIRS.get(),
+				ModBlocks.SHADOW_STONE.get());
+
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_SLAB.get(), 6)
+				.pattern("AAA").define('A', ModBlocks.SHADOW_STONE.get())
+				.unlockedBy("has_shadow_stone", has(ModBlocks.SHADOW_STONE.get())).save(recipeOutput);
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_SLAB.get(),
+				ModBlocks.SHADOW_STONE.get());
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.SHADOW_STONE_WALL.get(), 6)
+				.pattern("AAA").pattern("AAA").define('A', ModBlocks.SHADOW_STONE.get())
+				.unlockedBy("has_shadow_stone", has(ModBlocks.SHADOW_STONE.get())).save(recipeOutput);
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_WALL.get(),
+				ModBlocks.SHADOW_STONE.get());
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_STAIRS.get(), 4)
+				.pattern("A  ").pattern("AA ").pattern("AAA").define('A', ModBlocks.SHADOW_STONE.get())
+				.unlockedBy("has_shadow_stone", has(ModBlocks.SHADOW_STONE.get())).save(recipeOutput);
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_STAIRS.get(),
+				ModBlocks.SHADOW_STONE.get());
+
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_BRICK_SLAB.get(), 6)
+				.pattern("AAA").define('A', ModBlocks.SHADOW_STONE_BRICKS.get())
+				.unlockedBy("has_shadow_stone_bricks", has(ModBlocks.SHADOW_STONE_BRICKS.get())).save(recipeOutput);
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_BRICK_SLAB.get(),
+				ModBlocks.SHADOW_STONE.get());
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_BRICK_SLAB.get(),
+				ModBlocks.SHADOW_STONE_BRICKS.get());
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_BRICK_SLAB.get(),
+				ModBlocks.POLISHED_SHADOW_STONE.get());
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.SHADOW_STONE_BRICK_WALL.get(), 6)
+				.pattern("AAA").pattern("AAA").define('A', ModBlocks.SHADOW_STONE_BRICKS.get())
+				.unlockedBy("has_shadow_stone_bricks", has(ModBlocks.SHADOW_STONE_BRICKS.get())).save(recipeOutput);
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_BRICK_WALL.get(),
+				ModBlocks.SHADOW_STONE.get());
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_BRICK_WALL.get(),
+				ModBlocks.SHADOW_STONE_BRICKS.get());
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_BRICK_WALL.get(),
+				ModBlocks.POLISHED_SHADOW_STONE.get());
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_BRICK_STAIRS.get(), 4)
+				.pattern("A  ").pattern("AA ").pattern("AAA").define('A', ModBlocks.SHADOW_STONE_BRICKS.get())
+				.unlockedBy("has_shadow_stone_bricks", has(ModBlocks.SHADOW_STONE_BRICKS.get())).save(recipeOutput);
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_BRICK_STAIRS.get(),
+				ModBlocks.SHADOW_STONE.get());
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_BRICK_STAIRS.get(),
+				ModBlocks.SHADOW_STONE_BRICKS.get());
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_BRICK_STAIRS.get(),
+				ModBlocks.POLISHED_SHADOW_STONE.get());
+
+		List<ItemLike> SHADOW_STONE_BRICKS_INGREDIENT = List.of(ModBlocks.SHADOW_STONE_BRICKS.get());
+		oreSmelting(recipeOutput, SHADOW_STONE_BRICKS_INGREDIENT, RecipeCategory.MISC, ModBlocks.CRACKED_SHADOW_STONE_BRICKS.get(),
+				0.25f, 200, "cracked_shadow_stone_bricks");
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_SHADOW_STONE.get(), 1).pattern("A")
+				.pattern("A").define('A', ModBlocks.SHADOW_STONE_BRICK_SLAB.get())
+				.unlockedBy("has_shadow_stone_bricks", has(ModBlocks.SHADOW_STONE_BRICKS.get()))
+				.save(recipeOutput, "chiseled_shadow_stone_from_shadow_stone_bricks");
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_SHADOW_STONE.get(), 1).pattern("A")
+				.pattern("A").define('A', ModBlocks.POLISHED_SHADOW_STONE_SLAB.get())
+				.unlockedBy("has_polished_shadow_stone", has(ModBlocks.POLISHED_SHADOW_STONE.get())).save(recipeOutput);
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_SHADOW_STONE.get(),
+				ModBlocks.POLISHED_SHADOW_STONE.get());
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_SHADOW_STONE.get(),
+				ModBlocks.SHADOW_STONE_BRICKS.get());
+
+		stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_SHADOW_STONE.get(),
+				ModBlocks.SHADOW_STONE.get());
+
 		// smithing
 
 		SmithingTransformRecipeBuilder
@@ -244,8 +379,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 						RecipeCategory.MISC, ModItems.VOIDMETAL_BOOTS.get())
 				.unlocks("has_voidmetal", has(ModItems.VOIDMETAL_INGOT.get()))
 				.save(recipeOutput, "voidmetal_boots_smithing");
-
 	}
+
+
 
 	protected static void oreSmelting(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory,
 			ItemLike pResult, float pExperience, int pCookingTIme, String pGroup) {

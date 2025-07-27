@@ -51,6 +51,14 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.WARDED_SHADOW_STONE.get());
         dropSelf(ModBlocks.POLISHED_SHADOW_STONE.get());
         dropSelf(ModBlocks.WARDED_POLISHED_SHADOW_STONE.get());
+        dropSelf(ModBlocks.WARDED_CORRUPTED_SHADOW_STONE.get());
+        dropSelf(ModBlocks.CORRUPTED_SHADOW_STONE.get());
+        dropSelf(ModBlocks.BLIGHTED_SHADOW_STONE.get());
+        dropSelf(ModBlocks.WARDED_BLIGHTED_SHADOW_STONE.get());
+        dropSelf(ModBlocks.WARDED_CRACKED_SHADOW_STONE_BRICKS.get());
+        dropSelf(ModBlocks.CRACKED_SHADOW_STONE_BRICKS.get());
+        dropSelf(ModBlocks.CHISELED_SHADOW_STONE.get());
+        dropSelf(ModBlocks.WARDED_CHISELED_SHADOW_STONE.get());
 
         dropSelf(ModBlocks.SHADOW_STONE_STAIRS.get());
         this.add(ModBlocks.SHADOW_STONE_SLAB.get(),
@@ -71,6 +79,11 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         		ModBlocks.VOIDBLOOM.get(),
                 LootItem.lootTableItem(Blocks.AIR));
             this.add(ModBlocks.VOIDBLOOM.get(), loottable$builder);
+
+        LootTable.Builder voidLantern = this.createSilkTouchDispatchTable(
+                ModBlocks.VOID_LANTERN.get(),
+                LootItem.lootTableItem(Blocks.AIR));
+        this.add(ModBlocks.VOID_LANTERN.get(), voidLantern);
 
         LootTable.Builder voidglass = this.createSilkTouchDispatchTable(
                 ModBlocks.VOIDGLASS.get(),

@@ -74,8 +74,16 @@
   	"block.je.polished_shadow_stone_slab": "Polished Shadow Stone Slab",
   	"block.je.polished_shadow_stone_wall": "Polished Shadow Stone Wall",
   	"block.je.warded_polished_shadow_stone": "Warded Polished Shadow Stone",
-
+  	"block.je.corrupted_shadow_stone": "Corrupted Shadow Stone",
+  	"block.je.warded_corrupted_shadow_stone": "Warded Corrupted Shadow Stone",
+  	"block.je.blighted_shadow_stone": "Blighted Shadow Stone",
+  	"block.je.warded_blighted_shadow_stone": "Warded Blighted Shadow Stone",
+  	"block.je.cracked_shadow_stone_bricks": "Cracked Shadow Stone Bricks",
+  	"block.je.warded_cracked_shadow_stone_bricks": "Warded Cracked Shadow Stone Bricks",
+  	"block.je.chiseled_shadow_stone": "Chiseled Shadow Stone",
+  	"block.je.warded_chiseled_shadow_stone": "Warded Chiseled Shadow Stone",
 	"block.je.shadow_prism": "Shadow Prism",
+  	"block.je.void_lantern": "Void Lantern",
   	"block.je.voidglass": "Voidglass",
   	"block.je.warded_voidglass": "Warded Voidglass",
 	//

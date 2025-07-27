@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_shadow_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "je:shadow_stone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:shadow_stone_brick_stairs_from_shadow_stone_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_shadow_stone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:shadow_stone_brick_stairs_from_shadow_stone_stonecutting"
+    ]
+  }
+}

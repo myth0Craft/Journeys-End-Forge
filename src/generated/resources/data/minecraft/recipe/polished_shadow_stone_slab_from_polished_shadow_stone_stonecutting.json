@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "je:polished_shadow_stone"
+  },
+  "result": {
+    "count": 1,
+    "id": "je:polished_shadow_stone_slab"
+  }
+}

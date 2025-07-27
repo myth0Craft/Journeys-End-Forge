@@ -1,0 +1,12 @@
+{
+  "type": "je:end_stone_furnace_recipe",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 1,
+  "ingredient": {
+    "item": "je:corrupted_shadow_stone"
+  },
+  "result": {
+    "id": "je:blighted_shadow_stone"
+  }
+}

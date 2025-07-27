@@ -147,6 +147,14 @@ public class ModBlocks {
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
 
+	public static final RegistryObject<Block> CORRUPTED_SHADOW_STONE = registerBlock("corrupted_shadow_stone",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> BLIGHTED_SHADOW_STONE = registerBlock("blighted_shadow_stone",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(1.5F, 4.5F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().sound(SoundType.SCULK_SHRIEKER)));
+
 	public static final RegistryObject<Block> SHADOW_STONE_STAIRS = registerBlock("shadow_stone_stairs",
 			() -> new StairBlock(ModBlocks.SHADOW_STONE.get().defaultBlockState(),
 					BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
@@ -158,7 +166,15 @@ public class ModBlocks {
 			() -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
 
+	public static final RegistryObject<Block> CHISELED_SHADOW_STONE = registerBlock("chiseled_shadow_stone",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+
 	public static final RegistryObject<Block> SHADOW_STONE_BRICKS = registerBlock("shadow_stone_bricks",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> CRACKED_SHADOW_STONE_BRICKS = registerBlock("cracked_shadow_stone_bricks",
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
 
@@ -205,8 +221,37 @@ public class ModBlocks {
 	public static final RegistryObject<Block> WARDED_SHADOW_STONE_BRICKS = registerBlock("warded_shadow_stone_bricks",
 			WardedBlock::new);
 
+	public static final RegistryObject<Block> WARDED_CRACKED_SHADOW_STONE_BRICKS = registerBlock("warded_cracked_shadow_stone_bricks",
+			WardedBlock::new);
+
 	public static final RegistryObject<Block> WARDED_POLISHED_SHADOW_STONE = registerBlock("warded_polished_shadow_stone",
 			WardedBlock::new);
+
+	public static final RegistryObject<Block> WARDED_CORRUPTED_SHADOW_STONE = registerBlock("warded_corrupted_shadow_stone",
+			WardedBlock::new);
+
+	public static final RegistryObject<Block> WARDED_BLIGHTED_SHADOW_STONE = registerBlock("warded_blighted_shadow_stone",
+			() -> new WardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().sound(SoundType.SCULK).lightLevel(p -> 4)));
+
+	public static final RegistryObject<Block> WARDED_CHISELED_SHADOW_STONE = registerBlock("warded_chiseled_shadow_stone",
+			WardedBlock::new);
+
+	public static final RegistryObject<Block> VOID_LANTERN = registerBlock(
+			"void_lantern",
+			() -> new Block(
+					BlockBehaviour.Properties.of()
+							.instrument(NoteBlockInstrument.HAT)
+							.strength(0.3F)
+							.sound(SoundType.GLASS)
+							.noOcclusion()
+							.isValidSpawn(ModBlocks::never)
+							.isRedstoneConductor(ModBlocks::never)
+							.isSuffocating(ModBlocks::never)
+							.isViewBlocking(ModBlocks::never)
+							.lightLevel(l -> 15)
+			)
+	);
 
 	public static final RegistryObject<Block> VOIDGLASS = registerBlock(
 			"voidglass",

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "je:block/cracked_shadow_stone_bricks"
+  }
+}

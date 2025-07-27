@@ -25,6 +25,14 @@
 	"je:polished_shadow_stone",
 	"je:polished_shadow_stone_stairs",
 	"je:polished_shadow_stone_slab",
-	"je:polished_shadow_stone_wall"
+	"je:polished_shadow_stone_wall",
+	"je:corrupted_shadow_stone",
+	"je:warded_corrupted_shadow_stone",
+	"je:blighted_shadow_stone",
+	"je:warded_blighted_shadow_stone",
+	"je:cracked_shadow_stone_bricks",
+	"je:warded_cracked_shadow_stone_bricks",
+	"je:chiseled_shadow_stone",
+	"je:warded_chiseled_shadow_stone"
   ]
 }
