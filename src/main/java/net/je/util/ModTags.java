@@ -2,12 +2,10 @@ package net.je.util;
 
 import net.je.JourneysEnd;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.EntityTypeTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
+import net.minecraft.tags.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
 public class ModTags {
@@ -48,6 +46,14 @@ public class ModTags {
 
 		private static TagKey<Item> createTag(String name) {
 			return ItemTags.create(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, name));
+		}
+	}
+
+	public static class Biomes {
+		//public static final TagKey<Biome> SHADOW_TOWER_BIOMES = createTag("shadow_tower_biomes");
+
+		private static TagKey<Biome> createTag(String name) {
+			return BiomeTags.create(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, name));
 		}
 	}
 

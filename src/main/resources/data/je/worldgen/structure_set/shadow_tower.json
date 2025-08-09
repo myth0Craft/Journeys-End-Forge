@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "je:shadow_tower",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 164216476,
+    "spacing": 80,
+    "separation": 20,
+    "type": "minecraft:random_spread",
+    "spread_type": "triangular"
+  }
+}

@@ -2,6 +2,9 @@ package net.je;
 
 import java.io.IOException;
 
+import net.je.worldgen.ModStructurePieceTypes;
+import net.je.worldgen.ModStructureTypes;
+import net.je.worldgen.ModStructures;
 import org.slf4j.Logger;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
@@ -94,6 +97,18 @@ public class JourneysEnd {
 		ModParticles.register(modEventBus);
 
 		ModConditions.register(modEventBus);
+
+		ModStructurePieceTypes.register(modEventBus);
+
+		ModStructureTypes.register(modEventBus);
+
+		//ModStructures.register(modEventBus);
+
+
+
+
+
+
 
 	}
 

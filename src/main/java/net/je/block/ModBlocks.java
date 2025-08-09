@@ -102,6 +102,10 @@ public class ModBlocks {
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().sound(SoundType.CALCITE)));
 
+	public static final RegistryObject<Block> FADED_END_STONE_BRICKS = registerBlock("faded_end_stone_bricks",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().sound(SoundType.CALCITE)));
+
 	public static final RegistryObject<Block> CORRUPTED_DIRT = registerBlock("corrupted_dirt", () -> new Block(
 			BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_PINK).strength(0.5F).sound(SoundType.GRAVEL)));
 
@@ -229,6 +233,9 @@ public class ModBlocks {
 
 	public static final RegistryObject<Block> WARDED_CORRUPTED_SHADOW_STONE = registerBlock("warded_corrupted_shadow_stone",
 			WardedBlock::new);
+
+	public static final RegistryObject<Block> WARDED_FADED_END_STONE_BRICKS = registerBlock("warded_faded_end_stone_bricks",
+			() -> new WardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).sound(SoundType.CALCITE)));
 
 	public static final RegistryObject<Block> WARDED_BLIGHTED_SHADOW_STONE = registerBlock("warded_blighted_shadow_stone",
 			() -> new WardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE)

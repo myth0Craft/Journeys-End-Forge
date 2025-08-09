@@ -33,6 +33,7 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModBlocks.POLISHED_END_STONE_SLAB.get());
 				pOutput.accept(ModBlocks.POLISHED_END_STONE_WALL.get());
 				pOutput.accept(ModBlocks.FADED_END_STONE.get());
+				pOutput.accept(ModBlocks.FADED_END_STONE_BRICKS.get());
 				pOutput.accept(ModBlocks.LUSH_END_STONE.get());
 				pOutput.accept(ModBlocks.COMPRESSED_END_STONE.get());
 
@@ -43,6 +44,8 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModBlocks.ENDER_VAULT.get());
 
 				pOutput.accept(ModBlocks.VOIDMETAL_BLOCK.get());
+
+
 
 				pOutput.accept(ModBlocks.SHADOW_STONE.get());
 				pOutput.accept(ModBlocks.CORRUPTED_SHADOW_STONE.get());

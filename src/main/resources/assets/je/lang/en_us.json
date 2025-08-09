@@ -49,6 +49,8 @@
 	"block.je.polished_end_stone_slab": "Polished End Stone Slab",
 	"block.je.polished_end_stone_wall": "Polished End Stone Wall",
 	"block.je.faded_end_stone": "Faded End Stone",
+  	"block.je.faded_end_stone_bricks": "Faded End Stone Bricks",
+  	"block.je.warded_faded_end_stone_bricks": "Warded Faded End Stone Bricks",
 	"block.je.lush_end_stone": "Lush End Stone",
 	"block.je.corrupted_dirt": "Corrupted Dirt",
 	"block.je.lantern_of_warding": "Lantern of Warding",

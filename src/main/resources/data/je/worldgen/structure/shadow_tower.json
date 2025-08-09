@@ -1,0 +1,6 @@
+{
+  "type": "je:shadow_tower",
+  "biomes": "#je:has_structure/shadow_tower",
+  "spawn_overrides": {},
+  "step": "surface_structures"
+}
