@@ -1,34 +1,24 @@
 package net.je.worldgen;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.je.JourneysEnd;
 import net.je.block.ModBlocks;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.*;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.StructureManager;
+import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.RandomState;
-import net.minecraft.world.level.levelgen.structure.*;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import net.minecraft.world.level.levelgen.structure.Structure;
+import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pieces.PiecesContainer;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
-import net.minecraft.world.level.levelgen.structure.structures.EndCityStructure;
-import net.minecraft.world.level.levelgen.structure.templatesystem.BlockIgnoreProcessor;
-import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
-import org.joml.Random;
-import org.spongepowered.asm.mixin.Shadow;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 public class ShadowTowerStructure extends Structure {
@@ -56,8 +46,8 @@ public class ShadowTowerStructure extends Structure {
 		int startY = surfaceY - 15;
 
 		//int minY = Integer.MAX_VALUE;
-		for (int x = 0; x < width; x++) {
-			for (int z = 0; z < length; z++) {
+		for (int x = 0; x < width; x+=4) {
+			for (int z = 0; z < length; z+=4) {
 				int worldX = chunkCenter.getX() + x;
 				int worldZ = chunkCenter.getZ() + z;
 
@@ -100,7 +90,7 @@ public class ShadowTowerStructure extends Structure {
 			}
 		}));
 	}
-
+	@SuppressWarnings("deprecation")
 	@Override
 	public void afterPlace(
 			WorldGenLevel pLevel,
