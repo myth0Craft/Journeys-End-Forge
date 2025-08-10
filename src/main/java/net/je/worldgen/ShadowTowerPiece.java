@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.je.JourneysEnd;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
@@ -91,7 +92,7 @@ public class ShadowTowerPiece extends TemplateStructurePiece {
 				.setRotation(rotation)
 				.setMirror(Mirror.NONE)
 				.setIgnoreEntities(true)
-				.addProcessor(BlockIgnoreProcessor.STRUCTURE_AND_AIR);
+				.addProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK);
 	}
 
 	@Override
@@ -108,7 +109,8 @@ public class ShadowTowerPiece extends TemplateStructurePiece {
 			ChunkPos pChunkPos,
 			BlockPos pPos
 	) {
-		carveInterior(pLevel);
+		//flattenArea(pLevel, pPos, this.template().getSize());
+		//carveInterior(pLevel);
 		super.postProcess(pLevel, pStructureManager, pGenerator, pRandom, pBox, pChunkPos, pPos);
 	}
 
@@ -122,13 +124,40 @@ public class ShadowTowerPiece extends TemplateStructurePiece {
 
 			BlockState state = blockInfo.state();
 
-			if (isMarker(state)) {
+			//if (isMarker(state)) {
 				pLevel.setBlock(worldPos, Blocks.AIR.defaultBlockState(), 2);
-			}
+			//}
 		}
 	}
 
 	private boolean isMarker(BlockState state) {
 		return state.is(Blocks.BARRIER);
 	}
+
+	private void flattenArea(WorldGenLevel level, BlockPos start, Vec3i size) {
+		int xSize = size.getX();
+		int zSize = size.getZ();
+		int yBase = start.getY();
+
+		for (int dx = 0; dx < xSize; dx++) {
+			for (int dz = 0; dz < zSize; dz++) {
+				BlockPos.MutableBlockPos checkPos = new BlockPos.MutableBlockPos(start.getX() + dx, yBase, start.getZ() + dz);
+
+				// Find the highest solid block below base Y
+				int groundY = yBase;
+				while (groundY > level.getMinBuildHeight() && level.isEmptyBlock(checkPos.setY(groundY - 1))) {
+					groundY--;
+				}
+
+				// Fill from ground up to base Y with end stone
+				for (int fillY = groundY; fillY < yBase; fillY++) {
+					level.setBlock(checkPos.setY(fillY), Blocks.END_STONE.defaultBlockState(), 2);
+				}
+			}
+		}
+	}
 }
+
+
+
+
