@@ -67,6 +67,7 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModBlocks.VOIDGLASS.get());
 				pOutput.accept(ModBlocks.VOID_LANTERN.get());
 				pOutput.accept(ModBlocks.SHADOW_BLOCK.get());
+				pOutput.accept(ModBlocks.ECLIPSED_SHADOW_BLOCK.get());
 				pOutput.accept(ModBlocks.SHADOW_PRISM.get());
 
 			})

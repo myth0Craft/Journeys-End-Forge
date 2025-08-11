@@ -26,7 +26,8 @@ public class ForgeEventBusClientEvents {
         if (mc.player != null && mc.level != null) {
             Vec3 eyePos = player.getEyePosition();
             BlockPos eyeBlock = BlockPos.containing(eyePos.x, eyePos.y - 0.05, eyePos.z);
-            boolean insideShadow = mc.level.getBlockState(eyeBlock).is(ModBlocks.SHADOW_BLOCK.get());
+            boolean insideShadow = mc.level.getBlockState(eyeBlock).is(ModBlocks.SHADOW_BLOCK.get()) ||
+					mc.level.getBlockState(eyeBlock).is(ModBlocks.ECLIPSED_SHADOW_BLOCK.get());
             ClientModData.setPlayerInsideShadowBlock(insideShadow);
         }
     }

@@ -211,7 +211,14 @@ public class ModBlocks {
 	public static final RegistryObject<Block> SHADOW_BLOCK = registerBlock("shadow_block",
 			() -> new ShadowBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(-1.0F, 3600000.0F)
 					.noLootTable().noOcclusion()
-					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking((s, l, p) -> false).pushReaction(PushReaction.IGNORE)));
+					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking((s, l, p) -> false)
+					.pushReaction(PushReaction.IGNORE)));
+
+	public static final RegistryObject<Block> ECLIPSED_SHADOW_BLOCK = registerBlock("eclipsed_shadow_block",
+			() -> new InvertedShadowBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(-1.0F, 3600000.0F)
+					.noLootTable().noOcclusion()
+					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).isViewBlocking((s, l, p) -> false)
+					.pushReaction(PushReaction.IGNORE)));
 
 
 	public static final RegistryObject<Block> SHADOW_PRISM = registerBlock("shadow_prism",

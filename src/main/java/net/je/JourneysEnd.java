@@ -1,15 +1,7 @@
 package net.je;
 
-import java.io.IOException;
-
-import net.je.worldgen.ModStructurePieceTypes;
-import net.je.worldgen.ModStructureTypes;
-import net.je.worldgen.ModStructures;
-import org.slf4j.Logger;
-
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.logging.LogUtils;
-
 import net.je.block.ModBlocks;
 import net.je.block.entity.ModBlockEntities;
 import net.je.conditions.ModConditions;
@@ -32,6 +24,8 @@ import net.je.render.ShadowPrismRenderer;
 import net.je.screen.EndStoneFurnaceScreen;
 import net.je.screen.ModMenuTypes;
 import net.je.sound.ModSounds;
+import net.je.worldgen.ModStructurePieceTypes;
+import net.je.worldgen.ModStructureTypes;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.DragonBreathParticle;
 import net.minecraft.client.renderer.ShaderInstance;
@@ -52,6 +46,9 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.slf4j.Logger;
+
+import java.io.IOException;
 
 @Mod(JourneysEnd.MODID)
 public class JourneysEnd {
@@ -103,13 +100,6 @@ public class JourneysEnd {
 		ModStructureTypes.register(modEventBus);
 
 		//ModStructures.register(modEventBus);
-
-
-
-
-
-
-
 	}
 
 	private void commonSetup(final FMLCommonSetupEvent event) {
@@ -167,7 +157,7 @@ public class JourneysEnd {
 
 		@SubscribeEvent
 		public static void registerParticles(RegisterParticleProvidersEvent event) {
-			event.registerSpriteSet(ModParticles.WARDED_PARTICLES.get(), (spriteSet) -> new WardedParticleProvider(spriteSet));
+			event.registerSpriteSet(ModParticles.WARDED_PARTICLES.get(), WardedParticleProvider::new);
 		}
 
 		@SubscribeEvent

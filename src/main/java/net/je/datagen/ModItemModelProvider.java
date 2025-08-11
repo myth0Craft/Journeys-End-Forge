@@ -1,7 +1,5 @@
 package net.je.datagen;
 
-import java.util.LinkedHashMap;
-
 import net.je.JourneysEnd;
 import net.je.block.ModBlocks;
 import net.je.item.ModItems;
@@ -18,9 +16,10 @@ import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.LinkedHashMap;
 
 public class ModItemModelProvider extends ItemModelProvider {
 	private static LinkedHashMap<ResourceKey<TrimMaterial>, Float> trimMaterials = new LinkedHashMap<>();
@@ -77,6 +76,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         wallItem(ModBlocks.POLISHED_SHADOW_STONE_WALL, ModBlocks.POLISHED_SHADOW_STONE);
 
         blockItem(ModBlocks.SHADOW_BLOCK.get());
+        blockItem(ModBlocks.ECLIPSED_SHADOW_BLOCK.get());
     }
 
     private ItemModelBuilder blockItem(Block block) {

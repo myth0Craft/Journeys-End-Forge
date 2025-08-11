@@ -29,7 +29,7 @@ public class ShadowBlock extends Block {
 
 	@Override
 	protected VoxelShape getCollisionShape(BlockState pState, BlockGetter pLevel, BlockPos pPos,
-			CollisionContext pContext) {
+										   CollisionContext pContext) {
 		if (pContext instanceof EntityCollisionContext entityContext) {
 			Entity entity = entityContext.getEntity();
 			if (entity instanceof LivingEntity living) {
@@ -58,14 +58,12 @@ public class ShadowBlock extends Block {
 				if (living instanceof Player player) {
 					if (player.isCreative()) {
 						return super.getShape(pState, pLevel, pPos, pContext);
-					} else if (living.getMainHandItem().is(ModTags.Items.CAN_PASS_THROUGH_SHADOW_BLOCKS)
-							|| living.getOffhandItem().is(ModTags.Items.CAN_PASS_THROUGH_SHADOW_BLOCKS)
-							|| (living.getInBlockState().is(ModBlocks.SHADOW_BLOCK.get()))) {
+					} else if (
+							living.getInBlockState().is(ModBlocks.SHADOW_BLOCK.get())) {
 						return Shapes.empty();
 					}
-				} else if (living.getMainHandItem().is(ModTags.Items.CAN_PASS_THROUGH_SHADOW_BLOCKS)
-						|| living.getOffhandItem().is(ModTags.Items.CAN_PASS_THROUGH_SHADOW_BLOCKS)
-						|| (living.getInBlockState().is(ModBlocks.SHADOW_BLOCK.get()))) {
+				} else if (
+						living.getInBlockState().is(ModBlocks.SHADOW_BLOCK.get())) {
 					return Shapes.empty();
 				}
 			}
