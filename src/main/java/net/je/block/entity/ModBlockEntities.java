@@ -24,6 +24,10 @@ public class ModBlockEntities {
 			.register("shadow_prism_block_entity", () -> BlockEntityType.Builder
 					.of(ShadowPrismBlockEntity::new, ModBlocks.SHADOW_PRISM.get()).build(null));
 
+	public static final RegistryObject<BlockEntityType<GravityDistorterBlockEntity>> GRAVITY_DISTORTER_BLOCK_ENTITY = BLOCK_ENTITIES
+			.register("gravity_distorter_block_entity", () -> BlockEntityType.Builder
+					.of(GravityDistorterBlockEntity::new, ModBlocks.GRAVITY_DISTORTER.get()).build(null));
+
 	public static void register(IEventBus eventBus) {
 		BLOCK_ENTITIES.register(eventBus);
 	}

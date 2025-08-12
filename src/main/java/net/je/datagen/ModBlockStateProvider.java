@@ -71,6 +71,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockItem(ModBlocks.VOIDGLASS);
         blockItem(ModBlocks.WARDED_VOIDGLASS, "voidglass");
+
+        blockItem(ModBlocks.GRAVITY_DISTORTER);
         //blockItem(ModBlocks.ENDER_VAULT);
         //blockItem(ModBlocks.INTERDIMENSIONAL_ANCHOR);
         //blockItem(ModBlocks.POLISHED_END_STONE_WALL);

@@ -299,6 +299,11 @@ public class ModBlocks {
 	);
 
 
+	public static final RegistryObject<Block> GRAVITY_DISTORTER = registerBlock("gravity_distorter",
+			() -> new GravityDistorterBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(1.5F, 6.0F)
+					.instrument(NoteBlockInstrument.PLING).requiresCorrectToolForDrops().sound(ModSounds.INTERDIMENSIONAL_ANCHOR_SOUNDS)));
+
+
 
 	private static boolean always(BlockState p_50775_, BlockGetter p_50776_, BlockPos p_50777_) {
 		return true;

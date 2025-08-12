@@ -35,6 +35,7 @@
 	"je:chiseled_shadow_stone",
 	"je:warded_chiseled_shadow_stone",
 	"je:faded_end_stone_bricks",
-	"je:warded_faded_end_stone_bricks"
+	"je:warded_faded_end_stone_bricks",
+	"je:gravity_distorter"
   ]
 }

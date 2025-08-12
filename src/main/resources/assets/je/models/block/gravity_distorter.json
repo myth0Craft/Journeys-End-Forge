@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "je:block/gravity_distorter_bottom",
+    "side": "je:block/gravity_distorter_side",
+    "particle": "je:block/polished_shadow_stone",
+    "top": "je:block/gravity_distorter_top"
+  }
+}

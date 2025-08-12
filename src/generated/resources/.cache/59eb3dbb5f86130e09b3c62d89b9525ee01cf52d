@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-02T08:31:04.0995945	Loot Tables
+// 1.21.1	2025-08-12T08:36:34.3815	Loot Tables
 04b8d641bf508843331df4a32f889fc2e0a258d3 data/je/loot_table/blocks/blighted_shadow_stone.json
 8667f98a1f0ea3068b88a0df51c17eb5b3615506 data/je/loot_table/blocks/chiseled_end_stone.json
 e92ed0af158aaae1c5af370895808e1773e5d046 data/je/loot_table/blocks/chiseled_shadow_stone.json
@@ -11,6 +11,7 @@ ab5387a826d7344de8fe756aaa140841dcda5373 data/je/loot_table/blocks/corrupted_dir
 43e8e93a27e5a73b3cc8d6e926df522210dff738 data/je/loot_table/blocks/end_stone_tiles.json
 3042a932aa3be26b8778eecb0df379b1177d3ea4 data/je/loot_table/blocks/faded_end_stone.json
 14059b231bd3704dd430b950f82e5a952bb87177 data/je/loot_table/blocks/faded_end_stone_bricks.json
+6e7f2dd5b039cf68ea52f4704d6e04f154972143 data/je/loot_table/blocks/gravity_distorter.json
 39030356b01f6100434918a8fe2457682ef07494 data/je/loot_table/blocks/interdimensional_anchor.json
 0057e80d765de3b7324ed909891df28e3718b71d data/je/loot_table/blocks/lantern_of_warding.json
 a9e41013c282547909ccb35daa3cfd209932f910 data/je/loot_table/blocks/lush_end_stone.json
