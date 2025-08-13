@@ -22,20 +22,55 @@ import net.minecraft.world.phys.AABB;
 import java.util.List;
 
 public class GravityDistorterBlockEntity extends BlockEntity {
+
+	public int numBlocksStacked;
+
+	private boolean isTopBlockInStack;
+
+	private boolean isCovered;
+
 	public GravityDistorterBlockEntity(BlockPos pPos, BlockState pBlockState) {
 		super(ModBlockEntities.GRAVITY_DISTORTER_BLOCK_ENTITY.get(), pPos, pBlockState);
 	}
 
+	public void updateState() {
+		if (level == null) return;
+		BlockState state = getBlockState();
+		isTopBlockInStack = !state.getValue(GravityDistorterBlock.BLOCK_ABOVE);
+
+		isCovered = !level.isEmptyBlock(worldPosition.above());
+	}
+
+	@Override
+	public void onLoad() {
+		updateState();
+	}
+
 	public static void tick(Level pLevel, BlockPos pPos, BlockState pState, GravityDistorterBlockEntity pBlockEntity) {
 		if (pLevel.isClientSide()) return;
-		//BlockState state = pLevel.getBlockState(pPos);
 
-		GravityDistorterBlock block = (GravityDistorterBlock) pLevel.getBlockState(pPos).getBlock();
-		int numBlocksStacked = block.numBlocksStacked;
+		pBlockEntity.updateState();
 
-		/*if (pLevel.getGameTime() % 5 == 0) {
-			System.out.println(numBlocksStacked);
+		if (!pBlockEntity.isTopBlockInStack || pBlockEntity.isCovered) return;
+
+		System.out.println("Top block in stack at " + pPos + ", stack height: " + pBlockEntity.numBlocksStacked);
+
+		/*while (state.is(ModBlocks.GRAVITY_DISTORTER.get())) {
+			numBlocksInStack++;
+			topPos = topPos.below();
+			state = pLevel.getBlockState(topPos);
+
+			if (topPos.getY() == pLevel.getMinBuildHeight()) {
+				break;
+			}
+
 		}*/
+
+		/*if (pLevel.getGameTime() % 10 == 0) {
+			System.out.println("Top block in stack at position:\nX: " + pPos.getX() + "\nY: " + pPos.getY() + "\nZ: " + pPos.getZ());
+		}*/
+
+
 
 
 
