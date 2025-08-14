@@ -1,13 +1,11 @@
 package net.je.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.je.block.ModBlocks;
 import net.je.block.entity.GravityDistorterBlockEntity;
 import net.je.block.entity.ModBlockEntities;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.protocol.game.DebugPackets;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -19,7 +17,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import org.jetbrains.annotations.Nullable;
 
 public class GravityDistorterBlock extends BaseEntityBlock {
@@ -78,7 +75,7 @@ public class GravityDistorterBlock extends BaseEntityBlock {
 	protected void neighborChanged(BlockState pState, Level pLevel, BlockPos pPos, Block pNeighborBlock, BlockPos pNeighborPos, boolean pMovedByPiston) {
 		super.neighborChanged(pState, pLevel, pPos, pNeighborBlock, pNeighborPos, pMovedByPiston);
 
-		if (!pLevel.isClientSide) {
+		if (!pLevel.isClientSide()) {
 
 			boolean above = pLevel.getBlockState(pPos.above()).is(this);
 			boolean below = pLevel.getBlockState(pPos.below()).is(this);
@@ -97,23 +94,54 @@ public class GravityDistorterBlock extends BaseEntityBlock {
 					",\nBlock above: " + state.getValue(BLOCK_ABOVE) + "\nBlock below: " + state.getValue(BLOCK_BELOW)));*/
 	}
 
-	private void updateStackHeight(Level level, BlockPos pos) {
+	@Override
+	public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+		super.setPlacedBy(level, pos, state, placer, stack);
+		if (!level.isClientSide) {
+			updateStackHeight(level, pos);
+		}
+	}
+
+	@Override
+	public void onRemove(BlockState oldState, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+		super.onRemove(oldState, level, pos, newState, isMoving);
+		if (!level.isClientSide && oldState.getBlock() != newState.getBlock()) {
+			updateStackHeight(level, pos);
+		}
+
+	}
+
+	@Override
+	public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
+		super.onPlace(state, level, pos, oldState, isMoving);
+		if (!level.isClientSide()) {
+			updateStackHeight(level, pos);
+		}
+	}
+
+	public void updateStackHeight(Level level, BlockPos pos) {
 		BlockPos top = pos;
-		while(level.getBlockState(top.above()).is(this)) {
+		while (level.getBlockState(top.above()).is(this)) {
 			top = top.above();
 		}
 
-		int height = 0;
+
+		int totalHeight = 0;
 		BlockPos current = top;
+		while (level.getBlockState(current).is(this)) {
+			totalHeight++;
+			current = current.below();
+			if (current.getY() < level.getMinBuildHeight()) break;
+		}
+
+		current = top;
 		while (level.getBlockState(current).is(this)) {
 			BlockEntity be = level.getBlockEntity(current);
 			if (be instanceof GravityDistorterBlockEntity gdbe) {
-				gdbe.numBlocksStacked = height + 1;
+				gdbe.numBlocksStacked = totalHeight;
 				gdbe.updateState();
 			}
-			height++;
 			current = current.below();
-
 			if (current.getY() < level.getMinBuildHeight()) break;
 		}
 	}
