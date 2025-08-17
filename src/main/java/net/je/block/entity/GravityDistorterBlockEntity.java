@@ -2,84 +2,131 @@ package net.je.block.entity;
 
 import net.je.block.ModBlocks;
 import net.je.block.custom.GravityDistorterBlock;
+import net.je.config.CommonConfig;
 import net.je.effect.ModEffects;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GravityDistorterBlockEntity extends BlockEntity {
 
 	public int numBlocksStacked = 1;
-
 	private boolean isTopBlockInStack;
-
 	private boolean isCovered;
-
 	private int levitationAmount;
+	private AABB cachedArea;
 
 	public GravityDistorterBlockEntity(BlockPos pPos, BlockState pBlockState) {
 		super(ModBlockEntities.GRAVITY_DISTORTER_BLOCK_ENTITY.get(), pPos, pBlockState);
 	}
 
+	@Override
+	public void onLoad() {
+		updateState();
+	}
+
+	/** Called whenever stack height changes or block loads */
 	public void updateState() {
 		if (level == null) return;
+
 		BlockState state = getBlockState();
 		isTopBlockInStack = !state.getValue(GravityDistorterBlock.BLOCK_ABOVE);
-
 		isCovered = !level.isEmptyBlock(worldPosition.above());
 
 		levitationAmount = Math.min(numBlocksStacked, 10);
+		updateLevitationArea();
+
+		// Sync to client
+		setChanged();
+		if (!level.isClientSide) {
+			BlockState bs = level.getBlockState(worldPosition);
+			level.sendBlockUpdated(worldPosition, bs, bs, Block.UPDATE_CLIENTS);
+		}
+	}
+
+	/** Rebuild cached levitation area */
+	private void updateLevitationArea() {
+		if (level == null) return;
+		cachedArea = new AABB(worldPosition)
+				.expandTowards(0, 5 * levitationAmount, 0);
+	}
+
+	public AABB getLevitationArea() {
+		return cachedArea;
+	}
+
+	/** Tick logic */
+	public static void tick(Level level, BlockPos pos, BlockState state, GravityDistorterBlockEntity be) {
+		if (!be.isTopBlockInStack || be.isCovered) return;
+		if (be.cachedArea == null) be.updateLevitationArea();
+
+		List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, be.cachedArea);
+
+		for (LivingEntity entity : entities) {
+			if (entity instanceof Player player) {
+				if ((!player.isShiftKeyDown() && (!player.isCreative() || CommonConfig.GRAVITY_DISTORTER_WORKS_IN_CREATIVE.get()))) {
+					double x = player.getDeltaMovement().x();
+					double z = player.getDeltaMovement().z();
+
+					player.setDeltaMovement(x, 0.5, z);
+					player.hurtMarked = true;
+					player.fallDistance = 0;
+					player.setOnGround(false);
+
+
+
+				}
+			} else {
+				if (!level.isClientSide) {
+					entity.setDeltaMovement(entity.getDeltaMovement().x(), 0.5, entity.getDeltaMovement().z());
+					entity.resetFallDistance();
+				}
+			}
+		}
+	}
+
+	/** Save/load */
+	@Override
+	public void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+		super.saveAdditional(tag, registries);
+		tag.putInt("NumBlocksStacked", numBlocksStacked);
 	}
 
 	@Override
-	public void onLoad() {
-		super.onLoad();
-		updateState();
-		if (level != null) {
-			if (!level.isClientSide()) {
-				BlockState state = level.getBlockState(worldPosition);
-				if (state.getBlock() instanceof GravityDistorterBlock block) {
-					block.updateStackHeight(level, worldPosition);
-				}
-			}
-		}
-
+	public void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+		super.loadAdditional(tag, registries);
+		numBlocksStacked = tag.getInt("NumBlocksStacked");
+		updateState(); // rebuild area and sync
 	}
 
-	public static void tick(Level pLevel, BlockPos pPos, BlockState pState, GravityDistorterBlockEntity pBlockEntity) {
-		if (pLevel.isClientSide()) return;
+	/** Sync for client */
+	@Override
+	public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+		CompoundTag tag = super.getUpdateTag(registries);
+		saveAdditional(tag, registries);
+		return tag;
+	}
 
-		if (!pBlockEntity.isTopBlockInStack || pBlockEntity.isCovered) return;
-
-		//System.out.println("Top block in stack at " + pPos + ", stack height: " + pBlockEntity.numBlocksStacked);
-
-		AABB area = new AABB(pPos).inflate(0, 10 * pBlockEntity.levitationAmount, 0).setMinY(pPos.getY());
-		List<LivingEntity> entities = pLevel.getEntitiesOfClass(LivingEntity.class, area);
-
-		//Holder<MobEffect> holder = BuiltInRegistries.MOB_EFFECT.wrapAsHolder(MobEffects.LEVITATION.get());
-		for (LivingEntity entity : entities) {
-			if (entity instanceof Player player) {
-				if (!player.isShiftKeyDown()) {
-					player.setDeltaMovement(player.getDeltaMovement().x(), 0.5, player.getDeltaMovement().z());
-					player.resetFallDistance();
-				}
-			} else {
-				entity.setDeltaMovement(entity.getDeltaMovement().x(), 0.5, entity.getDeltaMovement().z());
-				entity.resetFallDistance();
-			}
-			//entity.addEffect(new MobEffectInstance(holder, 10, 1));
-			System.out.println(entity.toString() + "levitated");
-		}
+	@Override
+	public void handleUpdateTag(CompoundTag tag, HolderLookup.Provider registries) {
+		loadAdditional(tag, registries);
+		updateState();
 	}
 }
