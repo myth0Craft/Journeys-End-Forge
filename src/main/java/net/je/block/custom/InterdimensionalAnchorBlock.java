@@ -28,11 +28,6 @@ public class InterdimensionalAnchorBlock extends Block {
 		return CODEC;
 	}
 
-	@Override
-	protected RenderShape getRenderShape(BlockState pState) {
-		return RenderShape.MODEL;
-	}
-
 	public InterdimensionalAnchorBlock(Properties p_49795_) {
 		super(p_49795_);
 		this.registerDefaultState(this.defaultBlockState().setValue(DIMENSION, 0));

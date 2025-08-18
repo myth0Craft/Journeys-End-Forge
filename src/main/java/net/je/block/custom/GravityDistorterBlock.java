@@ -4,6 +4,7 @@ import com.mojang.serialization.MapCodec;
 import net.je.block.entity.GravityDistorterBlockEntity;
 import net.je.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -71,7 +72,10 @@ public class GravityDistorterBlock extends BaseEntityBlock {
 		return createTickerHelper(type, ModBlockEntities.GRAVITY_DISTORTER_BLOCK_ENTITY.get(), GravityDistorterBlockEntity::tick);
 	}
 
-	/** Recalculate stack height */
+	@Override
+	public void fallOn(Level p_153362_, BlockState p_153363_, BlockPos p_153364_, Entity p_153365_, float p_153366_) {
+	}
+
 	public void updateStackHeight(Level level, BlockPos pos) {
 		BlockPos top = pos;
 		while (level.getBlockState(top.above()).is(this)) top = top.above();
@@ -79,14 +83,12 @@ public class GravityDistorterBlock extends BaseEntityBlock {
 		int height = 0;
 		BlockPos current = top;
 
-		// Count total stack height
 		while (level.getBlockState(current).is(this)) {
 			height++;
 			current = current.below();
 			if (current.getY() < level.getMinBuildHeight()) break;
 		}
 
-		// Update all blocks
 		current = top;
 		while (level.getBlockState(current).is(this)) {
 			BlockEntity be = level.getBlockEntity(current);
@@ -99,7 +101,6 @@ public class GravityDistorterBlock extends BaseEntityBlock {
 		}
 	}
 
-	/** Call updateStackHeight whenever neighbors change or blocks are placed/removed */
 	@Override
 	protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos neighborPos, boolean moved) {
 		super.neighborChanged(state, level, pos, block, neighborPos, moved);

@@ -42,7 +42,6 @@ public class GravityDistorterBlockEntity extends BlockEntity {
 		updateState();
 	}
 
-	/** Called whenever stack height changes or block loads */
 	public void updateState() {
 		if (level == null) return;
 
@@ -53,7 +52,6 @@ public class GravityDistorterBlockEntity extends BlockEntity {
 		levitationAmount = Math.min(numBlocksStacked, 10);
 		updateLevitationArea();
 
-		// Sync to client
 		setChanged();
 		if (!level.isClientSide) {
 			BlockState bs = level.getBlockState(worldPosition);
@@ -61,7 +59,6 @@ public class GravityDistorterBlockEntity extends BlockEntity {
 		}
 	}
 
-	/** Rebuild cached levitation area */
 	private void updateLevitationArea() {
 		if (level == null) return;
 		cachedArea = new AABB(worldPosition)
@@ -72,8 +69,8 @@ public class GravityDistorterBlockEntity extends BlockEntity {
 		return cachedArea;
 	}
 
-	/** Tick logic */
 	public static void tick(Level level, BlockPos pos, BlockState state, GravityDistorterBlockEntity be) {
+		if (level.isClientSide()) return;
 		if (!be.isTopBlockInStack || be.isCovered) return;
 		if (be.cachedArea == null) be.updateLevitationArea();
 
@@ -87,22 +84,21 @@ public class GravityDistorterBlockEntity extends BlockEntity {
 
 					player.setDeltaMovement(x, 0.5, z);
 					player.hurtMarked = true;
-					player.fallDistance = 0;
-					player.setOnGround(false);
+					//player.fallDistance = 0;
+					//player.setOnGround(false);
 
 
 
 				}
 			} else {
-				if (!level.isClientSide) {
+				//if (!level.isClientSide) {
 					entity.setDeltaMovement(entity.getDeltaMovement().x(), 0.5, entity.getDeltaMovement().z());
-					entity.resetFallDistance();
-				}
+					//entity.resetFallDistance();
+				//}
 			}
 		}
 	}
 
-	/** Save/load */
 	@Override
 	public void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
 		super.saveAdditional(tag, registries);
@@ -116,7 +112,6 @@ public class GravityDistorterBlockEntity extends BlockEntity {
 		updateState(); // rebuild area and sync
 	}
 
-	/** Sync for client */
 	@Override
 	public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
 		CompoundTag tag = super.getUpdateTag(registries);
