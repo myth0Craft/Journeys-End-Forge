@@ -303,6 +303,13 @@ public class ModBlocks {
 			() -> new GravityDistorterBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(1.5F, 6.0F)
 					.instrument(NoteBlockInstrument.PLING).requiresCorrectToolForDrops().sound(ModSounds.INTERDIMENSIONAL_ANCHOR_SOUNDS)));
 
+	public static final RegistryObject<Block> RESPAWN_NEXUS = registerBlock("respawn_nexus",
+			() -> new RespawnNexusBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)
+					.instrument(NoteBlockInstrument.PLING).requiresCorrectToolForDrops()
+					.strength(50.0F, 1200.0F)));
+
+
+
 
 
 	private static boolean always(BlockState p_50775_, BlockGetter p_50776_, BlockPos p_50777_) {

@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "je:block/respawn_nexus_side_on",
+    "top": "je:block/respawn_nexus_top_on",
+    "bottom": "minecraft:block/respawn_anchor_bottom",
+    "particle": "je:block/respawn_nexus_side_off"
+  }
+}

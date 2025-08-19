@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-12T08:36:34.3815	Block States: je
+// 1.21.1	2025-08-18T09:46:32.7720596	Block States: je
 ad415e759c6c102f0f58f8d48f000984f1d14a04 assets/je/blockstates/blighted_shadow_stone.json
 9848562a52631f8fe774199803bf53b63c0a43a4 assets/je/blockstates/chiseled_end_stone.json
 1f10f646a8a65ffaf1774f64dce58421bd18bc73 assets/je/blockstates/chiseled_shadow_stone.json
@@ -120,6 +120,7 @@ e700035c2ca3955ce475e7f2e029599d88614f9c assets/je/models/item/polished_end_ston
 1074b82ead5f3015b01e1de789668779e4696791 assets/je/models/item/polished_shadow_stone.json
 a53118da50c30686c92495dc14fca4678dbbe6ba assets/je/models/item/polished_shadow_stone_slab.json
 6a3c317e76e733161370089ac8150e1bd0e0014f assets/je/models/item/polished_shadow_stone_stairs.json
+5c943ae35d90d8a3267f653a6ab45f63681a0c52 assets/je/models/item/respawn_nexus.json
 3385706c0a2f3d5f4939823e89f1b6c744692787 assets/je/models/item/shadow_stone.json
 be8849fb0abac58e2a750e99b8f18d6c38f969ad assets/je/models/item/shadow_stone_bricks.json
 1fd0089ef72dbb85f8765043c1c463e3dc3f132c assets/je/models/item/shadow_stone_brick_slab.json

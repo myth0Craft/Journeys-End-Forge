@@ -62,6 +62,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.FADED_END_STONE_BRICKS.get());
         dropSelf(ModBlocks.WARDED_FADED_END_STONE_BRICKS.get());
         dropSelf(ModBlocks.GRAVITY_DISTORTER.get());
+        dropSelf(ModBlocks.RESPAWN_NEXUS.get());
 
         dropSelf(ModBlocks.SHADOW_STONE_STAIRS.get());
         this.add(ModBlocks.SHADOW_STONE_SLAB.get(),

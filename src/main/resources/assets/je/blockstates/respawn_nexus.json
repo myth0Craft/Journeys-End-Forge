@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "is_charged=true": {
+      "model": "je:block/respawn_nexus_charged"
+    },
+    "is_charged=false": {
+	  "model": "je:block/respawn_nexus_off"
+	}
+  }
+}

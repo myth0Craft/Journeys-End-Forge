@@ -70,6 +70,7 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModBlocks.ECLIPSED_SHADOW_BLOCK.get());
 				pOutput.accept(ModBlocks.SHADOW_PRISM.get());
 				pOutput.accept(ModBlocks.GRAVITY_DISTORTER.get());
+				pOutput.accept(ModBlocks.RESPAWN_NEXUS.get());
 
 			})
 			.build());

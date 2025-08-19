@@ -20,6 +20,7 @@ import net.je.particle.ModParticles;
 import net.je.particle.WardedParticleProvider;
 import net.je.recipe.ModRecipeSerializers;
 import net.je.render.ModRenderTypes;
+import net.je.render.RespawnNexusRenderer;
 import net.je.render.ShadowPrismRenderer;
 import net.je.screen.EndStoneFurnaceScreen;
 import net.je.screen.ModMenuTypes;
@@ -127,6 +128,7 @@ public class JourneysEnd {
 				ModRenderTypes.registerRenderTypes();
 				BlockEntityRenderers.register(ModBlockEntities.SHADOW_PRISM_BLOCK_ENTITY.get(), ShadowPrismRenderer::new);
 			}
+			BlockEntityRenderers.register(ModBlockEntities.RESPAWN_NEXUS_BLOCK_ENTITY.get(), RespawnNexusRenderer::new);
 
 			//ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHADOW_BLOCK.get(), RenderType.translucent());
 
