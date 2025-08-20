@@ -1,8 +1,8 @@
 package net.je.event;
 
 import net.je.JourneysEnd;
-import net.je.block.ModBlocks;
-import net.je.util.ClientModData;
+import net.je.common.block.ModBlocks;
+import net.je.common.util.ClientModData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;

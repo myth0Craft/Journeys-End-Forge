@@ -4,9 +4,9 @@ import java.lang.reflect.Field;
 
 import net.je.JourneysEnd;
 import net.je.config.CommonConfig;
-import net.je.entity.ModEntities;
-import net.je.entity.custom.Endersent;
-import net.je.entity.custom.EndersentWithEye;
+import net.je.common.entity.ModEntities;
+import net.je.common.entity.custom.Endersent;
+import net.je.common.entity.custom.EndersentWithEye;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeSerializer;

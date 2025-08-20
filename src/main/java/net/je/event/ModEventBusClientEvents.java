@@ -3,8 +3,8 @@ package net.je.event;
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import net.je.JourneysEnd;
-import net.je.effect.ModEffects;
-import net.je.util.ClientModData;
+import net.je.common.effect.ModEffects;
+import net.je.common.util.ClientModData;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
