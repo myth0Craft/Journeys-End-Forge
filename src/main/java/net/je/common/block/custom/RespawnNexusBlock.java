@@ -170,7 +170,7 @@ public class RespawnNexusBlock extends BaseEntityBlock {
     }
 
     public static boolean canSetSpawn(Level pLevel) {
-        return pLevel.dimension() == Level.OVERWORLD;
+        return pLevel.dimension() == Level.END;
     }
 
     public static void charge(@Nullable Entity pEntity, Level pLevel, BlockPos pPos, BlockState pState) {

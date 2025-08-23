@@ -17,7 +17,7 @@ import java.util.Optional;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class RespawnInEnd {
 
-	@SubscribeEvent
+	/*@SubscribeEvent
 	public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
 		if (!(event.getEntity() instanceof ServerPlayer player)) return;
 		ServerLevel level = player.getServer().getLevel(player.getRespawnDimension());
@@ -59,7 +59,7 @@ public class RespawnInEnd {
 
 
 
-	}
+	}*/
 
 	/*public static final String JE_LAST_SPAWN = "je_last_spawn";
 

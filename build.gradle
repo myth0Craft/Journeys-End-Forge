@@ -1,3 +1,15 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.spongepowered:mixingradle:0.7.+'
+    }
+}
+
+
+
 plugins {
     id 'eclipse'
     id 'idea'
@@ -5,6 +17,9 @@ plugins {
     id 'net.minecraftforge.gradle' version '6.0.26'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
+
+apply plugin: 'org.spongepowered.mixin'
+
 
 version = mod_version
 group = mod_group_id
@@ -17,6 +32,10 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 gradle.startParameter.showStacktrace = org.gradle.api.logging.configuration.ShowStacktrace.ALWAYS
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
+
+mixin {
+    config 'je.mixins.json'
+}
 
 minecraft {
     mappings channel: mapping_channel, version: mapping_version
@@ -50,6 +69,11 @@ minecraft {
     }
 }
 
+/*mixin {
+    add sourceSets.main, 'je.refmap.json'
+    config 'je.mixins.json'
+}*/
+
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
@@ -68,8 +92,10 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     compileOnly("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+    //compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.5'
   	runtimeOnly("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
     implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     
 }
 
@@ -96,7 +122,8 @@ tasks.named('jar', Jar).configure {
             'Specification-Version'   : '1',
             'Implementation-Title'    : project.name,
             'Implementation-Version'  : project.jar.archiveVersion,
-            'Implementation-Vendor'   : mod_authors
+            'Implementation-Vendor'   : mod_authors,
+            'MixinConfigs'            : "je.mixins.json"
         ])
     }
 }
@@ -121,6 +148,7 @@ tasks.withType(JavaCompile).configureEach {
 eclipse {
     synchronizationTasks 'genEclipseRuns'
 }
+
 
 sourceSets.each {
     def dir = layout.buildDirectory.dir("sourcesSets/$it.name")
