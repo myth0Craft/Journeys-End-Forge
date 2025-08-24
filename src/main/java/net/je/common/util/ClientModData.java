@@ -10,5 +10,4 @@ public class ClientModData {
 	public static void setPlayerInsideShadowBlock(boolean inside) {
 		playerInsideShadowBlock = inside;
 	}
-
 }

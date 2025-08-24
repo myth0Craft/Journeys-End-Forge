@@ -37,7 +37,10 @@ public class ModEventBusClientEvents {
 			return;
 		}
 
-		if (ClientModData.isPlayerInsideShadowBlock()) {
+		if (
+				//ClientModData.isPlayerInsideShadowBlock()
+				mc.player.getPersistentData().getBoolean("je:inside_shadow_block")
+		) {
 			if (mc.options.getCameraType() == CameraType.FIRST_PERSON) {
 				int width = mc.getWindow().getGuiScaledWidth();
 				int height = mc.getWindow().getGuiScaledHeight();

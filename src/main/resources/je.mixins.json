@@ -4,7 +4,8 @@
   "package": "net.je.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ServerPlayerMixin"
+    "ServerPlayerMixin",
+    "EndExitPortalMixin"
   ],
   "injectors": {
 	"defaultRequire": 1

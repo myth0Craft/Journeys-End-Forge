@@ -28,7 +28,8 @@ public class ForgeEventBusClientEvents {
             BlockPos eyeBlock = BlockPos.containing(eyePos.x, eyePos.y - 0.05, eyePos.z);
             boolean insideShadow = mc.level.getBlockState(eyeBlock).is(ModBlocks.SHADOW_BLOCK.get()) ||
 					mc.level.getBlockState(eyeBlock).is(ModBlocks.ECLIPSED_SHADOW_BLOCK.get());
-            ClientModData.setPlayerInsideShadowBlock(insideShadow);
+            //ClientModData.setPlayerInsideShadowBlock(insideShadow);
+			player.getPersistentData().putBoolean("je:inside_shadow_block", insideShadow);
         }
     }
 

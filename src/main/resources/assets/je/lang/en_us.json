@@ -92,6 +92,7 @@
   	"block.je.voidglass": "Voidglass",
   	"block.je.warded_voidglass": "Warded Voidglass",
 	//
+  	"block.minecraft.spawn.not_valid": "You have no home bed, charged respawn anchor, or charged respawn nexus, or it was obstructed",
 	"effect.je.void_strike": "Void Strike",
 	"death.attack.void_strike": "%1$s was consumed by the Void",
 	"creativetab.je.blocks": "Journey's End Blocks",

@@ -2,6 +2,7 @@ package net.je.mixin;
 
 import net.je.common.block.custom.RespawnNexusBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -32,8 +33,6 @@ public abstract class ServerPlayerMixin {
 
 	@Shadow public abstract float getRespawnAngle();
 
-	@Shadow private float respawnAngle;
-
 	@Inject(
 			method = "findRespawnPositionAndUseSpawnBlock",
 			at = @At("HEAD"),
@@ -42,65 +41,40 @@ public abstract class ServerPlayerMixin {
 	private void injectRespawn(
 			boolean pKeepInventory, DimensionTransition.PostDimensionTransition pPostDimensionTransition, CallbackInfoReturnable<DimensionTransition> cir
 	) {
-		Level level = this.serverLevel().getServer().getLevel(this.getRespawnDimension());
-		ServerLevel server = (ServerLevel) level;
+
+		/*ResourceKey<Level> respawnDim = this.getRespawnDimension();
+		ResourceKey<Level> current = this.serverLevel().dimension();
+		if (!respawnDim.equals(current)) return;d*/
+
+		ServerLevel level = this.serverLevel().getServer().getLevel(this.getRespawnDimension());
 		BlockPos pos = this.getRespawnPosition();
-		BlockState blockstate = level.getBlockState(this.getRespawnPosition());
-		Block block = blockstate.getBlock();
+		boolean isInExit = ((ServerPlayer)(Object)this).getPersistentData().getBoolean("je:in_end_exit");
+		if (level != null && pos != null && !isInExit) {
 
-		// Handle your custom block
-		if (block instanceof RespawnNexusBlock
-				&& blockstate.getValue(RespawnNexusBlock.CHARGED)
-				&& RespawnNexusBlock.canSetSpawn(level)) {
+			BlockState blockstate = level.getBlockState(this.getRespawnPosition());
+			if (blockstate != null) {
+				Block block = blockstate.getBlock();
 
-			Optional<Vec3> optional = RespawnNexusBlock.findStandUpPosition(EntityType.PLAYER, level, pos);
+				if (block instanceof RespawnNexusBlock
+						&& blockstate.getValue(RespawnNexusBlock.CHARGED)
+						&& RespawnNexusBlock.canSetSpawn(level)) {
 
-			if (!pKeepInventory && optional.isPresent()) {
-				level.setBlock(pos, blockstate.setValue(
-						RespawnNexusBlock.CHARGED,
-						false
-				), 3);
+					Optional<Vec3> optional = RespawnNexusBlock.findStandUpPosition(EntityType.PLAYER, level, pos);
+
+					if (!pKeepInventory && optional.isPresent()) {
+						level.setBlock(pos, blockstate.setValue(
+								RespawnNexusBlock.CHARGED,
+								false
+						), 3);
+					}
+
+					if (optional.isPresent()) {
+						cir.setReturnValue(new DimensionTransition(
+								level, optional.get(), Vec3.ZERO, this.getRespawnAngle(), 0.0F, pPostDimensionTransition
+						));
+					}
+				}
 			}
-
-			cir.setReturnValue(new DimensionTransition(
-					server, optional.get(), Vec3.ZERO, this.respawnAngle, 0.0F, pPostDimensionTransition
-			));
 		}
 	}
-
-	/*@Inject(
-			method = "findRespawnAndUseSpawnBlock",
-			at = @At("HEAD"),
-			cancellable = true
-	)
-	private static void injectRespawn(
-			ServerLevel pLevel,
-			BlockPos pPos,
-			float pAngle,
-			boolean pForced,
-			boolean pKeepInventory,
-			CallbackInfoReturnable<Optional<?>> cir
-	) {
-		System.out.println("Ran findRespawnAndUseSpawnBlock");
-		BlockState blockstate = pLevel.getBlockState(pPos);
-		Block block = blockstate.getBlock();
-
-		// Handle your custom block
-		if (block instanceof RespawnNexusBlock
-				&& (pForced || blockstate.getValue(RespawnNexusBlock.CHARGED))
-				&& RespawnNexusBlock.canSetSpawn(pLevel)) {
-
-			Optional<Vec3> optional = RespawnNexusBlock.findStandUpPosition(EntityType.PLAYER, pLevel, pPos);
-
-			if (!pForced && !pKeepInventory && optional.isPresent()) {
-				pLevel.setBlock(pPos, blockstate.setValue(
-						RespawnNexusBlock.CHARGED,
-						false
-				), 3);
-			}
-
-			Object respawn = RespawnPosAngleAccessor.invokeOf(optional.get(), pPos);
-			cir.setReturnValue(Optional.of(respawn));
-		}
-	}*/
 }
