@@ -22,6 +22,7 @@ import net.je.common.recipe.ModRecipeSerializers;
 import net.je.common.render.ModRenderTypes;
 import net.je.common.render.RespawnNexusRenderer;
 import net.je.common.render.ShadowPrismRenderer;
+import net.je.common.render.UnstableShadowPrismRenderer;
 import net.je.common.screen.EndStoneFurnaceScreen;
 import net.je.common.screen.ModMenuTypes;
 import net.je.common.sound.ModSounds;
@@ -32,6 +33,7 @@ import net.minecraft.client.particle.DragonBreathParticle;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
@@ -99,8 +101,6 @@ public class JourneysEnd {
 		ModStructurePieceTypes.register(modEventBus);
 
 		ModStructureTypes.register(modEventBus);
-
-		//ModStructures.register(modEventBus);
 	}
 
 	private void commonSetup(final FMLCommonSetupEvent event) {
@@ -127,6 +127,7 @@ public class JourneysEnd {
 			if (CommonConfig.ALLOW_FANCY_VISUALS.get()) {
 				ModRenderTypes.registerRenderTypes();
 				BlockEntityRenderers.register(ModBlockEntities.SHADOW_PRISM_BLOCK_ENTITY.get(), ShadowPrismRenderer::new);
+				BlockEntityRenderers.register(ModBlockEntities.UNSTABLE_SHADOW_PRISM_BLOCK_ENTITY.get(), UnstableShadowPrismRenderer::new);
 			}
 			BlockEntityRenderers.register(ModBlockEntities.RESPAWN_NEXUS_BLOCK_ENTITY.get(), RespawnNexusRenderer::new);
 

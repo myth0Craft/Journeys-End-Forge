@@ -1,5 +1,6 @@
 package net.je.common.render;
 
+import net.minecraft.world.level.block.entity.TheEndPortalBlockEntity;
 import org.joml.Matrix4f;
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -14,7 +15,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 
-public class ShadowPrismRenderer implements BlockEntityRenderer<ShadowPrismBlockEntity> {
+public class ShadowPrismRenderer<T extends ShadowPrismBlockEntity> implements BlockEntityRenderer<T> {
 	public static final ResourceLocation END_SKY_LOCATION = ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID,
 			"textures/block/shadow_prism_bg.png");
 	public static final ResourceLocation END_PORTAL_LOCATION = ResourceLocation
@@ -24,16 +25,13 @@ public class ShadowPrismRenderer implements BlockEntityRenderer<ShadowPrismBlock
 	}
 
 	@Override
-	public void render(ShadowPrismBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack,
+	public void render(T pBlockEntity, float pPartialTick, PoseStack pPoseStack,
 			MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
-
-
 			Matrix4f matrix4f = pPoseStack.last().pose();
 			this.renderCube(pBlockEntity, matrix4f, pBufferSource.getBuffer(this.renderType()));
-
 	}
 
-	private void renderCube(ShadowPrismBlockEntity pBlockEntity, Matrix4f pPose, VertexConsumer pConsumer) {
+	private void renderCube(T pBlockEntity, Matrix4f pPose, VertexConsumer pConsumer) {
 		float f = this.getOffsetDown();
 		float f1 = this.getOffsetUp();
 		this.renderFace(pBlockEntity, pPose, pConsumer, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F,
@@ -46,7 +44,7 @@ public class ShadowPrismRenderer implements BlockEntityRenderer<ShadowPrismBlock
 		this.renderFace(pBlockEntity, pPose, pConsumer, 0.0F, 1.0F, f1, f1, 1.0F, 1.0F, 0.0F, 0.0F, Direction.UP);
 	}
 
-	private void renderFace(ShadowPrismBlockEntity pBlockEntity, Matrix4f pPose, VertexConsumer pConsumer, float pX0,
+	private void renderFace(T pBlockEntity, Matrix4f pPose, VertexConsumer pConsumer, float pX0,
 			float pX1, float pY0, float pY1, float pZ0, float pZ1, float pZ2, float pZ3, Direction pDirection) {
 		if (pBlockEntity.shouldRenderFace(pDirection)) {
 			pConsumer.addVertex(pPose, pX0, pY0, pZ0);

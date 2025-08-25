@@ -226,6 +226,11 @@ public class ModBlocks {
 					.noLootTable().noOcclusion().lightLevel(p_50755_ -> 15)
 					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).pushReaction(PushReaction.IGNORE)));
 
+	public static final RegistryObject<Block> UNSTABLE_SHADOW_PRISM = registerBlock("unstable_shadow_prism",
+			() -> new UnstableShadowPrismBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(-1.0F, 3600000.0F)
+					.noLootTable().noOcclusion().lightLevel(p_50755_ -> 15)
+					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).pushReaction(PushReaction.IGNORE)));
+
 	public static final RegistryObject<Block> WARDED_SHADOW_STONE = registerBlock("warded_shadow_stone",
 			WardedBlock::new);
 
