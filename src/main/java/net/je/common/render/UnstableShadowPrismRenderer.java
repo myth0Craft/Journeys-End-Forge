@@ -37,8 +37,9 @@ public class UnstableShadowPrismRenderer extends ShadowPrismRenderer<UnstableSha
 					   MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
 		int j = DyeColor.WHITE.getTextureDiffuseColor();
 		long k = pBlockEntity.getLevel().getGameTime();
-		renderBeaconBeam(pPoseStack, pBufferSource, BEAM_LOCATION, pPartialTick, 1, k, 1, 5, j, 0.15F, 0.175F);
-
+		if (pBlockEntity.isActive()) {
+			renderBeaconBeam(pPoseStack, pBufferSource, BEAM_LOCATION, pPartialTick, 1, k, 1, 6, j, 0.15F, 0.175F);
+		}
 		super.render(pBlockEntity, pPartialTick, pPoseStack, pBufferSource, pPackedLight, pPackedOverlay);
 	}
 
