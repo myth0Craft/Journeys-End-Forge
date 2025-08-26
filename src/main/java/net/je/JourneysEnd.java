@@ -5,6 +5,7 @@ import com.mojang.logging.LogUtils;
 import net.je.common.block.ModBlocks;
 import net.je.common.block.entity.ModBlockEntities;
 import net.je.common.conditions.ModConditions;
+import net.je.common.render.*;
 import net.je.config.CommonConfig;
 import net.je.common.effect.ModEffects;
 import net.je.common.entity.ModEntities;
@@ -19,10 +20,6 @@ import net.je.common.loot.ModLootModifiers;
 import net.je.common.particle.ModParticles;
 import net.je.common.particle.WardedParticleProvider;
 import net.je.common.recipe.ModRecipeSerializers;
-import net.je.common.render.ModRenderTypes;
-import net.je.common.render.RespawnNexusRenderer;
-import net.je.common.render.ShadowPrismRenderer;
-import net.je.common.render.UnstableShadowPrismRenderer;
 import net.je.common.screen.EndStoneFurnaceScreen;
 import net.je.common.screen.ModMenuTypes;
 import net.je.common.sound.ModSounds;
@@ -130,6 +127,7 @@ public class JourneysEnd {
 				BlockEntityRenderers.register(ModBlockEntities.UNSTABLE_SHADOW_PRISM_BLOCK_ENTITY.get(), UnstableShadowPrismRenderer::new);
 			}
 			BlockEntityRenderers.register(ModBlockEntities.RESPAWN_NEXUS_BLOCK_ENTITY.get(), RespawnNexusRenderer::new);
+			BlockEntityRenderers.register(ModBlockEntities.SHADOW_BEAM_EMITTER_BLOCK_ENTITY.get(), ShadowBeamEmitterRenderer::new);
 
 			//ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHADOW_BLOCK.get(), RenderType.translucent());
 

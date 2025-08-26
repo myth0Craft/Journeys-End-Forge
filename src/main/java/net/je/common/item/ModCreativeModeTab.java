@@ -71,6 +71,8 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModBlocks.SHADOW_PRISM.get());
 				pOutput.accept(ModBlocks.GRAVITY_DISTORTER.get());
 				pOutput.accept(ModBlocks.RESPAWN_NEXUS.get());
+				pOutput.accept(ModBlocks.SHADOW_BEAM_EMITTER.get());
+				pOutput.accept(ModBlocks.SHADOW_BEAM_RECEIVER.get());
 
 			})
 			.build());

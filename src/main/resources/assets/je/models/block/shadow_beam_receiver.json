@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "je:block/shadow_beam_receiver_side",
+    "top": "je:block/polished_faded_end_stone",
+    "bottom": "je:block/shadow_beam_emitter_top",
+    "particle": "je:block/shadow_beam_receiver_side"
+  }
+}

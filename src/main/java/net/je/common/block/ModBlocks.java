@@ -229,7 +229,7 @@ public class ModBlocks {
 	public static final RegistryObject<Block> UNSTABLE_SHADOW_PRISM = registerBlock("unstable_shadow_prism",
 			() -> new UnstableShadowPrismBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(-1.0F, 3600000.0F)
 					.noLootTable().noOcclusion().lightLevel(p_50755_ -> 15)
-					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).pushReaction(PushReaction.IGNORE)));
+					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).pushReaction(PushReaction.IGNORE)), false);
 
 	public static final RegistryObject<Block> WARDED_SHADOW_STONE = registerBlock("warded_shadow_stone",
 			WardedBlock::new);
@@ -310,7 +310,17 @@ public class ModBlocks {
 
 	public static final RegistryObject<Block> RESPAWN_NEXUS = registerBlock("respawn_nexus",
 			() -> new RespawnNexusBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)
-					.instrument(NoteBlockInstrument.PLING).requiresCorrectToolForDrops()
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()
+					.strength(50.0F, 1200.0F)));
+
+	public static final RegistryObject<Block> SHADOW_BEAM_EMITTER = registerBlock("shadow_beam_emitter",
+			() -> new ShadowBeamEmitterBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)
+					.instrument(NoteBlockInstrument.CHIME).requiresCorrectToolForDrops()
+					.strength(50.0F, 1200.0F)));
+
+	public static final RegistryObject<Block> SHADOW_BEAM_RECEIVER = registerBlock("shadow_beam_receiver",
+			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)
+					.instrument(NoteBlockInstrument.CHIME).requiresCorrectToolForDrops()
 					.strength(50.0F, 1200.0F)));
 
 
@@ -338,6 +348,14 @@ public class ModBlocks {
 	private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
 		RegistryObject<T> toReturn = BLOCKS.register(name, block);
 		registerBlockItem(name, toReturn);
+		return toReturn;
+	}
+
+	private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, boolean blockItem) {
+		RegistryObject<T> toReturn = BLOCKS.register(name, block);
+		if (blockItem) {
+			registerBlockItem(name, toReturn);
+		}
 		return toReturn;
 	}
 

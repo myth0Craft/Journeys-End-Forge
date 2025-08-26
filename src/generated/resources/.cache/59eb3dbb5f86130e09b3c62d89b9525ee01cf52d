@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-18T09:46:32.7682871	Loot Tables
+// 1.21.1	2025-08-26T08:24:21.4327268	Loot Tables
 04b8d641bf508843331df4a32f889fc2e0a258d3 data/je/loot_table/blocks/blighted_shadow_stone.json
 8667f98a1f0ea3068b88a0df51c17eb5b3615506 data/je/loot_table/blocks/chiseled_end_stone.json
 e92ed0af158aaae1c5af370895808e1773e5d046 data/je/loot_table/blocks/chiseled_shadow_stone.json
@@ -24,6 +24,8 @@ e22990ab8ca0cb93530028435a9b9be8e385c5c8 data/je/loot_table/blocks/polished_end_
 d56de6aa378de000244aa4dd6da74fad8c807c0d data/je/loot_table/blocks/polished_shadow_stone_stairs.json
 e7109e625334957948ffbaf3b173d0cea27f2798 data/je/loot_table/blocks/polished_shadow_stone_wall.json
 8e1435b1796e9cbc2795535207fb34f7c5bfc97f data/je/loot_table/blocks/respawn_nexus.json
+db86f72d186bc96a73c2a9443675f4f57f262c3f data/je/loot_table/blocks/shadow_beam_emitter.json
+29d4bbb59a3d6d464820de751c1b39275ccf6fcb data/je/loot_table/blocks/shadow_beam_receiver.json
 da7a87a3e000c9bb3ce95d7568cc9a5075daf03c data/je/loot_table/blocks/shadow_stone.json
 de5382b79adbade0de3688d5d8a557438478c15c data/je/loot_table/blocks/shadow_stone_bricks.json
 ab8d09a2fc2687168f72b0e55c9520a86f22ca62 data/je/loot_table/blocks/shadow_stone_brick_slab.json

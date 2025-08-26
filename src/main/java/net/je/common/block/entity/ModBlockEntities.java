@@ -36,6 +36,10 @@ public class ModBlockEntities {
 			.register("respawn_nexus_block_entity", () -> BlockEntityType.Builder
 					.of(RespawnNexusBlockEntity::new, ModBlocks.RESPAWN_NEXUS.get()).build(null));
 
+	public static final RegistryObject<BlockEntityType<ShadowBeamEmitterBlockEntity>> SHADOW_BEAM_EMITTER_BLOCK_ENTITY = BLOCK_ENTITIES
+			.register("shadow_beam_emitter_block_entity", () -> BlockEntityType.Builder
+					.of(ShadowBeamEmitterBlockEntity::new, ModBlocks.SHADOW_BEAM_EMITTER.get()).build(null));
+
 	public static void register(IEventBus eventBus) {
 		BLOCK_ENTITIES.register(eventBus);
 	}
