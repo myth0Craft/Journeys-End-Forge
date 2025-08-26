@@ -24,6 +24,7 @@ public class UnstableShadowPrismBlockEntity extends ShadowPrismBlockEntity {
 	public int activeTicks = 0;
 	public int ticksUntilLaser = 0;
 	private AABB laserDamageArea;
+	public static final int BEAM_HEIGHT = 6;
 
 	public UnstableShadowPrismBlockEntity(BlockPos pPos, BlockState pBlockState) {
 		super(ModBlockEntities.UNSTABLE_SHADOW_PRISM_BLOCK_ENTITY.get(), pPos, pBlockState);
@@ -33,7 +34,12 @@ public class UnstableShadowPrismBlockEntity extends ShadowPrismBlockEntity {
 	public void onLoad() {
 		ticksUntilLaser = 40;
 		laserDamageArea = new AABB(worldPosition)
-				.expandTowards(0, 6, 0);
+				.expandTowards(0, BEAM_HEIGHT, 0);
+	}
+
+	@Override
+	public AABB getRenderBoundingBox() {
+		return new AABB(worldPosition).expandTowards(0, BEAM_HEIGHT, 0);
 	}
 
 	public boolean isActive() {

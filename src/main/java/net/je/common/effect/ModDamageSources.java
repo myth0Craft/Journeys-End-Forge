@@ -19,6 +19,7 @@ public class ModDamageSources {
     public ModDamageSources(RegistryAccess pRegistry) {
         this.damageTypes = pRegistry.registryOrThrow(Registries.DAMAGE_TYPE);
         this.void_strike = this.source(ModDamageTypes.VOID_STRIKE);
+
     }
 
     private DamageSource source(ResourceKey<DamageType> pDamageTypeKey) {

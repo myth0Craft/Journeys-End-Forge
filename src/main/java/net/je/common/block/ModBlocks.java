@@ -319,7 +319,7 @@ public class ModBlocks {
 					.strength(50.0F, 1200.0F)));
 
 	public static final RegistryObject<Block> SHADOW_BEAM_RECEIVER = registerBlock("shadow_beam_receiver",
-			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)
+			() -> new ShadowBeamReceiverBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)
 					.instrument(NoteBlockInstrument.CHIME).requiresCorrectToolForDrops()
 					.strength(50.0F, 1200.0F)));
 

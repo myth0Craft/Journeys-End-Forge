@@ -98,6 +98,7 @@
   	"block.minecraft.spawn.not_valid": "You have no home bed, charged respawn anchor, or charged respawn nexus, or it was obstructed",
 	"effect.je.void_strike": "Void Strike",
 	"death.attack.void_strike": "%1$s was consumed by the Void",
+  	"death.attack.shadow_beam": "%1$s succumbed to the Shadow",
 	"creativetab.je.blocks": "Journey's End Blocks",
 	"creativetab.je.items": "Journey's End Items",
 	"tooltip.je.void_dust": "It does not feel entirely real.",

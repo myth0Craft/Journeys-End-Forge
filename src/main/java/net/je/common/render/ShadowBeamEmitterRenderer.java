@@ -26,7 +26,7 @@ public class ShadowBeamEmitterRenderer implements BlockEntityRenderer<ShadowBeam
 		int j = DyeColor.WHITE.getTextureDiffuseColor();
 		long k = pBlockEntity.getLevel().getGameTime();
 		int height = pBlockEntity.getBeamHeight();
-		if (pBlockEntity.isActive()) {
+		if (pBlockEntity.laserActive()) {
 			UnstableShadowPrismRenderer.renderBeaconBeam(pPoseStack, pBufferSource, BEAM_LOCATION, pPartialTick, 1, k, 1, height, j, 0.15F, 0.175F);
 		}
 	}
