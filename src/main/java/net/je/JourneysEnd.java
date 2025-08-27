@@ -30,7 +30,6 @@ import net.minecraft.client.particle.DragonBreathParticle;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
@@ -128,6 +127,7 @@ public class JourneysEnd {
 			}
 			BlockEntityRenderers.register(ModBlockEntities.RESPAWN_NEXUS_BLOCK_ENTITY.get(), RespawnNexusRenderer::new);
 			BlockEntityRenderers.register(ModBlockEntities.SHADOW_BEAM_EMITTER_BLOCK_ENTITY.get(), ShadowBeamEmitterRenderer::new);
+			BlockEntityRenderers.register(ModBlockEntities.ENDER_VAULT_BLOCK_ENTITY.get(), EnderVaultRenderer::new);
 
 			//ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHADOW_BLOCK.get(), RenderType.translucent());
 

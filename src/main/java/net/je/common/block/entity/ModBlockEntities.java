@@ -40,6 +40,10 @@ public class ModBlockEntities {
 			.register("shadow_beam_emitter_block_entity", () -> BlockEntityType.Builder
 					.of(ShadowBeamEmitterBlockEntity::new, ModBlocks.SHADOW_BEAM_EMITTER.get()).build(null));
 
+	public static final RegistryObject<BlockEntityType<EnderVaultBlockEntity>> ENDER_VAULT_BLOCK_ENTITY = BLOCK_ENTITIES
+			.register("ender_vault_block_entity", () -> BlockEntityType.Builder
+					.of(EnderVaultBlockEntity::new, ModBlocks.ENDER_VAULT.get()).build(null));
+
 	public static void register(IEventBus eventBus) {
 		BLOCK_ENTITIES.register(eventBus);
 	}

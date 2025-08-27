@@ -127,15 +127,8 @@ public class ModBlocks {
 					.randomTicks()));
 
 	public static final RegistryObject<Block> ENDER_VAULT = registerBlock("ender_vault",
-			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).strength(50.0F, 1200.0F)
-					.requiresCorrectToolForDrops().sound(SoundType.ANVIL).noLootTable().lightLevel(p_50755_ -> 15)) {
-				@Override
-				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
-						List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-					pTooltipComponents.add(Component.translatable("tooltip.je.unobtainable"));
-					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
-				}
-			});
+			() -> new EnderVaultBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE).strength(50.0F, 1200.0F)
+					.requiresCorrectToolForDrops().sound(SoundType.ANVIL).noLootTable().lightLevel(p_50755_ -> 15)));
 
 	public static final RegistryObject<Block> VOIDBLOOM = registerBlock("voidbloom",
 			() -> new VoidbloomBlock(BlockBehaviour.Properties.of().noCollission().instabreak()
