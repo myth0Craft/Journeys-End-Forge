@@ -5,6 +5,10 @@ import net.je.config.CommonConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -12,8 +16,10 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
+import org.joml.Vector3f;
 
-import java.util.List;
+import java.util.*;
 
 public class GravityDistorterBlockEntity extends BlockEntity {
 
@@ -23,8 +29,10 @@ public class GravityDistorterBlockEntity extends BlockEntity {
 	private int levitationAmount;
 	private AABB cachedArea;
 
-	public GravityDistorterBlockEntity(BlockPos pPos, BlockState pBlockState) {
-		super(ModBlockEntities.GRAVITY_DISTORTER_BLOCK_ENTITY.get(), pPos, pBlockState);
+	private final Set<UUID> levitatedEntities = new HashSet<>();
+
+	public GravityDistorterBlockEntity(BlockPos pos, BlockState state) {
+		super(ModBlockEntities.GRAVITY_DISTORTER_BLOCK_ENTITY.get(), pos, state);
 	}
 
 	@Override
@@ -51,8 +59,7 @@ public class GravityDistorterBlockEntity extends BlockEntity {
 
 	private void updateLevitationArea() {
 		if (level == null) return;
-		cachedArea = new AABB(worldPosition)
-				.expandTowards(0, 5 * levitationAmount, 0);
+		cachedArea = new AABB(worldPosition).expandTowards(0, 5 * levitationAmount, 0);
 	}
 
 	public AABB getLevitationArea() {
@@ -65,28 +72,78 @@ public class GravityDistorterBlockEntity extends BlockEntity {
 		if (be.cachedArea == null) be.updateLevitationArea();
 
 		List<LivingEntity> entities = level.getEntitiesOfClass(LivingEntity.class, be.cachedArea);
+		Set<UUID> seenThisTick = new HashSet<>();
 
 		for (LivingEntity entity : entities) {
-			if (entity instanceof Player player) {
-				if ((!player.isShiftKeyDown() && (!player.isCreative() || CommonConfig.GRAVITY_DISTORTER_WORKS_IN_CREATIVE.get()))) {
-					double x = player.getDeltaMovement().x();
-					double z = player.getDeltaMovement().z();
-
-					player.setDeltaMovement(x, 0.5, z);
-					player.hurtMarked = true;
-					//player.fallDistance = 0;
-					//player.setOnGround(false);
-
-
-
+			if (isAtBlock(entity, be.getBlockPos())) {
+				if (entity instanceof ServerPlayer player) {
+					if (player.isShiftKeyDown()) {
+						player.setNoGravity(false);
+						continue;
+					}
 				}
-			} else {
-				//if (!level.isClientSide) {
-					entity.setDeltaMovement(entity.getDeltaMovement().x(), 0.5, entity.getDeltaMovement().z());
-					//entity.resetFallDistance();
-				//}
+				be.levitateEntity(entity, pos);
+				seenThisTick.add(entity.getUUID());
+				if (entity instanceof ServerPlayer player) {
+					player.hurtMarked = true;
+				}
 			}
 		}
+
+		Iterator<UUID> it = be.levitatedEntities.iterator();
+		while (it.hasNext()) {
+			UUID id = it.next();
+			if (!seenThisTick.contains(id)) {
+				Entity e = ((ServerLevel) level).getEntity(id);
+				if (e instanceof LivingEntity le) {
+					le.setNoGravity(false);
+				}
+				it.remove();
+			}
+		}
+
+		be.levitatedEntities.clear();
+		be.levitatedEntities.addAll(seenThisTick);
+	}
+
+	private void levitateEntity(LivingEntity entity, BlockPos pos) {
+		double topY = pos.getY() + 5 * levitationAmount;
+		double currentY = entity.getY();
+
+		entity.setNoGravity(true);
+
+		Vec3 motion = entity.getDeltaMovement();
+
+		/*if (currentY < topY) {
+			Vec3 motion = entity.getDeltaMovement();
+			entity.setDeltaMovement(motion.x(), 0.5, motion.y());
+		} else if (currentY > topY) {
+			entity.setPos(entity.getX(), topY, entity.getZ());
+		}*/
+
+		if (currentY < topY - 0.1) {
+			double dy = topY - currentY;
+			double lift = Math.min(0.3, dy * 0.2);
+			Vec3 vec3 = new Vec3(motion.x(), lift, motion.z());
+			Vec3 finalVec = new Vec3(entity.handleRelativeFrictionAndCalculateMovement(vec3, 0.1f).toVector3f());
+			entity.setDeltaMovement(finalVec);
+		} else {
+			double newY = Math.min(motion.y(), 0);
+			Vec3 vec3 = new Vec3(motion.x(), newY, motion.z());
+			Vec3 finalVec = new Vec3(entity.handleRelativeFrictionAndCalculateMovement(vec3, 0.1f).toVector3f());
+			entity.setDeltaMovement(finalVec);
+
+			if (currentY > topY) {
+				entity.setPos(entity.getX(), topY, entity.getZ());
+			}
+		}
+
+		entity.fallDistance = 0;
+	}
+
+	private static boolean isAtBlock(LivingEntity entity, BlockPos pos) {
+		return Mth.floor(entity.getX()) == pos.getX() &&
+				Mth.floor(entity.getZ()) == pos.getZ();
 	}
 
 	@Override

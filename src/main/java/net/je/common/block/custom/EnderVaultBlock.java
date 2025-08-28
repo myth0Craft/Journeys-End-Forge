@@ -1,12 +1,17 @@
 package net.je.common.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import net.je.common.block.entity.BejeweledPedestalBlockEntity;
 import net.je.common.block.entity.EnderVaultBlockEntity;
+import net.je.common.block.entity.ModBlockEntities;
 import net.je.common.block.entity.ShadowBeamEmitterBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
@@ -30,5 +35,13 @@ public class EnderVaultBlock extends BaseEntityBlock {
 	@Override
 	protected RenderShape getRenderShape(BlockState pState) {
 		return RenderShape.MODEL;
+	}
+
+	@Nullable
+	@Override
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState,
+																  BlockEntityType<T> pBlockEntityType) {
+		return createTickerHelper(pBlockEntityType, ModBlockEntities.ENDER_VAULT_BLOCK_ENTITY.get(),
+				EnderVaultBlockEntity::tick);
 	}
 }

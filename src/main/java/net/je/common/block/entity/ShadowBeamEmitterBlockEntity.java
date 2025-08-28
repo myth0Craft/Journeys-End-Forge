@@ -156,9 +156,11 @@ public class ShadowBeamEmitterBlockEntity extends BlockEntity {
 		for (LivingEntity entity : entities) {
 			if (entity instanceof ServerPlayer player && player.isCreative()) continue;
 			if (laserTicks > 0 && laserActive) {
-				entity.hurt(level.damageSources().magic(), 1.0F);
-				entity.invulnerableTime = 1;
-				entity.hurtMarked = false;
+				if ((int) entity.getX() == be.getBlockPos().getX() && (int) entity.getZ() == be.getBlockPos().getZ()) {
+					entity.hurt(level.damageSources().magic(), 1.0F);
+					entity.invulnerableTime = 1;
+					entity.hurtMarked = false;
+				}
 			}
 		}
 	}
