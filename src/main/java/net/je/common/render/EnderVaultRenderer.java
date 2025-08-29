@@ -3,6 +3,7 @@ package net.je.common.render;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.je.common.block.ModBlocks;
+import net.je.common.block.custom.EnderVaultBlock;
 import net.je.common.block.custom.RespawnNexusBlock;
 import net.je.common.block.entity.EnderVaultBlockEntity;
 import net.je.common.block.entity.RespawnNexusBlockEntity;
@@ -25,6 +26,8 @@ public class EnderVaultRenderer implements BlockEntityRenderer<EnderVaultBlockEn
 
 			if (!pBlockEntity.getBlockState().is(ModBlocks.ENDER_VAULT.get())) return;
 
+			if ((pBlockEntity.getBlockState().getValue(EnderVaultBlock.WAVES_COMPLETE) == 4)) return;
+
 			pPoseStack.pushPose();
 
 			Matrix4f matrix4f = pPoseStack.last().pose();
@@ -32,7 +35,7 @@ public class EnderVaultRenderer implements BlockEntityRenderer<EnderVaultBlockEn
 
 			this.renderTopFace(matrix4f, consumer, 6f / 16f, 10f / 16f, 6f / 16f, 10f / 16f);
 
-		pPoseStack.popPose();
+			pPoseStack.popPose();
 	}
 
 	private void renderTopFace(Matrix4f pPose, VertexConsumer pConsumer,

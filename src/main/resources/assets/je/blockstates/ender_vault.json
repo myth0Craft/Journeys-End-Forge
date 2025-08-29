@@ -1,7 +1,34 @@
 {
   "variants": {
-    "": {
-      "model": "je:block/ender_vault_not_active"
+    "waves=0,active=false": {
+      "model": "je:block/ender_vault_not_active_0"
+    },
+    "waves=1,active=false": {
+      "model": "je:block/ender_vault_not_active_1"
+    },
+    "waves=2,active=false": {
+      "model": "je:block/ender_vault_not_active_2"
+    },
+    "waves=3,active=false": {
+      "model": "je:block/ender_vault_not_active_3"
+    },
+    "waves=4,active=false": {
+      "model": "je:block/ender_vault_not_active_4"
+    },
+    "waves=0,active=true": {
+      "model": "je:block/ender_vault_active_0"
+    },
+    "waves=1,active=true": {
+      "model": "je:block/ender_vault_active_1"
+    },
+    "waves=2,active=true": {
+      "model": "je:block/ender_vault_active_2"
+    },
+    "waves=3,active=true": {
+      "model": "je:block/ender_vault_active_3"
+    },
+    "waves=4,active=true": {
+      "model": "je:block/ender_vault_active_4"
     }
   }
 }
