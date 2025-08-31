@@ -18,3 +18,6 @@ To install the mod, put the mod's .jar file into the "mods" folder in a 1.21.1 M
 - Worldgen in the End, including custom biomes and ore generation.
 - A mysterious new structure in the End...
 
+
+Feel free to join our [Discord](https://discord.gg/ZfbtRkMztq) to chat with the devs and the community, view behind-the-scenes development updates, and give feedback!
+
