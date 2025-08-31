@@ -9,8 +9,10 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -32,19 +34,19 @@ public class EnderVaultBlockEntity extends BlockEntity {
 			if (pBlockEntity.delayBetweenWaves <= 0) {
 				pBlockEntity.updateActive(pLevel, pPos);
 				if (pBlockEntity.isActive()) {
-						if (pBlockEntity.getCurrentWave() == 4) {
-							pBlockEntity.finished = true;
-							pBlockEntity.updateActive(pLevel, pPos);
-							pBlockEntity.setChanged();
-							pLevel.sendBlockUpdated(pBlockEntity.worldPosition, pBlockEntity.getBlockState(), pBlockEntity.getBlockState(), Block.UPDATE_ALL);
-						} else if (pBlockEntity.getCurrentWave() == 3) {
-							pBlockEntity.wave4();
-						} else if (pBlockEntity.getCurrentWave() == 2) {
-							pBlockEntity.wave3();
-						} else if (pBlockEntity.getCurrentWave() == 1) {
-							pBlockEntity.wave2();
-						} else {
-							pBlockEntity.wave1();
+					if (pBlockEntity.getCurrentWave() == 4) {
+						pBlockEntity.finished = true;
+						pBlockEntity.updateActive(pLevel, pPos);
+						pBlockEntity.setChanged();
+						pLevel.sendBlockUpdated(pBlockEntity.worldPosition, pBlockEntity.getBlockState(), pBlockEntity.getBlockState(), Block.UPDATE_ALL);
+					} else if (pBlockEntity.getCurrentWave() == 3) {
+						pBlockEntity.wave4();
+					} else if (pBlockEntity.getCurrentWave() == 2) {
+						pBlockEntity.wave3();
+					} else if (pBlockEntity.getCurrentWave() == 1) {
+						pBlockEntity.wave2();
+					} else {
+						pBlockEntity.wave1();
 					}
 				}
 			} else {
@@ -107,6 +109,14 @@ public class EnderVaultBlockEntity extends BlockEntity {
 		setCurrentWave(4);
 		updateWavesComplete();
 		delayBetweenWaves = DELAY_AMOUNT;
+	}
+
+	/*private BlockPos findSpawnPos() {
+
+	}*/
+
+	private boolean canSpawnInLevel(Level pLevel) {
+		return pLevel.getDifficulty() == Difficulty.PEACEFUL ? false : pLevel.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING);
 	}
 
 	private void updateWavesComplete() {
