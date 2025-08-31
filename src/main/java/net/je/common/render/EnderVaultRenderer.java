@@ -26,7 +26,7 @@ public class EnderVaultRenderer implements BlockEntityRenderer<EnderVaultBlockEn
 
 			if (!pBlockEntity.getBlockState().is(ModBlocks.ENDER_VAULT.get())) return;
 
-			if ((pBlockEntity.getBlockState().getValue(EnderVaultBlock.WAVES_COMPLETE) == 4)) return;
+			if (pBlockEntity.finished) return;
 
 			pPoseStack.pushPose();
 

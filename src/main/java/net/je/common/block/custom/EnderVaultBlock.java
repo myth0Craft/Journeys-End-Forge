@@ -6,6 +6,8 @@ import net.je.common.block.entity.EnderVaultBlockEntity;
 import net.je.common.block.entity.ModBlockEntities;
 import net.je.common.block.entity.ShadowBeamEmitterBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -65,5 +67,15 @@ public class EnderVaultBlock extends BaseEntityBlock {
 																  BlockEntityType<T> pBlockEntityType) {
 		return createTickerHelper(pBlockEntityType, ModBlockEntities.ENDER_VAULT_BLOCK_ENTITY.get(),
 				EnderVaultBlockEntity::tick);
+	}
+
+	@Override
+	public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
+		if (pLevel.getBlockEntity(pPos) instanceof EnderVaultBlockEntity evbe && evbe.finished) {
+			double d0 = (double) pPos.getX() + 0.5;
+			double d1 = (double) pPos.getY() + 1.0;
+			double d2 = (double) pPos.getZ() + 0.5;
+			pLevel.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0, 0.0, 0.0);
+		}
 	}
 }
