@@ -8,7 +8,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -17,11 +17,17 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
+
+import java.util.Optional;
 
 public class EnderVaultBlockEntity extends BlockEntity {
 	private int delayBetweenWaves = 0;
 	private final int DELAY_AMOUNT = 20;
 	public boolean finished = false;
+
+	private final int SPAWN_RANGE = 7;
+	private static final float PLAYER_DETECTION_RANGE = 5f;
 
 
 	public EnderVaultBlockEntity(BlockPos pPos, BlockState pBlockState) {
@@ -57,8 +63,8 @@ public class EnderVaultBlockEntity extends BlockEntity {
 
 	public static boolean checkForPlayers(Level pLevel, BlockPos pPos) {
 		if (!pLevel.isClientSide()) {
-			if (pLevel.hasNearbyAlivePlayer(pPos.getX(), pPos.getY(), pPos.getZ(), 5f)) {
-				Player player = pLevel.getNearestPlayer(pPos.getX(), pPos.getY(), pPos.getZ(), 5f, false);
+			if (pLevel.hasNearbyAlivePlayer(pPos.getX(), pPos.getY(), pPos.getZ(), PLAYER_DETECTION_RANGE)) {
+				Player player = pLevel.getNearestPlayer(pPos.getX(), pPos.getY(), pPos.getZ(), PLAYER_DETECTION_RANGE, false);
 				if (player == null || player.getY() < pPos.getY()) return false;
 				//System.out.println("Player nearby at: " + player.getX() + ", " + player.getY() + ", " + player.getZ());
 				return true;
@@ -89,6 +95,9 @@ public class EnderVaultBlockEntity extends BlockEntity {
 	public void wave1() {
 		//wave1Complete = true;
 		setCurrentWave(1);
+		for (int i = 0; i < 10; i++) {
+			System.out.println(findSpawnPos(worldPosition, level));
+		}
 		updateWavesComplete();
 		delayBetweenWaves = DELAY_AMOUNT;
 	}
@@ -111,9 +120,13 @@ public class EnderVaultBlockEntity extends BlockEntity {
 		delayBetweenWaves = DELAY_AMOUNT;
 	}
 
-	/*private BlockPos findSpawnPos() {
-
-	}*/
+	private BlockPos findSpawnPos(BlockPos pPos, Level pLevel) {
+		RandomSource randomsource = pLevel.getRandom();
+		int d0 = (int) (pPos.getX() + (randomsource.nextDouble() - randomsource.nextDouble()) * (double)SPAWN_RANGE + 0.5);
+		int d1 = (pPos.getY() + randomsource.nextInt(3) - 1);
+		int d2 = (int) (pPos.getZ() + (randomsource.nextDouble() - randomsource.nextDouble()) * (double)SPAWN_RANGE + 0.5);
+		return new BlockPos(d0, d1, d2);
+	}
 
 	private boolean canSpawnInLevel(Level pLevel) {
 		return pLevel.getDifficulty() == Difficulty.PEACEFUL ? false : pLevel.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING);

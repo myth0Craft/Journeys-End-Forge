@@ -11,11 +11,14 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
 
@@ -75,14 +78,14 @@ public class GravityDistorterBlockEntity extends BlockEntity {
 		//Set<UUID> seenThisTick = new HashSet<>();
 
 		for (LivingEntity entity : entities) {
-			if (isAtBlock(entity, be.getBlockPos())) {
+			if (isAtBlock(entity, be.getBlockPos()) && be.hasClearPathToEntity(level, pos, entity)) {
 				if (entity instanceof ServerPlayer player) {
 					if (player.isShiftKeyDown()) {
 						//player.setNoGravity(false);
 						continue;
 					}
 				}
-				be.levitateEntity(entity, pos);
+				be.levitateEntity(entity, pos, level);
 				//seenThisTick.add(entity.getUUID());
 				if (entity instanceof ServerPlayer player) {
 					player.hurtMarked = true;
@@ -106,18 +109,41 @@ public class GravityDistorterBlockEntity extends BlockEntity {
 		be.levitatedEntities.addAll(seenThisTick);*/
 	}
 
-	private void levitateEntity(LivingEntity entity, BlockPos pos) {
+	private boolean hasClearPathToEntity(Level level, BlockPos pos, LivingEntity entity) {
+		int startY = pos.getY() + 1;
+		int endY = Mth.floor(entity.getY());
+		for (int y = startY; y <= endY; y++) {
+			BlockPos checkPos = new BlockPos(pos.getX(), y, pos.getZ());
+			if (!level.isEmptyBlock(checkPos)) return false;
+		}
+		return true;
+	}
+
+	private void levitateEntity(LivingEntity entity, BlockPos pos, Level pLevel) {
+		//boolean blocksInTheWay = false;
 		double topY = pos.getY() + 5 * levitationAmount;
 		double currentY = entity.getY();
 
+		/*for (int i = pos.getY() + 1; i <= currentY; i++) {
+			if (!pLevel.isEmptyBlock(pos.above(i - pos.getY()))) {
+				blocksInTheWay = true;
+			}
+		}*/
+
 		//entity.setNoGravity(true);
+		//if (!blocksInTheWay) {
+			Vec3 motion = entity.getDeltaMovement();
+			float friction = entity.level().getBlockState(entity.blockPosition()).getFriction(entity.level(), entity.blockPosition(), entity);
+			Vec3 horizontal = entity.handleRelativeFrictionAndCalculateMovement(motion, friction);
 
-		Vec3 motion = entity.getDeltaMovement();
-		float friction = entity.level().getBlockState(entity.blockPosition()).getFriction(entity.level(), entity.blockPosition(), entity);
-		Vec3 horizontal = entity.handleRelativeFrictionAndCalculateMovement(motion, friction);
+			double targetY = 0.3;
+			entity.setDeltaMovement(horizontal.x, targetY, horizontal.z);
 
-		double targetY = 0.3;
-		entity.setDeltaMovement(horizontal.x, targetY, horizontal.z);
+			entity.fallDistance = 0;
+			if (entity instanceof ServerPlayer player) {
+				player.hurtMarked = true;
+			}
+		//}
 
 		/*if (currentY > topY - 0.1) {
 			double dy = topY - currentY;
@@ -156,10 +182,7 @@ public class GravityDistorterBlockEntity extends BlockEntity {
 
 
 
-		entity.fallDistance = 0;
-		if (entity instanceof ServerPlayer player) {
-			player.hurtMarked = true;
-		}
+
 	}
 
 	private static boolean isAtBlock(LivingEntity entity, BlockPos pos) {
