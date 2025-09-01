@@ -2,31 +2,39 @@ package net.je.common.block.entity;
 
 import net.je.common.block.ModBlocks;
 import net.je.common.block.custom.EnderVaultBlock;
+import net.je.common.entity.ModEntities;
+import net.je.common.entity.custom.EndersentWithEye;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.monster.Husk;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Optional;
 
 public class EnderVaultBlockEntity extends BlockEntity {
 	private int delayBetweenWaves = 0;
-	private final int DELAY_AMOUNT = 20;
+	private static final int DELAY_AMOUNT = 20;
 	public boolean finished = false;
 
-	private final int SPAWN_RANGE = 7;
+	private static final int SPAWN_RANGE = 7;
 	private static final float PLAYER_DETECTION_RANGE = 5f;
 
 
@@ -63,21 +71,13 @@ public class EnderVaultBlockEntity extends BlockEntity {
 
 	public static boolean checkForPlayers(Level pLevel, BlockPos pPos) {
 		if (!pLevel.isClientSide()) {
-			if (pLevel.hasNearbyAlivePlayer(pPos.getX(), pPos.getY(), pPos.getZ(), PLAYER_DETECTION_RANGE)) {
-				Player player = pLevel.getNearestPlayer(pPos.getX(), pPos.getY(), pPos.getZ(), PLAYER_DETECTION_RANGE, false);
-				if (player == null || player.getY() < pPos.getY()) return false;
-				//System.out.println("Player nearby at: " + player.getX() + ", " + player.getY() + ", " + player.getZ());
-				return true;
-			} else {
-				return false;
-			}
+			Player player = pLevel.getNearestPlayer(pPos.getX(), pPos.getY(), pPos.getZ(), PLAYER_DETECTION_RANGE, false);
+			if (player == null || player.getY() < pPos.getY()) return false;
+			//System.out.println("Player nearby at: " + player.getX() + ", " + player.getY() + ", " + player.getZ());
+			return true;
 		} else {
 			return false;
 		}
-	}
-
-	public void spawnMob(LivingEntity pEntity) {
-
 	}
 
 	public int getCurrentWave() {
@@ -93,13 +93,12 @@ public class EnderVaultBlockEntity extends BlockEntity {
 	}
 
 	public void wave1() {
-		//wave1Complete = true;
 		setCurrentWave(1);
-		for (int i = 0; i < 10; i++) {
-			System.out.println(findSpawnPos(worldPosition, level));
-		}
 		updateWavesComplete();
 		delayBetweenWaves = DELAY_AMOUNT;
+		/*if (level != null && canSpawnInLevel(level)) {
+			spawnMobs(level, worldPosition, EntityType.ENDERMAN, 5);
+		}*/
 	}
 
 	public void wave2() {
@@ -118,18 +117,67 @@ public class EnderVaultBlockEntity extends BlockEntity {
 		setCurrentWave(4);
 		updateWavesComplete();
 		delayBetweenWaves = DELAY_AMOUNT;
+		/*if (level != null && canSpawnInLevel(level)) {
+			spawnMobs(level, worldPosition, ModEntities.ENDERSENT.get(), 2);
+		}*/
 	}
 
-	private BlockPos findSpawnPos(BlockPos pPos, Level pLevel) {
+	public void spawnMobs(Level pLevel, BlockPos pPos, EntityType<?> type, int count) {
+		for (int i = 0; i < count; i++) {
+			BlockPos pos = findSpawnPos(pPos, pLevel, type);
+
+			if (pos == null) {
+				for (int attempt = 0; attempt < 3 && pos == null; attempt++) {
+					pos = findSpawnPos(pPos, pLevel, type);
+				}
+			}
+			if (pos == null) continue;
+
+			Mob mob = (Mob) type.create(pLevel);
+			if (mob != null) {
+				mob.moveTo(
+						pos.getX() + 0.5D,
+						pos.getY(),
+						pos.getZ() + 0.5D,
+						pLevel.random.nextFloat() * 360F,
+						0.0F
+				);
+				pLevel.addFreshEntity(mob);
+			}
+		}
+	}
+
+	private BlockPos findSpawnPos(BlockPos pPos, Level pLevel, EntityType<?> type) {
 		RandomSource randomsource = pLevel.getRandom();
-		int d0 = (int) (pPos.getX() + (randomsource.nextDouble() - randomsource.nextDouble()) * (double)SPAWN_RANGE + 0.5);
+		int d0 = (int) (pPos.getX() + (randomsource.nextDouble() - randomsource.nextDouble()) * (double) SPAWN_RANGE + 0.5);
 		int d1 = (pPos.getY() + randomsource.nextInt(3) - 1);
-		int d2 = (int) (pPos.getZ() + (randomsource.nextDouble() - randomsource.nextDouble()) * (double)SPAWN_RANGE + 0.5);
-		return new BlockPos(d0, d1, d2);
+		int d2 = (int) (pPos.getZ() + (randomsource.nextDouble() - randomsource.nextDouble()) * (double) SPAWN_RANGE + 0.5);
+		BlockPos pos = new BlockPos(d0, d1, d2);
+		for (int i = 0; i < 5; i++) {
+			BlockPos checkPos = pos.above(i);
+
+			if (!pLevel.getBlockState(checkPos.below()).isSolid()) continue;
+
+			if (!pLevel.isEmptyBlock(checkPos) || !pLevel.isEmptyBlock(checkPos.above())) continue;
+
+			AABB box = type.getDimensions().makeBoundingBox(
+					checkPos.getX() + 0.5D,
+					checkPos.getY(),
+					checkPos.getZ() + 0.5D
+			);
+
+
+			if (pLevel.noCollision(box)) {
+				return checkPos;
+			}
+		}
+
+		return null;
 	}
 
 	private boolean canSpawnInLevel(Level pLevel) {
-		return pLevel.getDifficulty() == Difficulty.PEACEFUL ? false : pLevel.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING);
+		return true;
+				//pLevel.getDifficulty() == Difficulty.PEACEFUL ? false : pLevel.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING);
 	}
 
 	private void updateWavesComplete() {
@@ -160,18 +208,21 @@ public class EnderVaultBlockEntity extends BlockEntity {
 	public void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
 		super.saveAdditional(tag, registries);
 		tag.putBoolean("Finished", this.finished);
+		tag.putInt("delayBetweenWaves", this.delayBetweenWaves);
 	}
 
 	@Override
 	public void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
 		super.loadAdditional(tag, registries);
 		this.finished = tag.getBoolean("Finished");
+		this.delayBetweenWaves = tag.getInt("delayBetweenWaves");
 	}
 
 	@Override
 	public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
 		CompoundTag tag = super.getUpdateTag(registries);
 		tag.putBoolean("Finished", this.finished);
+		tag.putInt("delayBetweenWaves", this.delayBetweenWaves);
 		return tag;
 	}
 }

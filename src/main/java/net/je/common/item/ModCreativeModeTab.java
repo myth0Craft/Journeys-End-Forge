@@ -109,7 +109,8 @@ public class ModCreativeModeTab {
 
 				pOutput.accept(ModItems.WARDBREAKER_PICKAXE.get());
 
-				pOutput.accept(ModItems.ECLIPSE_KEY.get());
+				pOutput.accept(ModItems.SHADOW_AMULET.get());
+				pOutput.accept(ModItems.SHADOW_KEY.get());
 
 			})
 			.build());

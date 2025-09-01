@@ -94,8 +94,11 @@ public class ModItems {
 	public static final RegistryObject<Item> EYE_FRAGMENT = ITEMS.register("eye_fragment",
 			() -> new Item(new Item.Properties()));
 
-	public static final RegistryObject<Item> ECLIPSE_KEY = ITEMS.register("eclipse_key",
-			() -> new EclipseKeyItem(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+	public static final RegistryObject<Item> SHADOW_AMULET = ITEMS.register("shadow_amulet",
+			() -> new EclipseKeyItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+
+	public static final RegistryObject<Item> SHADOW_KEY = ITEMS.register("shadow_key",
+			() -> new Item(new Item.Properties()));
 
 	public static final RegistryObject<Item> WARDBREAKER_PICKAXE = ITEMS.register("wardbreaker_pickaxe",
 			() -> new PickaxeItem(ModToolTiers.VOIDMETAL, new Item.Properties()

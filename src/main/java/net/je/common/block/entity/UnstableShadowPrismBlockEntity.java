@@ -5,6 +5,7 @@ import net.je.config.CommonConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -71,25 +72,23 @@ public class UnstableShadowPrismBlockEntity extends ShadowPrismBlockEntity {
 					for (LivingEntity entity : entities) {
 						if (entity instanceof ServerPlayer player) {
 							if (!player.isCreative()) {
-								Vec3 movement = player.getDeltaMovement();
+								if (isAtBlock(player, be.getBlockPos())) {
 
-								player.hurt(level.damageSources().magic(), 1);
+									player.hurt(level.damageSources().magic(), 1);
 
-								player.invulnerableTime = 0;
+									player.invulnerableTime = 1;
 
-								player.hurtMarked = false;
-
-								player.setDeltaMovement(movement);
+									player.hurtMarked = false;
+								}
 							}
 						} else {
-							Vec3 movement = entity.getDeltaMovement();
+							if (isAtBlock(entity, be.getBlockPos())) {
 
-							entity.hurt(level.damageSources().magic(), 1);
-							entity.invulnerableTime = 0;
+								entity.hurt(level.damageSources().magic(), 1);
+								entity.invulnerableTime = 1;
 
-							entity.hurtMarked = false;
-
-							entity.setDeltaMovement(movement);
+								entity.hurtMarked = false;
+							}
 						}
 					}
 				}
@@ -99,5 +98,10 @@ public class UnstableShadowPrismBlockEntity extends ShadowPrismBlockEntity {
 				level.setBlockAndUpdate(pos, ModBlocks.FADED_END_STONE_BRICKS.get().defaultBlockState());
 			}
 		}
+	}
+
+	private static boolean isAtBlock(LivingEntity entity, BlockPos pos) {
+		return Mth.floor(entity.getX()) == pos.getX() &&
+				Mth.floor(entity.getZ()) == pos.getZ();
 	}
 }

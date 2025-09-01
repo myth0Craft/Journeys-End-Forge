@@ -52,6 +52,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.EYE_FRAGMENT.get());
         basicItem(ModItems.TIMEWORN_JOURNAL_T0.get());
         basicItem(ModItems.TIMEWORN_JOURNAL_T1.get());
+        basicItem(ModItems.SHADOW_KEY.get());
         //basicItem(ModItems.ECLIPSE_KEY.get());
 
 

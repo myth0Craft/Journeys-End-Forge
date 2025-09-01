@@ -15,6 +15,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -156,13 +157,18 @@ public class ShadowBeamEmitterBlockEntity extends BlockEntity {
 		for (LivingEntity entity : entities) {
 			if (entity instanceof ServerPlayer player && player.isCreative()) continue;
 			if (laserTicks > 0 && laserActive) {
-				if ((int) entity.getX() == be.getBlockPos().getX() && (int) entity.getZ() == be.getBlockPos().getZ()) {
+				if (isAtBlock(entity, this.getBlockPos())) {
 					entity.hurt(level.damageSources().magic(), 1.0F);
 					entity.invulnerableTime = 1;
 					entity.hurtMarked = false;
 				}
 			}
 		}
+	}
+
+	private static boolean isAtBlock(LivingEntity entity, BlockPos pos) {
+		return Mth.floor(entity.getX()) == pos.getX() &&
+				Mth.floor(entity.getZ()) == pos.getZ();
 	}
 
 	/*private DamageSource shadowBeamSource() {
