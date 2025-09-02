@@ -4,8 +4,11 @@ import net.je.common.block.ModBlocks;
 import net.je.common.block.custom.EnderVaultBlock;
 import net.je.common.entity.ModEntities;
 import net.je.common.entity.custom.EndersentWithEye;
+import net.je.common.item.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -19,6 +22,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.monster.Husk;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -53,6 +57,10 @@ public class EnderVaultBlockEntity extends BlockEntity {
 						pBlockEntity.updateActive(pLevel, pPos);
 						pBlockEntity.setChanged();
 						pLevel.sendBlockUpdated(pBlockEntity.worldPosition, pBlockEntity.getBlockState(), pBlockEntity.getBlockState(), Block.UPDATE_ALL);
+						if (pState.getValue(EnderVaultBlock.SHOULD_SPAWN_KEY)) {
+							ItemStack key = new ItemStack(ModItems.SHADOW_KEY.get());
+							DefaultDispenseItemBehavior.spawnItem(pLevel, key, 2, Direction.UP, Vec3.atBottomCenterOf(pPos).relative(Direction.UP, 1.2));
+						}
 					} else if (pBlockEntity.getCurrentWave() == 3) {
 						pBlockEntity.wave4();
 					} else if (pBlockEntity.getCurrentWave() == 2) {
@@ -88,7 +96,8 @@ public class EnderVaultBlockEntity extends BlockEntity {
 		if (this.level != null) {
 			level.setBlockAndUpdate(worldPosition, ModBlocks.ENDER_VAULT.get().defaultBlockState()
 					.setValue(EnderVaultBlock.ACTIVE, this.getBlockState().getValue(EnderVaultBlock.ACTIVE))
-					.setValue(EnderVaultBlock.WAVES_COMPLETE, Math.clamp(num, 0, 4)));
+					.setValue(EnderVaultBlock.WAVES_COMPLETE, Math.clamp(num, 0, 4))
+					.setValue(EnderVaultBlock.SHOULD_SPAWN_KEY, this.getBlockState().getValue(EnderVaultBlock.SHOULD_SPAWN_KEY)));
 		}
 	}
 
@@ -176,15 +185,15 @@ public class EnderVaultBlockEntity extends BlockEntity {
 	}
 
 	private boolean canSpawnInLevel(Level pLevel) {
-		return true;
-				//pLevel.getDifficulty() == Difficulty.PEACEFUL ? false : pLevel.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING);
+		return pLevel.getDifficulty() == Difficulty.PEACEFUL ? false : pLevel.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING);
 	}
 
 	private void updateWavesComplete() {
 		if (this.level != null) {
 			level.setBlockAndUpdate(worldPosition, ModBlocks.ENDER_VAULT.get().defaultBlockState()
 					.setValue(EnderVaultBlock.ACTIVE, this.getBlockState().getValue(EnderVaultBlock.ACTIVE))
-					.setValue(EnderVaultBlock.WAVES_COMPLETE, getCurrentWave()));
+					.setValue(EnderVaultBlock.WAVES_COMPLETE, getCurrentWave())
+					.setValue(EnderVaultBlock.SHOULD_SPAWN_KEY, this.getBlockState().getValue(EnderVaultBlock.SHOULD_SPAWN_KEY)));
 		}
 	}
 
@@ -192,7 +201,8 @@ public class EnderVaultBlockEntity extends BlockEntity {
 		boolean playerNearby = checkForPlayers(pLevel, pPos);
 		pLevel.setBlockAndUpdate(pPos, ModBlocks.ENDER_VAULT.get().defaultBlockState()
 				.setValue(EnderVaultBlock.ACTIVE, playerNearby && !finished)
-				.setValue(EnderVaultBlock.WAVES_COMPLETE, this.getBlockState().getValue(EnderVaultBlock.WAVES_COMPLETE)));
+				.setValue(EnderVaultBlock.WAVES_COMPLETE, this.getBlockState().getValue(EnderVaultBlock.WAVES_COMPLETE))
+				.setValue(EnderVaultBlock.SHOULD_SPAWN_KEY, this.getBlockState().getValue(EnderVaultBlock.SHOULD_SPAWN_KEY)));
 	}
 
 	private boolean isActive() {

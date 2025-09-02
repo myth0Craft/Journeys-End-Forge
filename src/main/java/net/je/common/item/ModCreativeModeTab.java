@@ -73,6 +73,7 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModBlocks.RESPAWN_NEXUS.get());
 				pOutput.accept(ModBlocks.SHADOW_BEAM_EMITTER.get());
 				pOutput.accept(ModBlocks.SHADOW_BEAM_RECEIVER.get());
+				pOutput.accept(ModBlocks.BOUND_OBSIDIAN.get());
 
 			})
 			.build());

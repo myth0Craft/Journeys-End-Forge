@@ -249,6 +249,9 @@ public class ModBlocks {
 	public static final RegistryObject<Block> WARDED_CHISELED_SHADOW_STONE = registerBlock("warded_chiseled_shadow_stone",
 			WardedBlock::new);
 
+	public static final RegistryObject<Block> BOUND_OBSIDIAN = registerBlock("bound_obsidian",
+			BoundObsidianBlock::new);
+
 	public static final RegistryObject<Block> VOID_LANTERN = registerBlock(
 			"void_lantern",
 			() -> new Block(

@@ -20,11 +20,13 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraftforge.unsafe.UnsafeFieldAccess;
 import org.jetbrains.annotations.Nullable;
 
 public class EnderVaultBlock extends BaseEntityBlock {
 	public static final IntegerProperty WAVES_COMPLETE = IntegerProperty.create("waves", 0, 4);
 	public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
+	public static final BooleanProperty SHOULD_SPAWN_KEY = BooleanProperty.create("should_spawn_key");
 
 
 	public static final MapCodec<EnderVaultBlock> CODEC = simpleCodec(EnderVaultBlock::new);
@@ -32,18 +34,18 @@ public class EnderVaultBlock extends BaseEntityBlock {
 	public EnderVaultBlock(Properties pProperties) {
 
 		super(pProperties);
-		this.registerDefaultState(this.defaultBlockState().setValue(ACTIVE, false).setValue(WAVES_COMPLETE, 0));
+		this.registerDefaultState(this.defaultBlockState().setValue(ACTIVE, false).setValue(WAVES_COMPLETE, 0).setValue(SHOULD_SPAWN_KEY, false));
 	}
 
 	@Nullable
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-		return this.defaultBlockState().setValue(WAVES_COMPLETE, 0).setValue(ACTIVE, false);
+		return this.defaultBlockState().setValue(WAVES_COMPLETE, 0).setValue(ACTIVE, false).setValue(SHOULD_SPAWN_KEY, false);
 	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-		pBuilder.add(WAVES_COMPLETE, ACTIVE);
+		pBuilder.add(WAVES_COMPLETE, ACTIVE, SHOULD_SPAWN_KEY);
 	}
 
 	@Override

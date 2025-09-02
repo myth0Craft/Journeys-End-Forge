@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "je:block/bound_obsidian_top",
+    "side": "je:block/bound_obsidian",
+    "particle": "je:block/bound_obsidian",
+    "top": "je:block/bound_obsidian_top"
+  }
+}

@@ -2,6 +2,7 @@
   "values": [
     "je:end_stone_furnace",
 	"je:compressed_end_stone",
-	"je:respawn_nexus"
+	"je:respawn_nexus",
+	"je:bound_obsidian"
   ]
 }

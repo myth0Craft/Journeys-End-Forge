@@ -1,5 +1,6 @@
-// 1.21.1	2025-08-26T08:24:21.4327268	Loot Tables
+// 1.21.1	2025-09-01T20:09:28.1304629	Loot Tables
 04b8d641bf508843331df4a32f889fc2e0a258d3 data/je/loot_table/blocks/blighted_shadow_stone.json
+f83e3315b3a325207f5acfc94ac3ff596b544a20 data/je/loot_table/blocks/bound_obsidian.json
 8667f98a1f0ea3068b88a0df51c17eb5b3615506 data/je/loot_table/blocks/chiseled_end_stone.json
 e92ed0af158aaae1c5af370895808e1773e5d046 data/je/loot_table/blocks/chiseled_shadow_stone.json
 e188ab287e2e33d68c8b7c3d4a175b783d06209b data/je/loot_table/blocks/compressed_end_stone.json

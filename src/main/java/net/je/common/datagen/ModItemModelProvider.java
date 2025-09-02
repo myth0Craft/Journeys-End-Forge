@@ -78,6 +78,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         blockItem(ModBlocks.SHADOW_BLOCK.get());
         blockItem(ModBlocks.ECLIPSED_SHADOW_BLOCK.get());
+        blockItem(ModBlocks.BOUND_OBSIDIAN.get());
     }
 
     private ItemModelBuilder blockItem(Block block) {
