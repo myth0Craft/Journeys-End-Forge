@@ -3,6 +3,7 @@ package net.je.event;
 import java.lang.reflect.Field;
 
 import net.je.JourneysEnd;
+import net.je.common.entity.custom.Echo;
 import net.je.config.CommonConfig;
 import net.je.common.entity.ModEntities;
 import net.je.common.entity.custom.Endersent;
@@ -23,32 +24,10 @@ public class ModEventBusEvents {
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.ENDERSENT.get(), Endersent.createMonsterAttributes().build());
         event.put(ModEntities.ENDERSENT_WITH_EYE.get(), EndersentWithEye.createMonsterAttributes().build());
+		event.put(ModEntities.ECHO.get(), Echo.createMonsterAttributes().build());
     }
 
     @SubscribeEvent
     public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
     }
-
-    @SubscribeEvent
-    public static void onCommonSetup(FMLCommonSetupEvent event) {
-    	event.enqueueWork(() -> {
-    		ResourceLocation conditionalId = ResourceLocation.fromNamespaceAndPath("forge", "conditional");
-    		RecipeSerializer<?> serializer = ForgeRegistries.RECIPE_SERIALIZERS.getValue(conditionalId);
-    		if (serializer == null) {
-    			System.err.println("[!!!] forge:conditional serializeris missing");
-    		} else {
-    			System.out.println("[OK] forge:conditional serializer is registerd: " + serializer);
-    		}
-
-        	System.out.println(CommonConfig.ENABLE_VANILLA_EYE_RECIPE.get());
-    		System.out.println("========Recipe Manager Fields=========");
-    		for (Field field : RecipeManager.class.getDeclaredFields()) {
-    			field.setAccessible(true);
-    			System.out.println(field.getName() + " -> " + field.getType().getTypeName());
-    		}
-    		System.out.println("=======================================");
-    	});
-    }
-
-
 }

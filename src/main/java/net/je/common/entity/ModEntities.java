@@ -3,6 +3,7 @@ package net.je.common.entity;
 import net.je.JourneysEnd;
 import net.je.common.entity.custom.Endersent;
 import net.je.common.entity.custom.EndersentWithEye;
+import net.je.common.entity.custom.Echo;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -23,6 +24,13 @@ public class ModEntities {
 	public static final RegistryObject<EntityType<EndersentWithEye>> ENDERSENT_WITH_EYE =
 			ENTITY_TYPES.register("endersent_with_eye", () -> EntityType.Builder.<EndersentWithEye>of(EndersentWithEye::new, MobCategory.CREATURE)
 					.sized(1f, 6.5f).eyeHeight(6f).build(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "endersent_with_eye").toString()));
+
+	public static final RegistryObject<EntityType<Echo>> ECHO =
+			ENTITY_TYPES.register("echo", () -> EntityType.Builder.<Echo>of(Echo::new, MobCategory.CREATURE)
+					.sized(0.6F, 1.8F)
+					.eyeHeight(1.62F)
+					.fireImmune()
+					.build(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "echo").toString()));
 
 	public static void register(IEventBus eventBus) {
 		ENTITY_TYPES.register(eventBus);

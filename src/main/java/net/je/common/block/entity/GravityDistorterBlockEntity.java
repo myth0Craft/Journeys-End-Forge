@@ -84,6 +84,9 @@ public class GravityDistorterBlockEntity extends BlockEntity {
 						//player.setNoGravity(false);
 						continue;
 					}
+					if (player.isCreative() && !CommonConfig.GRAVITY_DISTORTER_WORKS_IN_CREATIVE.get()) {
+						continue;
+					}
 				}
 				be.levitateEntity(entity, pos, level);
 				//seenThisTick.add(entity.getUUID());

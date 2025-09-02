@@ -34,6 +34,9 @@ public class ModItems {
 			"endersent_with_eye_spawn_egg",
 			() -> new ForgeSpawnEggItem(ModEntities.ENDERSENT_WITH_EYE, 0, 28249, new Item.Properties()));
 
+	public static final RegistryObject<ForgeSpawnEggItem> ECHO_SPAWN_EGG = ITEMS.register("echo_spawn_egg",
+			() -> new ForgeSpawnEggItem(ModEntities.ECHO, 0, 0x100d19, new Item.Properties()));
+
 	public static final RegistryObject<Item> VOIDBLIGHT_BUCKET = ITEMS.register("voidblight_bucket",
 			() -> new VoidblightBucketItem(ModFluids.SOURCE_VOIDBLIGHT,
 					new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));

@@ -5,6 +5,7 @@ import com.mojang.logging.LogUtils;
 import net.je.common.block.ModBlocks;
 import net.je.common.block.entity.ModBlockEntities;
 import net.je.common.conditions.ModConditions;
+import net.je.common.entity.client.renderer.entity.EchoRenderer;
 import net.je.common.render.*;
 import net.je.config.CommonConfig;
 import net.je.common.effect.ModEffects;
@@ -166,6 +167,7 @@ public class JourneysEnd {
 			// Entities
 			event.registerEntityRenderer(ModEntities.ENDERSENT.get(), EndersentRenderer::new);
 			event.registerEntityRenderer(ModEntities.ENDERSENT_WITH_EYE.get(), EndersentWithEyeRenderer::new);
+			event.registerEntityRenderer(ModEntities.ECHO.get(), EchoRenderer::new);
 
 
 

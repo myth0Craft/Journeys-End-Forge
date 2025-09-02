@@ -105,9 +105,9 @@ public class EnderVaultBlockEntity extends BlockEntity {
 		setCurrentWave(1);
 		updateWavesComplete();
 		delayBetweenWaves = DELAY_AMOUNT;
-		/*if (level != null && canSpawnInLevel(level)) {
-			spawnMobs(level, worldPosition, EntityType.ENDERMAN, 5);
-		}*/
+		if (level != null && canSpawnInLevel(level)) {
+			spawnMobs(level, worldPosition, ModEntities.ECHO.get(), 3);
+		}
 	}
 
 	public void wave2() {
@@ -126,9 +126,9 @@ public class EnderVaultBlockEntity extends BlockEntity {
 		setCurrentWave(4);
 		updateWavesComplete();
 		delayBetweenWaves = DELAY_AMOUNT;
-		/*if (level != null && canSpawnInLevel(level)) {
-			spawnMobs(level, worldPosition, ModEntities.ENDERSENT.get(), 2);
-		}*/
+		if (level != null && canSpawnInLevel(level)) {
+			spawnMobs(level, worldPosition, ModEntities.ENDERSENT.get(), 1);
+		}
 	}
 
 	public void spawnMobs(Level pLevel, BlockPos pPos, EntityType<?> type, int count) {

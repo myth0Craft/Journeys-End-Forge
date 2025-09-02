@@ -2,9 +2,10 @@ package net.je.common.entity.client.renderer.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-
 import net.je.common.entity.client.EndersentModel;
 import net.je.common.entity.custom.BaseEndersent;
+import net.je.common.entity.custom.Echo;
+import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
@@ -12,17 +13,14 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
-@OnlyIn(Dist.CLIENT)
-public class EndersentEyesLayer<T extends BaseEndersent, M extends EndersentModel<T>> extends RenderLayer<T, M> {
+public class EchoEyesLayer<T extends Echo, M extends PlayerModel<T>> extends RenderLayer<T, M> {
 
 
 	private final ResourceLocation texture;
 
 
-	public EndersentEyesLayer(
+	public EchoEyesLayer(
 			RenderLayerParent<T, M> p_234885_,
 			ResourceLocation p_234886_
 
@@ -30,6 +28,7 @@ public class EndersentEyesLayer<T extends BaseEndersent, M extends EndersentMode
 		super(p_234885_);
 		this.texture = p_234886_;
 	}
+
 
 	@Override
 	public void render(
