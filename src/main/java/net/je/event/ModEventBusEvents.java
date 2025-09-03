@@ -3,6 +3,7 @@ package net.je.event;
 import java.lang.reflect.Field;
 
 import net.je.JourneysEnd;
+import net.je.common.entity.custom.Duskblade;
 import net.je.common.entity.custom.Echo;
 import net.je.config.CommonConfig;
 import net.je.common.entity.ModEntities;
@@ -25,6 +26,7 @@ public class ModEventBusEvents {
         event.put(ModEntities.ENDERSENT.get(), Endersent.createMonsterAttributes().build());
         event.put(ModEntities.ENDERSENT_WITH_EYE.get(), EndersentWithEye.createMonsterAttributes().build());
 		event.put(ModEntities.ECHO.get(), Echo.createMonsterAttributes().build());
+        event.put(ModEntities.DUSKBLADE.get(), Duskblade.createMonsterAttributes().build());
     }
 
     @SubscribeEvent

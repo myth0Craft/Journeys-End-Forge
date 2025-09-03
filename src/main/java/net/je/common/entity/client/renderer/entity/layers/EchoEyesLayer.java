@@ -13,8 +13,9 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
+import net.minecraft.world.entity.Mob;
 
-public class EchoEyesLayer<T extends Echo, M extends PlayerModel<T>> extends RenderLayer<T, M> {
+public class EchoEyesLayer<T extends Mob, M extends PlayerModel<T>> extends RenderLayer<T, M> {
 
 
 	private final ResourceLocation texture;

@@ -37,6 +37,9 @@ public class ModItems {
 	public static final RegistryObject<ForgeSpawnEggItem> ECHO_SPAWN_EGG = ITEMS.register("echo_spawn_egg",
 			() -> new ForgeSpawnEggItem(ModEntities.ECHO, 0, 0x100d19, new Item.Properties()));
 
+	public static final RegistryObject<ForgeSpawnEggItem> DUSKBLADE_SPAWN_EGG = ITEMS.register("duskblade_spawn_egg",
+			() -> new ForgeSpawnEggItem(ModEntities.DUSKBLADE, 0, 0x1f262d, new Item.Properties()));
+
 	public static final RegistryObject<Item> VOIDBLIGHT_BUCKET = ITEMS.register("voidblight_bucket",
 			() -> new VoidblightBucketItem(ModFluids.SOURCE_VOIDBLIGHT,
 					new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));

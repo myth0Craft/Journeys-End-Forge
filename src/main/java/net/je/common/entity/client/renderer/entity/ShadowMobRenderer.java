@@ -10,21 +10,22 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Mob;
 
-public class EchoRenderer extends MobRenderer<Echo, PlayerModel<Echo>> {
+public class ShadowMobRenderer<T extends Mob> extends MobRenderer<T, PlayerModel<T>> {
 
 	private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "textures/entity/echo/echo.png");
 	private static final ResourceLocation EYES = ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "textures/entity/echo/echo_eyes.png");
 
-
-	public EchoRenderer(EntityRendererProvider.Context context) {
+	public ShadowMobRenderer(EntityRendererProvider.Context context) {
 		super(context, new PlayerModel<>(context.bakeLayer(ModelLayers.PLAYER), false), 0.5f);
+
 		this.addLayer(new EchoEyesLayer<>(this, EYES));
 		this.addLayer(new ItemInHandLayer<>(this, context.getItemInHandRenderer()));
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(Echo pEntity) {
+	public ResourceLocation getTextureLocation(T entity) {
 		return TEXTURE;
 	}
 }

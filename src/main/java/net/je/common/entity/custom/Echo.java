@@ -5,6 +5,7 @@ import net.je.common.entity.ai.EndersentAttackGoal;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -25,9 +26,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class Echo extends Monster {
 
-	public Echo(Level pLevel) {
-		super(ModEntities.ECHO.get(), pLevel);
-	}
+	private boolean didHaveSword = false;
 
 	public Echo(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
@@ -42,14 +41,13 @@ public class Echo extends Monster {
 	@Override
 	public void registerGoals() {
 		this.goalSelector.addGoal(0, new FloatGoal(this));
-		//this.goalSelector.addGoal(2, new EndersentAttackGoal(this, 1.0D, true));
 		this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.5, false));
 		this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0, 0.0F));
 		this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8.0F));
-		this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
+		this.goalSelector.addGoal(10, new RandomLookAroundGoal(this));
 		this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, Mob.class, 8.0F));
 
-		this.targetSelector.addGoal(5, new HurtByTargetGoal(this));
+		//this.targetSelector.addGoal(5, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
 	}
 
@@ -64,12 +62,16 @@ public class Echo extends Monster {
 			if (!mainHand.isEmpty() && mainHand.is(SWORDS_TAG)) {
 				ItemStack copy = new ItemStack(mainHand.getItem(), 1);
 				this.setItemSlot(EquipmentSlot.MAINHAND, copy);
+				this.didHaveSword = true;
+			}
+			if (!mainHand.is(SWORDS_TAG) && didHaveSword) {
+				this.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
 			}
 		}
 	}
 
-	@Override
-	public ItemStack getMainHandItem() {
-		return super.getMainHandItem();
+	public void die(DamageSource pDamageSource) {
+		this.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
+		super.die(pDamageSource);
 	}
 }
