@@ -21,6 +21,7 @@ public class ModTags {
 
 	public static class Entities {
 		public static final TagKey<EntityType<?>> END_MOBS = createTag("end_mobs");
+		public static final TagKey<EntityType<?>> SHADOW_MOBS = createTag("shadow_mobs");
 
 
 		private static TagKey<EntityType<?>> createTag(String name) {

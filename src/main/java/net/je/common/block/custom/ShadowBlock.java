@@ -35,7 +35,7 @@ public class ShadowBlock extends Block {
 			if (entity instanceof LivingEntity living) {
 				if (living.getMainHandItem().is(ModTags.Items.CAN_PASS_THROUGH_SHADOW_BLOCKS)
 						|| living.getOffhandItem().is(ModTags.Items.CAN_PASS_THROUGH_SHADOW_BLOCKS)
-						|| living.getInBlockState().is(ModBlocks.SHADOW_BLOCK.get())) {
+						|| living.getInBlockState().is(ModBlocks.SHADOW_BLOCK.get()) || living.getType().is(ModTags.Entities.SHADOW_MOBS)) {
 					return Shapes.empty();
 				} else if (living instanceof Player player) {
 					if (player.isCreative()) {

@@ -2,6 +2,9 @@ package net.je.common.worldgen;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.je.common.block.ModBlocks;
+import net.je.common.block.custom.EnderVaultBlock;
+import net.je.common.block.entity.EnderVaultBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
@@ -14,6 +17,7 @@ import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
@@ -93,6 +97,23 @@ public class ShadowTowerPiece extends TemplateStructurePiece {
 
 	@Override
 	protected void handleDataMarker(String pName, BlockPos pPos, ServerLevelAccessor pLevel, RandomSource pRandom, BoundingBox pBox) {
+		if (!pBox.isInside(pPos)) return;
+
+		switch (pName) {
+			case "je:ender_vault" -> {
+				pLevel.setBlock(pPos, ModBlocks.ENDER_VAULT.get().defaultBlockState(), 2);
+			}
+
+			case "je:ender_vault_with_key" -> {
+				// Replace with your special vault spawner
+				pLevel.setBlock(pPos, ModBlocks.ENDER_VAULT.get().defaultBlockState().setValue(EnderVaultBlock.SHOULD_SPAWN_KEY, true), 2);
+
+				BlockEntity be = pLevel.getBlockEntity(pPos);
+				if (be instanceof EnderVaultBlockEntity spawner) {
+					spawner.shouldSpawnKey = true;
+				}
+			}
+		}
 	}
 
 	@Override

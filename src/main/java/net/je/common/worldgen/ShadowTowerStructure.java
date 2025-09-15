@@ -69,10 +69,18 @@ public class ShadowTowerStructure extends Structure {
 			int yOffset = 5;
 
 			for (int i = 1; i < 12; i++) {
-				ResourceLocation floorId = ResourceLocation.fromNamespaceAndPath(
-						JourneysEnd.MODID,
-						"shadow_tower/shadow_tower_" + (i + 1)
-				);
+				ResourceLocation floorId;
+				if (i == 3) {
+					floorId = ResourceLocation.fromNamespaceAndPath(
+							JourneysEnd.MODID,
+							"shadow_tower/shadow_tower_4_config_1"
+					);
+				} else {
+					floorId = ResourceLocation.fromNamespaceAndPath(
+							JourneysEnd.MODID,
+							"shadow_tower/shadow_tower_" + (i + 1)
+					);
+				}
 
 				StructureTemplate template = templateManager.getOrCreate(floorId);
 				BlockPos placementPos = startPos.above(yOffset);

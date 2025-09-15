@@ -41,6 +41,8 @@ public class EnderVaultBlockEntity extends BlockEntity {
 	private static final int SPAWN_RANGE = 7;
 	private static final float PLAYER_DETECTION_RANGE = 5f;
 
+	public boolean shouldSpawnKey = false;
+
 
 	public EnderVaultBlockEntity(BlockPos pPos, BlockState pBlockState) {
 		super(ModBlockEntities.ENDER_VAULT_BLOCK_ENTITY.get(), pPos, pBlockState);
@@ -57,7 +59,7 @@ public class EnderVaultBlockEntity extends BlockEntity {
 						pBlockEntity.updateActive(pLevel, pPos);
 						pBlockEntity.setChanged();
 						pLevel.sendBlockUpdated(pBlockEntity.worldPosition, pBlockEntity.getBlockState(), pBlockEntity.getBlockState(), Block.UPDATE_ALL);
-						if (pState.getValue(EnderVaultBlock.SHOULD_SPAWN_KEY)) {
+						if (pState.getValue(EnderVaultBlock.SHOULD_SPAWN_KEY) || pBlockEntity.shouldSpawnKey) {
 							ItemStack key = new ItemStack(ModItems.SHADOW_KEY.get());
 							DefaultDispenseItemBehavior.spawnItem(pLevel, key, 2, Direction.UP, Vec3.atBottomCenterOf(pPos).relative(Direction.UP, 1.2));
 						}

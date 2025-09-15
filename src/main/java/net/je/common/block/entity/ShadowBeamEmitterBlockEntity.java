@@ -4,6 +4,7 @@ import net.je.JourneysEnd;
 import net.je.common.block.ModBlocks;
 import net.je.common.effect.ModDamageSources;
 import net.je.common.effect.ModDamageTypes;
+import net.je.common.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -156,6 +157,7 @@ public class ShadowBeamEmitterBlockEntity extends BlockEntity {
 
 		for (LivingEntity entity : entities) {
 			if (entity instanceof ServerPlayer player && player.isCreative()) continue;
+			if (entity.getType().is(ModTags.Entities.SHADOW_MOBS)) continue;
 			if (laserTicks > 0 && laserActive) {
 				if (isAtBlock(entity, this.getBlockPos())) {
 					entity.hurt(level.damageSources().magic(), 1.0F);

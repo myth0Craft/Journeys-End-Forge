@@ -2,6 +2,7 @@ package net.je.common.entity.custom;
 
 import net.je.common.entity.ModEntities;
 import net.je.common.entity.ai.EndersentAttackGoal;
+import net.je.common.entity.ai.ShadowMobNavigation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -15,6 +16,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.monster.Endermite;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -73,5 +75,10 @@ public class Echo extends Monster {
 	public void die(DamageSource pDamageSource) {
 		this.setItemSlot(EquipmentSlot.MAINHAND, ItemStack.EMPTY);
 		super.die(pDamageSource);
+	}
+
+	@Override
+	protected PathNavigation createNavigation(Level level) {
+		return new ShadowMobNavigation(this, level);
 	}
 }

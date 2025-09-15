@@ -93,4 +93,6 @@ public class EndersentModel<T extends Entity> extends HierarchicalModel<T> {
         this.animate(((BaseEndersent) p_102618_).largeAttackAnimationState, EndersentAttackAnim.LARGE_ATTACK, p_102621_, 1f);
 
 	}
+
+
 }
