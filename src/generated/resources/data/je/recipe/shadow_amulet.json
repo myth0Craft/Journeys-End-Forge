@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:chain"
+    },
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "V": {
+      "item": "je:voidmetal_ingot"
+    }
+  },
+  "pattern": [
+    "CVC",
+    "VNV",
+    " V "
+  ],
+  "result": {
+    "count": 1,
+    "id": "je:shadow_amulet"
+  }
+}

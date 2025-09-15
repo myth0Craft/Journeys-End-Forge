@@ -101,10 +101,24 @@ public class ModItems {
 			() -> new Item(new Item.Properties()));
 
 	public static final RegistryObject<Item> SHADOW_AMULET = ITEMS.register("shadow_amulet",
-			() -> new EclipseKeyItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+			() -> new EclipseKeyItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)) {
+				@Override
+				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
+											List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+					pTooltipComponents.add(Component.translatable("tooltip.je.shadow_amulet"));
+					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+				}
+			});
 
 	public static final RegistryObject<Item> SHADOW_KEY = ITEMS.register("shadow_key",
-			() -> new Item(new Item.Properties()));
+			() -> new Item(new Item.Properties()) {
+				@Override
+				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
+											List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+					pTooltipComponents.add(Component.translatable("tooltip.je.shadow_key"));
+					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+				}
+			});
 
 	public static final RegistryObject<Item> WARDBREAKER_PICKAXE = ITEMS.register("wardbreaker_pickaxe",
 			() -> new PickaxeItem(ModToolTiers.VOIDMETAL, new Item.Properties()
@@ -112,7 +126,7 @@ public class ModItems {
 				@Override
 				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
 						List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-					pTooltipComponents.add(Component.translatable("tooltip.je.placeholder"));
+					pTooltipComponents.add(Component.translatable("tooltip.je.wardbreaker_pickaxe"));
 					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
 				}
 			});

@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-01T20:09:28.1304629	Loot Tables
+// 1.21.1	2025-09-15T16:20:24.1420043	Loot Tables
 04b8d641bf508843331df4a32f889fc2e0a258d3 data/je/loot_table/blocks/blighted_shadow_stone.json
 f83e3315b3a325207f5acfc94ac3ff596b544a20 data/je/loot_table/blocks/bound_obsidian.json
 8667f98a1f0ea3068b88a0df51c17eb5b3615506 data/je/loot_table/blocks/chiseled_end_stone.json
@@ -50,3 +50,4 @@ e4b146df3e0b5b88ac154a07c2d12baaf30370a7 data/je/loot_table/blocks/warded_faded_
 79ffc470dedeee1c5728e46f1930b64334422fe4 data/je/loot_table/blocks/warded_shadow_stone.json
 6d1afff90633a91c4b11ecbd709944bc73516f45 data/je/loot_table/blocks/warded_shadow_stone_bricks.json
 26d5129cbbff30ae3a73bb531a74bab87ee39875 data/je/loot_table/blocks/warded_voidglass.json
+815a6387cfce2fa69295f1d63eeb3288dfc22fe3 data/je/loot_table/blocks/warded_void_lantern.json

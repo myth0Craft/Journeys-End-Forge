@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-01T20:09:28.1331023	Item Models: je
+// 1.21.1	2025-09-15T17:38:44.6744418	Item Models: je
 f9d42bb1600ab2b043e6856fea69dbb61d3e651c assets/je/models/item/bound_obsidian.json
 d3f22b8cf883d538935cdfeb4c4a1930c809829c assets/je/models/item/eclipsed_shadow_block.json
 cf50f6423637e2c1ffc8efefe583131bf9ddbe9a assets/je/models/item/eye_fragment.json
@@ -66,4 +66,4 @@ a47581cd5d1b6d3f49f8fa95d3d6204d98eb83b0 assets/je/models/item/voidmetal_shovel.
 a7577e970244cfa4e7064c602e56fc91e8a9a10c assets/je/models/item/voidmetal_sword.json
 33c7180629bed59851aa1f615782ddb85d3c2c98 assets/je/models/item/voidmetal_upgrade_smithing_template.json
 85a80edf442922ed39e8d7811b33bb8a50ebc1dd assets/je/models/item/void_dust.json
-d828c967cd834283bff20a209441e269f7224090 assets/je/models/item/wardbreaker_pickaxe.json
+471f26a22b2f944ec6be13c3b451cfe6cf76e72d assets/je/models/item/wardbreaker_pickaxe.json

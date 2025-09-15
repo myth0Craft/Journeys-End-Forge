@@ -1,0 +1,39 @@
+{
+  "parent": "je:timeworn_journal_t0",
+  "criteria": {
+    "enter_shadow_tower": {
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "location": {
+                "structures": "je:shadow_tower"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:location"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.je.shadow_tower.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "je:shadow_stone_bricks"
+    },
+    "title": {
+      "translate": "advancements.je.shadow_tower.title"
+    }
+  },
+  "requirements": [
+    [
+      "enter_shadow_tower"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

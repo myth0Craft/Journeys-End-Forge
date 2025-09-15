@@ -97,6 +97,54 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 				.requires(Blocks.END_STONE).requires(ModItems.TIMEWORN_JOURNAL_T0.get())
 				.unlockedBy("has_end_stone", has(Blocks.END_STONE)).save(recipeOutput);
 
+		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SHADOW_AMULET.get(), 1)
+				.pattern("CVC").pattern("VNV").pattern(" V ").define('C', Blocks.CHAIN).define('V', ModItems.VOIDMETAL_INGOT.get())
+				.define('N', Items.NETHER_STAR)
+				.unlockedBy("has_voidmetal", has(ModItems.VOIDMETAL_INGOT.get()))
+				.save(recipeOutput);
+
+		//warded block conversion
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE.get(), 1)
+				.requires(ModBlocks.WARDED_SHADOW_STONE.get())
+				.unlockedBy("has_warded_shadow_stone", has(ModBlocks.WARDED_SHADOW_STONE.get())).save(recipeOutput, "shadow_stone_from_warded");
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SHADOW_STONE_BRICKS.get(), 1)
+				.requires(ModBlocks.WARDED_SHADOW_STONE_BRICKS.get())
+				.unlockedBy("has_warded_shadow_stone_bricks", has(ModBlocks.WARDED_SHADOW_STONE_BRICKS.get())).save(recipeOutput, "shadow_stone_bricks_from_warded");
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_SHADOW_STONE_BRICKS.get(), 1)
+				.requires(ModBlocks.WARDED_CRACKED_SHADOW_STONE_BRICKS.get())
+				.unlockedBy("has_warded_cracked_shadow_stone_bricks", has(ModBlocks.WARDED_CRACKED_SHADOW_STONE_BRICKS.get())).save(recipeOutput, "cracked_shadow_stone_bricks_from_warded");
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SHADOW_STONE.get(), 1)
+				.requires(ModBlocks.WARDED_POLISHED_SHADOW_STONE.get())
+				.unlockedBy("has_warded_polished_shadow_stone", has(ModBlocks.WARDED_POLISHED_SHADOW_STONE.get())).save(recipeOutput, "polished_shadow_stone_from_warded");
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CORRUPTED_SHADOW_STONE.get(), 1)
+				.requires(ModBlocks.WARDED_CORRUPTED_SHADOW_STONE.get())
+				.unlockedBy("has_warded_corrupted_shadow_stone", has(ModBlocks.WARDED_CORRUPTED_SHADOW_STONE.get())).save(recipeOutput, "corrupted_shadow_stone_from_warded");
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.VOID_LANTERN.get(), 1)
+				.requires(ModBlocks.WARDED_VOID_LANTERN.get())
+				.unlockedBy("has_warded_void_lantern", has(ModBlocks.WARDED_VOID_LANTERN.get())).save(recipeOutput, "void_lantern_from_warded");
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FADED_END_STONE_BRICKS.get(), 1)
+				.requires(ModBlocks.WARDED_FADED_END_STONE_BRICKS.get())
+				.unlockedBy("has_warded_faded_end_stone_bricks", has(ModBlocks.WARDED_FADED_END_STONE_BRICKS.get())).save(recipeOutput, "faded_end_stone_bricks_from_warded");
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.BLIGHTED_SHADOW_STONE.get(), 1)
+				.requires(ModBlocks.WARDED_BLIGHTED_SHADOW_STONE.get())
+				.unlockedBy("has_warded_blighted_shadow_stone", has(ModBlocks.WARDED_BLIGHTED_SHADOW_STONE.get())).save(recipeOutput, "blighted_shadow_stone_from_warded");
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_SHADOW_STONE.get(), 1)
+				.requires(ModBlocks.WARDED_CHISELED_SHADOW_STONE.get())
+				.unlockedBy("has_warded_chiseled_shadow_stone", has(ModBlocks.WARDED_CHISELED_SHADOW_STONE.get())).save(recipeOutput, "chiseled_shadow_stone_from_warded");
+
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.VOIDGLASS.get(), 1)
+				.requires(ModBlocks.WARDED_VOIDGLASS.get())
+				.unlockedBy("has_warded_voidglass", has(ModBlocks.WARDED_VOIDGLASS.get())).save(recipeOutput, "voidglass_from_warded");
+
 		// end stone block set
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_END_STONE_SLAB.get(), 6)

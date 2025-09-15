@@ -38,6 +38,12 @@
 	"je:warded_faded_end_stone_bricks",
 	"je:gravity_distorter",
 	"je:respawn_nexus",
-	"je:bound_obsidian"
+	"je:bound_obsidian",
+	"je:warded_shadow_stone",
+	"je:warded_shadow_stone_bricks",
+	"je:warded_cracked_shadow_stone_bricks",
+	"je:warded_polished_shadow_stone",
+	"je:warded_corrupted_shadow_stone",
+	"je:warded_shadow_stone"
   ]
 }

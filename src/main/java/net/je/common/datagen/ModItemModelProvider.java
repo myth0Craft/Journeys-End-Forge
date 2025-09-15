@@ -62,9 +62,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.VOIDMETAL_HOE);
         handheldItem(ModItems.VOIDMETAL_SWORD);
 
-        withExistingParent(ModItems.WARDBREAKER_PICKAXE.getId().getPath(),
+        /*withExistingParent(ModItems.WARDBREAKER_PICKAXE.getId().getPath(),
                 ResourceLocation.parse("item/handheld")).texture("layer0",
-                ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID,"item/" + ModItems.VOIDMETAL_PICKAXE.getId().getPath()));
+                ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID,"item/" + ModItems.VOIDMETAL_PICKAXE.getId().getPath()));*/
+        handheldItem(ModItems.WARDBREAKER_PICKAXE);
 
         trimmedArmorItem(ModItems.VOIDMETAL_HELMET);
         trimmedArmorItem(ModItems.VOIDMETAL_CHESTPLATE);

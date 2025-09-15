@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "je:warded_shadow_stone_bricks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "je:shadow_stone_bricks"
+  }
+}

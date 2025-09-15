@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "je:polished_shadow_stone"
+        "recipe": "minecraft:polished_shadow_stone_from_warded"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "je:polished_shadow_stone"
+      "minecraft:polished_shadow_stone_from_warded"
     ]
   }
 }

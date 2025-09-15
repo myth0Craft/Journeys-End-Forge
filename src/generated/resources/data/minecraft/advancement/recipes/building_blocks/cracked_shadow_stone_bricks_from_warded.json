@@ -3,15 +3,15 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "je:polished_shadow_stone"
+        "recipe": "minecraft:cracked_shadow_stone_bricks_from_warded"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_warded_polished_shadow_stone": {
+    "has_warded_cracked_shadow_stone_bricks": {
       "conditions": {
         "items": [
           {
-            "items": "je:warded_polished_shadow_stone"
+            "items": "je:warded_cracked_shadow_stone_bricks"
           }
         ]
       },
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_warded_polished_shadow_stone"
+      "has_warded_cracked_shadow_stone_bricks"
     ]
   ],
   "rewards": {
     "recipes": [
-      "je:polished_shadow_stone"
+      "minecraft:cracked_shadow_stone_bricks_from_warded"
     ]
   }
 }

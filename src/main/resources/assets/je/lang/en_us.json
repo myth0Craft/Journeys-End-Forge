@@ -95,6 +95,7 @@
 	"block.je.shadow_prism": "Shadow Prism",
   	"block.je.unstable_shadow_prism": "Unstable Shadow Prism",
   	"block.je.void_lantern": "Void Lantern",
+  	"block.je.warded_void_lantern": "Warded Void Lantern",
   	"block.je.voidglass": "Voidglass",
   	"block.je.warded_voidglass": "Warded Voidglass",
   	"block.je.shadow_beam_emitter": "Shadow Beam Emitter",
@@ -108,6 +109,9 @@
 	"creativetab.je.blocks": "Journey's End Blocks",
 	"creativetab.je.items": "Journey's End Items",
 	"tooltip.je.void_dust": "It does not feel entirely real.",
+  	"tooltip.je.wardbreaker_pickaxe": "This item can break warded blocks",
+  	"tooltip.je.shadow_amulet": "Allows the bearer to pass through shadows",
+  	"tooltip.je.shadow_key": "Can unlock bound obsidian doorways",
 	"message.je.warded_block": "Warded by a dark spell, this block seems to resist your touch...",
 	//"tooltip.je.voidblight_bucket": "Used as fuel in the end stone furnace.",
 	//"tooltip.je.corrupted_dirt": "Dirt, tainted by the Void.",
@@ -123,6 +127,8 @@
 	"advancements.je.eye_fragment.title": "...Has been found",
 	"advancements.je.endersent_well.desc": "Find an Ancient Well",
 	"advancements.je.endersent_well.title": "What was once lost...",
+  	"advancements.je.shadow_tower.desc": "Enter the Shadow Tower",
+  	"advancements.je.shadow_tower.title": "Tower of Darkness",
 	
 	"tooltip.je.tier": "Tier ",
 	//

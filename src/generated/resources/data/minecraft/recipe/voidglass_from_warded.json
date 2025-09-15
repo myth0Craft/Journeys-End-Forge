@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "je:warded_voidglass"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "je:voidglass"
+  }
+}

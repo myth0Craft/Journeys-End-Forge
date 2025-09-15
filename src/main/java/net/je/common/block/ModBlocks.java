@@ -225,29 +225,50 @@ public class ModBlocks {
 					.isRedstoneConductor(ModBlocks::never).isSuffocating(ModBlocks::never).pushReaction(PushReaction.IGNORE)), false);
 
 	public static final RegistryObject<Block> WARDED_SHADOW_STONE = registerBlock("warded_shadow_stone",
-			WardedBlock::new);
+			() -> new WardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
 
 	public static final RegistryObject<Block> WARDED_SHADOW_STONE_BRICKS = registerBlock("warded_shadow_stone_bricks",
-			WardedBlock::new);
+			() -> new WardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
 
 	public static final RegistryObject<Block> WARDED_CRACKED_SHADOW_STONE_BRICKS = registerBlock("warded_cracked_shadow_stone_bricks",
-			WardedBlock::new);
+			() -> new WardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
 
 	public static final RegistryObject<Block> WARDED_POLISHED_SHADOW_STONE = registerBlock("warded_polished_shadow_stone",
-			WardedBlock::new);
+			() -> new WardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
 
 	public static final RegistryObject<Block> WARDED_CORRUPTED_SHADOW_STONE = registerBlock("warded_corrupted_shadow_stone",
-			WardedBlock::new);
+			() -> new WardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+
+	public static final RegistryObject<Block> WARDED_VOID_LANTERN = registerBlock("warded_void_lantern",
+			() -> new WardedBlock(
+					BlockBehaviour.Properties.of()
+							.instrument(NoteBlockInstrument.HAT)
+							.strength(0.3F)
+							.sound(SoundType.GLASS)
+							.noOcclusion()
+							.isValidSpawn(ModBlocks::never)
+							.isRedstoneConductor(ModBlocks::never)
+							.isSuffocating(ModBlocks::never)
+							.isViewBlocking(ModBlocks::never)
+							.lightLevel(l -> 15)
+			));
 
 	public static final RegistryObject<Block> WARDED_FADED_END_STONE_BRICKS = registerBlock("warded_faded_end_stone_bricks",
-			() -> new WardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).sound(SoundType.CALCITE)));
+			() -> new WardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().sound(SoundType.CALCITE)));
 
 	public static final RegistryObject<Block> WARDED_BLIGHTED_SHADOW_STONE = registerBlock("warded_blighted_shadow_stone",
 			() -> new WardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().sound(SoundType.SCULK).lightLevel(p -> 4)));
 
 	public static final RegistryObject<Block> WARDED_CHISELED_SHADOW_STONE = registerBlock("warded_chiseled_shadow_stone",
-			WardedBlock::new);
+			() -> new WardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
 
 	public static final RegistryObject<Block> BOUND_OBSIDIAN = registerBlock("bound_obsidian",
 			BoundObsidianBlock::new);

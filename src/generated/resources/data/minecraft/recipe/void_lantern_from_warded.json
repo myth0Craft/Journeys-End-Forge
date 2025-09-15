@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "je:warded_void_lantern"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "je:void_lantern"
+  }
+}

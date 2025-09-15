@@ -48,6 +48,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.WARDED_CHISELED_SHADOW_STONE, "chiseled_shadow_stone");
 
         blockWithItem(ModBlocks.VOID_LANTERN);
+        blockWithItem(ModBlocks.WARDED_VOID_LANTERN, "void_lantern");
 
         blockWithItem(ModBlocks.FADED_END_STONE_BRICKS);
         blockWithItem(ModBlocks.WARDED_FADED_END_STONE_BRICKS, "faded_end_stone_bricks");

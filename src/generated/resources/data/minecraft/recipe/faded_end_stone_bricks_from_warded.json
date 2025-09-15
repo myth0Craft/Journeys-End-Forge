@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "je:warded_faded_end_stone_bricks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "je:faded_end_stone_bricks"
+  }
+}

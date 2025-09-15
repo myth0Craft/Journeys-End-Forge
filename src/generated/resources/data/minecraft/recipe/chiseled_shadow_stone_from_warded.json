@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "je:warded_chiseled_shadow_stone"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "je:chiseled_shadow_stone"
+  }
+}

@@ -92,6 +92,11 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 LootItem.lootTableItem(Blocks.AIR));
         this.add(ModBlocks.VOID_LANTERN.get(), voidLantern);
 
+        LootTable.Builder wardedVoidLantern = this.createSilkTouchDispatchTable(
+                ModBlocks.WARDED_VOID_LANTERN.get(),
+                LootItem.lootTableItem(Blocks.AIR));
+        this.add(ModBlocks.WARDED_VOID_LANTERN.get(), wardedVoidLantern);
+
         LootTable.Builder voidglass = this.createSilkTouchDispatchTable(
                 ModBlocks.VOIDGLASS.get(),
                 LootItem.lootTableItem(Blocks.AIR));
