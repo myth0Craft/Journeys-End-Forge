@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-15T17:38:44.6744418	Item Models: je
+// 1.21.1	2025-09-16T17:50:44.6926418	Item Models: je
 f9d42bb1600ab2b043e6856fea69dbb61d3e651c assets/je/models/item/bound_obsidian.json
 d3f22b8cf883d538935cdfeb4c4a1930c809829c assets/je/models/item/eclipsed_shadow_block.json
 cf50f6423637e2c1ffc8efefe583131bf9ddbe9a assets/je/models/item/eye_fragment.json
@@ -7,11 +7,13 @@ cf50f6423637e2c1ffc8efefe583131bf9ddbe9a assets/je/models/item/eye_fragment.json
 4628d30ee9cc0594c2420ad6405a54224b9c52f8 assets/je/models/item/raw_voidmetal.json
 c34355db078bd04944ad667119da462dd8456704 assets/je/models/item/shadow_block.json
 de161f0ea70bc58b992573c9fff8041bbf5e6ba9 assets/je/models/item/shadow_key.json
+ce6965f900e4bcf68af175428e19193346b05963 assets/je/models/item/shadow_steel_sword.json
 503405595a5cbf276660e65d4668c7470afaca97 assets/je/models/item/shadow_stone_brick_wall.json
 881967c55948dc462d79c1eb6398f8d841e60b20 assets/je/models/item/shadow_stone_wall.json
 d5517f8f20564330954be81f6fac733936318325 assets/je/models/item/small_void_dust.json
 042a0909ab77cd890fe272f7055adcda2436ef41 assets/je/models/item/timeworn_journal_item_t0.json
 44ba1140f71cb25c838a1a1ffbcbd66c384d6619 assets/je/models/item/timeworn_journal_item_t1.json
+d5e983cd84248844a395ca83ab57c594a83f6674 assets/je/models/item/timeworn_journal_item_t2.json
 da474e3a2f1c02d420e25f3f4d52c1c6ee428050 assets/je/models/item/voidblight_bucket.json
 6ef83afca8c67e6e770f50fe3664705a7c94c5b6 assets/je/models/item/voidmetal_axe.json
 03cb6b7bb16fbd9de9d8c60b45f40285fc0a7348 assets/je/models/item/voidmetal_boots.json

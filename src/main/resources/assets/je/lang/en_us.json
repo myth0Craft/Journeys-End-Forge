@@ -26,6 +26,7 @@
 	"item.je.eye_fragment": "Eye Fragment",
 	"item.je.timeworn_journal_item_t0": "Timeworn Journal",
 	"item.je.timeworn_journal_item_t1": "Timeworn Journal",
+    "item.je.timeworn_journal_item_t2": "Timeworn Journal",
 	"item.je.voidmetal_helmet": "Voidmetal Helmet",
 	"item.je.voidmetal_chestplate": "Voidmetal Chestplate",
 	"item.je.voidmetal_leggings": "Voidmetal Leggings",
@@ -37,6 +38,7 @@
 	"item.je.smithing_template.voidmetal_upgrade.applies_to": "Netherite Equipment",
 	"item.je.smithing_template.voidmetal_upgrade.base_slot_description": "Add Netherite armor, weapon, or tool",
 	"item.je.smithing_template.voidmetal_upgrade.ingredients": "Voidmetal Ingot",
+  	"item.je.shadow_steel_sword": "Shadow Steel Sword",
 	
 	"item.je.wardbreaker_pickaxe": "Wardbreaker Pickaxe",
 	"item.je.shadow_amulet": "Shadow Amulet",
@@ -129,6 +131,10 @@
 	"advancements.je.endersent_well.title": "What was once lost...",
   	"advancements.je.shadow_tower.desc": "Enter the Shadow Tower",
   	"advancements.je.shadow_tower.title": "Tower of Darkness",
+  	"advancements.je.timeworn_journal_t1.desc": "Upgrade your journal to tier 1 by combining it with End Stone",
+  	"advancements.je.timeworn_journal_t1.title": "Journal Tier 1",
+  	"advancements.je.timeworn_journal_t2.desc": "Upgrade your journal to tier 2 by combining it with a Voidmetal Ingot",
+  	"advancements.je.timeworn_journal_t2.title": "Journal Tier 2",
 	
 	"tooltip.je.tier": "Tier ",
 	//
@@ -154,7 +160,9 @@
 	"screen.je.title.chapter_1": "Chapter 1",
 	"screen.je.lore.chapter_1": "If you are reading this, it may already be too late. Something stirs in the darkness of the Void. An ancient evil from ages long past yet also of the future. Long ago, it was sealed in an alternate reality known as the End so that its taint would no longer be able to reach the Overworld. However, its power is growing, and its strength returns. You may be the last hope to save the Overworld. You must seek out the eyes of Ender and reignite the gateway to the End. Long ago the eyes were scattered across the Overworld to prevent the End Portal from opening once more. You will have to travel far and wide to find them. Good luck.",
 	"screen.je.title.chapter_2": "Chapter 2",
-	"screen.je.lore.chapter_2": "If you are reading this, then you have already made it to the End and reopened the gateway. However, this is only the beginning of your quest. You will have to travel through lands blighted and shattered, to find the §kDark Tower§r and defeat the §kShadow Lord§r lurking within. I suggest getting Voidmetal gear, made from the residue of Endermen. The journey may be difficult, but everything depends on it. Good luck.",
+    "screen.je.lore.chapter_2": "If you are reading this, then you have already made it to the End and reopened the gateway. However, this is only the beginning of your quest. You will have to travel through lands blighted and shattered, to find the §kDark Tower§r and defeat the §kShadow Lord§r lurking within. I suggest getting Voidmetal gear, made from the residue of Endermen. The journey may be difficult, but everything depends on it. Good luck.",
+	"screen.je.title.placeholder_entry": "Chapter 3",
+    "screen.je.lore.placeholder_entry": "Despite upgrading the journal to tier 2, no new entries have appeared... Check back here in 3-5 business days.",
 	//
 	"screen.je.title.progression_1": "Getting to the End",
 	"screen.je.lore.progression_1": "Journey's End makes getting to the End dimension much harder than it is in Vanilla. You will need to travel around the Overworld and find rare structures containing Bejeweled Pedestals. All modded structures are documented in the Structures tab of this book. When right-clicked, a Bejeweled Pedestal will summon an Endersent, which you must kill to get 1-2 Eye Fragments. These are used to craft Eyes of Ender by combining them with Blaze Powder and Echo Shards in a Crafting Table. Eyes of Ender cannot be crafted from Ender Pearls! (This can be reenabled in the config.) Once you have Eyes of Ender, the progression to get to the End is the exact same as Vanilla - throw the Eyes and follow them to the Stronghold.",
@@ -194,9 +202,12 @@
 	//
 	"screen.je.title.timeworn_journal_t0": "Timeworn Journal",
 	"screen.je.lore.timeworn_journal_t0": "My old journal. This is where I recorded all of my knowledge from my many trips to the End. Only one who will continue my quest may read the words within, as many dark secrets can be found within these pages. As of right now, you will only be able to view certain pages of this book. However, as you progress on your quest, more knowledge may be unlocked. Upgrade the journal to unlock more entries by combining it with End Stone in a Crafting Table.",
-	 "screen.je.title.timeworn_journal_t1": "Timeworn Journal",
-	 "screen.je.lore.timeworn_journal_t1": "My old journal. This is where I recorded all of my knowledge from my many trips to the End. Only one who will continue my quest may read the words within, as many dark secrets can be found within these pages. As of right now, you will only be able to view certain pages of this book. However, as you progress on your quest, more knowledge may be unlocked. The journal cannot be upgraded any further.",
-	"screen.je.title.voidblight_bucket": "Voidblight Bucket",
+    "screen.je.title.timeworn_journal_t1": "Timeworn Journal",
+    "screen.je.lore.timeworn_journal_t1": "My old journal. This is where I recorded all of my knowledge from my many trips to the End. Only one who will continue my quest may read the words within, as many dark secrets can be found within these pages. As of right now, you will only be able to view certain pages of this book. However, as you progress on your quest, more knowledge may be unlocked. Upgrade the journal to unlock more entries by combining it with a Voidmetal Ingot in a Crafting Table.",
+    "screen.je.title.timeworn_journal_t2": "Timeworn Journal",
+    "screen.je.lore.timeworn_journal_t2": "My old journal. This is where I recorded all of my knowledge from my many trips to the End. Only one who will continue my quest may read the words within, as many dark secrets can be found within these pages. As of right now, you will only be able to view certain pages of this book. However, as you progress on your quest, more knowledge may be unlocked. The journal cannot be upgraded any further.",
+
+  "screen.je.title.voidblight_bucket": "Voidblight Bucket",
 	"screen.je.lore.voidblight_bucket": "Can be used as fuel in an End Stone Furnace. See the Voidblight entry under the Blocks list for more info.",
 	"screen.je.title.eye_fragment": "Eye Fragment",
 	"screen.je.lore.eye_fragment": "A fragment of a larger whole. They can be gained from defeating an Endersent carrying an eye, as the eye shatters into these shards upon the Endersent's death. It can be forged back into a complete Eye of Ender by combining it in a Crafting Table with an Echo Shard and Blaze Powder.",

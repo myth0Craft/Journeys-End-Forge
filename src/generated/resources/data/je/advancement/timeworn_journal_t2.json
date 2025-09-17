@@ -1,0 +1,33 @@
+{
+  "parent": "je:timeworn_journal_t1",
+  "criteria": {
+    "has_timeworn_journal_t2": {
+      "conditions": {
+        "items": [
+          {
+            "items": "je:timeworn_journal_item_t2"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.je.timeworn_journal_t2.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "je:timeworn_journal_item_t2"
+    },
+    "title": {
+      "translate": "advancements.je.timeworn_journal_t2.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_timeworn_journal_t2"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

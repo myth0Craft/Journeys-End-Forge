@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "je:voidmetal_ingot"
+    },
+    {
+      "item": "je:timeworn_journal_item_t1"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "je:timeworn_journal_item_t2"
+  }
+}

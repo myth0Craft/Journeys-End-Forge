@@ -52,6 +52,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.EYE_FRAGMENT.get());
         basicItem(ModItems.TIMEWORN_JOURNAL_T0.get());
         basicItem(ModItems.TIMEWORN_JOURNAL_T1.get());
+        basicItem(ModItems.TIMEWORN_JOURNAL_T2.get());
         basicItem(ModItems.SHADOW_KEY.get());
         //basicItem(ModItems.ECLIPSE_KEY.get());
 
@@ -61,6 +62,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.VOIDMETAL_SHOVEL);
         handheldItem(ModItems.VOIDMETAL_HOE);
         handheldItem(ModItems.VOIDMETAL_SWORD);
+
+        handheldItem(ModItems.SHADOW_STEEL_SWORD);
 
         /*withExistingParent(ModItems.WARDBREAKER_PICKAXE.getId().getPath(),
                 ResourceLocation.parse("item/handheld")).texture("layer0",

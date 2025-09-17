@@ -44,6 +44,8 @@ public class ModAdvancementProvider implements DataProvider {
 							InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.TIMEWORN_JOURNAL_T0.get()))
 					.save(consumer, ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "timeworn_journal_t0"));
 
+
+
 			//Holder<Structure> endersentWell = Holder.Reference.createStandAlone(lookup.lookupOrThrow(Registries.STRUCTURE), ModStructures.ENDERSENT_WELL);
 
 			//HolderOwner<Structure> owner = lookup.lookupOrThrow(Registries.STRUCTURE);
@@ -84,6 +86,24 @@ public class ModAdvancementProvider implements DataProvider {
 							true, false)
 					.addCriterion("has_eye_fragment", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.EYE_FRAGMENT.get()))
 					.save(consumer, ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "eye_fragment"));
+
+			@SuppressWarnings("removal")
+			AdvancementHolder timewornJournalT1 = Advancement.Builder.advancement()
+					.parent(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "timeworn_journal_t0"))
+					.display(ModItems.TIMEWORN_JOURNAL_T1.get(), Component.translatable("advancements.je.timeworn_journal_t1.title"),
+							Component.translatable("advancements.je.timeworn_journal_t1.desc"), null, AdvancementType.TASK, true,
+							true, false)
+					.addCriterion("has_timeworn_journal_t1", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.TIMEWORN_JOURNAL_T1.get()))
+					.save(consumer, ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "timeworn_journal_t1"));
+
+			@SuppressWarnings("removal")
+			AdvancementHolder timewornJournalT2 = Advancement.Builder.advancement()
+					.parent(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "timeworn_journal_t1"))
+					.display(ModItems.TIMEWORN_JOURNAL_T2.get(), Component.translatable("advancements.je.timeworn_journal_t2.title"),
+							Component.translatable("advancements.je.timeworn_journal_t2.desc"), null, AdvancementType.TASK, true,
+							true, false)
+					.addCriterion("has_timeworn_journal_t2", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.TIMEWORN_JOURNAL_T2.get()))
+					.save(consumer, ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "timeworn_journal_t2"));
 
 		};
 

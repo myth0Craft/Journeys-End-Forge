@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-15T17:20:05.555116	Recipes
+// 1.21.1	2025-09-16T17:50:44.6903098	Recipes
 4ddbe375df8d52b8def82a1db901bb9a408a396f data/je/advancement/recipes/building_blocks/chiseled_end_stone.json
 ada188c78d1cb313534b7e06f39db28c2316439b data/je/advancement/recipes/building_blocks/chiseled_shadow_stone.json
 e6175a515b7f353ee6c9f6a06d3258ec7c621586 data/je/advancement/recipes/building_blocks/compressed_end_stone.json
@@ -28,6 +28,7 @@ edd406164bb6fe0218512c7f164e03476f04e06c data/je/advancement/recipes/misc/end_st
 df35206b83f6e3e674c185eef606321b1f9fcc97 data/je/advancement/recipes/misc/shadow_amulet.json
 d06073302bdf0e39118484baa1d2d2386ec60595 data/je/advancement/recipes/misc/timeworn_journal_item_t0.json
 ab3422b1110733949a37ea05acfcf4c0355025e4 data/je/advancement/recipes/misc/timeworn_journal_item_t1.json
+444ba3590e4d08498740d57ffdcf7f0ed430eb73 data/je/advancement/recipes/misc/timeworn_journal_item_t2.json
 131d325591927e6c480a83b4dcdf6e424d877385 data/je/advancement/recipes/misc/voidmetal_ingot.json
 37f289c9ee502882aba20d2db2d5a480fa1f2c23 data/je/advancement/recipes/misc/voidmetal_nugget.json
 be5aba7975e7cd614ac8f1624c16ff8c4f3c8396 data/je/advancement/recipes/misc/voidmetal_upgrade_smithing_template.json
@@ -61,6 +62,7 @@ bb9ae5d6a29148743cdf3c5841fb486d12a1c1ca data/je/recipe/shadow_stone_stairs.json
 8e20ada6d1a0edbceb1aec095d42aad771ad0056 data/je/recipe/shadow_stone_wall.json
 34357427931b8fb2259889f67306e08355bfc0c3 data/je/recipe/timeworn_journal_item_t0.json
 509a8e97d75f3d4ccc2903981913007783378fc4 data/je/recipe/timeworn_journal_item_t1.json
+c736302b4ae0613748c6862de0c4963c0cdc4e3c data/je/recipe/timeworn_journal_item_t2.json
 94c4d8974586011878c92b91095f6d3194aded1a data/je/recipe/voidmetal_block.json
 f0650168d8c2f9db19a97a6bc63f1eb9257ef441 data/je/recipe/voidmetal_ingot.json
 30ed23ef518204becb52f3689db2db4ec3848a6e data/je/recipe/voidmetal_nugget.json

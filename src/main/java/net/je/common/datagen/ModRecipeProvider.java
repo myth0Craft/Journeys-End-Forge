@@ -97,6 +97,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 				.requires(Blocks.END_STONE).requires(ModItems.TIMEWORN_JOURNAL_T0.get())
 				.unlockedBy("has_end_stone", has(Blocks.END_STONE)).save(recipeOutput);
 
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.TIMEWORN_JOURNAL_T2.get(), 1)
+				.requires(ModItems.VOIDMETAL_INGOT.get()).requires(ModItems.TIMEWORN_JOURNAL_T1.get())
+				.unlockedBy("has_voidmetal_ingot", has(ModItems.VOIDMETAL_INGOT.get())).save(recipeOutput);
+
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SHADOW_AMULET.get(), 1)
 				.pattern("CVC").pattern("VNV").pattern(" V ").define('C', Blocks.CHAIN).define('V', ModItems.VOIDMETAL_INGOT.get())
 				.define('N', Items.NETHER_STAR)

@@ -68,6 +68,9 @@ public class ModItems {
 	public static final RegistryObject<Item> TIMEWORN_JOURNAL_T1 = ITEMS.register("timeworn_journal_item_t1",
 			() -> new TimewornJournalItem(new Item.Properties().stacksTo(1), 1));
 
+	public static final RegistryObject<Item> TIMEWORN_JOURNAL_T2 = ITEMS.register("timeworn_journal_item_t2",
+			() -> new TimewornJournalItem(new Item.Properties().stacksTo(1), 2));
+
 	public static final RegistryObject<Item> VOIDMETAL_SWORD = ITEMS.register("voidmetal_sword",
 			() -> new SwordItem(ModToolTiers.VOIDMETAL,
 					new Item.Properties().attributes(SwordItem.createAttributes(ModToolTiers.VOIDMETAL, 3, -2.4f))));
@@ -96,6 +99,8 @@ public class ModItems {
 	public static final RegistryObject<Item> VOIDMETAL_BOOTS = ITEMS.register("voidmetal_boots",
 			() -> new ArmorItem(ModArmorMaterials.VOIDMETAL_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
 					new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(40))));
+
+
 
 	public static final RegistryObject<Item> EYE_FRAGMENT = ITEMS.register("eye_fragment",
 			() -> new Item(new Item.Properties()));
@@ -130,6 +135,11 @@ public class ModItems {
 					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
 				}
 			});
+
+
+	public static final RegistryObject<Item> SHADOW_STEEL_SWORD = ITEMS.register("shadow_steel_sword",
+			() -> new SwordItem(ModToolTiers.VOIDMETAL,
+					new Item.Properties().attributes(SwordItem.createAttributes(ModToolTiers.SHADOW_STEEL, 4, -2.4f))));
 
 	public static void register(IEventBus eventBus) {
 		ITEMS.register(eventBus);
