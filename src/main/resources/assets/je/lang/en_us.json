@@ -10,6 +10,8 @@
   	"entity.je.echo": "Echo",
   	"item.je.duskblade_spawn_egg": "Duskblade Spawn Egg",
   	"entity.je.duskblade": "Duskblade",
+  	"item.je.shadow_lord_spawn_egg": "Shadow Lord Spawn Egg",
+  	"entity.je.shadow_lord": "Shadow Lord",
 	//
 	"item.je.endersent_with_eye_spawn_egg": "Endersent (With Eye) Spawn Egg",
 	"item.je.voidblight_bucket": "Bucket of Voidblight",

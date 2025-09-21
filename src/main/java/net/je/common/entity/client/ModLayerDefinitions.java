@@ -19,6 +19,7 @@ public class ModLayerDefinitions {
 	public static Map<ModelLayerLocation, LayerDefinition> createRoots() {
 		Builder<ModelLayerLocation, LayerDefinition> builder = ImmutableMap.builder();
 		builder.put(EndersentModel.ENDERSENT_LAYER, EndersentModel.createBodyLayer());
+		builder.put(ShadowLordModel.LAYER_LOCATION, ShadowLordModel.createBodyLayer());
 		ImmutableMap<ModelLayerLocation, LayerDefinition> immutablemap = builder.build();
 		List<ModelLayerLocation> list = ModelLayers.getKnownLocations()
 				.filter(p_171117_ -> !immutablemap.containsKey(p_171117_)).collect(Collectors.toList());

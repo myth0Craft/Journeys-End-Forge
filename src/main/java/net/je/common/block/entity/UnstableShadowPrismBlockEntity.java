@@ -1,6 +1,7 @@
 package net.je.common.block.entity;
 
 import net.je.common.block.ModBlocks;
+import net.je.common.entity.custom.ShadowLord;
 import net.je.config.CommonConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -81,7 +82,7 @@ public class UnstableShadowPrismBlockEntity extends ShadowPrismBlockEntity {
 									player.hurtMarked = false;
 								}
 							}
-						} else {
+						} else if (!(entity instanceof ShadowLord shadowLord)) {
 							if (isAtBlock(entity, be.getBlockPos())) {
 
 								entity.hurt(level.damageSources().magic(), 1);

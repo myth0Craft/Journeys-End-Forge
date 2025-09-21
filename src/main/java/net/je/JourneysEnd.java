@@ -5,6 +5,8 @@ import com.mojang.logging.LogUtils;
 import net.je.common.block.ModBlocks;
 import net.je.common.block.entity.ModBlockEntities;
 import net.je.common.conditions.ModConditions;
+import net.je.common.entity.client.ShadowLordModel;
+import net.je.common.entity.client.renderer.entity.ShadowLordRenderer;
 import net.je.common.entity.client.renderer.entity.ShadowMobRenderer;
 import net.je.common.entity.custom.Duskblade;
 import net.je.common.render.*;
@@ -170,6 +172,7 @@ public class JourneysEnd {
 			event.registerEntityRenderer(ModEntities.ENDERSENT_WITH_EYE.get(), EndersentWithEyeRenderer::new);
 			event.registerEntityRenderer(ModEntities.ECHO.get(), ShadowMobRenderer::new);
 			event.registerEntityRenderer(ModEntities.DUSKBLADE.get(), ShadowMobRenderer::new);
+			event.registerEntityRenderer(ModEntities.SHADOW_LORD.get(), ShadowLordRenderer::new);
 
 
 
@@ -179,6 +182,7 @@ public class JourneysEnd {
 		@SubscribeEvent
 		public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 			event.registerLayerDefinition(EndersentModel.ENDERSENT_LAYER, EndersentModel::createBodyLayer);
+			event.registerLayerDefinition(ShadowLordModel.LAYER_LOCATION, ShadowLordModel::createBodyLayer);
 		}
 
 		@SubscribeEvent

@@ -40,6 +40,9 @@ public class ModItems {
 	public static final RegistryObject<ForgeSpawnEggItem> DUSKBLADE_SPAWN_EGG = ITEMS.register("duskblade_spawn_egg",
 			() -> new ForgeSpawnEggItem(ModEntities.DUSKBLADE, 0, 0x1f262d, new Item.Properties()));
 
+	public static final RegistryObject<ForgeSpawnEggItem> SHADOW_LORD_SPAWN_EGG = ITEMS.register("shadow_lord_spawn_egg",
+			() -> new ForgeSpawnEggItem(ModEntities.SHADOW_LORD, 0, 0x1f262d, new Item.Properties()));
+
 	public static final RegistryObject<Item> VOIDBLIGHT_BUCKET = ITEMS.register("voidblight_bucket",
 			() -> new VoidblightBucketItem(ModFluids.SOURCE_VOIDBLIGHT,
 					new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));

@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.je.common.entity.client.EndersentModel;
 import net.je.common.entity.custom.BaseEndersent;
 import net.je.common.entity.custom.Echo;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -15,7 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.entity.Mob;
 
-public class EchoEyesLayer<T extends Mob, M extends PlayerModel<T>> extends RenderLayer<T, M> {
+public class EchoEyesLayer<T extends Mob, M extends HumanoidModel<T>> extends RenderLayer<T, M> {
 
 
 	private final ResourceLocation texture;

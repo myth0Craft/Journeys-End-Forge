@@ -109,6 +109,7 @@ public class ModCreativeModeTab {
 				pOutput.accept(ModItems.ENDERSENT_WITH_EYE_SPAWN_EGG.get());
 				pOutput.accept(ModItems.ECHO_SPAWN_EGG.get());
 				pOutput.accept(ModItems.DUSKBLADE_SPAWN_EGG.get());
+				pOutput.accept(ModItems.SHADOW_LORD_SPAWN_EGG.get());
 
 				pOutput.accept(ModItems.WARDBREAKER_PICKAXE.get());
 

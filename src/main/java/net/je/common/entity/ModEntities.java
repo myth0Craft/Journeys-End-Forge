@@ -1,10 +1,7 @@
 package net.je.common.entity;
 
 import net.je.JourneysEnd;
-import net.je.common.entity.custom.Duskblade;
-import net.je.common.entity.custom.Endersent;
-import net.je.common.entity.custom.EndersentWithEye;
-import net.je.common.entity.custom.Echo;
+import net.je.common.entity.custom.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -39,6 +36,13 @@ public class ModEntities {
 					.eyeHeight(1.62F)
 					.fireImmune()
 					.build(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "duskblade").toString()));
+
+	public static final RegistryObject<EntityType<ShadowLord>> SHADOW_LORD =
+			ENTITY_TYPES.register("shadow_lord", () -> EntityType.Builder.<ShadowLord>of(ShadowLord::new, MobCategory.MONSTER)
+					.sized(0.6F, 1.8F)
+					.eyeHeight(1.62F)
+					.fireImmune()
+					.build(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "shadow_lord").toString()));
 
 	public static void register(IEventBus eventBus) {
 		ENTITY_TYPES.register(eventBus);
