@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "je:block/shadow_stone_bricks",
+    "side": "je:block/shadow_stone_bricks",
+    "particle": "je:block/shadow_stone_bricks",
+    "top": "je:block/cracked_shadow_stone_bricks"
+  }
+}

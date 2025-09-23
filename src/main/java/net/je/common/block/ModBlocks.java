@@ -232,6 +232,10 @@ public class ModBlocks {
 			() -> new WardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
 
+	public static final RegistryObject<Block> FRACTURED_WARDSTONE = registerBlock("fractured_wardstone",
+			() -> new TopWardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+
 	public static final RegistryObject<Block> WARDED_CRACKED_SHADOW_STONE_BRICKS = registerBlock("warded_cracked_shadow_stone_bricks",
 			() -> new WardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));

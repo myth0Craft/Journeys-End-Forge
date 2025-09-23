@@ -5,11 +5,13 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.je.common.block.ModBlocks;
 import net.je.common.block.custom.EnderVaultBlock;
 import net.je.common.block.entity.EnderVaultBlockEntity;
+import net.je.common.entity.ModEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.StructureManager;
@@ -112,6 +114,21 @@ public class ShadowTowerPiece extends TemplateStructurePiece {
 				if (be instanceof EnderVaultBlockEntity spawner) {
 					spawner.shouldSpawnKey = true;
 				}
+			}
+
+			case "je:shadow_lord_spawn" -> {
+				Mob mob = (Mob) ModEntities.SHADOW_LORD.get().create(pLevel.getLevel());
+				if (mob != null) {
+					mob.moveTo(
+							pPos.getX() + 0.5D,
+							pPos.getY(),
+							pPos.getZ() + 0.5D,
+							0.0F,
+							0.0F
+					);
+					pLevel.addFreshEntity(mob);
+				}
+				System.out.println("spawned Shadow lord");
 			}
 		}
 	}

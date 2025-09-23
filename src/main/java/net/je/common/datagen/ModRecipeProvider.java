@@ -121,6 +121,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 				.requires(ModBlocks.WARDED_CRACKED_SHADOW_STONE_BRICKS.get())
 				.unlockedBy("has_warded_cracked_shadow_stone_bricks", has(ModBlocks.WARDED_CRACKED_SHADOW_STONE_BRICKS.get())).save(recipeOutput, "cracked_shadow_stone_bricks_from_warded");
 
+		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_SHADOW_STONE_BRICKS.get(), 1)
+				.requires(ModBlocks.FRACTURED_WARDSTONE.get())
+				.unlockedBy("has_warded_fractured_wardstone", has(ModBlocks.FRACTURED_WARDSTONE.get())).save(recipeOutput, "cracked_shadow_stone_bricks_from_fractured_wardstone");
+
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_SHADOW_STONE.get(), 1)
 				.requires(ModBlocks.WARDED_POLISHED_SHADOW_STONE.get())
 				.unlockedBy("has_warded_polished_shadow_stone", has(ModBlocks.WARDED_POLISHED_SHADOW_STONE.get())).save(recipeOutput, "polished_shadow_stone_from_warded");

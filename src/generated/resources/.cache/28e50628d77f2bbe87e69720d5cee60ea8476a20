@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-15T16:20:24.1442646	Block States: je
+// 1.21.1	2025-09-22T16:27:37.8377459	Block States: je
 ad415e759c6c102f0f58f8d48f000984f1d14a04 assets/je/blockstates/blighted_shadow_stone.json
 9848562a52631f8fe774199803bf53b63c0a43a4 assets/je/blockstates/chiseled_end_stone.json
 1f10f646a8a65ffaf1774f64dce58421bd18bc73 assets/je/blockstates/chiseled_shadow_stone.json
@@ -113,6 +113,7 @@ e66ba19848a5a0d5418ca77f8cec164362a0e134 assets/je/models/item/end_stone_pillar.
 9abc6fa724448da34ecba56107ff698c273f5876 assets/je/models/item/end_stone_tiles.json
 5023c1bcbf7f5414364b847aa7a931d02ca58501 assets/je/models/item/faded_end_stone.json
 b1b316da547b6bc42a7d1f4ce6fb6f87fdfcbfb2 assets/je/models/item/faded_end_stone_bricks.json
+5b14795263843e31a0569b906aab8e228b6519b0 assets/je/models/item/fractured_wardstone.json
 0aceb853de94e790beaaf7c68977a8e9dc1b186a assets/je/models/item/gravity_distorter.json
 6e63d4a82ef122b28130f67fe05b86cfb76b4f0d assets/je/models/item/lantern_of_warding.json
 348cb5abdfcef984fa7e6b907c4a32ac3cc4203e assets/je/models/item/lush_end_stone.json

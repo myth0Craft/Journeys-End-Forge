@@ -77,6 +77,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockItem(ModBlocks.SHADOW_BEAM_EMITTER);
         blockItem(ModBlocks.SHADOW_BEAM_RECEIVER);
+        blockItem(ModBlocks.FRACTURED_WARDSTONE);
         //blockItem(ModBlocks.RESPAWN_NEXUS);
         //blockItem(ModBlocks.ENDER_VAULT);
         //blockItem(ModBlocks.INTERDIMENSIONAL_ANCHOR);

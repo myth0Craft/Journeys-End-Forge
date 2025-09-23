@@ -105,6 +105,7 @@
   	"block.je.shadow_beam_emitter": "Shadow Beam Emitter",
   	"block.je.shadow_beam_receiver": "Shadow Beam Receiver",
   	"block.je.bound_obsidian": "Bound Obsidian",
+  	"block.je.fractured_wardstone": "Fractured Wardstone",
 	//
   	"block.minecraft.spawn.not_valid": "You have no home bed, charged respawn anchor, or charged respawn nexus, or it was obstructed",
 	"effect.je.void_strike": "Void Strike",

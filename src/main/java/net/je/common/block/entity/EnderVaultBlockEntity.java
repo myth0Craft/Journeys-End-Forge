@@ -35,7 +35,7 @@ import java.util.Optional;
 
 public class EnderVaultBlockEntity extends BlockEntity {
 	private int delayBetweenWaves = 0;
-	private static final int DELAY_AMOUNT = 20;
+	private static final int DELAY_AMOUNT = 160;
 	public boolean finished = false;
 
 	private static final int SPAWN_RANGE = 7;
@@ -116,12 +116,18 @@ public class EnderVaultBlockEntity extends BlockEntity {
 		setCurrentWave(2);
 		updateWavesComplete();
 		delayBetweenWaves = DELAY_AMOUNT;
+		if (level != null && canSpawnInLevel(level)) {
+			spawnMobs(level, worldPosition, ModEntities.ECHO.get(), 3);
+		}
 	}
 
 	public void wave3() {
 		setCurrentWave(3);
 		updateWavesComplete();
 		delayBetweenWaves = DELAY_AMOUNT;
+		if (level != null && canSpawnInLevel(level)) {
+			spawnMobs(level, worldPosition, ModEntities.ECHO.get(), 3);
+		}
 	}
 
 	public void wave4() {
@@ -129,7 +135,7 @@ public class EnderVaultBlockEntity extends BlockEntity {
 		updateWavesComplete();
 		delayBetweenWaves = DELAY_AMOUNT;
 		if (level != null && canSpawnInLevel(level)) {
-			spawnMobs(level, worldPosition, ModEntities.ENDERSENT.get(), 1);
+			spawnMobs(level, worldPosition, ModEntities.ECHO.get(), 3);
 		}
 	}
 
