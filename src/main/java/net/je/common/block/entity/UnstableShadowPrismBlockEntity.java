@@ -96,7 +96,7 @@ public class UnstableShadowPrismBlockEntity extends ShadowPrismBlockEntity {
 			}
 
 			if (!be.isActive()) {
-				level.setBlockAndUpdate(pos, ModBlocks.FADED_END_STONE_BRICKS.get().defaultBlockState());
+				level.setBlockAndUpdate(pos, ModBlocks.WARDED_FADED_END_STONE_BRICKS.get().defaultBlockState());
 			}
 		}
 	}

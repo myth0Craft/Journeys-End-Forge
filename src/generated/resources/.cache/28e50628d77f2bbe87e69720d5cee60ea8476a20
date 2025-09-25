@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-22T16:27:37.8377459	Block States: je
+// 1.21.1	2025-09-24T18:09:11.315743	Block States: je
 ad415e759c6c102f0f58f8d48f000984f1d14a04 assets/je/blockstates/blighted_shadow_stone.json
 9848562a52631f8fe774199803bf53b63c0a43a4 assets/je/blockstates/chiseled_end_stone.json
 1f10f646a8a65ffaf1774f64dce58421bd18bc73 assets/je/blockstates/chiseled_shadow_stone.json
@@ -131,6 +131,7 @@ be8849fb0abac58e2a750e99b8f18d6c38f969ad assets/je/models/item/shadow_stone_bric
 178f985ec13940106c2f72d62f62417cb71337ef assets/je/models/item/shadow_stone_brick_stairs.json
 ec65a21409a69fffc8e01b618c0b7996391f763e assets/je/models/item/shadow_stone_slab.json
 11a58dbe544c5094f5b899abdaf4c5f26e0c59ff assets/je/models/item/shadow_stone_stairs.json
+808f390764e92d81c671aa07df3243b24ccab1da assets/je/models/item/top_fractured_wardstone.json
 70aefe13ee4e11c348e7c93dc021c3772810c0d5 assets/je/models/item/voidglass.json
 ce2fa32dcbfebaf07698897779e2b2dedcad74ec assets/je/models/item/voidmass.json
 e5dee8813894acb2145af915d1adc97dfabc659d assets/je/models/item/voidmetal_block.json

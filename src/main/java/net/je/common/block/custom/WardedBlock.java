@@ -86,4 +86,14 @@ public class WardedBlock extends Block {
 			return super.getDestroyProgress(pState, pPlayer, pLevel, pPos);
 		}
 	}
+
+	protected float defaultDestroyProgress(BlockState pState, Player pPlayer, BlockGetter pLevel, BlockPos pPos) {
+		return super.getDestroyProgress(pState, pPlayer, pLevel, pPos);
+	}
+
+	protected void defaultAttack(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer) {
+		super.attack(pState, pLevel, pPos, pPlayer);
+	}
+
+
 }

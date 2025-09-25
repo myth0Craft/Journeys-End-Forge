@@ -173,10 +173,6 @@ public class JourneysEnd {
 			event.registerEntityRenderer(ModEntities.ECHO.get(), ShadowMobRenderer::new);
 			event.registerEntityRenderer(ModEntities.DUSKBLADE.get(), ShadowMobRenderer::new);
 			event.registerEntityRenderer(ModEntities.SHADOW_LORD.get(), ShadowLordRenderer::new);
-
-
-
-
 		}
 
 		@SubscribeEvent

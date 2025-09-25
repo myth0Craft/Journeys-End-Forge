@@ -106,6 +106,7 @@
   	"block.je.shadow_beam_receiver": "Shadow Beam Receiver",
   	"block.je.bound_obsidian": "Bound Obsidian",
   	"block.je.fractured_wardstone": "Fractured Wardstone",
+  	"block.je.top_fractured_wardstone": "Fractured Wardstone",
 	//
   	"block.minecraft.spawn.not_valid": "You have no home bed, charged respawn anchor, or charged respawn nexus, or it was obstructed",
 	"effect.je.void_strike": "Void Strike",
@@ -123,6 +124,8 @@
 	//"tooltip.je.lantern_of_warding": "It seems to repel the darkness of the Void.",
 	"tooltip.je.unobtainable": "Currently unobtainable in Survival Mode.",
 	"tooltip.je.placeholder": "This is a placeholder item and cannot be obtained in Survival Mode.",
+  	"tooltip.je.fractured_wardstone": "Can only be mined from above",
+  	"tooltip.je.top_fractured_wardstone": "Can only be mined from below",
 	"container.je.end_stone_furnace": "End Stone Furnace",
 	"gui.recipebook.toggleRecipes.end_stone_furnace": "Showing End Stone Smeltable",
 	//

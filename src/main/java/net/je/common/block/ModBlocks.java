@@ -9,6 +9,7 @@ import net.je.common.fluid.ModFluids;
 import net.je.common.item.ModItems;
 import net.je.common.sound.ModSounds;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
@@ -234,7 +235,25 @@ public class ModBlocks {
 
 	public static final RegistryObject<Block> FRACTURED_WARDSTONE = registerBlock("fractured_wardstone",
 			() -> new TopWardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
-					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops()));
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops(), Direction.UP) {
+				@Override
+				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
+											List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+					pTooltipComponents.add(Component.translatable("tooltip.je.fractured_wardstone"));
+					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+				}
+			});
+
+	public static final RegistryObject<Block> TOP_FRACTURED_WARDSTONE = registerBlock("top_fractured_wardstone",
+			() -> new TopWardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
+					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().noLootTable(), Direction.DOWN) {
+				@Override
+				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
+											List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+					pTooltipComponents.add(Component.translatable("tooltip.je.top_fractured_wardstone"));
+					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+				}
+			});
 
 	public static final RegistryObject<Block> WARDED_CRACKED_SHADOW_STONE_BRICKS = registerBlock("warded_cracked_shadow_stone_bricks",
 			() -> new WardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)

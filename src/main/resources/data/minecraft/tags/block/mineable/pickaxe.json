@@ -45,6 +45,7 @@
 	"je:warded_polished_shadow_stone",
 	"je:warded_corrupted_shadow_stone",
 	"je:warded_shadow_stone",
-	"je:fractured_wardstone"
+	"je:fractured_wardstone",
+	"je:top_fractured_wardstone"
   ]
 }
