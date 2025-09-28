@@ -16,6 +16,7 @@ import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
@@ -30,6 +31,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 
+import java.util.Map;
 import java.util.function.Function;
 
 public class ShadowTowerPiece extends TemplateStructurePiece {
@@ -43,6 +45,15 @@ public class ShadowTowerPiece extends TemplateStructurePiece {
 			pos,
 			rotation
 	)));
+
+	private static final Map<Block, Block> BLOCK_MAP = Map.of(
+			ModBlocks.SHADOW_STONE_BRICKS.get(), ModBlocks.WARDED_SHADOW_STONE_BRICKS.get(),
+			ModBlocks.SHADOW_STONE.get(), ModBlocks.WARDED_SHADOW_STONE.get(),
+			ModBlocks.POLISHED_SHADOW_STONE.get(), ModBlocks.WARDED_POLISHED_SHADOW_STONE.get(),
+			ModBlocks.CHISELED_SHADOW_STONE.get(), ModBlocks.WARDED_CHISELED_SHADOW_STONE.get(),
+			ModBlocks.FADED_END_STONE_BRICKS.get(), ModBlocks.WARDED_FADED_END_STONE_BRICKS.get(),
+			ModBlocks.VOIDGLASS.get(), ModBlocks.WARDED_VOIDGLASS.get()
+	);
 
 	// Constructor for direct use during generation
 	public ShadowTowerPiece(StructurePieceType type, ResourceLocation templateId, BlockPos pos, Rotation rotation, StructureTemplateManager templates) {
@@ -79,6 +90,7 @@ public class ShadowTowerPiece extends TemplateStructurePiece {
 						.setRotation(Rotation.NONE)
 						.setMirror(Mirror.NONE)
 						.addProcessor(BlockIgnoreProcessor.STRUCTURE_AND_AIR)
+						.addProcessor(new WardedBlockProcessor(BLOCK_MAP))
 						.setIgnoreEntities(true)
 		);
 	}
@@ -90,11 +102,15 @@ public class ShadowTowerPiece extends TemplateStructurePiece {
 	}
 
 	private static StructurePlaceSettings createSettings(Rotation rotation) {
+
+
+		System.out.println("postProcess called");
 		return new StructurePlaceSettings()
 				.setRotation(rotation)
 				.setMirror(Mirror.NONE)
 				.setIgnoreEntities(true)
-				.addProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK);
+				.addProcessor(BlockIgnoreProcessor.STRUCTURE_BLOCK)
+				.addProcessor(new WardedBlockProcessor(BLOCK_MAP));
 	}
 
 	@Override

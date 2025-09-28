@@ -7,17 +7,22 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
 public class WardedBlock extends Block {
 
+
+	public static final BooleanProperty PLACED = BooleanProperty.create("placed");
 	/*public WardedBlock() {
 		this(MapColor.COLOR_BLACK);
 	}
@@ -29,6 +34,12 @@ public class WardedBlock extends Block {
 
 	public WardedBlock(BlockBehaviour.Properties properties) {
 		super(properties.pushReaction(PushReaction.IGNORE).explosionResistance(3600000.0F));
+		this.registerDefaultState(this.stateDefinition.any().setValue(PLACED, false));
+	}
+
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
+		pBuilder.add(PLACED);
 	}
 
 	@Override
@@ -75,7 +86,13 @@ public class WardedBlock extends Block {
 			ItemStack item = pPlayer.getMainHandItem();
 
 			if (!item.is(ModTags.Items.WARDBREAKER)) {
-				return 0.0f;
+				if (pState.getValue(PLACED)) {
+					float speed = pPlayer.getDestroySpeed(pState, pPos);
+					float hardness = 30000.0f;
+					return speed / hardness;
+				} else {
+					return 0.0f;
+				}
 			} else if (f == -1.0F) {
 				return 0.0F;
 			} else {
@@ -93,6 +110,11 @@ public class WardedBlock extends Block {
 
 	protected void defaultAttack(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer) {
 		super.attack(pState, pLevel, pPos, pPlayer);
+	}
+
+	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+		return this.defaultBlockState().setValue(PLACED, true);
 	}
 
 

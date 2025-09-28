@@ -10,6 +10,7 @@ import net.je.common.entity.client.renderer.entity.ShadowLordRenderer;
 import net.je.common.entity.client.renderer.entity.ShadowMobRenderer;
 import net.je.common.entity.custom.Duskblade;
 import net.je.common.render.*;
+import net.je.common.worldgen.ModStructureProcessors;
 import net.je.config.CommonConfig;
 import net.je.common.effect.ModEffects;
 import net.je.common.entity.ModEntities;
@@ -97,6 +98,8 @@ public class JourneysEnd {
 		ModParticles.register(modEventBus);
 
 		ModConditions.register(modEventBus);
+
+		ModStructureProcessors.register(modEventBus);
 
 		ModStructurePieceTypes.register(modEventBus);
 

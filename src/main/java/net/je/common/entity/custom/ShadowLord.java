@@ -1,6 +1,7 @@
 package net.je.common.entity.custom;
 
 import net.je.common.block.ModBlocks;
+import net.je.common.block.custom.WardedBlock;
 import net.je.common.entity.ModEntities;
 import net.je.common.item.ModItems;
 import net.minecraft.core.BlockPos;
@@ -39,12 +40,18 @@ import java.util.Random;
 
 public class ShadowLord extends Monster {
 
+	//private BlockPos centerArenaPos;
+
+
 	private final ServerBossEvent bossEvent = (ServerBossEvent)new ServerBossEvent(
 			this.getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS
 	);
 
 	private static final EntityDataAccessor<Boolean> AWAKE =
 			SynchedEntityData.defineId(ShadowLord.class, EntityDataSerializers.BOOLEAN);
+
+	private static final EntityDataAccessor<BlockPos> ARENA_CENTER =
+			SynchedEntityData.defineId(ShadowLord.class, EntityDataSerializers.BLOCK_POS);
 
 
 
@@ -62,11 +69,13 @@ public class ShadowLord extends Monster {
 	@Override
 	public void die(DamageSource pDamageSource) {
 		super.die(pDamageSource);
-		AABB area = this.getBoundingBox().inflate(10);
+		if (!this.level().isClientSide()) {
+			AABB area = this.getBoundingBox().inflate(10);
 
-		for (Echo echo : ((ServerLevel) this.level()).getEntitiesOfClass(Echo.class, area)) {
-			if (this.distanceToSqr(echo) <= 100) {
-				echo.kill();
+			for (Echo echo : ((ServerLevel) this.level()).getEntitiesOfClass(Echo.class, area)) {
+				if (this.distanceToSqr(echo) <= 100) {
+					echo.kill();
+				}
 			}
 		}
 	}
@@ -164,6 +173,16 @@ public class ShadowLord extends Monster {
 					}
 				}
 			}
+			if (this.getArenaCenter() != null) {
+				if (this.getY() < this.getArenaCenter().getY() - 3) {
+					/*this.teleportTo(centerArenaPos.getX() + 0.5, centerArenaPos.getY() + 1, centerArenaPos.getZ() + 0.5);
+					((ServerLevel) this.level()).playSound(null, this.blockPosition(),
+							SoundEvents.ENDERMAN_TELEPORT, SoundSource.HOSTILE, 1.0F, 1.0F);
+					((ServerLevel) this.level()).sendParticles(ParticleTypes.PORTAL, this.getX(), this.getY() + 1.0, this.getZ(), 20, 0.5, 0.5, 0.5, 0.02);
+					*/
+					this.tryTeleport();
+				}
+			}
 		}
 	}
 
@@ -197,11 +216,11 @@ public class ShadowLord extends Monster {
 		ServerLevel serverLevel = (ServerLevel)this.level();
 
 		for (int i = 0; i < 10; i++) {
-			double dx = this.getX() + (this.random.nextInt(16) - 8);
-			double dy = this.getY();
-			double dz = this.getZ() + (this.random.nextInt(16) - 8);
+			double dx = this.getArenaCenter().getX() + (this.random.nextInt(16) - 8);
+			double dy = this.getArenaCenter().getY();
+			double dz = this.getArenaCenter().getZ() + (this.random.nextInt(16) - 8);
 
-			BlockPos pos = new BlockPos((int) dx, (int) dy, (int) dz);
+			BlockPos pos = BlockPos.containing(dx, dy, dz);
 			if (serverLevel.getBlockState(pos.below()).is(ModBlocks.WARDED_FADED_END_STONE_BRICKS.get())) {
 				if (this.randomTeleport(dx, dy, dz, true)) {
 					serverLevel.playSound(null, this.blockPosition(),
@@ -217,6 +236,10 @@ public class ShadowLord extends Monster {
 	public InteractionResult mobInteract(Player player, InteractionHand hand) {
 		if (!this.level().isClientSide && !this.isAwake()) {
 			this.entityData.set(AWAKE, true);
+
+			setArenaCenter(this.blockPosition());
+
+			replaceShadowPrismCircle((ServerLevel) this.level(), this.blockPosition().below(), 3);
 
 			this.setNoAi(false);
 			if (!player.isCreative()) {
@@ -241,6 +264,21 @@ public class ShadowLord extends Monster {
 		return super.mobInteract(player, hand);
 	}
 
+	private void replaceShadowPrismCircle(ServerLevel level, BlockPos center, int radius) {
+		int rSq = radius * radius;
+
+		for (int dx = -radius; dx <= radius; dx++) {
+			for (int dz = -radius; dz <= radius; dz++) {
+				if (dx * dx + dz * dz <= rSq) { // inside circle
+					BlockPos pos = center.offset(dx, 0, dz);
+					if (level.getBlockState(pos).is(ModBlocks.SHADOW_PRISM.get())) {
+						level.setBlock(pos, ModBlocks.WARDED_FADED_END_STONE_BRICKS.get().defaultBlockState().setValue(WardedBlock.PLACED, false), 3);
+					}
+				}
+			}
+		}
+	}
+
 	@Override
 	public boolean isInvulnerableTo(DamageSource source) {
 		if (!this.isAwake()) {
@@ -253,6 +291,12 @@ public class ShadowLord extends Monster {
 	public void addAdditionalSaveData(CompoundTag nbt) {
 		super.addAdditionalSaveData(nbt);
 		nbt.putBoolean("Awake", this.isAwake());
+
+		BlockPos pos = getArenaCenter();
+		nbt.putInt("ArenaX", pos.getX());
+		nbt.putInt("ArenaY", pos.getY());
+		nbt.putInt("ArenaZ", pos.getZ());
+
 	}
 
 	@Override
@@ -261,12 +305,27 @@ public class ShadowLord extends Monster {
 		boolean w = nbt.getBoolean("Awake");
 		this.entityData.set(AWAKE, w);
 		this.setNoAi(!w);
+
+
+		if (nbt.contains("ArenaX")) {
+			setArenaCenter(new BlockPos(nbt.getInt("ArenaX"), nbt.getInt("ArenaY"), nbt.getInt("ArenaZ")));
+		}
 	}
 
 	@Override
 	protected void defineSynchedData(SynchedEntityData.Builder p_333664_) {
 		super.defineSynchedData(p_333664_);
 		p_333664_.define(AWAKE, false);
+		p_333664_.define(ARENA_CENTER, BlockPos.ZERO);
 
+	}
+
+	public void setArenaCenter(BlockPos pos) {
+		this.entityData.set(ARENA_CENTER, pos);
+	}
+
+	@Nullable
+	public BlockPos getArenaCenter() {
+		return this.entityData.get(ARENA_CENTER);
 	}
 }
