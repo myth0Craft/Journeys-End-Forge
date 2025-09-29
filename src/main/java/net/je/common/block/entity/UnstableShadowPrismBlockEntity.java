@@ -85,7 +85,7 @@ public class UnstableShadowPrismBlockEntity extends ShadowPrismBlockEntity {
 						} else if (!(entity instanceof ShadowLord shadowLord)) {
 							if (isAtBlock(entity, be.getBlockPos())) {
 
-								entity.hurt(level.damageSources().magic(), 1);
+								entity.hurt(level.damageSources().magic(), 2);
 								entity.invulnerableTime = 1;
 
 								entity.hurtMarked = false;

@@ -21,9 +21,9 @@ public class TimewornJournalEntryScreens {
 
 	public static class TimewornJournalEmptyEntryScreen extends BaseTimewornJournalEntryScreen {
 
-		private int scrollOffset;
+		private final int scrollOffset;
 
-		private TimewornJournalScrollableScreen backScreen;
+		private final TimewornJournalScrollableScreen backScreen;
 
 		public TimewornJournalEmptyEntryScreen(BaseTimewornJournalEntry pEntry,
 				TimewornJournalScrollableScreen listScreen) {
@@ -53,13 +53,13 @@ public class TimewornJournalEntryScreens {
 
 	public static class TimewornJournalImageEntryScreen extends BaseTimewornJournalEntryScreen {
 
-		private int scrollOffset;
+		private final int scrollOffset;
 
-		private ImageEntry entry;
+		private final ImageEntry entry;
 
-		private boolean shouldRenderFrame;
+		private final boolean shouldRenderFrame;
 
-		private TimewornJournalScrollableScreen backScreen;
+		private final TimewornJournalScrollableScreen backScreen;
 
 		public TimewornJournalImageEntryScreen(ImageEntry pEntry, boolean renderFrame,
 				TimewornJournalScrollableScreen listScreen) {
@@ -107,15 +107,15 @@ public class TimewornJournalEntryScreens {
 
 	public static class TimewornJournalEntityEntryScreen extends BaseTimewornJournalEntryScreen {
 
-		private int scrollOffset;
+		private final int scrollOffset;
 
-		private LivingEntity entity;
+		private final LivingEntity entity;
 
-		private EntityEntry entry;
+		private final EntityEntry entry;
 
-		private TimewornJournalScrollableScreen backScreen;
+		private final TimewornJournalScrollableScreen backScreen;
 
-		private float scale;
+		private final float scale;
 
 		public TimewornJournalEntityEntryScreen(EntityEntry pEntry, TimewornJournalScrollableScreen listScreen) {
 			super(pEntry);
@@ -176,13 +176,13 @@ public class TimewornJournalEntryScreens {
 
 	public static class TimewornJournalBlockEntryScreen extends BaseTimewornJournalEntryScreen {
 
-		private int scrollOffset;
+		private final int scrollOffset;
 
 		private ItemEntry entry;
 
 		private ImageEntry imageEntry;
 
-		private TimewornJournalScrollableScreen backScreen;
+		private final TimewornJournalScrollableScreen backScreen;
 
 		public TimewornJournalBlockEntryScreen(ItemEntry pEntry, TimewornJournalScrollableScreen listScreen) {
 			super(pEntry);

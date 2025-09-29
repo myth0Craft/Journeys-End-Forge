@@ -35,7 +35,7 @@ import java.util.Optional;
 
 public class EnderVaultBlockEntity extends BlockEntity {
 	private int delayBetweenWaves = 0;
-	private static final int DELAY_AMOUNT = 160;
+	private static final int DELAY_AMOUNT = 120;
 	public boolean finished = false;
 
 	private static final int SPAWN_RANGE = 7;

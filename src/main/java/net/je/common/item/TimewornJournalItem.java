@@ -19,7 +19,7 @@ import net.minecraft.world.level.Level;
 public class TimewornJournalItem extends Item {
 
 
-	private int tier;
+	private final int tier;
 
 	public TimewornJournalItem(Properties pProperties, int pTier) {
 		super(pProperties);

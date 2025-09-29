@@ -160,7 +160,7 @@ public class ShadowBeamEmitterBlockEntity extends BlockEntity {
 			if (entity.getType().is(ModTags.Entities.SHADOW_MOBS)) continue;
 			if (laserTicks > 0 && laserActive) {
 				if (isAtBlock(entity, this.getBlockPos())) {
-					entity.hurt(level.damageSources().magic(), 1.0F);
+					entity.hurt(level.damageSources().magic(), 2.0F);
 					entity.invulnerableTime = 1;
 					entity.hurtMarked = false;
 				}

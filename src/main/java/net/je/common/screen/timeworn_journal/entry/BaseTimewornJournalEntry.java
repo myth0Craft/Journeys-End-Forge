@@ -8,7 +8,7 @@ public class BaseTimewornJournalEntry {
 
 	protected Component lore;
 
-	private Component empty = Component.translatable("screen.je.timeworn_journal.empty");
+	private final Component empty = Component.translatable("screen.je.timeworn_journal.empty");
 
 	public BaseTimewornJournalEntry(Component pName, Component pLore) {
 		this.name = pName;

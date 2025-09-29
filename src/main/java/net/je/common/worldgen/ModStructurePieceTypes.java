@@ -13,7 +13,7 @@ public class ModStructurePieceTypes {
 			DeferredRegister.create(Registries.STRUCTURE_PIECE, JourneysEnd.MODID);
 
 	public static final RegistryObject<StructurePieceType> SHADOW_TOWER_PIECE =
-			STRUCTURE_PIECE_TYPES.register("shadow_tower_piece", () -> (StructurePieceType) (nbt, manager) ->
+			STRUCTURE_PIECE_TYPES.register("shadow_tower_piece", () -> (nbt, manager) ->
 					new ShadowTowerPiece(ModStructurePieceTypes.SHADOW_TOWER_PIECE.get(), manager, nbt.structureTemplateManager()));
 
 					/*(StructurePieceSerializationContext, compoundTag) ->

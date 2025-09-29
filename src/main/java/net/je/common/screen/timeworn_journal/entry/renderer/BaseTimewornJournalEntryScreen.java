@@ -38,7 +38,7 @@ public class BaseTimewornJournalEntryScreen extends BaseTimewornJournalScreen {
 	protected BaseTimewornJournalEntry entry;
 
 	@SuppressWarnings("unused")
-	private int scrollOffset;
+	private final int scrollOffset;
 
 	private Screen backScreen;
 

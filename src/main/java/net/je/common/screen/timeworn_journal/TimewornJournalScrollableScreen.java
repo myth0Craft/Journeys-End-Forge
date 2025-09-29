@@ -17,9 +17,9 @@ import net.minecraft.util.Mth;
 
 public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 	private final List<Button> allButtons = new ArrayList<>();
-	private List<Button> filteredButtons = new ArrayList<>();
+	private final List<Button> filteredButtons = new ArrayList<>();
 
-	private List<BaseTimewornJournalEntry> allEntries;
+	private final List<BaseTimewornJournalEntry> allEntries;
 
 	private final Map<Button, BaseTimewornJournalEntry> buttonEntryMap = new HashMap<>();
 	private final Map<Button, String> trimmedButtonTooltips = new HashMap<>();
@@ -40,7 +40,7 @@ public class TimewornJournalScrollableScreen extends BaseTimewornJournalScreen {
 
 	private int searchBoxY;
 	private int searchWidth;
-	private int searchHeight = 16;
+	private final int searchHeight = 16;
 
 	private String oldSearchValue = "";
 

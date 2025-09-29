@@ -24,7 +24,7 @@ public class TimewornJournalHomeScreen extends BaseTimewornJournalScreen {
 	private int y1;
 	private int y2;
 
-	private int tier;
+	private final int tier;
 
 	public static final WidgetSprites STORY_SPRITES = new WidgetSprites(
 			ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID,

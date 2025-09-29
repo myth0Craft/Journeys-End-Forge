@@ -43,7 +43,7 @@ public class ShadowLord extends Monster {
 	//private BlockPos centerArenaPos;
 
 
-	private final ServerBossEvent bossEvent = (ServerBossEvent)new ServerBossEvent(
+	private final ServerBossEvent bossEvent = new ServerBossEvent(
 			this.getDisplayName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS
 	);
 
@@ -58,6 +58,9 @@ public class ShadowLord extends Monster {
 	public ShadowLord(EntityType<? extends Monster> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
 		this.setNoAi(true);
+		this.setPersistenceRequired();
+		this.setRemainingFireTicks(0);
+		this.fireImmune();
 	}
 
 	public static AttributeSupplier.Builder createMonsterAttributes() {
@@ -72,7 +75,7 @@ public class ShadowLord extends Monster {
 		if (!this.level().isClientSide()) {
 			AABB area = this.getBoundingBox().inflate(10);
 
-			for (Echo echo : ((ServerLevel) this.level()).getEntitiesOfClass(Echo.class, area)) {
+			for (Echo echo : this.level().getEntitiesOfClass(Echo.class, area)) {
 				if (this.distanceToSqr(echo) <= 100) {
 					echo.kill();
 				}
@@ -81,8 +84,27 @@ public class ShadowLord extends Monster {
 	}
 
 	@Override
+	public boolean removeWhenFarAway(double distanceToClosestPlayer) {
+		return false;
+	}
+
+	@Override
+	public void checkDespawn() {
+	}
+
+	@Override
+	public boolean shouldDespawnInPeaceful() {
+		return false;
+	}
+
+	@Override
 	public boolean isPushable() {
 		return this.isAwake();
+	}
+
+	@Override
+	public boolean fireImmune() {
+		return true;
 	}
 
 	public boolean isAwake() {

@@ -201,6 +201,6 @@ public class UnstableShadowPrismRenderer extends ShadowPrismRenderer<UnstableSha
 	}
 
 	public boolean shouldRender(BeaconBlockEntity pBlockEntity, Vec3 pCameraPos) {
-		return Vec3.atCenterOf(pBlockEntity.getBlockPos()).multiply(1.0, 0.0, 1.0).closerThan(pCameraPos.multiply(1.0, 0.0, 1.0), (double)this.getViewDistance());
+		return Vec3.atCenterOf(pBlockEntity.getBlockPos()).multiply(1.0, 0.0, 1.0).closerThan(pCameraPos.multiply(1.0, 0.0, 1.0), this.getViewDistance());
 	}
 }

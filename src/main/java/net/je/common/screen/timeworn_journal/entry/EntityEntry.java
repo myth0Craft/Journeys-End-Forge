@@ -7,11 +7,11 @@ import net.minecraft.world.entity.LivingEntity;
 public class EntityEntry extends BaseTimewornJournalEntry {
 
 
-	private LivingEntity entity;
+	private final LivingEntity entity;
 
-	private float scale;
+	private final float scale;
 
-	private float yOffset;
+	private final float yOffset;
 
 	public EntityEntry(Component pName, Component pLore, LivingEntity pEntity) {
 		super(pName, pLore);

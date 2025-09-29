@@ -20,7 +20,7 @@ import net.minecraft.world.level.block.Blocks;
 
 public class TimewornJournalEntries {
 
-	private static int maxTier = 2;
+	private static final int maxTier = 2;
 
 	public static final List<BaseTimewornJournalEntry> CHAPTER_ENTRIES_T0 = List.of(
 			new BaseTimewornJournalEntry(name("about_book"), lore("about_book")),
@@ -194,7 +194,7 @@ public class TimewornJournalEntries {
 				finalList.add(ITEM_ENTRIES_T1.get(i));
 			}
 		}
-		String journalTier = new String("timeworn_journal_t" + pTier);
+		String journalTier = "timeworn_journal_t" + pTier;
 		finalList.add(new ImageEntry(name(journalTier), lore(journalTier), ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "textures/item/timeworn_journal.png")));
 
 		return finalList;

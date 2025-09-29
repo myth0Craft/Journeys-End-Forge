@@ -133,7 +133,7 @@ public class ShadowTowerPiece extends TemplateStructurePiece {
 			}
 
 			case "je:shadow_lord_spawn" -> {
-				Mob mob = (Mob) ModEntities.SHADOW_LORD.get().create(pLevel.getLevel());
+				Mob mob = ModEntities.SHADOW_LORD.get().create(pLevel.getLevel());
 					mob.moveTo(
 							pPos.getX() + 0.5D,
 							pPos.getY(),
@@ -141,6 +141,7 @@ public class ShadowTowerPiece extends TemplateStructurePiece {
 							0.0F,
 							0.0F
 					);
+					mob.setPersistenceRequired();
 					pLevel.addFreshEntity(mob);
 			}
 		}

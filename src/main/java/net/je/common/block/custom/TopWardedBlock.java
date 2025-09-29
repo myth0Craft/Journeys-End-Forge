@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
 public class TopWardedBlock extends WardedBlock {
-	private Direction minableDirection;
+	private final Direction minableDirection;
 
 	public TopWardedBlock(Properties p_49795_, Direction pDirection) {
 		super(p_49795_);

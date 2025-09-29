@@ -5,7 +5,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class ImageEntry extends BaseTimewornJournalEntry {
 
-	private ResourceLocation image;
+	private final ResourceLocation image;
 
 
 	public ImageEntry(Component pName, Component pLore, ResourceLocation pImage) {

@@ -5,7 +5,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class ItemEntry extends BaseTimewornJournalEntry {
 
-	private ItemStack item;
+	private final ItemStack item;
 
 	public ItemEntry(Component pName, Component pLore, ItemStack pItem) {
 		super(pName, pLore);
