@@ -21,7 +21,6 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import org.jetbrains.annotations.Nullable;
 
 public class GravityDistorterBlock extends BaseEntityBlock {
-	public static final MapCodec<GravityDistorterBlock> CODEC = simpleCodec(GravityDistorterBlock::new);
 
 	public static final BooleanProperty BLOCK_ABOVE = BooleanProperty.create("block_above");
 	public static final BooleanProperty BLOCK_BELOW = BooleanProperty.create("block_below");
@@ -33,13 +32,9 @@ public class GravityDistorterBlock extends BaseEntityBlock {
 				.setValue(BLOCK_BELOW, false));
 	}
 
-	@Override
-	protected MapCodec<GravityDistorterBlock> codec() {
-		return CODEC;
-	}
 
 	@Override
-	protected RenderShape getRenderShape(BlockState pState) {
+	public RenderShape getRenderShape(BlockState pState) {
 		return RenderShape.MODEL;
 	}
 
@@ -102,7 +97,7 @@ public class GravityDistorterBlock extends BaseEntityBlock {
 	}
 
 	@Override
-	protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos neighborPos, boolean moved) {
+	public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos neighborPos, boolean moved) {
 		super.neighborChanged(state, level, pos, block, neighborPos, moved);
 		if (!level.isClientSide) updateStackHeight(level, pos);
 	}

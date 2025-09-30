@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,eye=true": {
+      "model": "je:block/bejeweled_pedestal_with_eye"
+    },
+    "facing=south,eye=true": {
+      "model": "je:block/bejeweled_pedestal_with_eye",
+      "y": 180
+    },
+    "facing=east,eye=true": {
+      "model": "je:block/bejeweled_pedestal_with_eye",
+      "y": 90
+    },
+    "facing=west,eye=true": {
+      "model": "je:block/bejeweled_pedestal_with_eye",
+      "y": 270
+    },
+	"facing=north,eye=false": {
+	  "model": "je:block/bejeweled_pedestal_no_eye"
+	},
+	"facing=south,eye=false": {
+	  "model": "je:block/bejeweled_pedestal_no_eye",
+	  "y": 180
+	},
+	"facing=east,eye=false": {
+	  "model": "je:block/bejeweled_pedestal_no_eye",
+	  "y": 90
+	},
+	"facing=west,eye=false": {
+	  "model": "je:block/bejeweled_pedestal_no_eye",
+	  "y": 270
+	}
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "je:block/shadow_block"
+    }
+  }
+}

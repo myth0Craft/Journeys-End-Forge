@@ -12,17 +12,17 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class VoidbloomBlock extends Block {
 
-	public VoidbloomBlock(BlockBehaviour.Properties pProperties) {
+	public VoidbloomBlock(Properties pProperties) {
         super(pProperties);
     }
 
 	@Override
-    protected BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
+    public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
         return !pState.canSurvive(pLevel, pCurrentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
     }
 
     @Override
-    protected boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         BlockPos blockpos = pPos.below();
         if (pState.getBlock() == this) { //Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
             return pLevel.getBlockState(blockpos).is(ModTags.Blocks.CORRUPTED_BLOCKS);

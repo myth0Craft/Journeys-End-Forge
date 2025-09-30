@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "je:block/end_stone_furnace_front_on",
+    "side": "je:block/end_stone_furnace_side",
+    "top": "je:block/end_stone_furnace_top",
+    "bottom": "je:block/end_stone_furnace_bottom",
+    "particle": "je:block/end_stone_furnace_side"
+  }
+}

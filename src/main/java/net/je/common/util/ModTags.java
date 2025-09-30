@@ -1,6 +1,7 @@
 package net.je.common.util;
 
 import net.je.JourneysEnd;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.*;
 import net.minecraft.world.entity.EntityType;
@@ -20,13 +21,14 @@ public class ModTags {
     }
 
 	public static class Entities {
-		public static final TagKey<EntityType<?>> END_MOBS = createTag("end_mobs");
-		public static final TagKey<EntityType<?>> SHADOW_MOBS = createTag("shadow_mobs");
+
+		public static final TagKey<EntityType<?>> END_MOBS =
+				TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "end_mobs"));
 
 
-		private static TagKey<EntityType<?>> createTag(String name) {
-			return EntityTypeTags.create(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, name));
-		}
+		public static final TagKey<EntityType<?>> SHADOW_MOBS =
+			TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, "shadow_mobs"));
+
 	}
 
 	public static class Structures {
@@ -53,9 +55,9 @@ public class ModTags {
 	public static class Biomes {
 		//public static final TagKey<Biome> SHADOW_TOWER_BIOMES = createTag("shadow_tower_biomes");
 
-		private static TagKey<Biome> createTag(String name) {
+		/*private static TagKey<Biome> createTag(String name) {
 			return BiomeTags.create(ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, name));
-		}
+		}*/
 	}
 
 }

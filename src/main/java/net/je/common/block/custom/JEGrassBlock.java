@@ -15,15 +15,8 @@ import net.minecraft.world.level.lighting.LightEngine;
 
 public class JEGrassBlock extends Block {
 
-	public JEGrassBlock (BlockBehaviour.Properties p_55057_) {
+	public JEGrassBlock (Properties p_55057_) {
         super(p_55057_);
-    }
-
-	public static final MapCodec<JEGrassBlock> CODEC = simpleCodec(JEGrassBlock::new);
-
-    @Override
-    public MapCodec<JEGrassBlock> codec() {
-        return CODEC;
     }
 
     private static boolean canBeGrowing(BlockState pState, LevelReader pReader, BlockPos pPos) {
@@ -34,7 +27,7 @@ public class JEGrassBlock extends Block {
     }
 
     @Override
-    protected void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+    public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         if (!canBeGrowing(pState, pLevel, pPos)) {
             pLevel.setBlockAndUpdate(pPos, Blocks.END_STONE.defaultBlockState());
         }

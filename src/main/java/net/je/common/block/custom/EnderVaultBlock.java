@@ -20,7 +20,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraftforge.unsafe.UnsafeFieldAccess;
 import org.jetbrains.annotations.Nullable;
 
 public class EnderVaultBlock extends BaseEntityBlock {
@@ -29,7 +28,6 @@ public class EnderVaultBlock extends BaseEntityBlock {
 	public static final BooleanProperty SHOULD_SPAWN_KEY = BooleanProperty.create("should_spawn_key");
 
 
-	public static final MapCodec<EnderVaultBlock> CODEC = simpleCodec(EnderVaultBlock::new);
 
 	public EnderVaultBlock(Properties pProperties) {
 
@@ -48,10 +46,6 @@ public class EnderVaultBlock extends BaseEntityBlock {
 		pBuilder.add(WAVES_COMPLETE, ACTIVE, SHOULD_SPAWN_KEY);
 	}
 
-	@Override
-	public MapCodec<EnderVaultBlock> codec() {
-		return CODEC;
-	}
 
 	@Override
 	public @Nullable BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
@@ -59,7 +53,7 @@ public class EnderVaultBlock extends BaseEntityBlock {
 	}
 
 	@Override
-	protected RenderShape getRenderShape(BlockState pState) {
+	public RenderShape getRenderShape(BlockState pState) {
 		return RenderShape.MODEL;
 	}
 

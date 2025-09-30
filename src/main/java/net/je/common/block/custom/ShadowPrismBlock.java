@@ -11,12 +11,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class ShadowPrismBlock extends BaseEntityBlock {
-	public static final MapCodec<ShadowPrismBlock> CODEC = simpleCodec(ShadowPrismBlock::new);
 
-	@Override
-	public MapCodec<ShadowPrismBlock> codec() {
-		return CODEC;
-	}
 
 	public ShadowPrismBlock(Properties p_49795_) {
 		super(p_49795_);
@@ -28,7 +23,7 @@ public class ShadowPrismBlock extends BaseEntityBlock {
 	}
 
 	@Override
-	protected RenderShape getRenderShape(BlockState pState) {
+	public RenderShape getRenderShape(BlockState pState) {
 		if (CommonConfig.ALLOW_FANCY_VISUALS.get()) {
 			return RenderShape.INVISIBLE;
 		} else {

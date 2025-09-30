@@ -25,14 +25,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 public class EndStoneFurnaceBlock extends AbstractFurnaceBlock {
-	public static final MapCodec<EndStoneFurnaceBlock> CODEC = simpleCodec(EndStoneFurnaceBlock::new);
 
-    @Override
-    public MapCodec<EndStoneFurnaceBlock> codec() {
-        return CODEC;
-    }
 
-    public EndStoneFurnaceBlock(BlockBehaviour.Properties p_49773_) {
+    public EndStoneFurnaceBlock(Properties p_49773_) {
         super(p_49773_);
     }
 

@@ -58,7 +58,7 @@ public class ShadowBeamReceiverBlock extends Block {
 	}
 
 	@Override
-	protected void attack(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer) {
+	public void attack(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer) {
 		if (CommonConfig.ALLOW_WARDED_BLOCKS.get()) {
 			ItemStack item = pPlayer.getMainHandItem();
 			if (!item.is(ModTags.Items.WARDBREAKER)) {
@@ -95,7 +95,7 @@ public class ShadowBeamReceiverBlock extends Block {
 	}
 
 	@Override
-	protected float getDestroyProgress(BlockState pState, Player pPlayer, BlockGetter pLevel, BlockPos pPos) {
+	public float getDestroyProgress(BlockState pState, Player pPlayer, BlockGetter pLevel, BlockPos pPos) {
 		if (CommonConfig.ALLOW_WARDED_BLOCKS.get()) {
 			float f = pState.getDestroySpeed(pLevel, pPos);
 			ItemStack item = pPlayer.getMainHandItem();
@@ -106,7 +106,7 @@ public class ShadowBeamReceiverBlock extends Block {
 				return 0.0F;
 			} else {
 				int i = net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(pState, pPlayer) ? 30 : 100;
-				return pPlayer.getDestroySpeed(pState, pPos) / f / i;
+				return pPlayer.getDestroySpeed(pState) / f / i;
 			}
 		} else {
 			return super.getDestroyProgress(pState, pPlayer, pLevel, pPos);

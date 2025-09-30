@@ -25,7 +25,7 @@ public class TransparentWardedBlock extends WardedBlock {
 	}
 
 	@Override
-	protected boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pSide) {
+	public boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pSide) {
 		return (pAdjacentBlockState.is(this) || pAdjacentBlockState.getBlock() instanceof CustomTransparentBlock) ? true : super.skipRendering(pState, pAdjacentBlockState, pSide);
 	}
 

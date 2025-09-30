@@ -15,7 +15,6 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
@@ -37,7 +36,6 @@ import javax.annotation.Nullable;
 import java.util.Optional;
 
 public class RespawnNexusBlock extends BaseEntityBlock {
-	public static final MapCodec<RespawnNexusBlock> CODEC = simpleCodec(RespawnNexusBlock::new);
 
     public static final BooleanProperty CHARGED = BooleanProperty.create("is_charged");
 
@@ -58,10 +56,6 @@ public class RespawnNexusBlock extends BaseEntityBlock {
             .add(new Vec3i(0, 1, 0))
             .build();
 
-    @Override
-    public MapCodec<RespawnNexusBlock> codec() {
-        return CODEC;
-    }
 
     public RespawnNexusBlock(Properties p_49773_) {
         super(p_49773_);
@@ -69,7 +63,7 @@ public class RespawnNexusBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected RenderShape getRenderShape(BlockState pState) {
+    public RenderShape getRenderShape(BlockState pState) {
         return RenderShape.MODEL;
     }
 
@@ -83,29 +77,22 @@ public class RespawnNexusBlock extends BaseEntityBlock {
         return state.getValue(RespawnNexusBlock.CHARGED) ? 14 : 0;
     }
 
-    @Override
-    protected ItemInteractionResult useItemOn(
-            ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult
-    ) {
-        if (isRespawnFuel(pStack) && !pState.getValue(RespawnNexusBlock.CHARGED)) {
-            charge(pPlayer, pLevel, pPos, pState);
-            pStack.consume(1, pPlayer);
-            return ItemInteractionResult.sidedSuccess(pLevel.isClientSide);
-        } else {
-            return pHand == InteractionHand.MAIN_HAND && isRespawnFuel(pPlayer.getItemInHand(InteractionHand.OFF_HAND)) && !pState.getValue(RespawnNexusBlock.CHARGED)
-                    ? ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION
-                    : ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        }
-    }
-
     private static boolean isRespawnFuel(ItemStack pStack) {
         return pStack.is(ModItems.VOIDMETAL_INGOT.get());
     }
 
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        ItemStack itemstack = pPlayer.getItemInHand(pHand);
+        if (pHand == InteractionHand.MAIN_HAND && !isRespawnFuel(itemstack) && isRespawnFuel(pPlayer.getItemInHand(InteractionHand.OFF_HAND))) {
+            return InteractionResult.PASS;
+        } else if (isRespawnFuel(itemstack) && !pState.getValue(RespawnNexusBlock.CHARGED)) {
+            charge(pPlayer, pLevel, pPos, pState);
+            if (!pPlayer.getAbilities().instabuild) {
+                itemstack.shrink(1);
+            }
 
-    @Override
-    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
-        if (!pState.getValue(CHARGED)) {
+            return InteractionResult.sidedSuccess(pLevel.isClientSide);
+        } else if (!pState.getValue(CHARGED)) {
             return InteractionResult.PASS;
         } else if (!canSetSpawn(pLevel)) {
             if (!pLevel.isClientSide) {
@@ -118,16 +105,7 @@ public class RespawnNexusBlock extends BaseEntityBlock {
                 ServerPlayer serverplayer = (ServerPlayer)pPlayer;
                 if (serverplayer.getRespawnDimension() != pLevel.dimension() || !pPos.equals(serverplayer.getRespawnPosition())) {
                     serverplayer.setRespawnPosition(pLevel.dimension(), pPos, 0.0F, false, true);
-                    pLevel.playSound(
-                            null,
-                            (double)pPos.getX() + 0.5,
-                            (double)pPos.getY() + 0.5,
-                            (double)pPos.getZ() + 0.5,
-                            SoundEvents.RESPAWN_ANCHOR_SET_SPAWN,
-                            SoundSource.BLOCKS,
-                            1.0F,
-                            1.0F
-                    );
+                    pLevel.playSound((Player)null, (double)pPos.getX() + 0.5D, (double)pPos.getY() + 0.5D, (double)pPos.getZ() + 0.5D, SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, SoundSource.BLOCKS, 1.0F, 1.0F);
                     return InteractionResult.SUCCESS;
                 }
             }
@@ -210,12 +188,12 @@ public class RespawnNexusBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected boolean hasAnalogOutputSignal(BlockState pState) {
+    public boolean hasAnalogOutputSignal(BlockState pState) {
         return true;
     }
 
     @Override
-    protected int getAnalogOutputSignal(BlockState pBlockState, Level pLevel, BlockPos pPos) {
+    public int getAnalogOutputSignal(BlockState pBlockState, Level pLevel, BlockPos pPos) {
         return pBlockState.getValue(RespawnNexusBlock.CHARGED) ? 1 : 0;
     }
 
@@ -239,7 +217,7 @@ public class RespawnNexusBlock extends BaseEntityBlock {
     }
 
     @Override
-    protected boolean isPathfindable(BlockState pState, PathComputationType pPathComputationType) {
+    public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
         return false;
     }
 }

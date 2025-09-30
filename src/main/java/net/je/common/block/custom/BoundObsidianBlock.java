@@ -2,14 +2,12 @@ package net.je.common.block.custom;
 
 import net.je.common.item.ModItems;
 import net.je.common.particle.ModParticles;
-import net.je.common.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -44,17 +42,18 @@ public class BoundObsidianBlock extends WardedBlock {
 
 
 	@Override
-	protected ItemInteractionResult useItemOn(
-			ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult
+	public InteractionResult use(
+			BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit
 	) {
+		ItemStack pStack = pPlayer.getItemInHand(pHand);
 		if (!pLevel.isClientSide() && pStack.is(ModItems.SHADOW_KEY.get())) {
 			pStack.shrink(1);
 			pLevel.playSound(null, pPos.getX(), pPos.getY(), pPos.getZ(), SoundType.CHAIN.getPlaceSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
 			this.unlock(pLevel, pPos);
-			return ItemInteractionResult.SUCCESS;
+			return InteractionResult.SUCCESS;
 		}
 
-		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+		return InteractionResult.PASS;
 	}
 
 	public void spawnParticles(Level pLevel, BlockPos pPos) {

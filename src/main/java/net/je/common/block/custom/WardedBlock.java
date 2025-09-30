@@ -32,7 +32,7 @@ public class WardedBlock extends Block {
 				.instrument(NoteBlockInstrument.BASS).pushReaction(PushReaction.IGNORE));
 	}*/
 
-	public WardedBlock(BlockBehaviour.Properties properties) {
+	public WardedBlock(Properties properties) {
 		super(properties.pushReaction(PushReaction.IGNORE).explosionResistance(3600000.0F));
 		this.registerDefaultState(this.stateDefinition.any().setValue(PLACED, false));
 	}
@@ -43,7 +43,7 @@ public class WardedBlock extends Block {
 	}
 
 	@Override
-	protected void attack(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer) {
+	public void attack(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer) {
 		if (CommonConfig.ALLOW_WARDED_BLOCKS.get()) {
 			ItemStack item = pPlayer.getMainHandItem();
 			if (!item.is(ModTags.Items.WARDBREAKER)) {
@@ -80,14 +80,14 @@ public class WardedBlock extends Block {
 	}
 
 	@Override
-	protected float getDestroyProgress(BlockState pState, Player pPlayer, BlockGetter pLevel, BlockPos pPos) {
+	public float getDestroyProgress(BlockState pState, Player pPlayer, BlockGetter pLevel, BlockPos pPos) {
 		if (CommonConfig.ALLOW_WARDED_BLOCKS.get()) {
 			float f = pState.getDestroySpeed(pLevel, pPos);
 			ItemStack item = pPlayer.getMainHandItem();
 
 			if (!item.is(ModTags.Items.WARDBREAKER)) {
 				if (pState.getValue(PLACED)) {
-					float speed = pPlayer.getDestroySpeed(pState, pPos);
+					float speed = pPlayer.getDestroySpeed(pState);
 					float hardness = 30000.0f;
 					return speed / hardness;
 				} else {
@@ -97,7 +97,7 @@ public class WardedBlock extends Block {
 				return 0.0F;
 			} else {
 				int i = net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(pState, pPlayer) ? 30 : 100;
-				return pPlayer.getDestroySpeed(pState, pPos) / f / i;
+				return pPlayer.getDestroySpeed(pState) / f / i;
 			}
 		} else {
 			return super.getDestroyProgress(pState, pPlayer, pLevel, pPos);

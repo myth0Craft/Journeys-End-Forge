@@ -9,13 +9,13 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class LushEndStoneBlock extends JEGrassBlock {
 
-	public LushEndStoneBlock(BlockBehaviour.Properties p_55057_) {
+	public LushEndStoneBlock(Properties p_55057_) {
 		super(p_55057_);
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
-	protected void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+	public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
 		super.randomTick(pState, pLevel, pPos, pRandom);
 		if (!pLevel.isAreaLoaded(pPos, 3)) {
 			return;

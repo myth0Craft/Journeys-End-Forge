@@ -14,7 +14,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '6.0.26'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
 
@@ -28,8 +28,8 @@ base {
     archivesName = mod_id
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
-gradle.startParameter.showStacktrace = org.gradle.api.logging.configuration.ShowStacktrace.ALWAYS
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+gradle.startParameter.showStacktrace = ShowStacktrace.ALWAYS
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 
@@ -47,6 +47,11 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
         }
 
         client {
@@ -78,12 +83,14 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {
-        // location of the maven that hosts JEI files since January 2023
+        name = "Progwml6's maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
         name = "Jared's maven"
         url = "https://maven.blamejared.com/"
     }
     maven {
-        // location of a maven mirror for JEI files, as a fallback
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
@@ -91,10 +98,10 @@ repositories {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    compileOnly("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
-    //compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.5'
-  	runtimeOnly("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
-    implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
+    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
+    compileOnly group:'org.spongepowered', name:'mixin', version:'0.8.5'
+    runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
+    /*implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }*/
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     
 }
@@ -126,6 +133,7 @@ tasks.named('jar', Jar).configure {
             'MixinConfigs'            : "je.mixins.json"
         ])
     }
+    finalizedBy 'reobfJar'
 }
 
 publishing {
@@ -145,7 +153,7 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
-eclipse {
+/*eclipse {
     synchronizationTasks 'genEclipseRuns'
 }
 
@@ -154,4 +162,4 @@ sourceSets.each {
     def dir = layout.buildDirectory.dir("sourcesSets/$it.name")
     it.output.resourcesDir = dir
     it.java.destinationDirectory = dir
-}
+}*/

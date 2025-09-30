@@ -20,12 +20,7 @@ public class InterdimensionalAnchorBlock extends Block {
 
 	public static final IntegerProperty DIMENSION = IntegerProperty.create("dim", 0, 2);
 
-	public static final MapCodec<InterdimensionalAnchorBlock> CODEC = simpleCodec(InterdimensionalAnchorBlock::new);
 
-	@Override
-	public MapCodec<InterdimensionalAnchorBlock> codec() {
-		return CODEC;
-	}
 
 	public InterdimensionalAnchorBlock(Properties p_49795_) {
 		super(p_49795_);
@@ -52,7 +47,7 @@ public class InterdimensionalAnchorBlock extends Block {
 	}
 
 	@Override
-	protected void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+	public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
 		super.randomTick(pState, pLevel, pPos, pRandom);
 		if (blockLevel != null) {
 

@@ -1,5 +1,6 @@
 package net.je.common.block.custom;
 
+import net.minecraft.world.InteractionHand;
 import org.jetbrains.annotations.Nullable;
 
 import com.mojang.serialization.MapCodec;
@@ -31,8 +32,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+
 public class BejeweledPedestalBlock extends BaseEntityBlock {
-	public static final MapCodec<BejeweledPedestalBlock> CODEC = simpleCodec(BejeweledPedestalBlock::new);
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 	public static final BooleanProperty HAS_EYE = BooleanProperty.create("eye");
 	protected static final VoxelShape BASE_SHAPE = Block.box(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
@@ -45,18 +46,13 @@ public class BejeweledPedestalBlock extends BaseEntityBlock {
 	}
 
 	@Override
-	protected VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+	public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
 		return pState.getValue(HAS_EYE) ? FULL_SHAPE : BASE_SHAPE;
 	}
 
 	@Override
-	protected RenderShape getRenderShape(BlockState pState) {
+	public RenderShape getRenderShape(BlockState pState) {
 		return RenderShape.MODEL;
-	}
-
-	@Override
-	protected MapCodec<BejeweledPedestalBlock> codec() {
-		return CODEC;
 	}
 
 	@Nullable
@@ -67,8 +63,7 @@ public class BejeweledPedestalBlock extends BaseEntityBlock {
 	}
 
 	@Override
-	protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer,
-			BlockHitResult pHitResult) {
+	public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
 
 		if (pLevel.getBlockEntity(pPos) instanceof BejeweledPedestalBlockEntity be) {
 			if (be.getBlockState().getValue(HAS_EYE)) {
@@ -100,12 +95,12 @@ public class BejeweledPedestalBlock extends BaseEntityBlock {
 	}
 
 	@Override
-	protected boolean hasAnalogOutputSignal(BlockState pState) {
+	public boolean hasAnalogOutputSignal(BlockState pState) {
 		return true;
 	}
 
 	@Override
-	protected int getAnalogOutputSignal(BlockState pBlockState, Level pLevel, BlockPos pPos) {
+	public int getAnalogOutputSignal(BlockState pBlockState, Level pLevel, BlockPos pPos) {
 		return pBlockState.getValue(HAS_EYE) ? 15 : 0;
 	}
 

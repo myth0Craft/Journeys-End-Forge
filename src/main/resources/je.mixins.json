@@ -2,10 +2,9 @@
   "required": true,
   "minVersion": "0.8",
   "package": "net.je.mixin",
-  "compatibilityLevel": "JAVA_21",
+  "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ServerPlayerMixin",
-    "EndExitPortalMixin"
+    //"EndExitPortalMixin"
   ],
   "injectors": {
 	"defaultRequire": 1

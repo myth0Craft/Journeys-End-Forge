@@ -17,12 +17,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 public class UnstableShadowPrismBlock extends BaseEntityBlock {
-	public static final MapCodec<UnstableShadowPrismBlock> CODEC = simpleCodec(UnstableShadowPrismBlock::new);
-
-	@Override
-	public MapCodec<UnstableShadowPrismBlock> codec() {
-		return CODEC;
-	}
 
 	public UnstableShadowPrismBlock(Properties p_49795_) {
 		super(p_49795_);
@@ -34,7 +28,7 @@ public class UnstableShadowPrismBlock extends BaseEntityBlock {
 	}
 
 	@Override
-	protected RenderShape getRenderShape(BlockState pState) {
+	public RenderShape getRenderShape(BlockState pState) {
 		if (CommonConfig.ALLOW_FANCY_VISUALS.get()) {
 			return RenderShape.INVISIBLE;
 		} else {
