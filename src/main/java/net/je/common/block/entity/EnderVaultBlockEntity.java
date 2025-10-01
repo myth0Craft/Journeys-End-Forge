@@ -98,7 +98,7 @@ public class EnderVaultBlockEntity extends BlockEntity {
 		if (this.level != null) {
 			level.setBlockAndUpdate(worldPosition, ModBlocks.ENDER_VAULT.get().defaultBlockState()
 					.setValue(EnderVaultBlock.ACTIVE, this.getBlockState().getValue(EnderVaultBlock.ACTIVE))
-					.setValue(EnderVaultBlock.WAVES_COMPLETE, Math.clamp(num, 0, 4))
+					.setValue(EnderVaultBlock.WAVES_COMPLETE, Math.max(0, Math.min(num, 4)))
 					.setValue(EnderVaultBlock.SHOULD_SPAWN_KEY, this.getBlockState().getValue(EnderVaultBlock.SHOULD_SPAWN_KEY)));
 		}
 	}
@@ -223,22 +223,22 @@ public class EnderVaultBlockEntity extends BlockEntity {
 	}
 
 	@Override
-	public void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-		super.saveAdditional(tag, registries);
+	public void saveAdditional(CompoundTag tag) {
+		super.saveAdditional(tag);
 		tag.putBoolean("Finished", this.finished);
 		tag.putInt("delayBetweenWaves", this.delayBetweenWaves);
 	}
 
 	@Override
-	public void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-		super.loadAdditional(tag, registries);
+	public void load(CompoundTag tag) {
+		super.load(tag);
 		this.finished = tag.getBoolean("Finished");
 		this.delayBetweenWaves = tag.getInt("delayBetweenWaves");
 	}
 
 	@Override
-	public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
-		CompoundTag tag = super.getUpdateTag(registries);
+	public CompoundTag getUpdateTag() {
+		CompoundTag tag = super.getUpdateTag();
 		tag.putBoolean("Finished", this.finished);
 		tag.putInt("delayBetweenWaves", this.delayBetweenWaves);
 		return tag;

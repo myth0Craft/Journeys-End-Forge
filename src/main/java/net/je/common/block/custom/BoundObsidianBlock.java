@@ -25,7 +25,7 @@ public class BoundObsidianBlock extends WardedBlock {
 	}
 
 	@Override
-	protected void attack(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer) {
+	public void attack(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer) {
 
 		/*ItemStack item = pPlayer.getMainHandItem();
 		if (!item.is(ModTags.Items.WARDBREAKER)) {

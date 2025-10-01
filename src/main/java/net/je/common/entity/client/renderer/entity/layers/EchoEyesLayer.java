@@ -1,0 +1,54 @@
+package net.je.common.entity.client.renderer.entity.layers;
+
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.je.common.entity.client.EndersentModel;
+import net.je.common.entity.custom.BaseEndersent;
+import net.je.common.entity.custom.Echo;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.FastColor;
+import net.minecraft.world.entity.Mob;
+
+public class EchoEyesLayer<T extends Mob, M extends HumanoidModel<T>> extends RenderLayer<T, M> {
+
+
+	private final ResourceLocation texture;
+
+
+	public EchoEyesLayer(
+			RenderLayerParent<T, M> p_234885_,
+			ResourceLocation p_234886_
+
+	) {
+		super(p_234885_);
+		this.texture = p_234886_;
+	}
+
+
+	@Override
+	public void render(
+			PoseStack p_234902_,
+			MultiBufferSource p_234903_,
+			int p_234904_,
+			T p_234905_,
+			float p_234906_,
+			float p_234907_,
+			float p_234908_,
+			float p_234909_,
+			float p_234910_,
+			float p_234911_
+	) {
+		if (!p_234905_.isInvisible()) {
+			VertexConsumer vertexconsumer = p_234903_.getBuffer(RenderType.eyes(this.texture));
+			this.getParentModel().renderToBuffer(p_234902_, vertexconsumer, p_234904_, LivingEntityRenderer.getOverlayCoords(p_234905_, 0.0F),
+					255, 255, 255, 255);
+		}
+	}
+}

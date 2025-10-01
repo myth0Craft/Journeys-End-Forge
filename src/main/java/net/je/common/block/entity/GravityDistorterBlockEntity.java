@@ -194,28 +194,28 @@ public class GravityDistorterBlockEntity extends BlockEntity {
 	}
 
 	@Override
-	public void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-		super.saveAdditional(tag, registries);
+	public void saveAdditional(CompoundTag tag) {
+		super.saveAdditional(tag);
 		tag.putInt("NumBlocksStacked", numBlocksStacked);
 	}
 
 	@Override
-	public void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-		super.loadAdditional(tag, registries);
+	public void load(CompoundTag tag) {
+		super.load(tag);
 		numBlocksStacked = tag.getInt("NumBlocksStacked");
-		updateState(); // rebuild area and sync
+		updateState();
 	}
 
 	@Override
-	public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
-		CompoundTag tag = super.getUpdateTag(registries);
-		saveAdditional(tag, registries);
+	public CompoundTag getUpdateTag() {
+		CompoundTag tag = super.getUpdateTag();
+		saveAdditional(tag);
 		return tag;
 	}
 
 	@Override
-	public void handleUpdateTag(CompoundTag tag, HolderLookup.Provider registries) {
-		loadAdditional(tag, registries);
+	public void handleUpdateTag(CompoundTag tag) {
+		load(tag);
 		updateState();
 	}
 }

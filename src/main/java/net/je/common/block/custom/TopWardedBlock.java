@@ -19,7 +19,7 @@ public class TopWardedBlock extends WardedBlock {
 
 
 	@Override
-	protected void attack(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer) {
+	public void attack(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer) {
 		BlockHitResult hit = (BlockHitResult) pPlayer.pick(20, 0, false);
 		if (hit.getBlockPos().equals(pPos) && hit.getDirection() == this.minableDirection) {
 			super.defaultAttack(pState, pLevel, pPos, pPlayer);
@@ -29,7 +29,7 @@ public class TopWardedBlock extends WardedBlock {
 	}
 
 	@Override
-	protected float getDestroyProgress(BlockState pState, Player pPlayer, BlockGetter pLevel, BlockPos pPos) {
+	public float getDestroyProgress(BlockState pState, Player pPlayer, BlockGetter pLevel, BlockPos pPos) {
 		BlockHitResult hit = (BlockHitResult) pPlayer.pick(20, 0, false);
 		if (hit.getBlockPos().equals(pPos) && hit.getDirection() == this.minableDirection) {
 			return super.defaultDestroyProgress(pState, pPlayer, pLevel, pPos);

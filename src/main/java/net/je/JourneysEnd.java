@@ -2,6 +2,7 @@ package net.je;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.logging.LogUtils;
+import net.je.common.block.ModBlocks;
 import net.je.config.CommonConfig;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.DragonBreathParticle;
@@ -57,7 +58,7 @@ public class JourneysEnd {
 
 		//ModItems.register(modEventBus);
 
-		//ModBlocks.register(modEventBus);
+		ModBlocks.register(modEventBus);
 
 		//ModFluids.register(modEventBus);
 		//ModFluidTypes.register(modEventBus);

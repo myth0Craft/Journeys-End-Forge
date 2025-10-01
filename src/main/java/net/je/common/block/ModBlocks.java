@@ -5,7 +5,6 @@ import java.util.function.Supplier;
 
 import net.je.JourneysEnd;
 import net.je.common.block.custom.*;
-import net.je.common.fluid.ModFluids;
 import net.je.common.item.ModItems;
 import net.je.common.sound.ModSounds;
 import net.minecraft.core.BlockPos;
@@ -14,10 +13,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Item.TooltipContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -28,6 +27,8 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import javax.annotation.Nullable;
 
 public class ModBlocks {
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
@@ -92,10 +93,9 @@ public class ModBlocks {
 			() -> new LushEndStoneBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_ORANGE)
 					.strength(3.0F, 9.0F).requiresCorrectToolForDrops().sound(SoundType.NYLIUM).randomTicks()) {
 				@Override
-				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
-						List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-					pTooltipComponents.add(Component.translatable("tooltip.je.unobtainable"));
-					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+				public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+					pTooltip.add(Component.translatable("tooltip.je.unobtainable"));
+					super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
 				}
 			});
 
@@ -112,13 +112,12 @@ public class ModBlocks {
 
 	public static final RegistryObject<Block> LANTERN_OF_WARDING = registerBlock("lantern_of_warding",
 			() -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(0.5F)
-					.requiresCorrectToolForDrops().sound(SoundType.COPPER_BULB).lightLevel(p_50755_ -> 15)
+					.requiresCorrectToolForDrops().sound(SoundType.GLASS).lightLevel(p_50755_ -> 15)
 					.emissiveRendering(ModBlocks::always).hasPostProcess(ModBlocks::always)) {
 				@Override
-				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
-						List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-					pTooltipComponents.add(Component.translatable("tooltip.je.unobtainable"));
-					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+				public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+					pTooltip.add(Component.translatable("tooltip.je.unobtainable"));
+					super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
 				}
 			});
 
@@ -237,10 +236,9 @@ public class ModBlocks {
 			() -> new TopWardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops(), Direction.UP) {
 				@Override
-				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
-											List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-					pTooltipComponents.add(Component.translatable("tooltip.je.fractured_wardstone"));
-					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+				public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+					pTooltip.add(Component.translatable("tooltip.je.fractured_wardstone"));
+					super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
 				}
 			});
 
@@ -248,10 +246,9 @@ public class ModBlocks {
 			() -> new TopWardedBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(3.0F, 9.0F)
 					.instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().noLootTable(), Direction.DOWN) {
 				@Override
-				public void appendHoverText(ItemStack pStack, TooltipContext pContext,
-											List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-					pTooltipComponents.add(Component.translatable("tooltip.je.top_fractured_wardstone"));
-					super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+				public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
+					pTooltip.add(Component.translatable("tooltip.je.top_fractured_wardstone"));
+					super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
 				}
 			});
 

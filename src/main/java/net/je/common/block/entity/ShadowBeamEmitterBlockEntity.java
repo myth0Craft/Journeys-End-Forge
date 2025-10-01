@@ -2,8 +2,6 @@ package net.je.common.block.entity;
 
 import net.je.JourneysEnd;
 import net.je.common.block.ModBlocks;
-import net.je.common.effect.ModDamageSources;
-import net.je.common.effect.ModDamageTypes;
 import net.je.common.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -208,16 +206,16 @@ public class ShadowBeamEmitterBlockEntity extends BlockEntity {
 	}
 
 	@Override
-	public void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-		super.saveAdditional(tag, registries);
+	public void saveAdditional(CompoundTag tag) {
+		super.saveAdditional(tag);
 		tag.putBoolean("Active", this.isActive);
 		tag.putInt("BeamHeight", this.beamHeight);
 		tag.putBoolean("LaserActive", this.laserActive);
 	}
 
 	@Override
-	public void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-		super.loadAdditional(tag, registries);
+	public void load(CompoundTag tag) {
+		super.load(tag);
 		this.isActive = tag.getBoolean("Active");
 		this.beamHeight = tag.getInt("BeamHeight");
 		this.laserActive = tag.getBoolean("LaserActive");
@@ -225,8 +223,8 @@ public class ShadowBeamEmitterBlockEntity extends BlockEntity {
 	}
 
 	@Override
-	public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
-		CompoundTag tag = super.getUpdateTag(registries);
+	public CompoundTag getUpdateTag() {
+		CompoundTag tag = super.getUpdateTag();
 		tag.putBoolean("Active", this.isActive);
 		tag.putInt("BeamHeight", this.beamHeight);
 		tag.putBoolean("LaserActive", this.laserActive);
