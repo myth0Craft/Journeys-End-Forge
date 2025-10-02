@@ -6,7 +6,9 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.AnimationState;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
@@ -32,6 +34,11 @@ public class BaseEndersent extends Monster {
 
 	public BaseEndersent(EntityType<? extends Monster> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
+	}
+
+	@Override
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
+		return 6.0f;
 	}
 
 	@Override

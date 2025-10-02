@@ -32,6 +32,11 @@ public class Duskblade extends Monster {
 		super(pEntityType, pLevel);
 	}
 
+	@Override
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
+		return 1.62f;
+	}
+
 	private int currentAttack = 0;
 	private int attackTick = 0;
 	private int attackDuration = 0;

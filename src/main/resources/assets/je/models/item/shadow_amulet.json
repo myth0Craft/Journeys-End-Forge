@@ -6,7 +6,7 @@
   "overrides": [
       {
         "predicate": {
-          "custom_model_data": 1
+          "held": 1
         },
         "model": "je:item/eclipse_key_handheld"
       }

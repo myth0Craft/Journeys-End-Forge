@@ -16,6 +16,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
+import javax.annotation.Nullable;
+
 public class TimewornJournalItem extends Item {
 
 
@@ -42,9 +44,9 @@ public class TimewornJournalItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
 		String tooltip = Component.translatable("tooltip.je.tier").getString() + tier;
 		pTooltipComponents.add(Component.literal(tooltip).withStyle(ChatFormatting.DARK_PURPLE));
-    }
+	}
 
 }

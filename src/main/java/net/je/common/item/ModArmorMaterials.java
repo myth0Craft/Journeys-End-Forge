@@ -17,30 +17,74 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 
-public class ModArmorMaterials {
-	public static final Holder<ArmorMaterial> VOIDMETAL_ARMOR_MATERIAL = register("voidmetal", Util.make(new EnumMap<>(ArmorItem.Type.class),
-            attribute -> {
-                attribute.put(ArmorItem.Type.BOOTS, 4);
-                attribute.put(ArmorItem.Type.LEGGINGS, 6);
-                attribute.put(ArmorItem.Type.CHESTPLATE, 8);
-                attribute.put(ArmorItem.Type.HELMET, 4);
-                attribute.put(ArmorItem.Type.BODY, 11);
-            }), 18, 4.0f, 0.12f, () -> ModItems.VOIDMETAL_INGOT.get());
+public enum ModArmorMaterials implements ArmorMaterial {
+    VOIDMETAL_ARMOR_MATERIAL("voidmetal", 40, new int[]{4, 6, 8, 4}, 18,
+            SoundEvents.ARMOR_EQUIP_NETHERITE,4.0f, 0.12f,
+            () -> Ingredient.of(ModItems.VOIDMETAL_INGOT.get()));
 
-    private static Holder<ArmorMaterial> register(String name, EnumMap<ArmorItem.Type, Integer> typeProtection,
-                                                  int enchantability, float toughness, float knockbackResistance,
-                                                  Supplier<Item> ingredientItem) {
-        ResourceLocation location = ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, name);
-        Holder<SoundEvent> equipSound = SoundEvents.ARMOR_EQUIP_NETHERITE;
-        Supplier<Ingredient> ingredient = () -> Ingredient.of(ingredientItem.get());
-        List<ArmorMaterial.Layer> layers = List.of(new ArmorMaterial.Layer(location));
+    private final String name;
+    private final int durabilityMultiplier;
+    private final int[] protectionAmounts;
+    private final int enchantmentValue;
+    private final SoundEvent equipSound;
+    private final float toughness;
+    private final float knockbackResistance;
+    private final Supplier<Ingredient> repairIngredient;
 
-        EnumMap<ArmorItem.Type, Integer> typeMap = new EnumMap<>(ArmorItem.Type.class);
-        for (ArmorItem.Type type : ArmorItem.Type.values()) {
-            typeMap.put(type, typeProtection.get(type));
-        }
+    private static final int[] BASE_DURABILITY = { 11, 16, 16, 13 };
 
-        return Registry.registerForHolder(BuiltInRegistries.ARMOR_MATERIAL, location,
-                new ArmorMaterial(typeProtection, enchantability, equipSound, ingredient, layers, toughness, knockbackResistance));
+
+    ModArmorMaterials(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantmentValue, SoundEvent equipSound,
+                      float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient) {
+        this.name = name;
+        this.durabilityMultiplier = durabilityMultiplier;
+        this.protectionAmounts = protectionAmounts;
+        this.enchantmentValue = enchantmentValue;
+        this.equipSound = equipSound;
+        this.toughness = toughness;
+        this.knockbackResistance = knockbackResistance;
+        this.repairIngredient = repairIngredient;
+    }
+
+    @Override
+    public int getDurabilityForType(ArmorItem.Type pType) {
+        return BASE_DURABILITY[pType.ordinal()] * this.durabilityMultiplier;
+    }
+
+    @Override
+    public int getDefenseForType(ArmorItem.Type pType) {
+        return this.protectionAmounts[pType.ordinal()];
+    }
+
+    @Override
+    public int getEnchantmentValue() {
+        return enchantmentValue;
+    }
+
+    @Override
+    public SoundEvent getEquipSound() {
+        return this.equipSound;
+    }
+
+    @Override
+    public Ingredient getRepairIngredient() {
+        return this.repairIngredient.get();
+    }
+
+    @Override
+    public String getName() {
+        return JourneysEnd.MODID + ":" + this.name;
+    }
+
+    @Override
+    public float getToughness() {
+        return this.toughness;
+    }
+
+    @Override
+    public float getKnockbackResistance() {
+        return this.knockbackResistance;
     }
 }
+
+

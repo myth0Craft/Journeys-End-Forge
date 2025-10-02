@@ -3,11 +3,15 @@ package net.je;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.logging.LogUtils;
 import net.je.common.block.ModBlocks;
+import net.je.common.entity.ModEntities;
+import net.je.common.item.ModItems;
+import net.je.common.trim.ModTrimMaterials;
 import net.je.config.CommonConfig;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.particle.DragonBreathParticle;
 import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -46,7 +50,7 @@ public class JourneysEnd {
 
 		//ModCreativeModeTab.register(modEventBus);
 
-		//ModEntities.register(modEventBus);
+		ModEntities.register(modEventBus);
 
 		//ModSounds.register(modEventBus);
 
@@ -59,6 +63,8 @@ public class JourneysEnd {
 		//ModItems.register(modEventBus);
 
 		ModBlocks.register(modEventBus);
+
+		ModTrimMaterials.TRIM_MATERIALS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
 		//ModFluids.register(modEventBus);
 		//ModFluidTypes.register(modEventBus);
@@ -121,6 +127,12 @@ public class JourneysEnd {
 			// ModBlocks.SHADOW_BLOCK.get());
 			// ItemBlockRenderTypes.setRenderLayer(ModBlocks.SHADOW_PRISM.get(),
 			// ModRenderTypes.SHADOW_PRISM);
+
+
+			ItemProperties.register(ModItems.SHADOW_AMULET.get(),
+					ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID,"held"),
+					(stack, level, entity, seed) -> stack.getOrCreateTag().getBoolean("ShadowAmuletHeld") ? 1.0F : 0.0F);
+
 
 		}
 

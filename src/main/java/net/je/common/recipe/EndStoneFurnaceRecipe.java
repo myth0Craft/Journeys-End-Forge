@@ -1,0 +1,31 @@
+package net.je.common.recipe;
+
+import net.je.JourneysEnd;
+import net.je.common.block.ModBlocks;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.AbstractCookingRecipe;
+import net.minecraft.world.item.crafting.CookingBookCategory;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+
+public class EndStoneFurnaceRecipe extends AbstractCookingRecipe {
+	public final static String GROUP = "end_stone_furnace_recipe";
+
+	public EndStoneFurnaceRecipe(String pGroup, CookingBookCategory pCategory, Ingredient pIngredient, ItemStack pResult, float pExperience, int pCookingTime) {
+        super(ModRecipeSerializers.END_STONE_FURNACE_RECIPE_TYPE.get(), ResourceLocation.fromNamespaceAndPath(JourneysEnd.MODID, GROUP), pGroup,
+                pCategory, pIngredient, pResult, pExperience, pCookingTime);
+    }
+
+    @Override
+    public ItemStack getToastSymbol() {
+        return new ItemStack(ModBlocks.END_STONE_FURNACE.get());
+    }
+
+
+
+    @Override
+    public RecipeSerializer<?> getSerializer() {
+        return ModRecipeSerializers.END_STONE_FURNACE_RECIPE.get();
+    }
+}

@@ -1,0 +1,24 @@
+package net.je.common.screen;
+
+import java.util.Set;
+
+import net.je.common.block.entity.EndStoneFurnaceBlockEntity;
+import net.minecraft.client.gui.screens.recipebook.AbstractFurnaceRecipeBookComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.Item;
+
+public class EndStoneFurnaceRecipeBook extends AbstractFurnaceRecipeBookComponent {
+
+	private static final Component FILTER_NAME = Component.translatable("gui.recipebook.toggleRecipes.end_stone_furnace");
+
+    @Override
+    protected Component getRecipeFilterName() {
+        return FILTER_NAME;
+    }
+
+    @Override
+    protected Set<Item> getFuelItems() {
+        return EndStoneFurnaceBlockEntity.getFuel().keySet();
+    }
+
+}

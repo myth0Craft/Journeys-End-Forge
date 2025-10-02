@@ -1,0 +1,25 @@
+package net.je.common.effect;
+
+import net.je.JourneysEnd;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+
+public class ModEffects {
+
+	 public static final DeferredRegister<MobEffect> MOB_EFFECTS =
+	            DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, JourneysEnd.MODID);
+
+	    public static final RegistryObject<MobEffect> VOID_STRIKE_EFFECT = MOB_EFFECTS.register("void_strike",
+	            () -> new VoidStrikeEffect(MobEffectCategory.HARMFUL, 0x5a0083));
+
+
+	    public static void register(IEventBus eventBus) {
+	        MOB_EFFECTS.register(eventBus);
+	    }
+
+}

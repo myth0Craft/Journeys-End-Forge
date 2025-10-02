@@ -63,6 +63,11 @@ public class ShadowLord extends Monster {
 		this.fireImmune();
 	}
 
+	@Override
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions dimensions) {
+		return 1.62f;
+	}
+
 	public static AttributeSupplier.Builder createMonsterAttributes() {
 		return Mob.createMobAttributes().add(Attributes.ATTACK_DAMAGE, 0.5f).add(Attributes.MAX_HEALTH, 400D)
 				.add(Attributes.FOLLOW_RANGE, 15.0).add(Attributes.MOVEMENT_SPEED, 0.2D).add(Attributes.ARMOR, 0.0D)
